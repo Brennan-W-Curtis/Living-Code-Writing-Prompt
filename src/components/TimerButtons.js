@@ -1,26 +1,45 @@
 const TimerButtons = props => {
-    const { handleMinutesDecrement, handleMinutesIncrement, handleSecondsDecrement, handleSecondsIncrement, handleStart, minutes, setMinutes, seconds, setSeconds } = props;
+    const { handleDecrement, handleIncrement, handleReset, handleStart, handleStop, countingDown } = props;
 
     return (
         <div>
-            <button
-                onClick={handleStart}
-            >Start</button>
-            {/* Seconds */}
-            <button
-                onClick={() => handleSecondsIncrement(seconds, setSeconds)}
-            >Increment Seconds</button>
-            <button
-                onClick={() => handleSecondsDecrement(seconds, setSeconds)}
-            >Decrement Seconds</button>
+            {
+                countingDown === false ?
+                    <button
+                        onClick={handleStart}
+                    >Start</button> :
+                    null
+            }
+            {
+                countingDown === true ?
+                    <div>
+                        <button
+                            onClick={handleStop}
+                        >Stop</button>
+                        <button
+                            onClick={handleReset}
+                        >Reset</button>
+                    </div> :
+                    null
+            }
             {/* Minutes */}
-            <button
-                onClick={() => handleMinutesIncrement(minutes, setMinutes)}
-            >Increment Seconds</button>
-            <button
-                onClick={() => handleMinutesDecrement(minutes, setMinutes)}
-            >Decrement Seconds</button>
-            
+            <div className="adjustMinutes">
+                <button
+                    onClick={() => handleIncrement(60)}
+                >Increment Minutes</button>
+                <button
+                    onClick={() => handleDecrement(60)}
+                >Decrement Minutes</button>
+            </div>
+            {/* Seconds */}
+            <div className="adjustSeconds">
+                <button
+                    onClick={() => handleIncrement(1)}
+                >Increment Seconds</button>
+                <button
+                    onClick={() => handleDecrement(1)}
+                >Decrement Seconds</button>
+            </div>
         </div>
     )
 }

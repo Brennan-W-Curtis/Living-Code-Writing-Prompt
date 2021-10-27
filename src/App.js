@@ -1,6 +1,6 @@
 import './App.css';
 import Timer from './components/Timer';
-import writingPrompts from './writingPrompts';
+// import writingPrompts from './writingPrompts';
 
 const App = () => {
   return (
