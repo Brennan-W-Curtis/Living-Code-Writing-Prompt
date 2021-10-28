@@ -1,17 +1,19 @@
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+
 const TimerButtons = props => {
-    const { handleDecrement, handleIncrement, handleReset, handleStart, handleStop, countingDown } = props;
+    const { handleDecrement, handleIncrement, handleReset, handleResume, handleStart, handleStop, countingStatus } = props;
 
     return (
         <div>
             {
-                countingDown === false ?
+                countingStatus === null ?
                     <button
                         onClick={handleStart}
                     >Start</button> :
                     null
             }
             {
-                countingDown === true ?
+                countingStatus === true ?
                     <div>
                         <button
                             onClick={handleStop}
@@ -22,23 +24,43 @@ const TimerButtons = props => {
                     </div> :
                     null
             }
-            {/* Minutes */}
-            <div className="adjustMinutes">
+            {
+                countingStatus === false ?
+                    <div>
+                        <button
+                            onClick={handleResume}
+                        >Resume</button>
+                        <button
+                            onClick={handleReset}
+                        >Reset</button>
+                    </div> :
+                    null
+            }
+            {/* Increase */}
+            <div className="increaseTime">
                 <button
                     onClick={() => handleIncrement(60)}
-                >Increment Minutes</button>
-                <button
-                    onClick={() => handleDecrement(60)}
-                >Decrement Minutes</button>
-            </div>
-            {/* Seconds */}
-            <div className="adjustSeconds">
+                >
+                    <FaChevronUp />
+                </button>
                 <button
                     onClick={() => handleIncrement(1)}
-                >Increment Seconds</button>
+                >
+                    <FaChevronUp />
+                </button>
+            </div>
+            {/* Decrease */}
+            <div className="decreaseTime">
+                <button
+                    onClick={() => handleDecrement(60)}
+                >
+                    <FaChevronDown />
+                </button>
                 <button
                     onClick={() => handleDecrement(1)}
-                >Decrement Seconds</button>
+                >
+                    <FaChevronDown />
+                </button>
             </div>
         </div>
     )
