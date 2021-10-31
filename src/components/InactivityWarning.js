@@ -1,4 +1,4 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import WarningModal from './WarningModal';
 
 const InactivityWarning = ({ countingStatus }) => {
@@ -13,9 +13,7 @@ const InactivityWarning = ({ countingStatus }) => {
     warningComponent.timeoutWarning = null;
 
     // Handles whether the inactivity warning is displayed by setting a state variable to true after enough time passes.
-    const handleWarning = () => {
-        setDisplayWarning(true);
-    }
+    const handleWarning = () => setDisplayWarning(true);
 
     // Sets the value of the property to a setTimeout method that calls the handleWarning function based on the useWarning state variable.
     const setTimeouts = () => {
@@ -33,56 +31,60 @@ const InactivityWarning = ({ countingStatus }) => {
     useEffect(() => {
 
         // If the counting status evaluates to true than the idle timer is activated.
-        // if (countingStatus) {} 
+        if (countingStatus) {
 
-        setUserWarning(15000);
-
-        // Declare an array with string values that will be used to assess whether the user is inactive.
-        const events = [
-            "load",
-            "mousemove",
-            "mousedown",
-            "click",
-            "scroll",
-            "keypress"
-        ];
-
-        // Resets the timeout intervals by first clearing it should the property be false and then setting it based on the userWarning state variable.
-        const resetTimeout = () => {
-            clearTimeouts();
-            setTimeouts();
-        }
-
-        // Loops through the array and adds an event listener to the window object that reflects each of the string values stored within the event array that calls the resetTimeout function.  
-        for (let i of events) {
-            window.addEventListener(events[i], resetTimeout);
-        }
-
-        // Calls the setTimeouts method.
-        setTimeouts();
-
-        return () => {
-
-            // Loops through the array and removes each previously added event listener and clears the timeout interval. 
-            for (let i of events) {
-                window.removeEventListener(events[i], resetTimeout);
+            // Sets the idle timer fifteen seconds after which the warning is rendered to the page.
+            setUserWarning(15000);
+    
+            // Declare an array with string values that will be used to assess whether the user is inactive.
+            const events = [
+                "load",
+                "mousemove",
+                "mousedown",
+                "click",
+                "scroll",
+                "keypress"
+            ];
+    
+            // Resets the timeout intervals by first clearing it should the property be false and then setting it based on the userWarning state variable.
+            const resetTimeout = () => {
                 clearTimeouts();
+                setTimeouts();
             }
-        }
+    
+            // Loops through the array and adds an event listener to the window object that reflects each of the string values stored within the event array that calls the resetTimeout function.  
+            for (let i in events) {
+                window.addEventListener(events[i], resetTimeout);
+            }
+    
+            // Calls the setTimeouts method.
+            setTimeouts();
+    
+            return () => {
+    
+                // Loops through the array and removes each previously added event listener and clears the timeout interval. 
+                for (let i in events) {
+                    window.removeEventListener(events[i], resetTimeout);
+                    clearTimeouts();
+                }
+    
+            }
 
-    }, [clearTimeouts, setTimeouts]);
+        } 
+
+    }, [clearTimeouts, setTimeouts, countingStatus]);
 
     return (
         <>
-        {
-            // If this state variable evaluates to true than the inactivity warning is displayed to the user.
-            displayWarning ?
-                <div>
-                    <WarningModal />
-                </div> :
-                null
+            {
+                // If this state variable evaluates to true than the inactivity warning is displayed to the user.
+                displayWarning ?
+                    <div>
+                        <WarningModal />
+                    </div> :
+                    null
 
-        }
+            }
         </>
     )
 }
