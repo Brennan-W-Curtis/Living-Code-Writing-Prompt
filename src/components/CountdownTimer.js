@@ -48,7 +48,6 @@ const CountdownTimer = props => {
 
     // Handles reseting the countdown timer to zero and stopping the countdown.
     const handleReset = () => {
-        setCount(0);
         setCountingStatus(null);
         clearInterval(currentInterval);
     }
@@ -59,10 +58,12 @@ const CountdownTimer = props => {
     // Decrements that the reference value of timerSeconds by one and than updates the time value in state.
     const runTimer = () => {  
         timerComponent.updatedSeconds--;
-        setCount(timerComponent.updatedSeconds);
+        // Wrap the updatedSeconds property in a Math.max() to prevent the timer display from rendering negative numbers.
+        setCount(Math.max(0, timerComponent.updatedSeconds));
 
+        // Set the countingStatus state variable to false to stop the countdown timer.
         if (timerComponent.updatedSeconds === 0) {
-            handleReset();
+            setCountingStatus(false);
         }
 
     }

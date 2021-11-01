@@ -26,19 +26,21 @@ const App = () => {
       <main className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
           <section>
-            <CommunalPrompts />
+            <div>
+              <CommunalPrompts />
+              <CountdownTimer
+                countingStatus={countingStatus}
+                setCountingStatus={setCountingStatus}
+              />
+            </div>
           </section>
           <section>
-            <CountdownTimer
-              countingStatus={countingStatus}
-              setCountingStatus={setCountingStatus}
-            />
-          </section>
-          <section>
-            <InactivityWarning 
-              countingStatus={countingStatus}
-            />
-            <WritingSpace />
+            <div>
+              <InactivityWarning 
+                countingStatus={countingStatus}
+              />
+              <WritingSpace />
+            </div>
           </section>
         </div>
       </main>
