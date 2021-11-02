@@ -2,12 +2,9 @@ import { useState } from 'react';
 
 const WritingSpace = () => {
     // Store all state values for the component in the following variables.
-    const [ userInput, setUserInput ] = useState("");
+    const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
 
-    const handleInput = event => {
-        event.preventDefault();
-        setUserInput(event.target.value)
-    }
+    console.log(userInput);
 
     return (
         <div>
@@ -17,7 +14,8 @@ const WritingSpace = () => {
                     name="userInput" 
                     id="userInput" 
                     required
-                    onChange={handleInput}
+                    // Monitors changes in the user's input.
+                    onChange={event => setUserInput(event.target.value)}
                     placeholder="Please enter some text."
                 ></textarea>
             </form>

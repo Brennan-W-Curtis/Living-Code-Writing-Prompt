@@ -2,9 +2,8 @@ import { useState } from 'react';
 import TimerButtons from './TimerButtons';
 import TimerDisplay from './TimerDisplay';
 
-const CountdownTimer = props => {
-    // Destructure props object to access countingStatus state variables.
-    const { countingStatus, setCountingStatus } = props; 
+// Destructure props object to access countingStatus state variables.
+const CountdownTimer = ({ countingStatus, setCountingStatus }) => {
 
     // Declare a namespace object for the component.
     const timerComponent = {};
@@ -48,6 +47,7 @@ const CountdownTimer = props => {
 
     // Handles reseting the countdown timer to zero and stopping the countdown.
     const handleReset = () => {
+        setCount(0);
         setCountingStatus(null);
         clearInterval(currentInterval);
     }

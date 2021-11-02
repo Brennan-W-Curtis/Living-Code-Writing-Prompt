@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import WarningModal from './WarningModal';
 
 const InactivityWarning = ({ countingStatus }) => {
@@ -16,17 +16,17 @@ const InactivityWarning = ({ countingStatus }) => {
     const handleWarning = () => setDisplayWarning(true);
 
     // Sets the value of the property to a setTimeout method that calls the handleWarning function based on the useWarning state variable.
-    const setTimeouts = () => {
+    const setTimeouts = useCallback(() => {
         warningComponent.timeoutWarning = setTimeout(handleWarning, userWarning);
-    }
+    }, [warningComponent, userWarning])
 
     // Clears the value of the timeout interval stored within the property.
-    const clearTimeouts = () => {
+    const clearTimeouts = useCallback(() => {
 
         // If the property evaluates to true then it's timeout interval is cleared.
         if (warningComponent.timeoutWarning) clearTimeout(warningComponent.timeoutWarning);
 
-    }
+    }, [warningComponent])
 
     useEffect(() => {
 

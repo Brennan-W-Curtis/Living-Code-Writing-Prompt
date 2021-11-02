@@ -1,6 +1,4 @@
-const TimerDisplay = props => {
-    // Destructures the props object to access the count state variable.
-    const { count, countingStatus } = props;
+const TimerDisplay = ({ count, countingStatus }) => {
 
     // Conditionally render the minute part of the timer display only if it stores an  value greater than zero.
     const conditionalMinutes = minutes => {

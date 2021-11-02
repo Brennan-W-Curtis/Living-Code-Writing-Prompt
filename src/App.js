@@ -5,6 +5,7 @@ import WritingSpace from './components/WritingSpace';
 import InactivityWarning from './components/InactivityWarning';
 import ModeToggle from './components/ModeToggle';
 import CommunalPrompts from './components/CommunalPrompts';
+import UserAuthentication from './components/UserAuthentication';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -20,6 +21,7 @@ const App = () => {
               setToggleMode={setToggleMode}
               toggleMode={toggleMode}
             />
+            <UserAuthentication />
           </section>
         </div>
       </header>

@@ -4,6 +4,9 @@ import { initializeApp } from "firebase/app";
 // Import the function to pull in the Firebase realtime database service
 import { getDatabase } from 'firebase/database';
 
+// Import the functions to enable user authentication
+import { getAuth } from 'firebase/auth';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC5loyiZm9wsLoo_JaYT1rC5E2xL_DxsjE",
@@ -19,5 +22,8 @@ const app = initializeApp(firebaseConfig);
 
 // Get a reference to the database
 const realtime = getDatabase(app);
+
+// Get a reference to the authentication
+export const auth = getAuth(app);
 
 export default realtime;

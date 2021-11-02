@@ -4,10 +4,7 @@ import { ref, push } from 'firebase/database';
 
 const ContributeModal = ({ setContributePrompt }) => {
     // All values that are stored within state
-    const [ userInput, setUserInput ] = useState(""); // Stores the user's current input in state for submitting to the realtime database.
-
-    // Monitors the current value entered by the user in the prompt input.
-    const handleInput = event => setUserInput(event.target.value);
+    const [ userInput, setUserInput ] = useState(""); // Stores the user's current input in state for submitting to the realtime database. 
 
     // Handles submitting the user's input and sending the data to the realtime database.
     const handleSubmit = event => {
@@ -27,20 +24,23 @@ const ContributeModal = ({ setContributePrompt }) => {
         <div>
             <form 
                 action="submit"
-                onSubmit={handleSubmit}
+                onSubmit={event => {
+                    handleSubmit(event);
+                    setContributePrompt(false);
+                }}
             >
                 <label htmlFor="submitPrompt" className="sr-only">Contribute Prompt</label>
                 <input 
                     type="text" 
                     id="submitPrompt"
                     name="submitPrompt"
-                    onChange={handleInput}
+                    // Monitors the current value entered by the user in the prompt input.
+                    onChange={event => setUserInput(event.target.value)}
                     value={userInput}
                     placeholder="Enter a prompt"
                 />
                 <button 
                     type="submit"
-                    onClick={() => setContributePrompt(false)}
                 >Submit</button>
             </form>
         </div>
