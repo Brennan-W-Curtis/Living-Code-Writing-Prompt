@@ -23,6 +23,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
         try {
             // Store the returned promise in a variable when generating a new user in Firebase authentication.
             const newUser = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+            console.log(newUser);
             // Clear the register email and password inputs.
             setRegisterEmail("");
             setRegisterPassword("");
@@ -39,6 +40,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
         try {
             // Store the returned promise in a variable when accessing a previously created user in Firebase authentication.
             const returningUser = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            console.log(returningUser)
             // Clear the login email and password inputs.
             setLoginEmail("");
             setLoginPassword("");

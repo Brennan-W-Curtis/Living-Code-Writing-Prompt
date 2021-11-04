@@ -1,5 +1,5 @@
 import { cloud } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 
 const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) => {
     
@@ -8,11 +8,12 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) =>
         event.preventDefault();
 
         try {
-            // Asynchronously store a reference to the users collection within the cloud database. 
+            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database. 
             const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
-            // Create an object to store the user's writing.
+            // Create an object to store the user's writing input.
             const docEntry = {
-                creativeWriting: arrayUnion(userInput)
+                // Updates the array stored inside the user's document without overwriting previously saved content by the authenticated user.  
+                writingPassages: arrayUnion(userInput)
             }
             // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one.  
             await setDoc(docRef, docEntry, { merge: true });

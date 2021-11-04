@@ -52,20 +52,22 @@ const CommunalPrompts = () => {
         // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
     }, [storedPrompts])
 
-    const handleContribute = () => setContributePrompt(true);
+    // Toggles whether the input form is visible for the user to contribute a prompt and submit it to the realtime database.
+    const toggleContribute = () => setContributePrompt(!contributePrompt);
     
     return (
         <div>
             {
                 contributePrompt ?
                     <ContributePrompt 
+                        contributePrompt={contributePrompt}
                         setContributePrompt={setContributePrompt}
                     /> :
                     null
             }
             <p>{currentPrompt}</p>
             <button
-                onClick={handleContribute}
+                onClick={toggleContribute}
             >Contribute</button>
         </div>
     )
