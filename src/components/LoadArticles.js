@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { cloud } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
-const LoadPassages = ({ authenticatedUser, setUserInput }) => {
+const LoadArticles = ({ authenticatedUser, setUserInput }) => {
 
-    const [ savedPassages, setSavedPassages ] = useState();
+    const [ savedArticles, setSavedArticles ] = useState();
 
     // useEffect(() => {
 
@@ -18,9 +18,9 @@ const LoadPassages = ({ authenticatedUser, setUserInput }) => {
                 // Asynchronously store a reference to a readable snapshot of the document. 
                 const docSnapshot = await getDoc(docRef);
                 
-                // If a document exists set the state value savedPassages to the array of values in its creativeWriting property.
+                // If a document exists set the state value savedArticles to the array of values in its userArticles property.
                 if (docSnapshot.exists()) {
-                    setSavedPassages(docSnapshot.data().creativeWriting);
+                    setSavedArticles(docSnapshot.data().userArticles);
                 }
 
             }
@@ -29,28 +29,28 @@ const LoadPassages = ({ authenticatedUser, setUserInput }) => {
     
         accessDatabase();
 
-    // }, [authenticatedUser.uid, savedPassages])
+    // }, [authenticatedUser.uid, savedArticles])
 
     return (
         <section>
             <div>
                 {
-                    savedPassages ? 
-                        savedPassages.map((passage, index) => {
+                    savedArticles ? 
+                        savedArticles.map((article, index) => {
                             return (
                                 <span key={index}>
-                                    <button>{passage}</button>
+                                    <button>{article.articleTitle}</button>
                                 </span>
                             )
                         }) :
                         // Conditionally render a different message to the user depending on whether their identity has been authenticated.
                         authenticatedUser !== null ?
-                            <p>Currently you do not have any saved passages.</p> :
-                            <p>You must be signed in to access saved passages.</p>
+                            <p>Currently you do not have any saved articles.</p> :
+                            <p>You must be signed in to access saved articles.</p>
                 }
             </div>
         </section>
     )
 }
 
-export default LoadPassages;
+export default LoadArticles;

@@ -18,7 +18,11 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
 
     // Asynchronously handle registering a user by creating a new user within Firebase based on their input email and password.
     const registerUser = async event => {
+        // Prevents the default action of the submit event.
         event.preventDefault();
+
+        // Store a regular expression that determines whether the input by the user string is valid email.
+        const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
         try {
             // Store the returned promise in a variable when generating a new user in Firebase authentication.
@@ -35,7 +39,11 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
 
     // Asynchronously handle signing the user in by accessing an existing user created within Firebase based on their input email and password.
     const loginUser = async event => {
+        // Prevents the default action of the submit event.
         event.preventDefault();
+
+        // Store a regular expression that determines whether the input by the user string is valid email.
+        const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
         try {
             // Store the returned promise in a variable when accessing a previously created user in Firebase authentication.

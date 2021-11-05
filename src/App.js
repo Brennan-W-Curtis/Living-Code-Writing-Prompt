@@ -8,7 +8,7 @@ import CommunalPrompts from './components/CommunalPrompts';
 import SuggestMusic from  './components/SuggestMusic';
 import SaveWriting from './components/SaveWriting';
 import HeaderContent from './components/HeaderContent';
-import LoadPassages from './components/LoadPassages';
+import LoadArticles from './components/LoadArticles';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -62,8 +62,8 @@ const App = () => {
               </div>
             </section>
           </Route>
-          <Route path="/saved-passages">
-            <LoadPassages 
+          <Route path="/saved-articles">
+            <LoadArticles 
               authenticatedUser={authenticatedUser}
               setUserInput={setUserInput}
             />
