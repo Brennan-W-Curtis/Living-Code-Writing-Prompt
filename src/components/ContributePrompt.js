@@ -12,7 +12,7 @@ const ContributeModal = ({ setContributePrompt }) => {
         event.preventDefault();
 
         // Store a regular expression that determines whether a string is three words that have spaces between them, the first and third words have at least 3 letters, and there is either an "a" or "an" as the second word.
-        const regex = /^[a-z]{3,}\s(a|an)\s[a-z]{3,}$/g
+        const regex = /^[a-z]{3,}\s(a|an)\s[a-z]{3,}$/;
 
         // Compares the user input with the regular expression to determine if there is a match.
         const inputPrompt = userInput.toLowerCase().match(regex);
@@ -22,6 +22,7 @@ const ContributeModal = ({ setContributePrompt }) => {
 
         // If the formattedPrompt is valid it will be sent to the realtime database.
         if (formattedPrompt) {
+
             // Store a reference to the realtime database.
             const dbRef = ref(realtime);
     
@@ -31,6 +32,7 @@ const ContributeModal = ({ setContributePrompt }) => {
             // Clear the input field after the information entered has been pushed.
             setUserInput("");
             setContributePrompt(false);
+            
         } else {
             console.log("Please enter a valid prompt.");
         }

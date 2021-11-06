@@ -22,17 +22,28 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
         event.preventDefault();
 
         // Store a regular expression that determines whether the input by the user string is valid email.
-        const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        const emailRegex = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 
-        try {
-            // Store the returned promise in a variable when generating a new user in Firebase authentication.
-            const newUser = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-            console.log(newUser);
-            // Clear the register email and password inputs.
-            setRegisterEmail("");
-            setRegisterPassword("");
-        } catch (error) {
-            console.log(error.message);
+        // Determine whether the email is formatted correctly if not inputEmail's value becomes null.
+        const formattedEmail = registerEmail.toLowerCase().match(emailRegex);
+
+        // Conditional statement that determines whether a user will be created.
+        if (formattedEmail) {
+
+            try {
+                // Store the returned promise in a variable when generating a new user in Firebase authentication.
+                await createUserWithEmailAndPassword(auth, formattedEmail, registerPassword);
+
+                // Clear the register email and password inputs.
+                setRegisterEmail("");
+                setRegisterPassword("");
+
+            } catch (error) {
+                console.log(error.message);
+            }
+
+        } else {
+            console.log("Please enter a valid email to register.")
         }
 
     }
@@ -42,16 +53,14 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
         // Prevents the default action of the submit event.
         event.preventDefault();
 
-        // Store a regular expression that determines whether the input by the user string is valid email.
-        const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-
         try {
             // Store the returned promise in a variable when accessing a previously created user in Firebase authentication.
-            const returningUser = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-            console.log(returningUser)
+            await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+
             // Clear the login email and password inputs.
             setLoginEmail("");
             setLoginPassword("");
+
         } catch (error) {
             console.log(error.message);
         }

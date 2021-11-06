@@ -20,7 +20,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="suggested-music">Play Music</Link>
+                            <Link to="suggested-music">Find Music</Link>
                         </li>
                         <li>
                             <Link to="saved-articles">Saved Articles</Link>

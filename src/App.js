@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/styles.css';
 import CountdownTimer from './components/CountdownTimer';
 import WritingSpace from './components/WritingSpace';
 import InactivityWarning from './components/InactivityWarning';
 import CommunalPrompts from './components/CommunalPrompts';
-import SuggestMusic from  './components/SuggestMusic';
 import SaveWriting from './components/SaveWriting';
 import HeaderContent from './components/HeaderContent';
 import LoadArticles from './components/LoadArticles';
+import FindMusic from './components/FindMusic';
+import ErrorPage from './components/ErrorPage';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -32,45 +33,50 @@ const App = () => {
       </header>
       <main className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
-          <Route exact path="/">
-            <section>
-              <div>
-                <CommunalPrompts />
-                <CountdownTimer
-                  count={count}
-                  countingStatus={countingStatus}
-                  setCount={setCount}
-                  setCountingStatus={setCountingStatus}
-                />
-              </div>
-            </section>
-            <section>
-              <div>
-                <InactivityWarning 
-                  countingStatus={countingStatus}
-                />
-                <WritingSpace 
-                  userInput={userInput}
-                  setUserInput={setUserInput}
-                />
-                <SaveWriting 
-                  authenticatedUser={authenticatedUser}
-                  count={count}
-                  countingStatus={countingStatus}
-                  userInput={userInput}
-                />
-              </div>
-            </section>
-          </Route>
-          <Route path="/saved-articles">
-            <LoadArticles 
-              authenticatedUser={authenticatedUser}
-              setUserInput={setUserInput}
-            />
-          </Route>
-          <Route path="/suggested-music">
-            <SuggestMusic />
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <section>
+                <div>
+                  <CommunalPrompts />
+                  <CountdownTimer
+                    count={count}
+                    countingStatus={countingStatus}
+                    setCount={setCount}
+                    setCountingStatus={setCountingStatus}
+                  />
+                </div>
+              </section>
+              <section>
+                <div>
+                  <InactivityWarning 
+                    countingStatus={countingStatus}
+                  />
+                  <WritingSpace 
+                    userInput={userInput}
+                    setUserInput={setUserInput}
+                  />
+                  <SaveWriting 
+                    authenticatedUser={authenticatedUser}
+                    count={count}
+                    countingStatus={countingStatus}
+                    userInput={userInput}
+                  />
+                </div>
+              </section>
+            </Route>
+            <Route path="/saved-articles">
+              <LoadArticles 
+                authenticatedUser={authenticatedUser}
+                setUserInput={setUserInput}
+              />
+            </Route>
+            <Route path="/suggested-music">
+              <FindMusic />
+            </Route>
+            <Route path="*">
+              <ErrorPage />
+            </Route>
+          </Switch>
         </div>
       </main>
       <footer className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
