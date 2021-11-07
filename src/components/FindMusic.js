@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SpotifyLogin from "./SpotifyLogin";
 import GetPlaylists from "./GetPlaylists";
+import DisplayPlaylists from './DisplayPlaylists';
 
 const FindMusic = () => {
     // Store all state values for the component in the following variables.
@@ -16,6 +17,9 @@ const FindMusic = () => {
                 <GetPlaylists 
                     accessToken={accessToken}
                     setData={setData}
+                />
+                <DisplayPlaylists 
+                    data={data}
                 />
             </div>
         </section>

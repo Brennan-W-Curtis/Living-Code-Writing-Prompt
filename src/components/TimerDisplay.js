@@ -1,5 +1,4 @@
 const TimerDisplay = ({ count, countingStatus }) => {
-
     // Conditionally render the minute part of the timer display only if it stores an  value greater than zero.
     const conditionalMinutes = minutes => {
 
