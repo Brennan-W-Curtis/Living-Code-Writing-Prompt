@@ -5,17 +5,15 @@ import { FaFeatherAlt, FaCloud } from 'react-icons/fa';
 
 const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, setToggleMode }) => {
     return (
-        <div>
-            <div>
-                <nav>
-                    <div>
-                        <div className="brandIcon">
-                            <FaFeatherAlt />
-                            <FaCloud />
-                        </div>
-                        <h1>Plume</h1>
+        <header>
+            <nav>
+                <div class="headerMenu">
+                    <div className="brandIcon">
+                        <FaFeatherAlt className="iconNegative" />
+                        <FaCloud className="iconContent" />
                     </div>
-                    <ul>
+                    <h1>Plume</h1>
+                    <ul className="mainNavigation">
                         <li>
                             <Link to="/">Home</Link>
                         </li>
@@ -26,19 +24,19 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                             <Link to="saved-articles">Saved Articles</Link>
                         </li>
                     </ul>
-                </nav>
+                </div>
                 <UserAuthentication 
                     authenticatedUser={authenticatedUser}
                     setAuthenticatedUser={setAuthenticatedUser}
                 />
-            </div>
-            <div>
+            </nav>
+            <div className="displayToggle">
                 <ModeToggle 
                     setToggleMode={setToggleMode}
                     toggleMode={toggleMode}
                 />
             </div>
-        </div>
+        </header>
     )
 }
 

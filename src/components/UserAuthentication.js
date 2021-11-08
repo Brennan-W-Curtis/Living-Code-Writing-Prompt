@@ -73,7 +73,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
     }
 
     return (
-        <div>
+        <div className="userAuthentication">
             {
                 // If the state value authenticatedUser evaluates to false then render the register and login forms to the page.
                 !authenticatedUser ?

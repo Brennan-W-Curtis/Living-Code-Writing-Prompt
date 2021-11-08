@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // Access spotify API by using the Implicit Grant Authorization Flow.
-const SpotifyLogin = ({ setAccessToken }) => {
+const ApiLogin = ({ setAccessToken, setUserVerified }) => {
     // All necessary string values in order to authenticate the user's identity with spotify's API.
     const clientId = process.env.REACT_APP_clientId;
     const authorizationEndpoint = "https://accounts.spotify.com/authorize";
@@ -39,6 +39,7 @@ const SpotifyLogin = ({ setAccessToken }) => {
             
             // Set the state value accessToken to the value of access_token.
             setAccessToken(access_token);
+            setUserVerified(true);
         }
     },[setAccessToken])
 
@@ -55,4 +56,4 @@ const SpotifyLogin = ({ setAccessToken }) => {
     )
 }
 
-export default SpotifyLogin;
+export default ApiLogin;

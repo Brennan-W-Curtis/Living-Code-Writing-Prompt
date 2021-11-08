@@ -1,0 +1,49 @@
+header {
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+
+        .headerMenu {
+            display: flex;
+            width: 50%;
+        }
+
+    }
+
+    .brandIcon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .iconContent {
+            font-size: 1.75rem;
+        }
+
+        .iconNegative {
+            position: absolute;
+            color: white;
+            font-size: 1rem;
+        }
+
+    }
+
+    .mainNavigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .userAuthentication {
+        display: flex;
+        width: 50%;
+    }
+
+    .displayToggle {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+}
