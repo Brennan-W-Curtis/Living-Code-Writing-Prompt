@@ -10,30 +10,29 @@ const FindMusic = () => {
     const [ dataReady, setDataReady ] = useState(false); // Stores a boolean value that determines whether the user's playlists will be rendered to the page.
 
     return (
-        <section>
-            <div>
-                {
-                    !userVerified ?
-                        <ApiLogin
-                            setAccessToken={setAccessToken}
-                            setUserVerified={setUserVerified}
-                        /> :
-                        null
+        <div>
+            <p>Set the right mood and listen to your music while you write.</p>
+            {
+                !userVerified ?
+                    <ApiLogin
+                        setAccessToken={setAccessToken}
+                        setUserVerified={setUserVerified}
+                    /> :
+                    null
 
-                }
-                {
-                    userVerified ? 
-                        <DisplayPlaylists 
-                            accessToken={accessToken}
-                            data={data}
-                            setData={setData}
-                            dataReady={dataReady}
-                            setDataReady={setDataReady}
-                        /> :
-                        null
-                }
-            </div>
-        </section>
+            }
+            {
+                userVerified ? 
+                    <DisplayPlaylists 
+                        accessToken={accessToken}
+                        data={data}
+                        setData={setData}
+                        dataReady={dataReady}
+                        setDataReady={setDataReady}
+                    /> :
+                    null
+            }
+        </div>
     )
 }
 

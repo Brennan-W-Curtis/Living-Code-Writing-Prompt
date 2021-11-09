@@ -1,8 +1,21 @@
-const RegisterationForm = ({ registerUser, registerEmail, setRegisterEmail, registerPassword, setRegisterPassword}) => {
+const RegisterationForm = props => {
+    
+    const { registerUser, registerEmail, setRegisterEmail, registerPassword, setRegisterPassword, registerUsername, setRegisterUsername } = props;
+
     return (
-        <div>
+        <div className="registrationForm">
             <form action="submit">
-                <label htmlFor="registerEmail"></label>
+                <label htmlFor="registerUsername" className="sr-only">Username</label>
+                <input 
+                    type="text" 
+                    id="registerUsername"
+                    name="registerUsername"
+                    placeholder="Username"
+                    // Monitors the current value entered by the user in the register username input.
+                    onChange={event => setRegisterUsername(event.target.value)}
+                    value={registerUsername}
+                />
+                <label htmlFor="registerEmail" className="sr-only">Email</label>
                 <input 
                     type="email" 
                     id="registerEmail" 
@@ -12,7 +25,7 @@ const RegisterationForm = ({ registerUser, registerEmail, setRegisterEmail, regi
                     onChange={event => setRegisterEmail(event.target.value)}
                     value={registerEmail}
                 />
-                <label htmlFor="registerPassword"></label>
+                <label htmlFor="registerPassword" className="sr-only">Password</label>
                 <input 
                     type="password" 
                     id="registerPassword" 

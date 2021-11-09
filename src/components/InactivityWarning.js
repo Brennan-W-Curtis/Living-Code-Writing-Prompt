@@ -29,7 +29,6 @@ const InactivityWarning = ({ countingStatus }) => {
     }, [warningComponent])
 
     useEffect(() => {
-
         // If the counting status evaluates to true than the idle timer is activated.
         if (countingStatus) {
 

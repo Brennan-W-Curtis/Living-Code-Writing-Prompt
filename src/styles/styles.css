@@ -314,6 +314,17 @@ header .userAuthentication {
   display: -ms-flexbox;
   display: flex;
   width: 50%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .userAuthentication .currentUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 header .displayToggle {
   display: -webkit-box;
@@ -322,4 +333,51 @@ header .displayToggle {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.featuresSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.featuresSection .communalPrompts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.featuresSection .countdownTimer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.writingSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.writingSection .writingSpace {
+  width: 100%;
+}
+.writingSection .writingSpace form {
+  margin: 0 auto;
+  width: 80%;
+}
+.writingSection .writingSpace form textarea {
+  width: 100%;
+  resize: none;
 }

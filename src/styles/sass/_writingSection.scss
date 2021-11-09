@@ -1,0 +1,23 @@
+.writingSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .writingSpace {
+        width: 100%;
+
+        form {
+            margin: 0 auto;
+            width: 80%;
+
+            textarea {
+                width: 100%;
+                resize: none;
+            }
+
+        }
+
+    }
+
+}

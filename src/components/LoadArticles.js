@@ -32,24 +32,22 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     // }, [authenticatedUser.uid, savedArticles])
 
     return (
-        <section>
-            <div>
-                {
-                    savedArticles ? 
-                        savedArticles.map((article, index) => {
-                            return (
-                                <span key={index}>
-                                    <button>{article.articleTitle}</button>
-                                </span>
-                            )
-                        }) :
-                        // Conditionally render a different message to the user depending on whether their identity has been authenticated.
-                        authenticatedUser !== null ?
-                            <p>Currently you do not have any saved articles.</p> :
-                            <p>You must be signed in to access saved articles.</p>
-                }
-            </div>
-        </section>
+        <div>
+            {
+                savedArticles ? 
+                    savedArticles.map((article, index) => {
+                        return (
+                            <span key={index}>
+                                <button>{article.articleTitle}</button>
+                            </span>
+                        )
+                    }) :
+                    // Conditionally render a different message to the user depending on whether their identity has been authenticated.
+                    authenticatedUser !== null ?
+                        <p>Currently you do not have any saved articles.</p> :
+                        <p>You must be signed in to access saved articles.</p>
+            }
+        </div>
     )
 }
 

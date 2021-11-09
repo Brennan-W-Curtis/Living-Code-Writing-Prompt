@@ -11,7 +11,6 @@ const CommunalPrompts = () => {
 
     // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
     useEffect(() => {
-
         // Store a reference to the realtime database.
         const dbRef = ref(realtime);
 
@@ -37,9 +36,9 @@ const CommunalPrompts = () => {
             // Set the state variable with an empty array to an array with all of the prompt objects.
             setStoredPrompts(databasePrompts);
 
-        })
+        });
         
-    }, [])
+    }, []);
     
     useEffect(() => {
         
@@ -50,13 +49,13 @@ const CommunalPrompts = () => {
         }
 
         // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
-    }, [storedPrompts])
+    }, [storedPrompts]);
 
     // Toggles whether the input form is visible for the user to contribute a prompt and submit it to the realtime database.
     const toggleContribute = () => setContributePrompt(!contributePrompt);
     
     return (
-        <div>
+        <div className="communalPrompts">
             {
                 contributePrompt ?
                     <ContributePrompt 
@@ -65,7 +64,7 @@ const CommunalPrompts = () => {
                     /> :
                     null
             }
-            <p>{currentPrompt}</p>
+            <p><span>"</span>{currentPrompt}<span>"</span></p>
             <button
                 onClick={toggleContribute}
             >Contribute</button>

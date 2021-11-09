@@ -67,7 +67,7 @@ const CountdownTimer = ({ count, countingStatus, setCount, setCountingStatus }) 
     }
 
     return (
-        <div>
+        <div className="countdownTimer">
             <TimerDisplay 
                 count={count}
                 countingStatus={countingStatus}
