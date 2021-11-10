@@ -263,20 +263,6 @@ html {
   margin: 0 auto;
 }
 
-header nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-header nav .headerMenu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 50%;
-}
 header .brandIcon {
   position: relative;
   display: -webkit-box;
@@ -297,7 +283,27 @@ header .brandIcon .iconNegative {
   color: white;
   font-size: 1rem;
 }
-header .mainNavigation {
+header .headerMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+header .headerMenu .menuLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+}
+header .headerMenu .menuLinks nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+header .headerMenu .menuLinks nav .mainNavigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,19 +315,37 @@ header .mainNavigation {
           justify-content: space-evenly;
   width: 100%;
 }
-header .userAuthentication {
+header .headerMenu .menuAuthentication {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 50%;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+}
+header .headerMenu .menuAuthentication .userOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
 }
-header .userAuthentication .currentUser {
+header .headerMenu .menuAuthentication .userAuthentication {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+header .headerMenu .menuAuthentication .currentUser {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -345,6 +369,7 @@ header .displayToggle {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 .featuresSection .communalPrompts {
   display: -webkit-box;
@@ -352,6 +377,40 @@ header .displayToggle {
   display: flex;
 }
 .featuresSection .countdownTimer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 25%;
+  position: relative;
+}
+.featuresSection .countdownTimer .timerInterface {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.featuresSection .countdownTimer .timerInterface .playbackButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.featuresSection .countdownTimer .adjustButtons {
+  position: relative;
+}
+.featuresSection .countdownTimer .adjustButtons .increaseTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.featuresSection .countdownTimer .adjustButtons .decreaseTime {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -380,4 +439,8 @@ header .displayToggle {
 .writingSection .writingSpace form textarea {
   width: 100%;
   resize: none;
+}
+.writingSection .warningModal {
+  position: absolute;
+  z-index: 100;
 }

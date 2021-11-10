@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     .communalPrompts {
         display: flex;
@@ -9,6 +10,34 @@
 
     .countdownTimer {
         display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 25%;
+        position: relative;
+
+        .timerInterface {
+            display: flex;
+
+            .playbackButtons {
+                display: flex;
+                align-items: center;
+            }
+           
+        }
+
+        .adjustButtons {
+            position: relative;
+
+            .increaseTime {
+                display: flex;
+            }
+
+            .decreaseTime {
+                display: flex;
+            }
+
+        }
+
     }
 
 }

@@ -22,7 +22,9 @@ const CountdownTimer = ({ count, countingStatus, setCount, setCountingStatus }) 
     // Handles decrementing the value that represents the total amount of time in state.
     const handleDecrement = amount => {
         const totalSeconds = count;
-        setCount(totalSeconds - amount);
+        if (count !== 0 && (totalSeconds - amount >= 0)) {
+            setCount(totalSeconds - amount);
+        }
     }
 
     // Handles starting the countdown timer and than continuing to run it at one second intervals. 

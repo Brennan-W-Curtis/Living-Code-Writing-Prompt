@@ -5,9 +5,9 @@ import RegisterationForm from './RegisterationForm';
 
 const UserRegistration = () => {
     // Store all state values for the component in the following variables.
-    const [ registerEmail, setRegisterEmail ] = useState(""); // Stores a string value that reflects the user email input during registration. 
-    const [ registerPassword, setRegisterPassword ] = useState(""); // Stores a string value that reflects the user password input during registration.
-    const [ registerUsername, setRegisterUsername ] = useState(""); // Stores a string value that reflects the user's desired name that's displayed.
+    const [ registerEmail, setRegisterEmail ] = useState(""); // Stores the user email input during registration. 
+    const [ registerPassword, setRegisterPassword ] = useState(""); // Stores the user password input during registration.
+    const [ registerUsername, setRegisterUsername ] = useState(""); // Stores the user's desired name that's displayed.
 
     // Asynchronously handle registering a user by creating a new user within Firebase based on their input email and password.
     const registerUser = async event => {

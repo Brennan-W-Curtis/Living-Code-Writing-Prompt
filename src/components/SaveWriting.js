@@ -5,7 +5,7 @@ import { jsPDF } from 'jspdf';
 
 const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) => {
     // Store all state values for the component in the following variables.
-    const [ articleTitle, setArticleTitle ] = useState(""); // Store a string value that reflects the title chosen by the user for their article.
+    const [ articleTitle, setArticleTitle ] = useState(""); // Store the title chosen by the user for their article.
     
     // Handles saving the user's writing to the cloud database based on the their unique id.
     const handleSave = async event => {

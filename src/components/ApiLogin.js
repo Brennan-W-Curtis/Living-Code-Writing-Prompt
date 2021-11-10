@@ -41,7 +41,7 @@ const ApiLogin = ({ setAccessToken, setUserVerified }) => {
             setAccessToken(access_token);
             setUserVerified(true);
         }
-    },[setAccessToken])
+    },[setAccessToken, setUserVerified])
 
     return (
         <section>

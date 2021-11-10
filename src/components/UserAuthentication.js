@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import AuthenticationForm from './AuthenticationForm';
 
 const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
     // Store all state values for the component in the following variables.
-    const [ loginEmail, setLoginEmail ] = useState(""); // Stores a string value that reflects the user email input while signning in.
-    const [ loginPassword, setLoginPassword ] = useState(""); // Stores a string value that reflects the user password input while signning in.
+    const [ loginEmail, setLoginEmail ] = useState(""); // Stores the user email input while signning in.
+    const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
 
     // Sets the state value authenticatedUser when there's a change in the authenticated state.
     onAuthStateChanged(auth, currentUser => {
@@ -43,23 +42,20 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
             {
                 // If the state value authenticatedUser evaluates to false then render the register and login forms to the page.
                 !authenticatedUser ?
-                <div>
                     <AuthenticationForm 
                         loginUser={loginUser}
                         loginEmail={loginEmail}
                         setLoginEmail={setLoginEmail}
                         loginPassword={loginPassword}
                         setLoginPassword={setLoginPassword}
-                    />
-                    <Link to="register-account">Register</Link>
-                </div> :
-                <div className="currentUser">
-                    {/* If the state variable authenticatedUser evaluates to true the user's email is rendered to the page. */}
-                    <p className="displayName">{authenticatedUser ? authenticatedUser.email : ""}</p>
-                    <button
-                        onClick={logoutUser}
-                    >Sign Out</button>
-                </div>
+                    /> :
+                    <div className="currentUser">
+                        {/* If the state variable authenticatedUser evaluates to true the user's email is rendered to the page. */}
+                        <p className="displayName">{authenticatedUser ? authenticatedUser.email : ""}</p>
+                        <button
+                            onClick={logoutUser}
+                        >Sign Out</button>
+                    </div>
             }
         </div>
     )

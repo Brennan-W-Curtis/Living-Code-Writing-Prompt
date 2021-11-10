@@ -4,14 +4,14 @@ import DisplayPlaylists from "./DisplayPlaylists";
 
 const FindMusic = () => {
     // Store all state values for the component in the following variables.
-    const [ accessToken, setAccessToken ] = useState(""); // Stores a string value that reflects the access token return after authenticating the user.
+    const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
     const [ data, setData ] = useState({}); // Stores an object with all the data on the authenticated user's playlists returned by the spotify api.
-    const [ userVerified, setUserVerified ] = useState(false); // Stores a boolean value that reflects whether the user has signed into the spotify api.
-    const [ dataReady, setDataReady ] = useState(false); // Stores a boolean value that determines whether the user's playlists will be rendered to the page.
+    const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
+    const [ dataReady, setDataReady ] = useState(false); // Determines whether the user's playlists will be rendered to the page.
 
     return (
         <div>
-            <p>Set the right mood and listen to your music while you write.</p>
+            <p>Set the right mood and listen to your favourite music while you write.</p>
             {
                 !userVerified ?
                     <ApiLogin

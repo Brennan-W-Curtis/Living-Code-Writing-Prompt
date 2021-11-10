@@ -2,7 +2,7 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
     return (
         <div>
             <form action="submit">
-                <label htmlFor="loginEmail"></label>
+                <label htmlFor="loginEmail" className="sr-only">Login Email</label>
                 <input 
                     type="email" 
                     id="loginEmail" 
@@ -12,7 +12,7 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
                     onChange={event => setLoginEmail(event.target.value)}
                     value={loginEmail}
                 />
-                <label htmlFor="loginPassword"></label>
+                <label htmlFor="loginPassword" className="sr-only">Login Password</label>
                 <input 
                     type="password" 
                     id="loginPassword" 
@@ -25,7 +25,7 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
                 <button 
                     type="submit"
                     onClick={event => loginUser(event)}
-                >Sign In</button>
+                >Submit</button>
             </form>
         </div>
     )

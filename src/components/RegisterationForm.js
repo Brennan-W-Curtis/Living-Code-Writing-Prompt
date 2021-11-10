@@ -5,7 +5,7 @@ const RegisterationForm = props => {
     return (
         <div className="registrationForm">
             <form action="submit">
-                <label htmlFor="registerUsername" className="sr-only">Username</label>
+                <label htmlFor="registerUsername" className="sr-only">Register Username</label>
                 <input 
                     type="text" 
                     id="registerUsername"
@@ -15,7 +15,7 @@ const RegisterationForm = props => {
                     onChange={event => setRegisterUsername(event.target.value)}
                     value={registerUsername}
                 />
-                <label htmlFor="registerEmail" className="sr-only">Email</label>
+                <label htmlFor="registerEmail" className="sr-only">Register Email</label>
                 <input 
                     type="email" 
                     id="registerEmail" 
@@ -25,7 +25,7 @@ const RegisterationForm = props => {
                     onChange={event => setRegisterEmail(event.target.value)}
                     value={registerEmail}
                 />
-                <label htmlFor="registerPassword" className="sr-only">Password</label>
+                <label htmlFor="registerPassword" className="sr-only">Register Password</label>
                 <input 
                     type="password" 
                     id="registerPassword" 

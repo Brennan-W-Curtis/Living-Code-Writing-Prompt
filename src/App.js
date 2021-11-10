@@ -10,9 +10,9 @@ import UserRegistration from './components/UserRegistration';
 
 const App = () => {
   // Store all state values for the application in the following variables.
-  const [ count, setCount ] = useState(0); // Stores an integer value that reflects thes total amount of time set by the user in seconds.
-  const [ countingStatus, setCountingStatus] = useState(null); // Stores a boolean value or null that determines whether the timer is counting down and which buttons are rendered.
-  const [ toggleMode, setToggleMode ] = useState(false); // Stores a boolean value that determines whether the page's theme is either light or dark.
+  const [ count, setCount ] = useState(0); // Stores the total amount of time set by the user in seconds.
+  const [ countingStatus, setCountingStatus] = useState(null); // Determines whether the timer is counting down and which buttons are rendered.
+  const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
 

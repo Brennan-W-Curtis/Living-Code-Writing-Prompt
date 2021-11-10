@@ -3,35 +3,29 @@ import WarningModal from './WarningModal';
 
 const InactivityWarning = ({ countingStatus }) => {
     // Store all state values for the component in the following variables.
-    const [ userWarning, setUserWarning ] = useState(0); // Stores an integer value that reflects how long before an inactivity warning is rendered on the page.
-    const [ displayWarning, setDisplayWarning ] = useState(false); // Stores a boolean value that determines whether an inactivity warning is displayed to the user. 
-    
-    // Declare a namespace object for the component.
-    const warningComponent = {};
-
-    // Declare a property and set its value to null.
-    warningComponent.timeoutWarning = null;
+    const [ userWarning, setUserWarning ] = useState(0); // Stores how long before an inactivity warning is rendered on the page.
+    const [ displayWarning, setDisplayWarning ] = useState(false); // Determines whether an inactivity warning is displayed to the user. 
+    const [ timeoutWarning, setTimeoutWarning ] = useState(); // Stores the current interval set by the setTimeout method. 
 
     // Handles whether the inactivity warning is displayed by setting a state variable to true after enough time passes.
-    const handleWarning = () => setDisplayWarning(true);
+    const handleWarning = useCallback(() => {
+        setDisplayWarning(true);
+    }, []);
 
     // Sets the value of the property to a setTimeout method that calls the handleWarning function based on the useWarning state variable.
     const setTimeouts = useCallback(() => {
-        warningComponent.timeoutWarning = setTimeout(handleWarning, userWarning);
-    }, [warningComponent, userWarning])
+        setTimeoutWarning(setTimeout(handleWarning, userWarning));
+    }, [handleWarning, userWarning]);
 
     // Clears the value of the timeout interval stored within the property.
     const clearTimeouts = useCallback(() => {
-
         // If the property evaluates to true then it's timeout interval is cleared.
-        if (warningComponent.timeoutWarning) clearTimeout(warningComponent.timeoutWarning);
-
-    }, [warningComponent])
+        if (timeoutWarning) clearTimeout(timeoutWarning);
+    }, [timeoutWarning]);
 
     useEffect(() => {
         // If the counting status evaluates to true than the idle timer is activated.
         if (countingStatus) {
-
             // Sets the idle timer fifteen seconds after which the warning is rendered to the page.
             setUserWarning(15000);
     
@@ -74,17 +68,17 @@ const InactivityWarning = ({ countingStatus }) => {
     }, [clearTimeouts, setTimeouts, countingStatus]);
 
     return (
-        <>
+        <div>
             {
                 // If this state variable evaluates to true than the inactivity warning is displayed to the user.
                 displayWarning ?
-                    <div>
-                        <WarningModal />
-                    </div> :
+                    <WarningModal 
+                        setDisplayWarning={setDisplayWarning}
+                    /> :
                     null
 
             }
-        </>
+        </div>
     )
 }
 

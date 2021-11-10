@@ -44,8 +44,8 @@ const DisplayPlaylists = ({ accessToken, data, setData, dataReady, setDataReady 
                         return (
                             <div key={index}>
                                 <div className="imageContainer">
-                                    <a href={playlist.external_urls.spotify} target="_blank" rel="noopener">
-                                        <img src={playlist.images[0].url} />
+                                    <a href={playlist.external_urls.spotify} target="_blank" rel="noreferrer">
+                                        <img src={playlist.images[0].url} alt={`A collage of albums from the ${playlist.name} playlist`} />
                                     </a>
                                 </div>
                                 <p>Name: {playlist.name}</p>

@@ -5,9 +5,9 @@ import ContributePrompt from './ContributePrompt';
 
 const CommunalPrompts = () => {
     // Store all state values for the component in the following variables.
-    const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a string value that is determined by a randomly selected prompt from the storedPrompts state variable.
+    const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
     const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
-    const [ contributePrompt, setContributePrompt ] = useState(false); // Stores a boolean value that determines whether a modal allowing the user to enter a prompt is displayed.
+    const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a modal allowing the user to enter a prompt is displayed.
 
     // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
     useEffect(() => {
