@@ -1,8 +1,4 @@
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
-const TimerButtons = props => {
-    const { handleDecrement, handleIncrement, handleReset, handleResume, handleStart, handleStop, countingStatus } = props;
-
+const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, countingStatus }) => {
     return (
         <div className="timerInterface">
             <div className="playbackButtons">
@@ -37,34 +33,6 @@ const TimerButtons = props => {
                         </div> :
                         null
                 }
-            </div>
-            <div className="adjustButtons">
-                {/* Increase */}
-                <div className="increaseTime">
-                    <button
-                        onClick={() => handleIncrement(60)}
-                    >
-                        <FaChevronUp />
-                    </button>
-                    <button
-                        onClick={() => handleIncrement(1)}
-                    >
-                        <FaChevronUp />
-                    </button>
-                </div>
-                {/* Decrease */}
-                <div className="decreaseTime">
-                    <button
-                        onClick={() => handleDecrement(60)}
-                    >
-                        <FaChevronDown />
-                    </button>
-                    <button
-                        onClick={() => handleDecrement(1)}
-                    >
-                        <FaChevronDown />
-                    </button>
-                </div>
             </div>
         </div> 
     )

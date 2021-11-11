@@ -57,7 +57,9 @@ const App = () => {
             </Route>
             <Route path="/register-account">
               <section className="registrationSection">
-                <UserRegistration />
+                <UserRegistration 
+                  setAuthenticatedUser={setAuthenticatedUser}
+                />
               </section>
             </Route>
             <Route path="*">

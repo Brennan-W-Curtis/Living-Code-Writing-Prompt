@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { auth } from '../firebase';
+import { useEffect, useState } from 'react';
+import { auth, cloud } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from '@firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import AuthenticationForm from './AuthenticationForm';
 
 const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
     // Store all state values for the component in the following variables.
     const [ loginEmail, setLoginEmail ] = useState(""); // Stores the user email input while signning in.
     const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
+    const [ displayName, setDisplayName ] = useState("");
 
     // Sets the state value authenticatedUser when there's a change in the authenticated state.
     onAuthStateChanged(auth, currentUser => {
@@ -37,6 +39,30 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
         await signOut(auth);
     }
 
+    useEffect(() => {
+
+        const accessDatabase = async () => {
+            // Conditionally access previously saved articles if the current user is authenticated
+            if (authenticatedUser !== null) {
+                // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+                const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+    
+                // Asynchronously store a reference to a readable snapshot of the document. 
+                const docSnapshot = await getDoc(docRef);
+                
+                // If a document exists set the render the user's display name to the page.
+                if (docSnapshot.exists()) {
+                    setDisplayName(docSnapshot.data().displayName);
+                }
+
+            }
+
+        }
+    
+        accessDatabase();
+
+    }, [authenticatedUser])
+
     return (
         <div className="userAuthentication">
             {
@@ -51,7 +77,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
                     /> :
                     <div className="currentUser">
                         {/* If the state variable authenticatedUser evaluates to true the user's email is rendered to the page. */}
-                        <p className="displayName">{authenticatedUser ? authenticatedUser.email : ""}</p>
+                        <p className="displayName">{authenticatedUser ? `Welcome, ${displayName}` : ""}</p>
                         <button
                             onClick={logoutUser}
                         >Sign Out</button>

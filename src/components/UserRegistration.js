@@ -1,13 +1,19 @@
 import { useState } from 'react';
-import { auth } from '../firebase';
-import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { auth, cloud } from '../firebase';
+import { onAuthStateChanged, createUserWithEmailAndPassword } from '@firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import RegisterationForm from './RegisterationForm';
 
-const UserRegistration = () => {
+const UserRegistration = ({ setAuthenticatedUser }) => {
     // Store all state values for the component in the following variables.
     const [ registerEmail, setRegisterEmail ] = useState(""); // Stores the user email input during registration. 
     const [ registerPassword, setRegisterPassword ] = useState(""); // Stores the user password input during registration.
     const [ registerUsername, setRegisterUsername ] = useState(""); // Stores the user's desired name that's displayed.
+
+    // Sets the state value authenticatedUser when there's a change in the authenticated state.
+    onAuthStateChanged(auth, currentUser => {
+        setAuthenticatedUser(currentUser);
+    })
 
     // Asynchronously handle registering a user by creating a new user within Firebase based on their input email and password.
     const registerUser = async event => {
@@ -25,9 +31,17 @@ const UserRegistration = () => {
 
             try {
                 // Store the returned promise in a variable when generating a new user in Firebase authentication.
-                await createUserWithEmailAndPassword(auth, formattedEmail, registerPassword);
+                await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+                    .then(userCredential => {
+                        const docRef = doc(cloud, `users/${userCredential.user.uid}`);
+                        const docEntry = {
+                            displayName: registerUsername
+                        }
+                        setDoc(docRef, docEntry)
+                    });
 
-                // Clear the register email and password inputs.
+                // Clear the register username, email, and password inputs.
+                setRegisterUsername("");
                 setRegisterEmail("");
                 setRegisterPassword("");
 
@@ -44,10 +58,10 @@ const UserRegistration = () => {
     return (
         <div>
             <div>
-                <p>Once you register you'll be able to save your progress and resume later.</p>
+                <p>Once you register you'll be able to save your progress.</p>
             </div>
             <RegisterationForm 
-                registeredUser={registerUser}
+                registerUser={registerUser}
                 registerEmail={registerEmail}
                 setRegisterEmail={setRegisterEmail}
                 registerPassword={registerPassword}

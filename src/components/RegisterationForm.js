@@ -10,7 +10,7 @@ const RegisterationForm = props => {
                     type="text" 
                     id="registerUsername"
                     name="registerUsername"
-                    placeholder="Username"
+                    placeholder="Name"
                     // Monitors the current value entered by the user in the register username input.
                     onChange={event => setRegisterUsername(event.target.value)}
                     value={registerUsername}

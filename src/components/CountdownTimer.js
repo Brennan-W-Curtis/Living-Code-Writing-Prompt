@@ -73,11 +73,11 @@ const CountdownTimer = ({ count, countingStatus, setCount, setCountingStatus }) 
             <TimerDisplay 
                 count={count}
                 countingStatus={countingStatus}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}
             />
             <TimerButtons 
                 countingStatus={countingStatus}
-                handleDecrement={handleDecrement}
-                handleIncrement={handleIncrement}
                 handleReset={handleReset}
                 handleResume={handleResume}
                 handleStart={handleStart}

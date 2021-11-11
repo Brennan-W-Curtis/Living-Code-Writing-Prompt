@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cloud } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -6,12 +6,11 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
 
     const [ savedArticles, setSavedArticles ] = useState();
 
-    // useEffect(() => {
+    useEffect(() => {
 
         const accessDatabase = async () => {
-
+            // Conditionally access previously saved articles if the current user is authenticated
             if (authenticatedUser !== null) {
-
                 // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
                 const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
     
@@ -29,7 +28,7 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     
         accessDatabase();
 
-    // }, [authenticatedUser.uid, savedArticles])
+    }, [authenticatedUser])
 
     return (
         <div>

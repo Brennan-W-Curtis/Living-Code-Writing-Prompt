@@ -402,18 +402,28 @@ header .displayToggle {
       -ms-flex-align: center;
           align-items: center;
 }
-.featuresSection .countdownTimer .adjustButtons {
+.featuresSection .countdownTimer .timerDisplay {
   position: relative;
 }
-.featuresSection .countdownTimer .adjustButtons .increaseTime {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.featuresSection .countdownTimer .timerDisplay button {
+  font-size: 0.7rem;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  margin-right: 0.12rem;
 }
-.featuresSection .countdownTimer .adjustButtons .decreaseTime {
+.featuresSection .countdownTimer .timerDisplay .increaseTime {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+  top: 0.25rem;
+}
+.featuresSection .countdownTimer .timerDisplay .decreaseTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
 }
 
 .writingSection {
@@ -438,6 +448,9 @@ header .displayToggle {
 }
 .writingSection .writingSpace form textarea {
   width: 100%;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
   resize: none;
 }
 .writingSection .warningModal {

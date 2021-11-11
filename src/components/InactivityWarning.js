@@ -3,9 +3,9 @@ import WarningModal from './WarningModal';
 
 const InactivityWarning = ({ countingStatus }) => {
     // Store all state values for the component in the following variables.
-    const [ userWarning, setUserWarning ] = useState(0); // Stores how long before an inactivity warning is rendered on the page.
+    const [ userWarning, setUserWarning ] = useState(15000); // Stores how long before an inactivity warning is rendered on the page.
     const [ displayWarning, setDisplayWarning ] = useState(false); // Determines whether an inactivity warning is displayed to the user. 
-    const [ timeoutWarning, setTimeoutWarning ] = useState(); // Stores the current interval set by the setTimeout method. 
+    const [ timeoutWarning, setTimeoutWarning ] = useState(null); // Stores the current interval set by the setTimeout method. 
 
     // Handles whether the inactivity warning is displayed by setting a state variable to true after enough time passes.
     const handleWarning = useCallback(() => {

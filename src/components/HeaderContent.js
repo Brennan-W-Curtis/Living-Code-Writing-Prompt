@@ -59,10 +59,12 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                 />
                 {
                     displayLogin && !authenticatedUser ?
-                        <UserAuthentication 
-                            authenticatedUser={authenticatedUser}
-                            setAuthenticatedUser={setAuthenticatedUser}
-                        /> :
+                        <div className="loginModal">
+                            <UserAuthentication 
+                                authenticatedUser={authenticatedUser}
+                                setAuthenticatedUser={setAuthenticatedUser}
+                            /> 
+                        </div> :
                         null
                 }
             </div>

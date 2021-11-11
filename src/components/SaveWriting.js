@@ -17,7 +17,7 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) =>
             // Create an object to store the user's article by assigning userInput and articleTitle state values to the articleBody and articleTitle properties respectively.
             const userArticle = {
                 articleTitle: articleTitle,
-                articleBody: userInput
+                articleBody: userInput      
             }
             // Updates the array stored inside the user's document without overwriting previously saved content by the authenticated user.  
             const docEntry = {
