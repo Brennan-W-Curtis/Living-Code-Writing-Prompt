@@ -376,6 +376,9 @@ header .displayToggle {
   display: -ms-flexbox;
   display: flex;
 }
+.featuresSection .communalPrompts .contributePrompts {
+  position: absolute;
+}
 .featuresSection .countdownTimer {
   display: -webkit-box;
   display: -ms-flexbox;

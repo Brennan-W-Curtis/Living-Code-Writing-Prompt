@@ -3,7 +3,7 @@ import realtime from '../firebase';
 import { ref, onValue } from 'firebase/database';
 import ContributePrompt from './ContributePrompt';
 
-const CommunalPrompts = () => {
+const CommunalPrompts = ({ setIsLoading }) => {
     // Store all state values for the component in the following variables.
     const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
     const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.

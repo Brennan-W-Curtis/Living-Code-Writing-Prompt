@@ -6,6 +6,11 @@
 
     .communalPrompts {
         display: flex;
+
+        .contributePrompts {
+            position: absolute;
+        }
+
     }
 
     .countdownTimer {

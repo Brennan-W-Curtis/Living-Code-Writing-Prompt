@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { cloud } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { deleteField, doc, getDoc, updateDoc } from 'firebase/firestore';
+// import { FaWindowClose } from 'react-icons/fa';
 
 const LoadArticles = ({ authenticatedUser, setUserInput }) => {
-
-    const [ savedArticles, setSavedArticles ] = useState();
+    // Store all state values for the component in the following variables.
+    const [ savedArticles, setSavedArticles ] = useState([]);
 
     useEffect(() => {
 
-        const accessDatabase = async () => {
+        const renderArticles = async () => {
             // Conditionally access previously saved articles if the current user is authenticated
             if (authenticatedUser !== null) {
                 // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
@@ -26,26 +28,78 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
 
         }
     
-        accessDatabase();
+        renderArticles();
 
-    }, [authenticatedUser])
+    }, [authenticatedUser, savedArticles])
+
+    // Handles loading the selected article to the writing space on the homepage.
+    const handleLoading = bodyText => {
+        setUserInput(bodyText)
+    };
+
+    // Handles deleting an individual article from the user's collection.
+    // const handleDelete = async articleId => {
+        // try {
+        //     const docRef = doc(cloud, `users/${authenticatedUser.uid}`);
+        //     const docEntry = {
+        //         userArticles: arrayRemove(`${articleId}`)
+        //     };
+        //     await updateDoc(docRef, docEntry);
+        // } catch(error) {
+        //     console.log(error);
+        // }
+    // }
+
+    // Handles deleting all of the user's saved articles.
+    const deleteArticles = async () => {
+        try {
+            const docRef = doc(cloud, `users/${authenticatedUser.uid}`);
+            const docEntry = {
+                userArticles: deleteField()
+            };
+            await updateDoc(docRef, docEntry);
+        } catch(error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div>
-            {
-                savedArticles ? 
-                    savedArticles.map((article, index) => {
-                        return (
-                            <span key={index}>
-                                <button>{article.articleTitle}</button>
-                            </span>
-                        )
-                    }) :
-                    // Conditionally render a different message to the user depending on whether their identity has been authenticated.
-                    authenticatedUser !== null ?
-                        <p>Currently you do not have any saved articles.</p> :
-                        <p>You must be signed in to access saved articles.</p>
-            }
+            <div>
+                {
+                    savedArticles ?
+                        <button
+                            onClick={deleteArticles}
+                        >Delete Articles</button> :
+                        null
+                }
+            </div>
+            <ul className="articleList">
+                {
+                    savedArticles ? 
+                        savedArticles.map((article, index) => {
+                            return (
+                                <li key={index}>
+                                    <span>
+                                        <Link 
+                                            to="/"
+                                            onClick={() => handleLoading(article.articleBody)}
+                                        >
+                                            {article.articleTitle}
+                                        </Link>
+                                    </span>
+                                    {/* <FaWindowClose 
+                                        onClick={() => handleDelete(index)}
+                                    /> */}
+                                </li>
+                            )
+                        }) :
+                        // Conditionally render a different message to the user depending on whether their identity has been authenticated.
+                        authenticatedUser !== null ?
+                            <p>Currently you do not have any saved articles.</p> :
+                            <p>You must be signed in to access saved articles.</p>
+                }
+            </ul>
         </div>
     )
 }

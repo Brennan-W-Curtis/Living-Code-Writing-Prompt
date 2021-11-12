@@ -40,7 +40,7 @@ const ContributeModal = ({ setContributePrompt }) => {
     }
 
     return (
-        <div>
+        <div className="contributePrompt">
             <p>Follow the same conventions as the placeholder text.</p>
             <form 
                 action="submit"
