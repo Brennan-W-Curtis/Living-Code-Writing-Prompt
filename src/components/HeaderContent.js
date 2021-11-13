@@ -39,6 +39,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                         !authenticatedUser ?
                             <div className="userOptions">
                                 <button
+                                    className="loginButton"
                                     onClick={handleLogin}
                                 >Sign in</button>
                                 <Link to="register-account">Register</Link>                            

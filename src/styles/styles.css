@@ -263,6 +263,29 @@ html {
   margin: 0 auto;
 }
 
+main {
+  height: 80vh;
+}
+
+footer {
+  height: 7vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+a,
+p,
+button,
+input,
+textarea {
+  font-family: "Lato", sans-serif;
+}
+
 header .brandIcon {
   position: relative;
   display: -webkit-box;
@@ -350,6 +373,16 @@ header .headerMenu .menuAuthentication .currentUser {
   display: -ms-flexbox;
   display: flex;
 }
+header .headerMenu .menuAuthentication .displayName,
+header .headerMenu .menuAuthentication .loginButton {
+  margin-right: 1rem;
+}
+header .headerMenu .menuAuthentication .loginButton,
+header .headerMenu .menuAuthentication .logoutButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -375,9 +408,22 @@ header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .featuresSection .communalPrompts .contributePrompts {
   position: absolute;
+  top: 50%;
+}
+.featuresSection .communalPrompts .promptDisplay {
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+}
+.featuresSection .communalPrompts .contributeButton {
+  font-size: 0.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .featuresSection .countdownTimer {
   display: -webkit-box;
@@ -446,10 +492,10 @@ header .displayToggle {
   width: 100%;
 }
 .writingSection .writingSpace form {
-  margin: 0 auto;
-  width: 80%;
+  width: 100%;
 }
 .writingSection .writingSpace form textarea {
+  min-height: 50vh;
   width: 100%;
   padding: 0.5rem;
   border: 1px solid black;

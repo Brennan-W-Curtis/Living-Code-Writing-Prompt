@@ -35,6 +35,28 @@ html {
 }
 
 // General Styles
+main {
+    height: 80vh;
+}
+
+footer {
+    height: 7vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $headingFont;
+}
+
+a,
+p,
+button,
+input,
+textarea {
+    font-family: $bodyFont;
+}
 
 // Code Debugging
 // * {

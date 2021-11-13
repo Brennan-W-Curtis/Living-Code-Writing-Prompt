@@ -3,11 +3,12 @@ import realtime from '../firebase';
 import { ref, onValue } from 'firebase/database';
 import ContributePrompt from './ContributePrompt';
 
-const CommunalPrompts = ({ setIsLoading }) => {
+const CommunalPrompts = () => {
     // Store all state values for the component in the following variables.
     const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
     const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
     const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a modal allowing the user to enter a prompt is displayed.
+    const [ isLoading, setIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
 
     // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
     useEffect(() => {
@@ -46,6 +47,7 @@ const CommunalPrompts = ({ setIsLoading }) => {
         if (storedPrompts.length > 0) {
             const randomIndex = Math.floor(Math.random() * storedPrompts.length);
             setCurrentPrompt(storedPrompts[randomIndex].prompt);
+            setIsLoading(false);
         }
 
         // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
@@ -64,8 +66,15 @@ const CommunalPrompts = ({ setIsLoading }) => {
                     /> :
                     null
             }
-            <p><span>"</span>{currentPrompt}<span>"</span></p>
+            <div className="promptDisplay">
+                {
+                    isLoading ?
+                        <p>Loading...</p> :
+                        <p><span>"</span>{currentPrompt}<span>"</span></p>
+                }
+            </div>
             <button
+                className="contributeButton"
                 onClick={toggleContribute}
             >Contribute</button>
         </div>

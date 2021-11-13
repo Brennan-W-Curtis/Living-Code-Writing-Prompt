@@ -6,9 +6,23 @@
 
     .communalPrompts {
         display: flex;
+        flex-wrap: wrap;
 
         .contributePrompts {
             position: absolute;
+            top: 50%;
+        }
+
+        .promptDisplay {
+            width: 100%;
+            margin: 0 0 .5rem 0;
+        }
+
+        .contributeButton {
+            font-size: .8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
     }

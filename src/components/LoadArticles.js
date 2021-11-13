@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cloud } from '../firebase';
 import { deleteField, doc, getDoc, updateDoc } from 'firebase/firestore';
-// import { FaWindowClose } from 'react-icons/fa';
 
 const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     // Store all state values for the component in the following variables.
@@ -30,25 +29,12 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     
         renderArticles();
 
-    }, [authenticatedUser, savedArticles])
+    }, [authenticatedUser, savedArticles]);
 
     // Handles loading the selected article to the writing space on the homepage.
     const handleLoading = bodyText => {
-        setUserInput(bodyText)
+        setUserInput(bodyText);
     };
-
-    // Handles deleting an individual article from the user's collection.
-    // const handleDelete = async articleId => {
-        // try {
-        //     const docRef = doc(cloud, `users/${authenticatedUser.uid}`);
-        //     const docEntry = {
-        //         userArticles: arrayRemove(`${articleId}`)
-        //     };
-        //     await updateDoc(docRef, docEntry);
-        // } catch(error) {
-        //     console.log(error);
-        // }
-    // }
 
     // Handles deleting all of the user's saved articles.
     const deleteArticles = async () => {
@@ -76,6 +62,7 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
             </div>
             <ul className="articleList">
                 {
+                    // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.
                     savedArticles ? 
                         savedArticles.map((article, index) => {
                             return (
@@ -88,9 +75,6 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                                             {article.articleTitle}
                                         </Link>
                                     </span>
-                                    {/* <FaWindowClose 
-                                        onClick={() => handleDelete(index)}
-                                    /> */}
                                 </li>
                             )
                         }) :

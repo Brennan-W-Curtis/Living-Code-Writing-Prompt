@@ -6,14 +6,12 @@ import SaveWriting from './SaveWriting';
 
 const MainContent = props => {
     // Destructured all state values passed as props.
-    const { authenticatedUser, setIsLoading, count, setCount, countingStatus, setCountingStatus, userInput, setUserInput } = props;
+    const { authenticatedUser, count, setCount, countingStatus, setCountingStatus, userInput, setUserInput } = props;
 
     return (
         <>
             <section className="featuresSection">
-                <CommunalPrompts 
-                    setIsLoading={setIsLoading}
-                />
+                <CommunalPrompts />
                 <CountdownTimer
                     count={count}
                     countingStatus={countingStatus}

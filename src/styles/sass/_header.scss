@@ -50,7 +50,6 @@ header {
                 align-items: center;
                 justify-content: flex-end;
                 width: 100%;
-
             }
 
             .userAuthentication {
@@ -62,6 +61,18 @@ header {
 
             .currentUser {
                 display: flex;
+            }
+
+            .displayName,
+            .loginButton {
+                margin-right: 1rem;
+            }
+
+            .loginButton,
+            .logoutButton {
+                background: none;
+                border: none;
+                cursor: pointer;
             }
 
         }

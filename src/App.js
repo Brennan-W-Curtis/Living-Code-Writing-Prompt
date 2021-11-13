@@ -15,7 +15,6 @@ const App = () => {
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
-  const [ isLoading, setIsLoading ] = useState(true); // Determines whether a loading message is displayed to the user or page content is rendered. 
 
   return (
     <Router>
@@ -35,7 +34,6 @@ const App = () => {
             <Route exact path="/">
               <MainContent 
                 authenticatedUser={authenticatedUser}
-                setIsLoading={setIsLoading}
                 count={count}
                 setCount={setCount}
                 countingStatus={countingStatus}
@@ -54,7 +52,9 @@ const App = () => {
             </Route>
             <Route path="/suggested-music">
               <section className="musicSection">
-                <FindMusic />
+                <FindMusic 
+                  authenticatedUser={authenticatedUser}
+                />
               </section>
             </Route>
             <Route path="/register-account">
