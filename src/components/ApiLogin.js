@@ -44,15 +44,13 @@ const ApiLogin = ({ setAccessToken, setUserVerified }) => {
     },[setAccessToken, setUserVerified])
 
     return (
-        <section>
-            <div>
-                <button
-                    onClick={handleLogin}
-                >
-                    Login
-                </button>
-            </div>
-        </section>
+        <div className="apiLogin">
+            <button
+                onClick={handleLogin}
+            >
+                Login
+            </button>
+        </div>
     )
 }
 

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+@import url("https://use.typekit.net/rhu3qmo.css");
+@import url("https://use.typekit.net/rhu3qmo.css");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -264,7 +266,7 @@ html {
 }
 
 main {
-  height: 80vh;
+  min-height: 80vh;
 }
 
 footer {
@@ -396,36 +398,79 @@ header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+.featuresSection .primaryInteraction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   width: 100%;
 }
-.featuresSection .communalPrompts {
+
+.communalPrompts {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 auto;
 }
-.featuresSection .communalPrompts .contributePrompts {
-  position: absolute;
-  top: 50%;
-}
-.featuresSection .communalPrompts .promptDisplay {
+.communalPrompts .promptDisplay {
   width: 100%;
   margin: 0 0 0.5rem 0;
 }
-.featuresSection .communalPrompts .contributeButton {
-  font-size: 0.8rem;
+.communalPrompts .promptDisplay p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.communalPrompts .promptDisplay .currentPrompt {
+  font-size: 1.75rem;
+}
+.communalPrompts .contributeButton {
+  font-size: 0.75rem;
   background: none;
   border: none;
   cursor: pointer;
 }
-.featuresSection .countdownTimer {
+
+.contributePrompts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+.contributePrompts .contributeInstructions {
+  font-size: 0.75rem;
+}
+.contributePrompts .submitPrompt {
+  font-size: 0.75rem;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.contributePrompts .submitButton {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+}
+
+.countdownTimer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,15 +480,21 @@ header .displayToggle {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  width: 25%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 50%;
   position: relative;
 }
-.featuresSection .countdownTimer .timerInterface {
+.countdownTimer .timerInterface {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 50%;
 }
-.featuresSection .countdownTimer .timerInterface .playbackButtons {
+.countdownTimer .timerInterface .playbackButtons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -451,24 +502,39 @@ header .displayToggle {
       -ms-flex-align: center;
           align-items: center;
 }
-.featuresSection .countdownTimer .timerDisplay {
+.countdownTimer .timerInterface .startButton {
+  background: none;
+  border: none;
+}
+.countdownTimer .timerDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
   position: relative;
 }
-.featuresSection .countdownTimer .timerDisplay button {
+.countdownTimer .timerDisplay button {
   font-size: 0.7rem;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   cursor: pointer;
   margin-right: 0.12rem;
 }
-.featuresSection .countdownTimer .timerDisplay .increaseTime {
+.countdownTimer .timerDisplay .increaseTime {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
   top: 0.25rem;
 }
-.featuresSection .countdownTimer .timerDisplay .decreaseTime {
+.countdownTimer .timerDisplay .decreaseTime {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -496,13 +562,75 @@ header .displayToggle {
 }
 .writingSection .writingSpace form textarea {
   min-height: 50vh;
+  font-size: 0.75rem;
   width: 100%;
   padding: 0.5rem;
   border: 1px solid black;
   border-radius: 0.2rem;
   resize: none;
 }
-.writingSection .warningModal {
+.writingSection .inactivityWarning {
   position: absolute;
+  width: 100%;
   z-index: 100;
+}
+.writingSection .inactivityWarning .warningModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+}
+.writingSection .inactivityWarning .warningModal p {
+  text-align: center;
+  width: 100%;
+}
+.writingSection .savingOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.writingSection .savingOptions .articleTitle {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.findMusic p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.75rem;
+}
+.findMusic .apiLogin,
+.findMusic .playlistButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+.findMusic .playlistCollection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+.findMusic .playlistCollection li {
+  max-width: 25%;
+  padding: 0.5rem;
+}
+.findMusic .playlistCollection li p {
+  font-size: 0.75rem;
 }

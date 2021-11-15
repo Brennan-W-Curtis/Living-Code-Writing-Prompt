@@ -3,7 +3,7 @@ import TimerButtons from './TimerButtons';
 import TimerDisplay from './TimerDisplay';
 
 // Destructure props object to access countingStatus state variables.
-const CountdownTimer = ({ count, countingStatus, setCount, setCountingStatus }) => {
+const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus }) => {
     // Declare a namespace object for the component.
     const timerComponent = {};
 

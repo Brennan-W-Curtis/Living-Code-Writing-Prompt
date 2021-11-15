@@ -1,73 +1,13 @@
 .featuresSection {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
+    margin: 0 0 1rem 0;
 
-    .communalPrompts {
+    .primaryInteraction {
         display: flex;
-        flex-wrap: wrap;
-
-        .contributePrompts {
-            position: absolute;
-            top: 50%;
-        }
-
-        .promptDisplay {
-            width: 100%;
-            margin: 0 0 .5rem 0;
-        }
-
-        .contributeButton {
-            font-size: .8rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-    }
-
-    .countdownTimer {
-        display: flex;
-        align-items: center;
         justify-content: flex-end;
-        width: 25%;
-        position: relative;
-
-        .timerInterface {
-            display: flex;
-
-            .playbackButtons {
-                display: flex;
-                align-items: center;
-            }
-           
-        }
-
-        .timerDisplay {
-            position: relative;
-
-            button {
-                font-size: .7rem;
-                background-color: rgba(255, 255, 255, 0);
-                border: none;
-                cursor: pointer;
-                margin-right: .12rem;
-            }
-
-            .increaseTime {
-                display: flex;
-                position: relative;
-                top: .25rem;
-            }
-
-            .decreaseTime {
-                display: flex;
-                position: relative;
-            }
-
-        }
-
+        width: 100%;
     }
 
 }

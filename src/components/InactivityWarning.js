@@ -68,7 +68,7 @@ const InactivityWarning = ({ countingStatus }) => {
     }, [clearTimeouts, setTimeouts, countingStatus]);
 
     return (
-        <div>
+        <div className="inactivityWarning">
             {
                 // If this state variable evaluates to true than the inactivity warning is displayed to the user.
                 displayWarning ?

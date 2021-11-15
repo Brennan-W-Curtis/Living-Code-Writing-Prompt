@@ -10,7 +10,7 @@ const FindMusic = () => {
     const [ dataReady, setDataReady ] = useState(false); // Determines whether the user's playlists will be rendered to the page.
 
     return (
-        <div>
+        <div className="findMusic">
             <p>Set the right mood and listen to your favourite music while you write.</p>
             {
                 !userVerified ?

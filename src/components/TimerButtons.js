@@ -5,6 +5,7 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
                 {
                     countingStatus === null ?
                         <button
+                            className="startButton"
                             onClick={handleStart}
                         >Start</button> :
                         null
@@ -13,9 +14,11 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
                     countingStatus === true ?
                         <div>
                             <button
+                                className="stopButton"
                                 onClick={handleStop}
                             >Stop</button>
                             <button
+                                className="resetButton"
                                 onClick={handleReset}
                             >Reset</button>
                         </div> :
@@ -25,9 +28,11 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
                     countingStatus === false ?
                         <div>
                             <button
+                                className="resumeButton"
                                 onClick={handleResume}
                             >Resume</button>
                             <button
+                                className="resetButton"
                                 onClick={handleReset}
                             >Reset</button>
                         </div> :

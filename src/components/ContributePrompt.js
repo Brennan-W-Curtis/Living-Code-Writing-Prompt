@@ -41,7 +41,7 @@ const ContributeModal = ({ setContributePrompt }) => {
 
     return (
         <div className="contributePrompts">
-            <p>Follow the same conventions as the placeholder text.</p>
+            <p className="contributeInstructions">Follow the same conventions as the placeholder text.</p>
             <form 
                 action="submit"
                 onSubmit={event => {
@@ -51,6 +51,7 @@ const ContributeModal = ({ setContributePrompt }) => {
                 <label htmlFor="submitPrompt" className="sr-only">Contribute Prompt</label>
                 <input 
                     type="text" 
+                    className="submitPrompt"
                     id="submitPrompt"
                     name="submitPrompt"
                     // Monitors the current value entered by the user in the prompt input.
@@ -59,6 +60,7 @@ const ContributeModal = ({ setContributePrompt }) => {
                     placeholder="Enter a prompt"
                 />
                 <button 
+                    className="submitButton"
                     type="submit"
                 >Submit</button>
             </form>

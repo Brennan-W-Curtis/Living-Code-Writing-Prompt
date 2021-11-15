@@ -12,6 +12,7 @@
 
             textarea {
                 min-height: 50vh;
+                font-size: .75rem;
                 width: 100%;
                 padding: .5rem;
                 border: 1px solid black;
@@ -23,9 +24,35 @@
 
     }
 
-    .warningModal {
+    .inactivityWarning {
         position: absolute;
+        width: 100%;
         z-index: 100;
+        
+        .warningModal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            width: 50%;
+
+            p {
+                text-align: center;
+                width: 100%;
+            }
+
+        }
+
+    }
+
+    .savingOptions {
+        display: flex;
+
+        .articleTitle {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
     }
 
 }

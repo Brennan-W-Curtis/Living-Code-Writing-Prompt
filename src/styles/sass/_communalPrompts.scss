@@ -1,0 +1,52 @@
+.communalPrompts {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .promptDisplay {
+        width: 100%;
+        margin: 0 0 .5rem 0;
+
+        p {
+            display: flex;
+            justify-content: center;
+        }
+
+        .currentPrompt {
+            font-size: 1.75rem;
+        }
+
+    }
+
+    .contributeButton {
+        font-size: .75rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+}
+
+.contributePrompts {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 50%;
+
+    .contributeInstructions {
+        font-size: .75rem;
+    }
+
+    .submitPrompt {
+        font-size: .75rem;
+        border: none;
+        border-bottom: 1px solid black;
+    }
+
+    .submitButton {
+        background: none;
+        border: none;
+        font-size: .75rem;
+    }
+
+}

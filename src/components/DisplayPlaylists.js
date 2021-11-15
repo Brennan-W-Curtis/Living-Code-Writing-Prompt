@@ -32,12 +32,13 @@ const DisplayPlaylists = ({ accessToken, playlistData, setPlaylistData, dataRead
             {
                 !dataReady ?
                     <button
+                        className="playlistButton"
                         onClick={handlePlaylists}
                     >Playlists</button> :
                     null
                 
             }
-            <ul>
+            <ul className="playlistCollection">
                 {           
                     dataReady ?
                     // Iterate through all of the available playlists and render the artwork with a link to the playlist in spotify and some information about it.
