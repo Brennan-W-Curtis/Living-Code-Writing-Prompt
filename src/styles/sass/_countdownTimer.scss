@@ -8,20 +8,41 @@
 
     .timerInterface {
         display: flex;
-        justify-content: flex-end;
-        width: 50%;
+        justify-content: space-evenly;
+        width: 5.2rem;
 
         .playbackButtons {
             display: flex;
+            justify-content: space-evenly;
             align-items: center;
+            width: 100%;
+
+            .countingTrue,
+            .countingFalse {
+                display: flex;
+                justify-content: space-evenly;
+                width: 100%;
+            }
+
         }
 
         .startButton,
         .stopButton,
         .resumeButton,
         .resetButton {
+            font-size: .75rem;
             background: none;
-            border: none;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                background-color: black;
+                color: white;
+            }
+
         }
        
     }
@@ -33,23 +54,92 @@
         width: 100%;
         position: relative;
 
+        .currentTime {
+            
+            p {
+                font-size: 2rem;
+            }
+
+        }
+
         button {
             font-size: .7rem;
-            background-color: rgba(255, 255, 255, 0);
+            background: none;
             border: none;
             cursor: pointer;
-            margin-right: .12rem;
         }
 
-        .increaseTime {
-            display: flex;
-            position: relative;
-            top: .25rem;
-        }
-
+        .incrementTime,
+        .increaseTime,
+        .decrementTime,
         .decreaseTime {
             display: flex;
             position: relative;
+            justify-content: space-evenly;
+            width: 5.2rem;
+
+            .adjustmentButton {
+                position: relative;
+                left: .15rem;
+                margin: 0 .75rem;
+            }
+
+        }
+
+        .increaseTransition {
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: translateY(-.15rem);
+            }
+
+        }
+
+        .incrementTransition {
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: translateY(-.15rem);
+            }
+
+        }
+
+        .decreaseTransition {
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: translateY(.15rem);
+            }
+
+        }
+
+        .decrementTransition {
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: translateY(.15rem);
+            }
+
+        }
+
+        .increaseTime {
+            top: .75rem;
+        }
+
+        .incrementTime {
+            top: .35rem;
+        }
+
+        .decreaseTime {
+            bottom: .65rem;
+        }
+
+        .decrementTime {
+            bottom: .25rem;
         }
 
     }

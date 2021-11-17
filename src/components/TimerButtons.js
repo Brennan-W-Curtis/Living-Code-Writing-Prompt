@@ -7,34 +7,44 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
                         <button
                             className="startButton"
                             onClick={handleStart}
-                        >Start</button> :
+                        >
+                            Start
+                        </button> :
                         null
                 }
                 {
                     countingStatus === true ?
-                        <div>
+                        <div className="countingTrue">
                             <button
                                 className="stopButton"
                                 onClick={handleStop}
-                            >Stop</button>
+                            >
+                                Stop
+                            </button>
                             <button
                                 className="resetButton"
                                 onClick={handleReset}
-                            >Reset</button>
+                            >
+                                Reset
+                            </button>
                         </div> :
                         null
                 }
                 {
                     countingStatus === false ?
-                        <div>
+                        <div className="countingFalse">
                             <button
                                 className="resumeButton"
                                 onClick={handleResume}
-                            >Resume</button>
+                            >
+                                Resume
+                            </button>
                             <button
                                 className="resetButton"
                                 onClick={handleReset}
-                            >Reset</button>
+                            >
+                                Reset
+                            </button>
                         </div> :
                         null
                 }

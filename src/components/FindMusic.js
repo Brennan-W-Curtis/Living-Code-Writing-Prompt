@@ -11,7 +11,10 @@ const FindMusic = () => {
 
     return (
         <div className="findMusic">
-            <p>Set the right mood and listen to your favourite music while you write.</p>
+            <div className="musicDescription">
+                <h2>Your Playlists</h2>
+                <p>Set the right mood and listen to your favourite music while you write.</p>
+            </div>
             {
                 !userVerified ?
                     <ApiLogin

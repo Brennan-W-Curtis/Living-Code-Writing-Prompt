@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
 @import url("https://use.typekit.net/rhu3qmo.css");
 @import url("https://use.typekit.net/rhu3qmo.css");
 html {
@@ -277,7 +275,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "nimbus-roman", serif;
 }
 
 a,
@@ -285,9 +283,69 @@ p,
 button,
 input,
 textarea {
-  font-family: "Lato", sans-serif;
+  font-family: "futura-pt", sans-serif;
 }
 
+.fadeIn {
+  -webkit-animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+          animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0.05rem);
+            transform: translateY(0.05rem);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0.05rem);
+            transform: translateY(0.05rem);
+    opacity: 1;
+  }
+}
+.fadeOut {
+  -webkit-animation: fadeOut 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+          animation: fadeOut 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    -webkit-transform: translateY(0.05rem);
+            transform: translateY(0.05rem);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    -webkit-transform: translateY(0.05rem);
+            transform: translateY(0.05rem);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+    opacity: 0;
+  }
+}
 header .brandIcon {
   position: relative;
   display: -webkit-box;
@@ -305,8 +363,9 @@ header .brandIcon .iconContent {
 }
 header .brandIcon .iconNegative {
   position: absolute;
+  bottom: 0.65rem;
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 header .headerMenu {
   display: -webkit-box;
@@ -328,7 +387,7 @@ header .headerMenu .menuLinks nav {
   display: flex;
   width: 100%;
 }
-header .headerMenu .menuLinks nav .mainNavigation {
+header .headerMenu .menuLinks .mainNavigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -407,6 +466,7 @@ header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -434,6 +494,7 @@ header .displayToggle {
           justify-content: center;
 }
 .communalPrompts .promptDisplay .currentPrompt {
+  font-family: "nimbus-roman", serif;
   font-size: 1.75rem;
 }
 .communalPrompts .contributeButton {
@@ -489,22 +550,54 @@ header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 50%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 5.2rem;
 }
 .countdownTimer .timerInterface .playbackButtons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
-.countdownTimer .timerInterface .startButton {
+.countdownTimer .timerInterface .playbackButtons .countingTrue,
+.countdownTimer .timerInterface .playbackButtons .countingFalse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+.countdownTimer .timerInterface .startButton,
+.countdownTimer .timerInterface .stopButton,
+.countdownTimer .timerInterface .resumeButton,
+.countdownTimer .timerInterface .resetButton {
+  font-size: 0.75rem;
   background: none;
-  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.countdownTimer .timerInterface .startButton:hover, .countdownTimer .timerInterface .startButton:focus,
+.countdownTimer .timerInterface .stopButton:hover,
+.countdownTimer .timerInterface .stopButton:focus,
+.countdownTimer .timerInterface .resumeButton:hover,
+.countdownTimer .timerInterface .resumeButton:focus,
+.countdownTimer .timerInterface .resetButton:hover,
+.countdownTimer .timerInterface .resetButton:focus {
+  background-color: black;
+  color: white;
 }
 .countdownTimer .timerDisplay {
   display: -webkit-box;
@@ -520,25 +613,79 @@ header .displayToggle {
   width: 100%;
   position: relative;
 }
+.countdownTimer .timerDisplay .currentTime p {
+  font-size: 2rem;
+}
 .countdownTimer .timerDisplay button {
   font-size: 0.7rem;
-  background-color: rgba(255, 255, 255, 0);
+  background: none;
   border: none;
   cursor: pointer;
-  margin-right: 0.12rem;
 }
-.countdownTimer .timerDisplay .increaseTime {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  top: 0.25rem;
-}
+.countdownTimer .timerDisplay .incrementTime,
+.countdownTimer .timerDisplay .increaseTime,
+.countdownTimer .timerDisplay .decrementTime,
 .countdownTimer .timerDisplay .decreaseTime {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 5.2rem;
+}
+.countdownTimer .timerDisplay .incrementTime .adjustmentButton,
+.countdownTimer .timerDisplay .increaseTime .adjustmentButton,
+.countdownTimer .timerDisplay .decrementTime .adjustmentButton,
+.countdownTimer .timerDisplay .decreaseTime .adjustmentButton {
+  position: relative;
+  left: 0.15rem;
+  margin: 0 0.75rem;
+}
+.countdownTimer .timerDisplay .increaseTransition {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.countdownTimer .timerDisplay .increaseTransition:hover, .countdownTimer .timerDisplay .increaseTransition:focus {
+  -webkit-transform: translateY(-0.15rem);
+          transform: translateY(-0.15rem);
+}
+.countdownTimer .timerDisplay .incrementTransition {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.countdownTimer .timerDisplay .incrementTransition:hover, .countdownTimer .timerDisplay .incrementTransition:focus {
+  -webkit-transform: translateY(-0.15rem);
+          transform: translateY(-0.15rem);
+}
+.countdownTimer .timerDisplay .decreaseTransition {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.countdownTimer .timerDisplay .decreaseTransition:hover, .countdownTimer .timerDisplay .decreaseTransition:focus {
+  -webkit-transform: translateY(0.15rem);
+          transform: translateY(0.15rem);
+}
+.countdownTimer .timerDisplay .decrementTransition {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.countdownTimer .timerDisplay .decrementTransition:hover, .countdownTimer .timerDisplay .decrementTransition:focus {
+  -webkit-transform: translateY(0.15rem);
+          transform: translateY(0.15rem);
+}
+.countdownTimer .timerDisplay .increaseTime {
+  top: 0.75rem;
+}
+.countdownTimer .timerDisplay .incrementTime {
+  top: 0.35rem;
+}
+.countdownTimer .timerDisplay .decreaseTime {
+  bottom: 0.65rem;
+}
+.countdownTimer .timerDisplay .decrementTime {
+  bottom: 0.25rem;
 }
 
 .writingSection {
@@ -561,7 +708,7 @@ header .displayToggle {
   width: 100%;
 }
 .writingSection .writingSpace form textarea {
-  min-height: 50vh;
+  min-height: 45vh;
   font-size: 0.75rem;
   width: 100%;
   padding: 0.5rem;
@@ -590,24 +737,74 @@ header .displayToggle {
   text-align: center;
   width: 100%;
 }
+.writingSection .saveWriting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  background: none;
+  bottom: 5%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 25%;
+}
 .writingSection .savingOptions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.writingSection .savingOptions .savingButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
 }
 .writingSection .savingOptions .articleTitle {
+  font-size: 0.75rem;
+  width: 100%;
+  background: none;
   border: none;
   border-bottom: 1px solid black;
 }
+.writingSection .savingOptions button {
+  font-size: 0.7rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-.findMusic p {
+.findMusic .musicDescription {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.findMusic .musicDescription h2 {
+  text-align: center;
+  width: 100%;
+}
+.findMusic .musicDescription P {
   font-size: 0.75rem;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 1rem 0;
 }
 .findMusic .apiLogin,
 .findMusic .playlistButton {
@@ -617,6 +814,7 @@ header .displayToggle {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
   margin: 0 auto;
 }
 .findMusic .playlistCollection {
@@ -631,6 +829,107 @@ header .displayToggle {
   max-width: 25%;
   padding: 0.5rem;
 }
+.findMusic .playlistCollection li .playlistName,
+.findMusic .playlistCollection li .playlistTracks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
 .findMusic .playlistCollection li p {
   font-size: 0.75rem;
+}
+
+.loadingSection .loadingDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.loadingSection .loadingDescription h2 {
+  text-align: center;
+  width: 100%;
+}
+.loadingSection .loadingDescription P {
+  font-size: 0.75rem;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+.loadingSection .articleOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.loadingSection .articleOptions .articleCounter {
+  font-size: 0.75rem;
+}
+.loadingSection .articleOptions .articleCounter span {
+  color: #91C788;
+  font-weight: 600;
+}
+.loadingSection .articleOptions .deleteArticles {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.loadingSection .articleList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+}
+.loadingSection .articleList li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0.5rem;
+  width: calc((100% / 5) - 1rem);
+  height: 5rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.loadingSection .articleList li:hover, .loadingSection .articleList li:focus-within {
+  background-color: black;
+  color: white;
+}
+.loadingSection .articleList li span {
+  height: 100%;
+  width: 100%;
+}
+.loadingSection .articleList li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
 }

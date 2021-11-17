@@ -1,6 +1,4 @@
 // Imports
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600&display=swap'); // Josefin Sans
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap'); // Lato
 @import url("https://use.typekit.net/rhu3qmo.css"); // Futura PT
 @import url("https://use.typekit.net/rhu3qmo.css"); // Nimbus Roman
 
@@ -8,8 +6,8 @@
 $morningBackground: #DDFFBC;
 $eveningBackground: #52734D;
 $writingBackground: #FEFFDE;
-$PrimaryColour: #91C788;
+$primaryColour: #91C788;
 
 // Typography
-$headingFont: 'Josefin Sans', sans-serif;
-$bodyFont: 'Lato', sans-serif;
+$headingFont: 'nimbus-roman', serif;
+$bodyFont: 'futura-pt', sans-serif;

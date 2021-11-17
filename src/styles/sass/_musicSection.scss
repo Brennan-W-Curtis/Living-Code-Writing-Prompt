@@ -1,37 +1,53 @@
 .findMusic {
 
-    p {
+    .musicDescription {
         display: flex;
         justify-content: center;
-        font-size: .75rem;
+        flex-wrap: wrap;
+
+        h2 {
+            text-align: center;
+            width: 100%;
+        }
+        
+        P {
+            font-size: .75rem;
+            text-align: center;
+            width: 100%;
+            margin: 0 0 1rem 0;
+        }
+        
     }
 
     .apiLogin,
     .playlistButton {
         display: flex;
         justify-content: center;
+        width: 100%;
         margin: 0 auto;
     }
-    
 
     .playlistCollection {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-    
+
         li {
             max-width: 25%;
             padding: .5rem;
-    
-            .imageContainer {
+
+            .playlistName,
+            .playlistTracks {
+                display: flex;
+                justify-content: flex-start;
             }
-    
+
             p {
                 font-size: .75rem;
             }
-    
+
         }
-    
+
     }
 
 }

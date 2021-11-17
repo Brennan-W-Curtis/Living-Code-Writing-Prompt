@@ -38,7 +38,9 @@ const RegisterationForm = props => {
                 <button 
                     type="submit"
                     onClick={event => registerUser(event)}
-                >Register</button>
+                >
+                    Register
+                </button>
             </form>
         </div>
     )

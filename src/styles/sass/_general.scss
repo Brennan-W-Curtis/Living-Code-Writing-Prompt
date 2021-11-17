@@ -58,6 +58,44 @@ textarea {
     font-family: $bodyFont;
 }
 
+// Animation Classes
+.fadeIn {
+    animation: fadeIn 1s cubic-bezier(.25, .1, .25, 1);
+    // animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(.05rem);
+        opacity: 1;
+    }
+
+}
+
+.fadeOut {
+    animation: fadeOut 1s cubic-bezier(.25, .1, .25, 1);
+}
+
+@keyframes fadeOut {
+    
+    0% {
+        transform: translateY(0.05rem);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+}
+
 // Code Debugging
 // * {
 //     border: 1px solid red;

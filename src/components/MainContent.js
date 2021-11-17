@@ -11,7 +11,8 @@ const MainContent = props => {
     const { authenticatedUser, count, setCount, countingStatus, setCountingStatus, userInput, setUserInput } = props;
     
     // Store all state values for the component in the following variables.
-    const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a modal allowing the user to enter a prompt is displayed.
+    const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a component allowing the user to enter a prompt is displayed.
+    const [ fadingOut, setFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
 
     return (
         <>
@@ -19,6 +20,7 @@ const MainContent = props => {
                 <CommunalPrompts 
                     contributePrompt={contributePrompt}
                     setContributePrompt={setContributePrompt}
+                    setFadingOut={setFadingOut}
                 />
                 <div className="primaryInteraction">
                     {
@@ -26,6 +28,8 @@ const MainContent = props => {
                             <ContributePrompt 
                                 contributePrompt={contributePrompt}
                                 setContributePrompt={setContributePrompt}
+                                fadingOut={fadingOut}
+                                setFadingOut={setFadingOut}
                             /> :
                             null
                     }
@@ -50,6 +54,7 @@ const MainContent = props => {
                     count={count}
                     countingStatus={countingStatus}
                     userInput={userInput}
+                    setUserInput={setUserInput}
                 />
               </section>
         </>

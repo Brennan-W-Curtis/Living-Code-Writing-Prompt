@@ -33,33 +33,77 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
             <div className="increaseTime">
                 <button
                     className="adjustmentButton"
+                    onClick={() => handleIncrement(300)}
+                >
+                    <FaChevronUp 
+                        className="increaseTransition"
+                    />
+                </button>
+                <button
+                    className="adjustmentButton"
+                    onClick={() => handleIncrement(5)}
+                >
+                    <FaChevronUp 
+                        className="increaseTransition"
+                    />
+                </button>
+            </div>
+            <div className="incrementTime">
+                <button
+                    className="adjustmentButton"
                     onClick={() => handleIncrement(60)}
                 >
-                    <FaChevronUp />
+                    <FaChevronUp 
+                        className="incrementTransition"
+                    />
                 </button>
                 <button
                     className="adjustmentButton"
                     onClick={() => handleIncrement(1)}
                 >
-                    <FaChevronUp />
+                    <FaChevronUp 
+                        className="incrementTransition"
+                    />
                 </button>
             </div>
             <div className="currentTime">
                 <p>{convertTime(count)}</p>
             </div>
             {/* Decrease */}
-            <div className="decreaseTime">
+            <div className="decrementTime">
                 <button
                     className="adjustmentButton"
                     onClick={() => handleDecrement(60)}
                 >
-                    <FaChevronDown />
+                    <FaChevronDown 
+                        className="decrementTransition"
+                    />
                 </button>
                 <button
                     className="adjustmentButton"
                     onClick={() => handleDecrement(1)}
                 >
-                    <FaChevronDown />
+                    <FaChevronDown 
+                        className="decrementTransition"
+                    />
+                </button>
+            </div>
+            <div className="decreaseTime">
+                <button
+                    className="adjustmentButton"
+                    onClick={() => handleDecrement(300)}
+                >
+                    <FaChevronDown 
+                        className="decreaseTransition"
+                    />
+                </button>
+                <button
+                    className="adjustmentButton"
+                    onClick={() => handleDecrement(5)}
+                >
+                    <FaChevronDown 
+                        className="decreaseTransition"
+                    />
                 </button>
             </div>
         </div>

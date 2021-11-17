@@ -3,7 +3,7 @@ import { cloud } from '../firebase';
 import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 import { jsPDF } from 'jspdf';
 
-const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) => {
+const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput, setUserInput }) => {
     // Store all state values for the component in the following variables.
     const [ articleTitle, setArticleTitle ] = useState(""); // Store the title chosen by the user for their article.
     
@@ -29,6 +29,10 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) =>
             // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one.  
             await setDoc(docRef, docEntry, { merge: true });
 
+            // Clear the user input and article title inputs.
+            setUserInput("");
+            setArticleTitle("");
+            
             console.log("Article successfully saved.")
 
         } catch(error) {
@@ -49,7 +53,7 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) =>
             {   
                 // If the user has engaged the countdown timer and it has reached zero after signing into the application the options to either save or export their writing will be rendered to the page.
                 count === 0 && countingStatus === false && authenticatedUser ?
-                    <div className="savingOptions">
+                    <div className="savingOptions fadeIn">
                         <label htmlFor="inputTitle" className="sr-only">Article Title</label>
                         <input 
                             type="text" 
@@ -61,12 +65,18 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput }) =>
                             value={articleTitle}
                             required
                         />
-                        <button 
-                            onClick={handleSave}
-                        >Save</button>
-                        <button
-                            onClick={handleExport}
-                        >Download</button>
+                        <div className="savingButtons">
+                            <button 
+                                onClick={handleSave}
+                            >
+                                Save
+                            </button>
+                            <button
+                                onClick={handleExport}
+                            >
+                                Download
+                            </button>
+                        </div>
                     </div> :
                     null
             }

@@ -34,7 +34,9 @@ const DisplayPlaylists = ({ accessToken, playlistData, setPlaylistData, dataRead
                     <button
                         className="playlistButton"
                         onClick={handlePlaylists}
-                    >Playlists</button> :
+                    >
+                        Playlists
+                    </button> :
                     null
                 
             }
@@ -47,11 +49,14 @@ const DisplayPlaylists = ({ accessToken, playlistData, setPlaylistData, dataRead
                                 <li key={index}>
                                     <div className="imageContainer">
                                         <a href={playlist.external_urls.spotify} target="_blank" rel="noreferrer">
-                                            <img src={playlist.images[0].url} alt={`A collage of albums from the ${playlist.name} playlist`} />
+                                            <img 
+                                                src={playlist.images[0].url} 
+                                                alt={`A collage of albums from the ${playlist.name} playlist`} 
+                                            />
                                         </a>
                                     </div>
-                                    <p>Name: {playlist.name}</p>
-                                    <p>Tracks: {playlist.tracks.total}</p>
+                                    <p className="playlistName">Name: {playlist.name}</p>
+                                    <p className="playlistTracks">Tracks: {playlist.tracks.total}</p>
                                 </li>
                             )
                         }) :

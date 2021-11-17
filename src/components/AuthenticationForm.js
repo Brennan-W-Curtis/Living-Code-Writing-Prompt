@@ -25,7 +25,9 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
                 <button 
                     type="submit"
                     onClick={event => loginUser(event)}
-                >Submit</button>
+                >
+                    Submit
+                </button>
             </form>
         </div>
     )

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import realtime from '../firebase';
 import { ref, onValue } from 'firebase/database';
 
-const CommunalPrompts = ({ contributePrompt, setContributePrompt }) => {
+const CommunalPrompts = ({ contributePrompt, setContributePrompt, setFadingOut }) => {
     // Store all state values for the component in the following variables.
     const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
     const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
@@ -51,8 +51,16 @@ const CommunalPrompts = ({ contributePrompt, setContributePrompt }) => {
         // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
     }, [storedPrompts]);
 
-    // Toggles whether the input form is visible for the user to contribute a prompt and submit it to the realtime database.
-    const toggleContribute = () => setContributePrompt(!contributePrompt);
+    // Toggles whether the input form is either visible for the user to contribute a prompt and submit it to the realtime database.
+    const toggleContribute = () => {
+        if (contributePrompt) {
+            setFadingOut(true)
+            setTimeout(() => setContributePrompt(false), 1000);
+        } else {
+            setFadingOut(false);
+            setContributePrompt(true)
+        }
+    }
     
     return (
         <div className="communalPrompts">
@@ -60,7 +68,9 @@ const CommunalPrompts = ({ contributePrompt, setContributePrompt }) => {
                 <button
                     className="contributeButton"
                     onClick={toggleContribute}
-                >Contribute</button>
+                >
+                    Contribute
+                </button>
                 {
                     isLoading ?
                         <p>Loading...</p> :

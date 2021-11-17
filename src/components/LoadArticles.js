@@ -51,12 +51,20 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
 
     return (
         <div>
-            <div>
+            <div className="loadingDescription">
+                <h2>Previous Works</h2>
+                <p>Continue working on previous articles by selecting a title.</p>
+            </div>
+            <div className="articleOptions">
+                <p className="articleCounter">You currently have <span>{savedArticles.length}</span> articles saved.</p>
                 {
                     savedArticles ?
                         <button
+                            className="deleteArticles"
                             onClick={deleteArticles}
-                        >Delete Articles</button> :
+                        >
+                            Delete Articles
+                        </button> :
                         null
                 }
             </div>
@@ -66,7 +74,7 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                     savedArticles ? 
                         savedArticles.map((article, index) => {
                             return (
-                                <li key={index}>
+                                <li key={index} className="fadeIn">
                                     <span>
                                         <Link 
                                             to="/"

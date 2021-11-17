@@ -12,8 +12,9 @@ header {
 
         .iconNegative {
             position: absolute;
+            bottom: .65rem;
             color: white;
-            font-size: 1rem;
+            font-size: .8rem;
         }
 
     }
@@ -30,13 +31,13 @@ header {
                 display: flex;
                 width: 100%;
     
-                .mainNavigation {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    width: 100%;
-                }
-    
+            }
+            
+            .mainNavigation {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
             }
             
         }
