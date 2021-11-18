@@ -39,6 +39,10 @@ header {
                 justify-content: space-evenly;
                 width: 100%;
             }
+
+            .individualLinks {
+                font-size: .8rem;
+            } 
             
         }
 
@@ -65,8 +69,14 @@ header {
             }
 
             .displayName,
-            .loginButton {
+            .loginButton,
+            .loadingName {
                 margin-right: 1rem;
+                font-size: .8rem;
+            }
+
+            .logoutButton {
+                font-size: .8rem;
             }
 
             .loginButton,

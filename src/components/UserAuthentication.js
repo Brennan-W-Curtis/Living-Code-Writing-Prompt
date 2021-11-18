@@ -82,7 +82,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
                         {/* If the state variable authenticatedUser evaluates to true the user's email is rendered to the page. */}
                         {
                             isLoading ?
-                                <p>Loading...</p> :
+                                <p className="loadingName">Loading...</p> :
                                 <p className="displayName">{authenticatedUser ? `Welcome, ${displayName}` : ""}</p>
                         }
                         <button

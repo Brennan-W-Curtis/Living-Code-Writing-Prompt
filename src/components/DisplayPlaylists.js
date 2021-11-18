@@ -28,15 +28,16 @@ const DisplayPlaylists = ({ accessToken, playlistData, setPlaylistData, dataRead
     }
 
     return (
-        <div>
+        <div className="displayPlaylists">
             {
                 !dataReady ?
-                    <button
-                        className="playlistButton"
-                        onClick={handlePlaylists}
-                    >
-                        Playlists
-                    </button> :
+                    <div className="revealPlaylists">
+                        <button
+                            onClick={handlePlaylists}
+                        >
+                            Playlists
+                        </button> 
+                    </div>:
                     null
                 
             }

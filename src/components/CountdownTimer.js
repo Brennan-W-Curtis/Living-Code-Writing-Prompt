@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import TimerButtons from './TimerButtons';
 import TimerDisplay from './TimerDisplay';
 
 // Destructure props object to access countingStatus state variables.
-const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus }) => {
+const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus, currentInterval, setCurrentInterval }) => {
     // Declare a namespace object for the component.
     const timerComponent = {};
-
-    // Store all state values for the component in the following variables.
-    const [ currentInterval, setCurrentInterval ] = useState(); // Stores the information of the current interval. 
 
     // Create a property in the namespace object that updates with the current value stored in the count state variable.
     timerComponent.updatedSeconds = count;
@@ -70,18 +66,18 @@ const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus }) 
 
     return (
         <div className="countdownTimer">
-            <TimerDisplay 
-                count={count}
-                countingStatus={countingStatus}
-                handleDecrement={handleDecrement}
-                handleIncrement={handleIncrement}
-            />
             <TimerButtons 
                 countingStatus={countingStatus}
                 handleReset={handleReset}
                 handleResume={handleResume}
                 handleStart={handleStart}
                 handleStop={handleStop}
+            />
+            <TimerDisplay 
+                count={count}
+                countingStatus={countingStatus}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}
             />
         </div>
     )

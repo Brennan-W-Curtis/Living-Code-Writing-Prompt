@@ -19,17 +19,17 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                         <FaFeatherAlt className="iconNegative" aria-hidden="true" />
                         <FaCloud className="iconContent" aria-hidden="true" />
                     </div>
-                    <h1>Plume</h1>
+                    <Link to="/"><h1>Plume</h1></Link>
                     <nav>
                         <ul className="mainNavigation">
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/" className="individualLinks">Home</Link>
                             </li>
                             <li>
-                                <Link to="suggested-music">Find Music</Link>
+                                <Link to="suggested-music" className="individualLinks">Find Music</Link>
                             </li>
                             <li>
-                                <Link to="saved-articles">Saved Articles</Link>
+                                <Link to="saved-articles" className="individualLinks">Saved Articles</Link>
                             </li>
                         </ul>
                     </nav>

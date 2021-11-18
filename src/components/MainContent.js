@@ -13,6 +13,7 @@ const MainContent = props => {
     // Store all state values for the component in the following variables.
     const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a component allowing the user to enter a prompt is displayed.
     const [ fadingOut, setFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
+    const [ currentInterval, setCurrentInterval ] = useState(); // Stores the information of the current interval. 
 
     return (
         <>
@@ -38,12 +39,16 @@ const MainContent = props => {
                         countingStatus={countingStatus}
                         setCount={setCount}
                         setCountingStatus={setCountingStatus}
+                        currentInterval={currentInterval}
+                        setCurrentInterval={setCurrentInterval}
                     />
                 </div>
               </section>
               <section className="writingSection">
                 <InactivityWarning 
                     countingStatus={countingStatus}
+                    setCountingStatus={setCountingStatus}
+                    currentInterval={currentInterval}
                 />
                 <WritingSpace 
                     userInput={userInput}

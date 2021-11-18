@@ -289,6 +289,8 @@ textarea {
 .fadeIn {
   -webkit-animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
           animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fadeIn {
@@ -298,8 +300,8 @@ textarea {
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateY(0.05rem);
-            transform: translateY(0.05rem);
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
     opacity: 1;
   }
 }
@@ -311,20 +313,22 @@ textarea {
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateY(0.05rem);
-            transform: translateY(0.05rem);
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
     opacity: 1;
   }
 }
 .fadeOut {
   -webkit-animation: fadeOut 1s cubic-bezier(0.25, 0.1, 0.25, 1);
           animation: fadeOut 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fadeOut {
   0% {
-    -webkit-transform: translateY(0.05rem);
-            transform: translateY(0.05rem);
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
     opacity: 1;
   }
   100% {
@@ -336,8 +340,8 @@ textarea {
 
 @keyframes fadeOut {
   0% {
-    -webkit-transform: translateY(0.05rem);
-            transform: translateY(0.05rem);
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
     opacity: 1;
   }
   100% {
@@ -399,6 +403,9 @@ header .headerMenu .menuLinks .mainNavigation {
           justify-content: space-evenly;
   width: 100%;
 }
+header .headerMenu .menuLinks .individualLinks {
+  font-size: 0.8rem;
+}
 header .headerMenu .menuAuthentication {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -435,8 +442,13 @@ header .headerMenu .menuAuthentication .currentUser {
   display: flex;
 }
 header .headerMenu .menuAuthentication .displayName,
-header .headerMenu .menuAuthentication .loginButton {
+header .headerMenu .menuAuthentication .loginButton,
+header .headerMenu .menuAuthentication .loadingName {
   margin-right: 1rem;
+  font-size: 0.8rem;
+}
+header .headerMenu .menuAuthentication .logoutButton {
+  font-size: 0.8rem;
 }
 header .headerMenu .menuAuthentication .loginButton,
 header .headerMenu .menuAuthentication .logoutButton {
@@ -501,7 +513,15 @@ header .displayToggle {
   font-size: 0.75rem;
   background: none;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 0.75rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.communalPrompts .contributeButton:hover, .communalPrompts .contributeButton:focus {
+  background-color: black;
+  color: white;
 }
 
 .contributePrompts {
@@ -526,9 +546,18 @@ header .displayToggle {
   border-bottom: 1px solid black;
 }
 .contributePrompts .submitButton {
+  font-size: 0.75rem;
   background: none;
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
   font-size: 0.75rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.contributePrompts .submitButton:hover, .contributePrompts .submitButton:focus {
+  background-color: black;
+  color: white;
 }
 
 .countdownTimer {
@@ -583,7 +612,7 @@ header .displayToggle {
 .countdownTimer .timerInterface .resetButton {
   font-size: 0.75rem;
   background: none;
-  border: 1px solid black;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   -webkit-transition: all 0.5s;
@@ -715,6 +744,15 @@ header .displayToggle {
   border: 1px solid black;
   border-radius: 0.2rem;
   resize: none;
+  z-index: 10;
+}
+.writingSection .colourOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .writingSection .inactivityWarning {
   position: absolute;
@@ -780,10 +818,18 @@ header .displayToggle {
   border-bottom: 1px solid black;
 }
 .writingSection .savingOptions button {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
   background: none;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.writingSection .savingOptions button:hover, .writingSection .savingOptions button:focus {
+  background-color: black;
+  color: white;
 }
 
 .findMusic .musicDescription {
@@ -807,7 +853,7 @@ header .displayToggle {
   margin: 0 0 1rem 0;
 }
 .findMusic .apiLogin,
-.findMusic .playlistButton {
+.findMusic .revealPlaylists {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -816,6 +862,23 @@ header .displayToggle {
           justify-content: center;
   width: 100%;
   margin: 0 auto;
+}
+.findMusic .apiLogin button,
+.findMusic .revealPlaylists button {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.findMusic .apiLogin button:hover, .findMusic .apiLogin button:focus,
+.findMusic .revealPlaylists button:hover,
+.findMusic .revealPlaylists button:focus {
+  background-color: black;
+  color: white;
 }
 .findMusic .playlistCollection {
   display: -webkit-box;
@@ -906,6 +969,7 @@ header .displayToggle {
           align-items: center;
   border: 1px solid black;
   border-radius: 5px;
+  position: relative;
   margin: 0.5rem;
   width: calc((100% / 5) - 1rem);
   height: 5rem;
@@ -932,4 +996,41 @@ header .displayToggle {
           align-items: center;
   width: 100%;
   height: 100%;
+}
+.loadingSection .articleList .deleteArticle {
+  font-size: 0.75rem;
+  background: none;
+  position: absolute;
+  top: -0.1rem;
+  right: -0.05rem;
+  cursor: pointer;
+}
+
+.errorPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.errorPage h3 {
+  text-align: center;
+  width: 100%;
+}
+.errorPage P {
+  font-size: 0.75rem;
+  text-align: center;
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+}
+.errorPage P span {
+  text-decoration: underline;
 }

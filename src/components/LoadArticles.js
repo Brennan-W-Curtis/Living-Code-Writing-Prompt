@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cloud } from '../firebase';
 import { deleteField, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { FaWindowClose } from 'react-icons/fa';
 
 const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     // Store all state values for the component in the following variables.
-    const [ savedArticles, setSavedArticles ] = useState([]);
+    const [ savedArticles, setSavedArticles ] = useState([]); // Stores a reference to all of the user's previously saved articles in the database.
 
     useEffect(() => {
 
@@ -35,6 +36,34 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     const handleLoading = bodyText => {
         setUserInput(bodyText);
     };
+
+    // Handles deleting individual articles that have been previously saved by the current user.
+    const handleDelete = async articleId => {
+        try {
+            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+    
+            // Asynchronously store a reference to a readable snapshot of the document. 
+            const docSnapshot = await getDoc(docRef);
+
+            // Destructure the snapshot reference to access the user's articles.
+            const { userArticles } = docSnapshot.data();
+
+            // Filter the array of the article selected by the user based on it's article id.
+            const filteredArticles = userArticles.filter((article, index) => index !== articleId);
+
+            // Store the filtered array within a docEntry object that will be user to update the userArticles field.
+            const docEntry = {
+                userArticles: filteredArticles
+            }
+
+            // Update the user document with the recently changed field to remove the article from the database. 
+            await updateDoc(docRef, docEntry);
+
+        } catch(error) {
+            console.log("Unable to delete article, ", error.message);
+        }
+    }
 
     // Handles deleting all of the user's saved articles.
     const deleteArticles = async () => {
@@ -73,15 +102,20 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                     // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.
                     savedArticles ? 
                         savedArticles.map((article, index) => {
+                            const {articleBody, articleTitle } = article;
                             return (
                                 <li key={index} className="fadeIn">
                                     <span>
                                         <Link 
                                             to="/"
-                                            onClick={() => handleLoading(article.articleBody)}
+                                            onClick={() => handleLoading(articleBody)}
                                         >
-                                            {article.articleTitle}
+                                            {articleTitle}
                                         </Link>
+                                        <FaWindowClose 
+                                            className="deleteArticle"
+                                            onClick={() => handleDelete(index)}
+                                        />
                                     </span>
                                 </li>
                             )

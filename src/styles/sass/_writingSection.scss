@@ -88,10 +88,20 @@
         }
 
         button {
-            font-size: .7rem;
+            font-size: .75rem;
+            margin-top: .25rem;
             background: none;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                background-color: black;
+                color: white;
+            }
+        
         }
 
     }
