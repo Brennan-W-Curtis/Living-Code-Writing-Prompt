@@ -52,10 +52,10 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
             // Filter the array of the article selected by the user based on it's article id.
             const filteredArticles = userArticles.filter((article, index) => index !== articleId);
 
-            // Store the filtered array within a docEntry object that will be user to update the userArticles field.
+            // Store the filtered array within a docEntry object that will be used to update the userArticles field.
             const docEntry = {
                 userArticles: filteredArticles
-            }
+            };
 
             // Update the user document with the recently changed field to remove the article from the database. 
             await updateDoc(docRef, docEntry);
@@ -68,10 +68,13 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
     // Handles deleting all of the user's saved articles.
     const deleteArticles = async () => {
         try {
-            const docRef = doc(cloud, `users/${authenticatedUser.uid}`);
+            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+            // Assign a method that deletes the field that it's assigned to delete all of the user's articles. 
             const docEntry = {
                 userArticles: deleteField()
             };
+            // Asynchronously update the document with the docEntry object.
             await updateDoc(docRef, docEntry);
         } catch(error) {
             console.log(error);
@@ -85,7 +88,11 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                 <p>Continue working on previous articles by selecting a title.</p>
             </div>
             <div className="articleOptions">
-                <p className="articleCounter">You currently have <span>{savedArticles.length}</span> articles saved.</p>
+                {
+                    savedArticles !== undefined ?
+                        <p className="articleCounter">You currently have <span>{savedArticles.length}</span> articles saved.</p> :
+                        null
+                }
                 {
                     savedArticles ?
                         <button

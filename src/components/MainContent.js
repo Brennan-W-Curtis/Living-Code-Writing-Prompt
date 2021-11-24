@@ -5,15 +5,28 @@ import InactivityWarning from './InactivityWarning';
 import CommunalPrompts from './CommunalPrompts';
 import ContributePrompt from './ContributePrompt';
 import SaveWriting from './SaveWriting';
+import UserNotifications from './UserNotifications';
 
 const MainContent = props => {
     // Destructured all state values passed as props.
-    const { authenticatedUser, count, setCount, countingStatus, setCountingStatus, userInput, setUserInput } = props;
+    const { 
+        authenticatedUser, 
+        count, 
+        setCount, 
+        countingStatus, 
+        setCountingStatus,
+        userInput, 
+        setUserInput, 
+        userActivity, 
+        setUserActivity 
+    } = props;
     
     // Store all state values for the component in the following variables.
     const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a component allowing the user to enter a prompt is displayed.
-    const [ fadingOut, setFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
+    const [ contributeFadingOut, setContributeFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
     const [ currentInterval, setCurrentInterval ] = useState(); // Stores the information of the current interval. 
+    const [ displaySaving, setDisplaySaving ] = useState(false); // Determines whether the saving options window is rendered to the page.
+    const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
 
     return (
         <>
@@ -21,16 +34,16 @@ const MainContent = props => {
                 <CommunalPrompts 
                     contributePrompt={contributePrompt}
                     setContributePrompt={setContributePrompt}
-                    setFadingOut={setFadingOut}
+                    setContributeFadingOut={setContributeFadingOut}
                 />
                 <div className="primaryInteraction">
                     {
                         contributePrompt ?
                             <ContributePrompt 
-                                contributePrompt={contributePrompt}
                                 setContributePrompt={setContributePrompt}
-                                fadingOut={fadingOut}
-                                setFadingOut={setFadingOut}
+                                contributeFadingOut={contributeFadingOut}
+                                setContributeFadingOut={setContributeFadingOut}
+                                setUserActivity={setUserActivity}
                             /> :
                             null
                     }
@@ -41,25 +54,36 @@ const MainContent = props => {
                         setCountingStatus={setCountingStatus}
                         currentInterval={currentInterval}
                         setCurrentInterval={setCurrentInterval}
+                        setDisplaySaving={setDisplaySaving}
                     />
                 </div>
               </section>
               <section className="writingSection">
                 <InactivityWarning 
+                    count={count}
+                    setCount={setCount}
                     countingStatus={countingStatus}
                     setCountingStatus={setCountingStatus}
                     currentInterval={currentInterval}
+                    setCurrentInterval={setCurrentInterval}
                 />
                 <WritingSpace 
                     userInput={userInput}
                     setUserInput={setUserInput}
-                />
+                    />
                 <SaveWriting 
                     authenticatedUser={authenticatedUser}
                     count={count}
                     countingStatus={countingStatus}
+                    displaySaving={displaySaving}
+                    setDisplaySaving={setDisplaySaving}
+                    saveFadingOut={saveFadingOut}
+                    setSaveFadingOut={setSaveFadingOut}
                     userInput={userInput}
                     setUserInput={setUserInput}
+                />
+                <UserNotifications 
+                    userActivity={userActivity}
                 />
               </section>
         </>

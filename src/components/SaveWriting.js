@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { cloud } from '../firebase';
 import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 import { jsPDF } from 'jspdf';
+import { FaWindowClose } from 'react-icons/fa';
 
-const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput, setUserInput }) => {
+const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, setDisplaySaving, saveFadingOut, setSaveFadingOut, userInput, setUserInput }) => {
     // Store all state values for the component in the following variables.
     const [ articleTitle, setArticleTitle ] = useState(""); // Store the title chosen by the user for their article.
-    
+
     // Handles saving the user's writing to the cloud database based on the their unique id.
     const handleSave = async event => {
         event.preventDefault();
@@ -48,12 +49,26 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, userInput, setU
         document.save(`${articleTitle}.pdf`);
     }
 
+    // Handles closing the saving options window.
+    const handleClose = () => {
+        // Use a boolean state value to determine whether it displays
+        setSaveFadingOut(true);
+        setTimeout(() => setDisplaySaving(false), 1000);
+        setTimeout(() => setSaveFadingOut(false), 1000);
+    }
+
     return (
         <div className="saveWriting">
             {   
                 // If the user has engaged the countdown timer and it has reached zero after signing into the application the options to either save or export their writing will be rendered to the page.
-                count === 0 && countingStatus === false && authenticatedUser ?
-                    <div className="savingOptions fadeIn">
+                authenticatedUser && count === 0 && countingStatus === false && displaySaving ?
+                    <div className={saveFadingOut ? "savingOptions fadeOut" : "savingOptions fadeIn"}>
+                        <div className="closeWindow">
+                            <FaWindowClose 
+                                className="closeIcon"
+                                onClick={handleClose}
+                            />
+                        </div>
                         <label htmlFor="inputTitle" className="sr-only">Article Title</label>
                         <input 
                             type="text" 

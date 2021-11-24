@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import IdleTimer from 'react-idle-timer';
 import WarningModal from './WarningModal';
 
-const InactivityWarning = ({ countingStatus, currentInterval, setCountingStatus }) => {
+const InactivityWarning = ({ count, setCount, countingStatus, currentInterval, setCountingStatus, setCurrentInterval }) => {
     // Store all state values for the component in the following variables.
     const [ displayWarning, setDisplayWarning ] = useState(false); // Determines whether an inactivity warning is displayed to the user. 
 
@@ -29,8 +29,11 @@ const InactivityWarning = ({ countingStatus, currentInterval, setCountingStatus 
                 // If this state variable evaluates to true than the inactivity warning is displayed to the user.
                 displayWarning ?
                     <WarningModal 
+                        count={count}
+                        setCount={setCount}
                         setDisplayWarning={setDisplayWarning}
                         setCountingStatus={setCountingStatus}
+                        stCurrentInterval={setCurrentInterval}
                     /> :
                     null
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import realtime from '../firebase';
 import { ref, onValue } from 'firebase/database';
 
-const CommunalPrompts = ({ contributePrompt, setContributePrompt, setFadingOut }) => {
+const CommunalPrompts = ({ contributePrompt, setContributePrompt, setContributeFadingOut }) => {
     // Store all state values for the component in the following variables.
     const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
     const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
@@ -54,10 +54,10 @@ const CommunalPrompts = ({ contributePrompt, setContributePrompt, setFadingOut }
     // Toggles whether the input form is either visible for the user to contribute a prompt and submit it to the realtime database.
     const toggleContribute = () => {
         if (contributePrompt) {
-            setFadingOut(true)
+            setContributeFadingOut(true)
             setTimeout(() => setContributePrompt(false), 1000);
         } else {
-            setFadingOut(false);
+            setContributeFadingOut(false);
             setContributePrompt(true)
         }
     }

@@ -15,6 +15,7 @@ const App = () => {
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
+  const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
 
   return (
     <Router>
@@ -40,6 +41,8 @@ const App = () => {
                 setCountingStatus={setCountingStatus}
                 userInput={userInput}
                 setUserInput={setUserInput}
+                userActivity={userActivity}
+                setUserActivity={setUserActivity}
               />
             </Route>
             <Route path="/saved-articles">

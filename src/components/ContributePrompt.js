@@ -2,7 +2,7 @@ import { useState } from 'react';
 import realtime from '../firebase';
 import { ref, push } from 'firebase/database';
 
-const ContributeModal = ({ setContributePrompt, fadingOut, setFadingOut }) => {
+const ContributeModal = ({ setContributePrompt, contributeFadingOut, setContributeFadingOut, setUserActivity }) => {
     // Store all state values for the component in the following variables.
     const [ userInput, setUserInput ] = useState(""); // Stores the user's current input in state for submitting to the realtime database. 
 
@@ -31,19 +31,21 @@ const ContributeModal = ({ setContributePrompt, fadingOut, setFadingOut }) => {
     
             // Clear the input field after the information entered has been pushed.
             setUserInput("");
-
-            // Changes the state values that determine whether the contribute prompt component fades out and then is removed after 1 second.
-            setFadingOut(true);
-            setTimeout(() => setContributePrompt(false), 1000);
             
+            setUserActivity("Success, your prompt has been added!");
+            
+            // Changes the state values that determine whether the contribute prompt component fades out and then is removed after 1 second.
+            setContributeFadingOut(true);
+            setTimeout(() => setContributePrompt(false), 1000);
+
         } else {
-            console.log("Please enter a valid prompt.");
+            setUserActivity("Sorry, please enter a valid prompt.");
         }
 
     }
 
     return (
-        <div className={ !fadingOut ? "contributePrompts fadeIn" : "contributePrompts fadeOut" }>
+        <div className={ !contributeFadingOut ? "contributePrompts fadeIn" : "contributePrompts fadeOut" }>
             <p className="contributeInstructions">Follow the same naming convention as the placeholder.</p>
             <form 
                 action="submit"

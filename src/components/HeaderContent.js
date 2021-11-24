@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModeToggle from './ModeToggle';
+import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
-import { FaFeatherAlt, FaCloud } from 'react-icons/fa';
 
 const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, setToggleMode }) => {
     // Store all state values for the component in the following variables.
@@ -14,26 +14,20 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
     return (
         <header>
             <div className="headerMenu">
-                <div className="menuLinks">
-                    <div className="brandIcon">
-                        <FaFeatherAlt className="iconNegative" aria-hidden="true" />
-                        <FaCloud className="iconContent" aria-hidden="true" />
-                    </div>
-                    <Link to="/"><h1>Plume</h1></Link>
-                    <nav>
-                        <ul className="mainNavigation">
-                            <li>
-                                <Link to="/" className="individualLinks">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="suggested-music" className="individualLinks">Find Music</Link>
-                            </li>
-                            <li>
-                                <Link to="saved-articles" className="individualLinks">Saved Articles</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                <nav className="menuLinks">
+                <Link to="/"><BrandLogo /></Link>
+                    <ul className="mainNavigation">
+                        <li>
+                            <Link to="/" className="individualLinks">Writing Space</Link>
+                        </li>
+                        <li>
+                            <Link to="suggested-music" className="individualLinks">Find Music</Link>
+                        </li>
+                        <li>
+                            <Link to="saved-articles" className="individualLinks">Saved Articles</Link>
+                        </li>
+                    </ul>
+                </nav>
                 <div className="menuAuthentication">
                     {
                         !authenticatedUser ?
@@ -44,7 +38,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                                 >
                                     Sign in
                                 </button>
-                                <Link to="register-account">Register</Link>                            
+                                <Link to="register-account" className="registerLink">Register</Link>                            
                             </div> :
                             authenticatedUser ?
                                 <UserAuthentication 

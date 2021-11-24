@@ -1,26 +1,15 @@
+import { useEffect, useRef } from 'react';
 import TimerButtons from './TimerButtons';
 import TimerDisplay from './TimerDisplay';
 
 // Destructure props object to access countingStatus state variables.
-const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus, currentInterval, setCurrentInterval }) => {
-    // Declare a namespace object for the component.
-    const timerComponent = {};
+const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus, currentInterval, setCurrentInterval, setDisplaySaving }) => {
+    
+    const timeInterval = useRef();
 
-    // Create a property in the namespace object that updates with the current value stored in the count state variable.
-    timerComponent.updatedSeconds = count;
-
-    // Handles incrementing the value that represents the total amount of time in state.
-    const handleIncrement = amount => {
-        const totalSeconds = count;
-        setCount(totalSeconds + amount);
-    }
-
-    // Handles decrementing the value that represents the total amount of time in state.
-    const handleDecrement = amount => {
-        const totalSeconds = count;
-        if (count !== 0 && (totalSeconds - amount >= 0)) {
-            setCount(totalSeconds - amount);
-        }
+    // Updates the state value responsible for tracking the remaining time by decrementing the count value
+    const updateTime = () => {
+        setCount(remainingTime => Math.max(0, remainingTime - 1));
     }
 
     // Handles starting the countdown timer and than continuing to run it at one second intervals. 
@@ -28,16 +17,16 @@ const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus, cu
 
         // Prevents the countdown timer from running unless the count state variable is greater than zero. 
         if (count > 0) {
-            runTimer();
+            timeInterval.current = setInterval(updateTime, 1000);
             setCountingStatus(true);
-            setCurrentInterval(setInterval(runTimer, 1000));
-        } 
-
+            setCurrentInterval(timeInterval.current);
+        }
+        
     }
-
-    // Handles stopping the countdown timer once the count value reaches zero.
+ 
+    // Handles stoping the countdown timer by clearing the setInterval and setting the counting status to false.
     const handleStop = () => {
-        clearInterval(currentInterval);
+        clearInterval(timeInterval.current);
         setCountingStatus(false);
     }
 
@@ -51,15 +40,40 @@ const CountdownTimer = ({ count, setCount, countingStatus, setCountingStatus, cu
     // Handles resuming the countdown timer after first stopping.
     const handleResume = () => handleStart();
 
-    // Decrements that the reference value of timerSeconds by one and than updates the time value in state.
-    const runTimer = () => {  
-        timerComponent.updatedSeconds--;
-        // Wrap the updatedSeconds property in a Math.max() to prevent the timer display from rendering negative numbers.
-        setCount(Math.max(0, timerComponent.updatedSeconds));
+    useEffect(() => {
 
-        // Set the countingStatus state variable to false to stop the countdown timer.
-        if (timerComponent.updatedSeconds === 0) {
+        // Handles stopping the countdown timer once the count value reaches zero.
+        if (count <= 0 && countingStatus !== null) {
+            setCount(0);
+            clearInterval(timeInterval.current);
             setCountingStatus(false);
+            setDisplaySaving(true);
+        }
+
+    }, [count, countingStatus, setCountingStatus, setDisplaySaving])
+
+    useEffect(() => {
+
+        // Clears the current interval upon the page loading.
+        clearInterval(timeInterval.current);
+
+    }, [])
+    
+    // Handles incrementing the value that represents the total amount of time in state.
+    const handleIncrement = amount => {
+        const totalSeconds = count;
+        setCount(totalSeconds + amount);
+    }
+
+    // Handles decrementing the value that represents the total amount of time in state.
+    const handleDecrement = amount => {
+
+        // Store a reference to the state value count to use for comparison.
+        const totalSeconds = count;
+        
+        // If count does not equal zero and the sum of totalSeconds minus the amount being decremented by is greater than zero than set the count to the result.
+        if (totalSeconds !== 0 && (totalSeconds - amount >= 0)) {
+            setCount(totalSeconds - amount);
         }
 
     }

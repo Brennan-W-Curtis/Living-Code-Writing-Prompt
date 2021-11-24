@@ -13,7 +13,7 @@ const UserRegistration = ({ setAuthenticatedUser }) => {
     // Sets the state value authenticatedUser when there's a change in the authenticated state.
     onAuthStateChanged(auth, currentUser => {
         setAuthenticatedUser(currentUser);
-    })
+    });
 
     // Asynchronously handle registering a user by creating a new user within Firebase based on their input email and password.
     const registerUser = async event => {
@@ -32,12 +32,13 @@ const UserRegistration = ({ setAuthenticatedUser }) => {
             try {
                 // Store the returned promise in a variable when generating a new user in Firebase authentication.
                 await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+                    // Store a display name chosen by the user to their account. 
                     .then(userCredential => {
-                        const docRef = doc(cloud, `users/${userCredential.user.uid}`);
+                        const docRef = await doc(cloud, `users/${userCredential.user.uid}`);
                         const docEntry = {
                             displayName: registerUsername
-                        }
-                        setDoc(docRef, docEntry)
+                        };
+                        await setDoc(docRef, docEntry);
                     });
 
                 // Clear the register username, email, and password inputs.
@@ -50,14 +51,15 @@ const UserRegistration = ({ setAuthenticatedUser }) => {
             }
 
         } else {
-            console.log("Please enter a valid email to register.")
+            console.log("Please enter a valid email to register.");
         }
 
     }
 
     return (
-        <div>
-            <div>
+        <div className="registrationContent">
+            <div className="registerationDescription">
+                <h2>Plume</h2>
                 <p>Once you register you'll be able to save your progress.</p>
             </div>
             <RegisterationForm 

@@ -1,5 +1,9 @@
 header {
 
+    .brandLogo {
+        display: flex;
+    }
+
     .brandIcon {
         position: relative;
         display: flex;
@@ -21,7 +25,15 @@ header {
 
     .headerMenu {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
+
+        // &::after {
+        //     content: "";
+        //     border-bottom: 1px solid black;
+        //     margin: .5rem 0 0 0;
+        //     width: 100%;
+        // }
 
         .menuLinks {
             display: flex;
@@ -75,7 +87,8 @@ header {
                 font-size: .8rem;
             }
 
-            .logoutButton {
+            .logoutButton,
+            .registerLink {
                 font-size: .8rem;
             }
 

@@ -60,7 +60,7 @@
         flex-wrap: wrap;
         position: absolute;
         background: none;
-        bottom: 5%;
+        bottom: 3%;
         left: 50%;
         transform: translateX(-50%);
         width: 25%;
@@ -72,6 +72,18 @@
         justify-content: center;
         margin: 0 auto;
         width: 100%;
+
+        .closeWindow {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;    
+        }
+
+        .closeIcon {
+            font-size: .75rem;
+            cursor: pointer;
+            transition: all .5s;
+        }
 
         .savingButtons {
             display: flex;

@@ -350,6 +350,11 @@ textarea {
     opacity: 0;
   }
 }
+header .brandLogo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 header .brandIcon {
   position: relative;
   display: -webkit-box;
@@ -375,6 +380,8 @@ header .headerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -447,7 +454,8 @@ header .headerMenu .menuAuthentication .loadingName {
   margin-right: 1rem;
   font-size: 0.8rem;
 }
-header .headerMenu .menuAuthentication .logoutButton {
+header .headerMenu .menuAuthentication .logoutButton,
+header .headerMenu .menuAuthentication .registerLink {
   font-size: 0.8rem;
 }
 header .headerMenu .menuAuthentication .loginButton,
@@ -783,7 +791,7 @@ header .displayToggle {
       flex-wrap: wrap;
   position: absolute;
   background: none;
-  bottom: 5%;
+  bottom: 3%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -800,6 +808,21 @@ header .displayToggle {
           justify-content: center;
   margin: 0 auto;
   width: 100%;
+}
+.writingSection .savingOptions .closeWindow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+.writingSection .savingOptions .closeIcon {
+  font-size: 0.75rem;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .writingSection .savingOptions .savingButtons {
   display: -webkit-box;
@@ -1004,6 +1027,82 @@ header .displayToggle {
   top: -0.1rem;
   right: -0.05rem;
   cursor: pointer;
+}
+
+.registrationSection {
+  height: 80vh;
+}
+.registrationSection .registrationContent {
+  position: relative;
+  top: 5rem;
+}
+.registrationSection .registerationDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.registrationSection .registerationDescription h2 {
+  text-align: center;
+  width: 100%;
+}
+.registrationSection .registerationDescription P {
+  font-size: 0.75rem;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+.registrationForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0.25rem;
+  width: 40%;
+  height: 30vh;
+  margin: 0 auto;
+}
+.registrationForm form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.registrationForm form input {
+  font-size: 0.75rem;
+  margin: 1rem 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.registrationForm form button {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.registrationForm form button:hover, .registrationForm form button:focus {
+  background-color: black;
+  color: white;
 }
 
 .errorPage {
