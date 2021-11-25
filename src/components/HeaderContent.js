@@ -18,14 +18,14 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                 <Link to="/"><BrandLogo /></Link>
                     <ul className="mainNavigation">
                         <li>
-                            <Link to="/" className="individualLinks">Writing Space</Link>
+                            <Link to="/writing-space" className="individualLinks">Writing Space</Link>
                         </li>
                         <li>
                             <Link to="suggested-music" className="individualLinks">Find Music</Link>
-                        </li>
+                        </li> 
                         <li>
                             <Link to="saved-articles" className="individualLinks">Saved Articles</Link>
-                        </li>
+                        </li> 
                     </ul>
                 </nav>
                 <div className="menuAuthentication">

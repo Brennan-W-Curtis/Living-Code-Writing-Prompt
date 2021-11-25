@@ -354,6 +354,11 @@ header .brandLogo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+header .brandLogo:hover {
+  color: black;
 }
 header .brandIcon {
   position: relative;
@@ -385,33 +390,6 @@ header .headerMenu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-header .headerMenu .menuLinks {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 50%;
-}
-header .headerMenu .menuLinks nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-header .headerMenu .menuLinks .mainNavigation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  width: 100%;
-}
-header .headerMenu .menuLinks .individualLinks {
-  font-size: 0.8rem;
 }
 header .headerMenu .menuAuthentication {
   display: -webkit-box;
@@ -471,6 +449,84 @@ header .displayToggle {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.menuLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+}
+.menuLinks nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+.menuLinks .mainNavigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+.menuLinks .individualLinks {
+  font-size: 0.8rem;
+  position: relative;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menuLinks .individualLinks:hover {
+  color: black;
+}
+.menuLinks .individualLinks::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menuLinks .individualLinks:hover::after, .menuLinks .individualLinks:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid black;
+}
+
+.productDescription p {
+  font-size: 0.75rem;
+  width: 40%;
+  margin: 0.5rem 0;
+}
+
+.productFeatures .featuresList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.productFeatures .featuresList li {
+  width: calc(100% / 3);
+  text-align: center;
+  min-height: 5rem;
+}
+.productFeatures .featuresList li p {
+  font-size: 0.75rem;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .featuresSection {
@@ -957,7 +1013,7 @@ header .displayToggle {
   font-size: 0.75rem;
 }
 .loadingSection .articleOptions .articleCounter span {
-  color: #91C788;
+  color: black;
   font-weight: 600;
 }
 .loadingSection .articleOptions .deleteArticles {

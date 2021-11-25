@@ -1,10 +1,16 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import IdleTimer from 'react-idle-timer';
-import WarningModal from './WarningModal';
 
-const InactivityWarning = ({ count, setCount, countingStatus, currentInterval, setCountingStatus, setCurrentInterval }) => {
-    // Store all state values for the component in the following variables.
-    const [ displayWarning, setDisplayWarning ] = useState(false); // Determines whether an inactivity warning is displayed to the user. 
+const InactivityWarning = props => {
+    // Destructured all state values passed as props.
+    const { 
+        handleStart,
+        countingStatus, 
+        setCountingStatus, 
+        displayWarning, 
+        setDisplayWarning, 
+        currentInterval, 
+    } = props;
 
     // Store a reference to the idle timer component and set it's current property to null.
     const idleRef = useRef(null);
@@ -23,18 +29,23 @@ const InactivityWarning = ({ count, setCount, countingStatus, currentInterval, s
             <IdleTimer 
                 onIdle={handleIdle}
                 ref={idleRef}
-                timeout={15 * 1000}
+                timeout={16 * 1000}
             />
             {
                 // If this state variable evaluates to true than the inactivity warning is displayed to the user.
                 displayWarning ?
-                    <WarningModal 
-                        count={count}
-                        setCount={setCount}
-                        setDisplayWarning={setDisplayWarning}
-                        setCountingStatus={setCountingStatus}
-                        stCurrentInterval={setCurrentInterval}
-                    /> :
+                    <div className="warningModal fadeIn">
+                        <p>You have been inactive for 15 seconds. Would you like to continue?</p>
+                        <button 
+                            onClick={() => {
+                                handleStart()
+                                setCountingStatus(true)
+                                setDisplayWarning(false)
+                            }}
+                        >
+                            Continue
+                        </button>
+                    </div> :
                     null
 
             }

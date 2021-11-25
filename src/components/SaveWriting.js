@@ -20,12 +20,12 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, 
             const userArticle = {
                 articleTitle: articleTitle,
                 articleBody: userInput      
-            }
+            };
 
             // Updates the array stored inside the user's document without overwriting previously saved content by the authenticated user.  
             const docEntry = {
                 userArticles: arrayUnion(userArticle)
-            }
+            };
             
             // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one.  
             await setDoc(docRef, docEntry, { merge: true });
@@ -44,14 +44,19 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, 
 
     // Handles exporting the user's article into a PDF image format to download.
     const handleExport = () => {
+        // Creates a reference to the imported module that creates PDFs.
         const document = new jsPDF();
+        
+        // Access the user's input from state and insert the content as text within the document.
         document.text(`${userInput}`, 20, 20);
+        
+        // Access the article's title from the cloud database and use the article's title for naming the document. 
         document.save(`${articleTitle}.pdf`);
     }
 
     // Handles closing the saving options window.
     const handleClose = () => {
-        // Use a boolean state value to determine whether it displays
+        // Uses a boolean state value to determine whether it displays
         setSaveFadingOut(true);
         setTimeout(() => setDisplaySaving(false), 1000);
         setTimeout(() => setSaveFadingOut(false), 1000);

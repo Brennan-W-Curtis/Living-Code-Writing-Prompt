@@ -7,6 +7,7 @@ import LoadArticles from './components/LoadArticles';
 import FindMusic from './components/FindMusic';
 import ErrorPage from './components/ErrorPage';
 import UserRegistration from './components/UserRegistration';
+import LandingPage from './components/LandingPage';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -33,6 +34,11 @@ const App = () => {
         <div className="wrapper">
           <Switch>
             <Route exact path="/">
+              <section>
+                <LandingPage />
+              </section>
+            </Route>
+            <Route path="/writing-space">
               <MainContent 
                 authenticatedUser={authenticatedUser}
                 count={count}

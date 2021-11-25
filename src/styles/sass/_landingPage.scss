@@ -1,0 +1,32 @@
+.productDescription {
+    
+    p {
+        font-size: .75rem;
+        width: 40%;
+        margin: .5rem 0;
+    }
+
+}
+
+.productFeatures {
+
+    .featuresList {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: calc(100% / 3);
+            text-align: center;
+            min-height: 5rem;
+
+            p {
+                font-size: .75rem;
+                width: 50%;
+                margin: 0 auto;
+            }
+
+        }
+
+    }
+
+}

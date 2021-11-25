@@ -34,11 +34,11 @@ const UserRegistration = ({ setAuthenticatedUser }) => {
                 await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
                     // Store a display name chosen by the user to their account. 
                     .then(userCredential => {
-                        const docRef = await doc(cloud, `users/${userCredential.user.uid}`);
+                        const docRef = doc(cloud, `users/${userCredential.user.uid}`);
                         const docEntry = {
                             displayName: registerUsername
                         };
-                        await setDoc(docRef, docEntry);
+                        setDoc(docRef, docEntry);
                     });
 
                 // Clear the register username, email, and password inputs.

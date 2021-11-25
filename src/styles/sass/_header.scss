@@ -2,6 +2,12 @@ header {
 
     .brandLogo {
         display: flex;
+        transition: all .5s;
+
+        &:hover {
+            color: $primaryColour;
+        }
+
     }
 
     .brandIcon {
@@ -34,29 +40,6 @@ header {
         //     margin: .5rem 0 0 0;
         //     width: 100%;
         // }
-
-        .menuLinks {
-            display: flex;
-            width: 50%;
-
-            nav {
-                display: flex;
-                width: 100%;
-    
-            }
-            
-            .mainNavigation {
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                width: 100%;
-            }
-
-            .individualLinks {
-                font-size: .8rem;
-            } 
-            
-        }
 
         .menuAuthentication {
             display: flex;

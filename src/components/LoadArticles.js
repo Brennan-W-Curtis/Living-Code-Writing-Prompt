@@ -70,12 +70,15 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
         try {
             // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
             const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+
             // Assign a method that deletes the field that it's assigned to delete all of the user's articles. 
             const docEntry = {
                 userArticles: deleteField()
             };
+
             // Asynchronously update the document with the docEntry object.
             await updateDoc(docRef, docEntry);
+            
         } catch(error) {
             console.log(error);
         }
