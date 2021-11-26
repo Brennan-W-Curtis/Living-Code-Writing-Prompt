@@ -18,7 +18,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                 <Link to="/"><BrandLogo /></Link>
                     <ul className="mainNavigation">
                         <li>
-                            <Link to="/writing-space" className="individualLinks">Writing Space</Link>
+                            <Link to="writing-space" className="individualLinks">Writing Space</Link>
                         </li>
                         <li>
                             <Link to="suggested-music" className="individualLinks">Find Music</Link>

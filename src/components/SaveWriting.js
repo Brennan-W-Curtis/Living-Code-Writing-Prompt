@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { cloud } from '../firebase';
 import { arrayUnion, doc, setDoc } from 'firebase/firestore';
-import { jsPDF } from 'jspdf';
+import MyDocument from "./MyDocument";
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import { FaWindowClose } from 'react-icons/fa';
 
 const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, setDisplaySaving, saveFadingOut, setSaveFadingOut, userInput, setUserInput }) => {
@@ -42,18 +43,6 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, 
 
     }
 
-    // Handles exporting the user's article into a PDF image format to download.
-    const handleExport = () => {
-        // Creates a reference to the imported module that creates PDFs.
-        const document = new jsPDF();
-        
-        // Access the user's input from state and insert the content as text within the document.
-        document.text(`${userInput}`, 20, 20);
-        
-        // Access the article's title from the cloud database and use the article's title for naming the document. 
-        document.save(`${articleTitle}.pdf`);
-    }
-
     // Handles closing the saving options window.
     const handleClose = () => {
         // Uses a boolean state value to determine whether it displays
@@ -91,11 +80,9 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, 
                             >
                                 Save
                             </button>
-                            <button
-                                onClick={handleExport}
-                            >
-                                Download
-                            </button>
+                            <PDFDownloadLink document={<MyDocument userInput={userInput} />} fileName={`${articleTitle}.pdf`}>
+                                <button>Download</button>
+                            </PDFDownloadLink>
                         </div>
                     </div> :
                     null

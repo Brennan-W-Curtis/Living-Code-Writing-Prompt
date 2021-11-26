@@ -358,7 +358,7 @@ header .brandLogo {
   transition: all 0.5s;
 }
 header .brandLogo:hover {
-  color: black;
+  color: #23395B;
 }
 header .brandIcon {
   position: relative;
@@ -482,7 +482,7 @@ header .displayToggle {
   transition: all 0.5s;
 }
 .menuLinks .individualLinks:hover {
-  color: black;
+  color: #23395B;
 }
 .menuLinks .individualLinks::after {
   display: block;
@@ -502,15 +502,32 @@ header .displayToggle {
           transform: scaleX(1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #23395B;
 }
 
-.productDescription p {
+.productDescription .descriptionContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.productDescription .descriptionContent p {
   font-size: 0.75rem;
-  width: 40%;
+  width: 100%;
   margin: 0.5rem 0;
 }
 
+.productFeatures {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 60vh;
+}
 .productFeatures .featuresList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -519,13 +536,14 @@ header .displayToggle {
       flex-wrap: wrap;
 }
 .productFeatures .featuresList li {
-  width: calc(100% / 3);
+  width: calc((100% / 3) - 1rem);
   text-align: center;
+  margin: 0 0.5rem;
   min-height: 5rem;
 }
 .productFeatures .featuresList li p {
   font-size: 0.75rem;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -911,6 +929,11 @@ header .displayToggle {
   color: white;
 }
 
+.wordCount p {
+  font-size: 0.75rem;
+  margin: 0.1rem 0 0 0;
+}
+
 .findMusic .musicDescription {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1013,7 +1036,7 @@ header .displayToggle {
   font-size: 0.75rem;
 }
 .loadingSection .articleOptions .articleCounter span {
-  color: black;
+  color: #23395B;
   font-weight: 600;
 }
 .loadingSection .articleOptions .deleteArticles {

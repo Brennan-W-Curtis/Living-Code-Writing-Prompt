@@ -3,8 +3,10 @@ const LandingPage = () => {
         <div>
             <div className="productDescription">
                 <h2>Dedicated to Respecting Your Time</h2>
-                <p>Modern word processors purposefully remove features to prevent distracting you from writing. We follow in this tradition because we value your time.</p>
-                <p>Plume is a simple text editor designed for writers to focus on telling a story while also helping them set healthy boundaries.</p>
+                <div className="descriptionContent">
+                    <p>Modern word processors purposefully remove features to prevent distracting you from writing. We follow in this tradition because we value your time.</p>
+                    <p>Plume is a simple text editor designed for writers to focus on telling a story while also helping them set healthy boundaries.</p>
+                </div>
             </div>
             <div className="productFeatures">
                 <ul className="featuresList">

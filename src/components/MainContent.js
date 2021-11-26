@@ -6,6 +6,7 @@ import CommunalPrompts from './CommunalPrompts';
 import ContributePrompt from './ContributePrompt';
 import SaveWriting from './SaveWriting';
 import UserNotifications from './UserNotifications';
+import WordCount from './WordCount';
 
 const MainContent = props => {
     // Destructured all state values passed as props.
@@ -104,6 +105,11 @@ const MainContent = props => {
                     setSaveFadingOut={setSaveFadingOut}
                     userInput={userInput}
                     setUserInput={setUserInput}
+                />
+              </section>
+              <section className="eventsSection">
+                <WordCount 
+                    userInput={userInput}
                 />
                 <UserNotifications 
                     userActivity={userActivity}
