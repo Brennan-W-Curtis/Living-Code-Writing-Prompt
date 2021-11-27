@@ -1,6 +1,13 @@
-const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPassword, setLoginPassword }) => {
+import { FaWindowClose } from 'react-icons/fa';
+
+const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPassword, setLoginPassword, setDisplayLogin }) => {
     return (
-        <div>
+        <div className="authenticationForm fadeIn">
+            <div className="windowInteraction">
+                <FaWindowClose 
+                    onClick={() => setDisplayLogin(false)}
+                />
+            </div>
             <form action="submit">
                 <label htmlFor="loginEmail" className="sr-only">Login Email</label>
                 <input 

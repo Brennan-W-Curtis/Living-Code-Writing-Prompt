@@ -1,15 +1,42 @@
-// @mixin genericButtons {
-//     font-size: .75rem;
-//     background: none;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     transition: all .5s;
+@mixin linkHovers {
 
-//     &:hover,
-//     &:focus {
-//         background-color: black;
-//         color: white;
-//     }
+    &:hover {
+        color: $primaryColour;
+    }
+    
+    &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.05rem;
+        width: 100%;
+        transform: scaleX(0);
+        border-bottom: 1px solid black;
+        transition: all .5s;
+    }
 
-// }
+    &:hover::after,
+    &:focus-within::after {
+        transform: scaleX(1);
+        transition: all .5s;
+        border-bottom: 1px solid $primaryColour;
+    }
+
+}
+
+@mixin genericButtons {
+    font-size: .75rem;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s;
+
+    &:hover,
+    &:focus {
+        background-color: black;
+        color: white;
+    }
+
+}

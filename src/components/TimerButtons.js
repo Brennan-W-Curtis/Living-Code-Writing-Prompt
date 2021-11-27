@@ -4,12 +4,20 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
             <div className="playbackButtons">
                 {
                     countingStatus === null ?
-                        <button
-                            className="startButton"
-                            onClick={handleStart}
-                        >
-                            Start
-                        </button> :
+                        <div className="countingNull">
+                            <button
+                                className="startButton"
+                                onClick={handleStart}
+                            >
+                                Start
+                            </button>
+                            <button
+                                className="resetButton"
+                                onClick={handleReset}
+                            >
+                                Reset
+                            </button> 
+                        </div> :
                         null
                 }
                 {

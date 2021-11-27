@@ -70,6 +70,15 @@ header {
                 font-size: .8rem;
             }
 
+            .logoutRedirect {
+                display: flex;
+            }
+
+            .registerLink {
+                position: relative;
+                @include linkHovers;
+            }
+
             .logoutButton,
             .registerLink {
                 font-size: .8rem;
@@ -84,11 +93,6 @@ header {
 
         }
 
-    }
-
-    .displayToggle {
-        display: flex;
-        justify-content: flex-end;
     }
     
 }

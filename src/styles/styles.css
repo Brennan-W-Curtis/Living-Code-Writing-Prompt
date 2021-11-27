@@ -432,6 +432,37 @@ header .headerMenu .menuAuthentication .loadingName {
   margin-right: 1rem;
   font-size: 0.8rem;
 }
+header .headerMenu .menuAuthentication .logoutRedirect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header .headerMenu .menuAuthentication .registerLink {
+  position: relative;
+}
+header .headerMenu .menuAuthentication .registerLink:hover {
+  color: #23395B;
+}
+header .headerMenu .menuAuthentication .registerLink::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+header .headerMenu .menuAuthentication .registerLink:hover::after, header .headerMenu .menuAuthentication .registerLink:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
+}
 header .headerMenu .menuAuthentication .logoutButton,
 header .headerMenu .menuAuthentication .registerLink {
   font-size: 0.8rem;
@@ -441,14 +472,6 @@ header .headerMenu .menuAuthentication .logoutButton {
   background: none;
   border: none;
   cursor: pointer;
-}
-header .displayToggle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
 }
 
 .menuLinks {
@@ -503,6 +526,42 @@ header .displayToggle {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
+}
+
+.displayToggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.displayToggle .loginModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.displayToggle .loginModal .authenticationForm {
+  z-index: 100;
+}
+.displayToggle .loginModal .windowInteraction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.displayToggle .loginModal form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .productDescription .descriptionContent {
@@ -597,7 +656,6 @@ header .displayToggle {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -633,7 +691,6 @@ header .displayToggle {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -678,6 +735,7 @@ header .displayToggle {
           align-items: center;
   width: 100%;
 }
+.countdownTimer .timerInterface .playbackButtons .countingNull,
 .countdownTimer .timerInterface .playbackButtons .countingTrue,
 .countdownTimer .timerInterface .playbackButtons .countingFalse {
   display: -webkit-box;
@@ -972,7 +1030,6 @@ header .displayToggle {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }

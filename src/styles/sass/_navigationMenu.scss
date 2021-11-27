@@ -19,28 +19,7 @@
         position: relative;
         transition: all .5s;
 
-        &:hover {
-            color: $primaryColour;
-        }
-        
-        &::after {
-            display: block;
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 1.05rem;
-            width: 100%;
-            transform: scaleX(0);
-            border-bottom: 1px solid black;
-            transition: all .5s;
-        }
-
-        &:hover::after,
-        &:focus-within::after {
-            transform: scaleX(1);
-            transition: all .5s;
-            border-bottom: 1px solid $primaryColour;
-        }
+        @include linkHovers;
 
     } 
     

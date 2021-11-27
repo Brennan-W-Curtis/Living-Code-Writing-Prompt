@@ -60,6 +60,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                             <UserAuthentication 
                                 authenticatedUser={authenticatedUser}
                                 setAuthenticatedUser={setAuthenticatedUser}
+                                setDisplayLogin={setDisplayLogin}
                             /> 
                         </div> :
                         null

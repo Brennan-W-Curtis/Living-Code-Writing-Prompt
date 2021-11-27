@@ -4,9 +4,8 @@ import WritingSpace from './WritingSpace';
 import InactivityWarning from './InactivityWarning';
 import CommunalPrompts from './CommunalPrompts';
 import ContributePrompt from './ContributePrompt';
-import SaveWriting from './SaveWriting';
-import UserNotifications from './UserNotifications';
 import WordCount from './WordCount';
+import SaveWriting from './SaveWriting';
 
 const MainContent = props => {
     // Destructured all state values passed as props.
@@ -18,7 +17,6 @@ const MainContent = props => {
         setCountingStatus,
         userInput, 
         setUserInput, 
-        userActivity, 
         setUserActivity 
     } = props;
 
@@ -110,9 +108,6 @@ const MainContent = props => {
               <section className="eventsSection">
                 <WordCount 
                     userInput={userInput}
-                />
-                <UserNotifications 
-                    userActivity={userActivity}
                 />
               </section>
         </>

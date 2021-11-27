@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { auth, cloud } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
 import AuthenticationForm from './AuthenticationForm';
 
-const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
+const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDisplayLogin }) => {
     // Store all state values for the component in the following variables.
     const [ loginEmail, setLoginEmail ] = useState(""); // Stores the user email input while signning in.
     const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
@@ -77,6 +78,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
                         setLoginEmail={setLoginEmail}
                         loginPassword={loginPassword}
                         setLoginPassword={setLoginPassword}
+                        setDisplayLogin={setDisplayLogin}
                     /> :
                     <div className="currentUser">
                         {/* If the state variable authenticatedUser evaluates to true the user's email is rendered to the page. */}
@@ -85,10 +87,12 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser }) => {
                                 <p className="loadingName">Loading...</p> :
                                 <p className="displayName">{authenticatedUser ? `Welcome, ${displayName}` : ""}</p>
                         }
-                        <button
-                            className="logoutButton"
-                            onClick={logoutUser}
-                        >Sign Out</button>
+                        <Link to="/" className="logoutRedirect">
+                            <button
+                                className="logoutButton"
+                                onClick={logoutUser}
+                            >Sign Out</button>
+                        </Link>
                     </div>
             }
         </div>

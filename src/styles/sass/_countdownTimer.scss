@@ -17,6 +17,7 @@
             align-items: center;
             width: 100%;
 
+            .countingNull,
             .countingTrue,
             .countingFalse {
                 display: flex;
@@ -30,19 +31,7 @@
         .stopButton,
         .resumeButton,
         .resetButton {
-            font-size: .75rem;
-            background: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all .5s;
-
-            &:hover,
-            &:focus {
-                background-color: black;
-                color: white;
-            }
-
+            @include genericButtons;
         }
        
     }

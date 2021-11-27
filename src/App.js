@@ -8,6 +8,7 @@ import FindMusic from './components/FindMusic';
 import ErrorPage from './components/ErrorPage';
 import UserRegistration from './components/UserRegistration';
 import LandingPage from './components/LandingPage';
+import UserNotifications from './components/UserNotifications';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -15,8 +16,10 @@ const App = () => {
   const [ countingStatus, setCountingStatus] = useState(null); // Determines whether the timer is counting down and which buttons are rendered.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
+  const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
   const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
+  const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
 
   return (
     <Router>
@@ -62,7 +65,11 @@ const App = () => {
             <Route path="/suggested-music">
               <section className="musicSection">
                 <FindMusic 
+                  accessToken={accessToken}
+                  setAccessToken={setAccessToken}
                   authenticatedUser={authenticatedUser}
+                  userVerified={userVerified}
+                  setUserVerified={setUserVerified}
                 />
               </section>
             </Route>
@@ -83,6 +90,9 @@ const App = () => {
       </main>
       <footer className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
+          <UserNotifications 
+            userActivity={userActivity}
+          />
         </div>
       </footer>
     </Router>

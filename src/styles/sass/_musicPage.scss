@@ -27,20 +27,7 @@
         margin: 0 auto;
 
         button {
-            font-size: .75rem;
-            background: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: .75rem;
-            transition: all .5s;
-
-            &:hover,
-            &:focus {
-                background-color: black;
-                color: white;
-            }
-
+            @include genericButtons;
         }
 
     }
