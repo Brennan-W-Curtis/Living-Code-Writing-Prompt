@@ -64,14 +64,21 @@ header {
             }
 
             .displayName,
-            .loginButton,
+            .loginLink,
             .loadingName {
                 margin-right: 1rem;
                 font-size: .8rem;
             }
 
+            .loginLink {
+                position: relative;
+                @include linkHovers;
+            }
+
             .logoutRedirect {
                 display: flex;
+                position: relative;
+                @include linkHovers;
             }
 
             .registerLink {
@@ -79,13 +86,12 @@ header {
                 @include linkHovers;
             }
 
-            .logoutButton,
+            .logoutRedirect,
             .registerLink {
                 font-size: .8rem;
             }
 
-            .loginButton,
-            .logoutButton {
+            .loginLink {
                 background: none;
                 border: none;
                 cursor: pointer;
@@ -93,6 +99,11 @@ header {
 
         }
 
+    }
+
+    .displayToggle {
+        display: flex;
+        justify-content: flex-end;
     }
     
 }

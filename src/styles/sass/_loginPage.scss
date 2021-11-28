@@ -1,12 +1,12 @@
-.registrationSection {
+.authenticationSection {
     height: 80vh;
 
-    .registrationContent {
+    .authenticationContent {
         position: relative;
         top: 5rem;
     }
 
-    .registerationDescription {
+    .authenticationDescription {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -27,8 +27,7 @@
 
 }
 
-
-.registrationForm {
+.authenticationForm {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +52,7 @@
 
         button {
             @include genericButtons;
+
         }
 
     }

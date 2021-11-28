@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { cloud } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
 import axios from 'axios';
 
-const DisplayPlaylists = ({ accessToken, authenticatedUser }) => {
+const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
     // Store all state values for the component in the following variables.
     const [ playlistData, setPlaylistData ] = useState({}); // Stores an object with all the data on the authenticated user's playlists returned by the spotify api.
 
@@ -22,6 +20,7 @@ const DisplayPlaylists = ({ accessToken, authenticatedUser }) => {
                 }
             })
             .then(response => {
+
                 // Store a reference to the playlist objects.
                 const playlistArray = response.data;
                 
@@ -42,45 +41,18 @@ const DisplayPlaylists = ({ accessToken, authenticatedUser }) => {
 
                 // Store the data returned by the API in a state variable.
                 setPlaylistData(playlistDetails);
-                 
+                    
+            })
+            .catch(error => {
+                console.log(error);
+                setUserVerified(false);
             });
             
         } catch(error) {
             console.log(error.message);
         }
 
-    }, [accessToken, playlistData, setPlaylistData]);
-
-    useEffect(() => {
-
-        // Asynchronously store the user's playlist data to the cloud database.
-        const storePlaylists = async () => {
-
-            try {
-
-                // If the current user is authenticated then all of their playlists will be sent to the cloud database.
-                if (authenticatedUser) {
-                    // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database. 
-                    const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
-        
-                    // Updates the user's document to include a field that contains all the relevant data of their playlists.  
-                    const docEntry = {
-                        playlistData
-                    };
-        
-                    // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one
-                    await setDoc(docRef, docEntry, { merge: true });
-                }
-
-            } catch(error) {
-                console.log(error.message);
-            }
-
-        }
-
-        storePlaylists();
-
-    }, [authenticatedUser, playlistData])
+    }, [accessToken, playlistData, setPlaylistData, setUserVerified]);
 
     return (
         <div className="displayPlaylists">

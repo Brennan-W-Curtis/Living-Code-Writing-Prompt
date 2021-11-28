@@ -3,7 +3,7 @@ const RegisterationForm = props => {
     const { registerUser, registerEmail, setRegisterEmail, registerPassword, setRegisterPassword, registerUsername, setRegisterUsername } = props;
 
     return (
-        <div className="registrationForm">
+        <div className="registrationForm fadeIn">
             <form action="submit">
                 <label htmlFor="registerUsername" className="sr-only">Register Username</label>
                 <input 

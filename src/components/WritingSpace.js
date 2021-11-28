@@ -10,7 +10,7 @@ const WritingSpace = ({ userInput, setUserInput }) => {
                     // Monitors changes in the user's input.
                     onChange={event => setUserInput(event.target.value)}
                     value={userInput}
-                    placeholder="Write to your heart's content and let your feather dance."
+                    placeholder="Write to your heart's content."
                 ></textarea>
             </form>
         </div>        

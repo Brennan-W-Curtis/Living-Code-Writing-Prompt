@@ -98,6 +98,23 @@ textarea {
 
 }
 
+.focusActive {
+    animation: focusActive 1s cubic-bezier(.25, .1, .25, 1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes focusActive {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
 // Code Debugging
 // * {
 //     border: 1px solid red;

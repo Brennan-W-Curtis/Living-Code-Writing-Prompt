@@ -350,6 +350,30 @@ textarea {
     opacity: 0;
   }
 }
+.focusActive {
+  -webkit-animation: focusActive 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+          animation: focusActive 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes focusActive {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes focusActive {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 header .brandLogo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -427,20 +451,70 @@ header .headerMenu .menuAuthentication .currentUser {
   display: flex;
 }
 header .headerMenu .menuAuthentication .displayName,
-header .headerMenu .menuAuthentication .loginButton,
+header .headerMenu .menuAuthentication .loginLink,
 header .headerMenu .menuAuthentication .loadingName {
   margin-right: 1rem;
   font-size: 0.8rem;
+}
+header .headerMenu .menuAuthentication .loginLink {
+  position: relative;
+}
+header .headerMenu .menuAuthentication .loginLink:hover, header .headerMenu .menuAuthentication .loginLink:focus {
+  color: #23395B;
+}
+header .headerMenu .menuAuthentication .loginLink::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+header .headerMenu .menuAuthentication .loginLink:hover::after, header .headerMenu .menuAuthentication .loginLink:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
 }
 header .headerMenu .menuAuthentication .logoutRedirect {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+}
+header .headerMenu .menuAuthentication .logoutRedirect:hover, header .headerMenu .menuAuthentication .logoutRedirect:focus {
+  color: #23395B;
+}
+header .headerMenu .menuAuthentication .logoutRedirect::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+header .headerMenu .menuAuthentication .logoutRedirect:hover::after, header .headerMenu .menuAuthentication .logoutRedirect:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
 }
 header .headerMenu .menuAuthentication .registerLink {
   position: relative;
 }
-header .headerMenu .menuAuthentication .registerLink:hover {
+header .headerMenu .menuAuthentication .registerLink:hover, header .headerMenu .menuAuthentication .registerLink:focus {
   color: #23395B;
 }
 header .headerMenu .menuAuthentication .registerLink::after {
@@ -463,15 +537,22 @@ header .headerMenu .menuAuthentication .registerLink:hover::after, header .heade
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
 }
-header .headerMenu .menuAuthentication .logoutButton,
+header .headerMenu .menuAuthentication .logoutRedirect,
 header .headerMenu .menuAuthentication .registerLink {
   font-size: 0.8rem;
 }
-header .headerMenu .menuAuthentication .loginButton,
-header .headerMenu .menuAuthentication .logoutButton {
+header .headerMenu .menuAuthentication .loginLink {
   background: none;
   border: none;
   cursor: pointer;
+}
+header .displayToggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .menuLinks {
@@ -504,7 +585,7 @@ header .headerMenu .menuAuthentication .logoutButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.menuLinks .individualLinks:hover {
+.menuLinks .individualLinks:hover, .menuLinks .individualLinks:focus {
   color: #23395B;
 }
 .menuLinks .individualLinks::after {
@@ -528,40 +609,50 @@ header .headerMenu .menuAuthentication .logoutButton {
   border-bottom: 1px solid #23395B;
 }
 
-.displayToggle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+.toggleLabel {
+  position: relative;
+  display: inline-block;
+  width: calc(3rem * .5);
+  height: calc(1.7rem * .5);
 }
-.displayToggle .loginModal {
+.toggleLabel input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggleLabel input:checked + .modeSlider {
+  background-color: white;
+}
+.toggleLabel input:checked + .modeSlider::before {
+  background-color: black;
+  -webkit-transform: translateX(calc(1.3rem * .5));
+          transform: translateX(calc(1.3rem * .5));
+}
+.toggleLabel input:focus + .modeSlider {
+  -webkit-box-shadow: 0 0 calc(.05rem * .5) white;
+          box-shadow: 0 0 calc(.05rem * .5) white;
+}
+.toggleLabel .modeSlider {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
-.displayToggle .loginModal .authenticationForm {
-  z-index: 100;
-}
-.displayToggle .loginModal .windowInteraction {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-.displayToggle .loginModal form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.toggleLabel .modeSlider::before {
+  content: "";
+  position: absolute;
+  height: calc(1.3rem * .5);
+  width: calc(1.3rem * .5);
+  left: calc(.2rem * .5);
+  bottom: calc(.2rem * .5);
+  background-color: white;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .productDescription .descriptionContent {
@@ -687,6 +778,7 @@ header .headerMenu .menuAuthentication .logoutButton {
 }
 .contributePrompts .submitButton {
   font-size: 0.75rem;
+  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
@@ -812,35 +904,39 @@ header .headerMenu .menuAuthentication .logoutButton {
   left: 0.15rem;
   margin: 0 0.75rem;
 }
-.countdownTimer .timerDisplay .increaseTransition {
+.countdownTimer .timerDisplay .increaseButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .increaseTransition:hover, .countdownTimer .timerDisplay .increaseTransition:focus {
+.countdownTimer .timerDisplay .increaseButton:hover, .countdownTimer .timerDisplay .increaseButton:focus {
+  color: #23395B;
   -webkit-transform: translateY(-0.15rem);
           transform: translateY(-0.15rem);
 }
-.countdownTimer .timerDisplay .incrementTransition {
+.countdownTimer .timerDisplay .incrementButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .incrementTransition:hover, .countdownTimer .timerDisplay .incrementTransition:focus {
+.countdownTimer .timerDisplay .incrementButton:hover, .countdownTimer .timerDisplay .incrementButton:focus {
+  color: #23395B;
   -webkit-transform: translateY(-0.15rem);
           transform: translateY(-0.15rem);
 }
-.countdownTimer .timerDisplay .decreaseTransition {
+.countdownTimer .timerDisplay .decreaseButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .decreaseTransition:hover, .countdownTimer .timerDisplay .decreaseTransition:focus {
+.countdownTimer .timerDisplay .decreaseButton:hover, .countdownTimer .timerDisplay .decreaseButton:focus {
+  color: #23395B;
   -webkit-transform: translateY(0.15rem);
           transform: translateY(0.15rem);
 }
-.countdownTimer .timerDisplay .decrementTransition {
+.countdownTimer .timerDisplay .decrementButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .decrementTransition:hover, .countdownTimer .timerDisplay .decrementTransition:focus {
+.countdownTimer .timerDisplay .decrementButton:hover, .countdownTimer .timerDisplay .decrementButton:focus {
+  color: #23395B;
   -webkit-transform: translateY(0.15rem);
           transform: translateY(0.15rem);
 }
@@ -876,15 +972,18 @@ header .headerMenu .menuAuthentication .logoutButton {
 .writingSection .writingSpace form {
   width: 100%;
 }
-.writingSection .writingSpace form textarea {
+.writingSection .writingSpace textarea {
   min-height: 45vh;
   font-size: 0.75rem;
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid black;
-  border-radius: 0.2rem;
+  border: none;
   resize: none;
   z-index: 10;
+}
+.writingSection .writingSpace textarea:focus {
+  outline: none;
+  border-left: 2px solid black;
 }
 .writingSection .colourOverlay {
   position: absolute;
@@ -1026,6 +1125,7 @@ header .headerMenu .menuAuthentication .logoutButton {
 .findMusic .apiLogin button,
 .findMusic .revealPlaylists button {
   font-size: 0.75rem;
+  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
@@ -1111,8 +1211,6 @@ header .headerMenu .menuAuthentication .logoutButton {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid black;
-  border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
 }
@@ -1163,6 +1261,84 @@ header .headerMenu .menuAuthentication .logoutButton {
   top: -0.1rem;
   right: -0.05rem;
   cursor: pointer;
+}
+
+.authenticationSection {
+  height: 80vh;
+}
+.authenticationSection .authenticationContent {
+  position: relative;
+  top: 5rem;
+}
+.authenticationSection .authenticationDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.authenticationSection .authenticationDescription h2 {
+  text-align: center;
+  width: 100%;
+}
+.authenticationSection .authenticationDescription P {
+  font-size: 0.75rem;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+.authenticationForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0.25rem;
+  width: 40%;
+  height: 30vh;
+  margin: 0 auto;
+}
+.authenticationForm form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 75%;
+}
+.authenticationForm form input {
+  font-size: 0.75rem;
+  margin: 1rem 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+.authenticationForm form button {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.authenticationForm form button:hover, .authenticationForm form button:focus {
+  background-color: black;
+  color: white;
 }
 
 .registrationSection {
@@ -1219,20 +1395,22 @@ header .headerMenu .menuAuthentication .logoutButton {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 75%;
 }
 .registrationForm form input {
   font-size: 0.75rem;
   margin: 1rem 0;
   border: none;
   border-bottom: 1px solid black;
+  width: 100%;
 }
 .registrationForm form button {
   font-size: 0.75rem;
+  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }

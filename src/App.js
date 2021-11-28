@@ -9,6 +9,7 @@ import ErrorPage from './components/ErrorPage';
 import UserRegistration from './components/UserRegistration';
 import LandingPage from './components/LandingPage';
 import UserNotifications from './components/UserNotifications';
+import UserAuthentication from './components/UserAuthentication';
 
 const App = () => {
   // Store all state values for the application in the following variables.
@@ -67,9 +68,16 @@ const App = () => {
                 <FindMusic 
                   accessToken={accessToken}
                   setAccessToken={setAccessToken}
-                  authenticatedUser={authenticatedUser}
                   userVerified={userVerified}
                   setUserVerified={setUserVerified}
+                />
+              </section>
+            </Route>
+            <Route path="/authenticate-user">
+              <section className="authenticationSection">
+                <UserAuthentication 
+                  authenticatedUser={authenticatedUser}
+                  setAuthenticatedUser={setAuthenticatedUser}
                 />
               </section>
             </Route>

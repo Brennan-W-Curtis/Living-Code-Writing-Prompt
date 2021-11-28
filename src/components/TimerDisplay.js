@@ -39,7 +39,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleIncrement(300)}
                 >
                     <FaChevronUp 
-                        className="increaseTransition"
+                        className="increaseButton"
                     />
                 </button>
                 <button
@@ -47,7 +47,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleIncrement(5)}
                 >
                     <FaChevronUp 
-                        className="increaseTransition"
+                        className="increaseButton"
                     />
                 </button>
             </div>
@@ -57,7 +57,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleIncrement(60)}
                 >
                     <FaChevronUp 
-                        className="incrementTransition"
+                        className="incrementButton"
                     />
                 </button>
                 <button
@@ -65,7 +65,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleIncrement(1)}
                 >
                     <FaChevronUp 
-                        className="incrementTransition"
+                        className="incrementButton"
                     />
                 </button>
             </div>
@@ -79,7 +79,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleDecrement(60)}
                 >
                     <FaChevronDown 
-                        className="decrementTransition"
+                        className="decrementButton"
                     />
                 </button>
                 <button
@@ -87,7 +87,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleDecrement(1)}
                 >
                     <FaChevronDown 
-                        className="decrementTransition"
+                        className="decrementButton"
                     />
                 </button>
             </div>
@@ -97,7 +97,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleDecrement(300)}
                 >
                     <FaChevronDown 
-                        className="decreaseTransition"
+                        className="decreaseButton"
                     />
                 </button>
                 <button
@@ -105,7 +105,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                     onClick={() => handleDecrement(5)}
                 >
                     <FaChevronDown 
-                        className="decreaseTransition"
+                        className="decreaseButton"
                     />
                 </button>
             </div>

@@ -31,7 +31,19 @@
         .stopButton,
         .resumeButton,
         .resetButton {
-            @include genericButtons;
+            font-size: .75rem;
+            background: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover,
+            &:focus {
+                background-color: black;
+                color: white;
+            }
+
         }
        
     }
@@ -75,41 +87,45 @@
 
         }
 
-        .increaseTransition {
+        .increaseButton {
             transition: all .5s;
 
             &:hover,
             &:focus {
+                color: $primaryColour;
                 transform: translateY(-.15rem);
             }
 
         }
 
-        .incrementTransition {
+        .incrementButton {
             transition: all .5s;
 
             &:hover,
             &:focus {
+                color: $primaryColour;
                 transform: translateY(-.15rem);
             }
 
         }
 
-        .decreaseTransition {
+        .decreaseButton {
             transition: all .5s;
 
             &:hover,
             &:focus {
+                color: $primaryColour;
                 transform: translateY(.15rem);
             }
 
         }
 
-        .decrementTransition {
+        .decrementButton {
             transition: all .5s;
 
             &:hover,
             &:focus {
+                color: $primaryColour;
                 transform: translateY(.15rem);
             }
 

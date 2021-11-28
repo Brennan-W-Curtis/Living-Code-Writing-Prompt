@@ -8,17 +8,21 @@
         width: 100%;
 
         form {
-            width: 100%;
+            width: 100%;    
+        }
 
-            textarea {
-                min-height: 45vh;
-                font-size: .75rem;
-                width: 100%;
-                padding: .5rem;
-                border: 1px solid black;
-                border-radius: .2rem;
-                resize: none;
-                z-index: 10;
+        textarea {
+            min-height: 45vh;
+            font-size: .75rem;
+            width: 100%;
+            padding: .5rem;
+            border: none;
+            resize: none;
+            z-index: 10;
+
+            &:focus {
+                outline: none;
+                border-left: 2px solid black;
             }
 
         }

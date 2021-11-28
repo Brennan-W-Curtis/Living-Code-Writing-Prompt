@@ -37,10 +37,16 @@ const ApiLogin = ({ setAccessToken, setUserVerified }) => {
             // Destructure the access token property from the splitParameters object.
             const { access_token } = spotifyParameters(window.location.hash);
             
-            // Set the state value accessToken to the value of access_token.
+            // Store the access_token returned by spotify within the state value accessToken.
             setAccessToken(access_token);
+
+            // Set the userVerified state value to true and enable them to access their playlists without signing in for an hour. 
             setUserVerified(true);
+
+            // Replace the current URL address without adding it to the history entries.
+            window.history.replaceState({}, document.title, "/suggested-music");
         }
+
     },[setAccessToken, setUserVerified])
 
     return (

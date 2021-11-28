@@ -1,21 +1,14 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModeToggle from './ModeToggle';
 import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
 
 const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, setToggleMode }) => {
-    // Store all state values for the component in the following variables.
-    const [ displayLogin, setDisplayLogin ] = useState(false); // Determines whether the login modal will be displayed.
-
-    // Handles wheher the login modal is displayed for the user.
-    const handleLogin = () => setDisplayLogin(!displayLogin);
-
     return (
         <header>
             <div className="headerMenu">
                 <nav className="menuLinks">
-                <Link to="/"><BrandLogo /></Link>
+                <BrandLogo />
                     <ul className="mainNavigation">
                         <li>
                             <Link to="writing-space" className="individualLinks">Writing Space</Link>
@@ -32,12 +25,12 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                     {
                         !authenticatedUser ?
                             <div className="userOptions">
-                                <button
-                                    className="loginButton"
-                                    onClick={handleLogin}
+                                <Link 
+                                    to="authenticate-user"
+                                    className="loginLink"
                                 >
-                                    Sign in
-                                </button>
+                                    Sign in   
+                                </Link>
                                 <Link to="register-account" className="registerLink">Register</Link>                            
                             </div> :
                             authenticatedUser ?
@@ -54,17 +47,6 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                     setToggleMode={setToggleMode}
                     toggleMode={toggleMode}
                 />
-                {
-                    displayLogin && !authenticatedUser ?
-                        <div className="loginModal">
-                            <UserAuthentication 
-                                authenticatedUser={authenticatedUser}
-                                setAuthenticatedUser={setAuthenticatedUser}
-                                setDisplayLogin={setDisplayLogin}
-                            /> 
-                        </div> :
-                        null
-                }
             </div>
         </header>
     )

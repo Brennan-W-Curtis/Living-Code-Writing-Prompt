@@ -1,0 +1,51 @@
+.toggleLabel {
+    position: relative;
+    display: inline-block;
+    width: calc(3rem * .5);
+    height: calc(1.7rem * .5);
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .modeSlider {
+            background-color: white;
+            
+            &::before {
+                background-color: black;
+                transform: translateX(calc(1.3rem * .5));
+            }
+
+        }
+
+        &:focus + .modeSlider {
+            box-shadow: 0 0 calc(.05rem * .5) white;
+        }
+
+    }
+
+    .modeSlider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+        transition: all .5s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: calc(1.3rem * .5);
+            width: calc(1.3rem * .5);
+            left: calc(.2rem * .5);
+            bottom: calc(.2rem * .5);
+            background-color: white;
+            transition: all .5s;
+        }
+
+    }
+
+}

@@ -60,7 +60,7 @@ const UserRegistration = ({ setAuthenticatedUser }) => {
         <div className="registrationContent">
             <div className="registerationDescription">
                 <h2>Plume</h2>
-                <p>Once you register you'll be able to save your progress.</p>
+                <p>Find more value in being productive.</p>
             </div>
             <RegisterationForm 
                 registerUser={registerUser}

@@ -1,6 +1,7 @@
 @mixin linkHovers {
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: $primaryColour;
     }
     
@@ -27,6 +28,7 @@
 
 @mixin genericButtons {
     font-size: .75rem;
+    padding: .5rem 1rem;
     background: none;
     border: none;
     border-radius: 5px;

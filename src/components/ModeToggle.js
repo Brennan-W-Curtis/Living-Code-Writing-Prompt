@@ -6,15 +6,15 @@ const ModeToggle = ({ setToggleMode, toggleMode }) => {
     }
 
     return (
-        <div>
-            <label htmlFor="" className="">
+        <div className="modeToggle">
+            <label htmlFor="modeToggle" className="toggleLabel">
                 <input 
                     type="checkbox" 
-                    name="" 
-                    id="" 
+                    name="modeToggle" 
+                    id="modeToggle" 
                     onChange={handleChange}
                 />
-                <span></span>
+                <span className="modeSlider"></span>
             </label>
         </div>
     )

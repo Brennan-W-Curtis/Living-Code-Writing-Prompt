@@ -1,7 +1,7 @@
 import ApiLogin from './ApiLogin';
 import DisplayPlaylists from "./DisplayPlaylists";
 
-const FindMusic = ({ accessToken, setAccessToken, authenticatedUser, userVerified, setUserVerified }) => {  
+const FindMusic = ({ accessToken, setAccessToken, userVerified, setUserVerified }) => {  
     return (
         <div className="findMusic">
             <div className="musicDescription">
@@ -21,7 +21,7 @@ const FindMusic = ({ accessToken, setAccessToken, authenticatedUser, userVerifie
                 userVerified ? 
                     <DisplayPlaylists 
                         accessToken={accessToken}
-                        authenticatedUser={authenticatedUser}
+                        setUserVerified={setUserVerified}
                     /> :
                     null
             }
