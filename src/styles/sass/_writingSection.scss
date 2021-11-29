@@ -18,11 +18,10 @@
             padding: .5rem;
             border: none;
             resize: none;
-            z-index: 10;
 
             &:focus {
                 outline: none;
-                border-left: 2px solid black;
+                border-left: 1px solid black;
             }
 
         }

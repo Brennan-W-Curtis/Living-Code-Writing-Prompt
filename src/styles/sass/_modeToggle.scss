@@ -10,7 +10,7 @@
         height: 0;
 
         &:checked + .modeSlider {
-            background-color: white;
+            background-color: #E6E6E6;
             
             &::before {
                 background-color: black;
@@ -20,7 +20,7 @@
         }
 
         &:focus + .modeSlider {
-            box-shadow: 0 0 calc(.05rem * .5) white;
+            box-shadow: 0 0 calc(.05rem * .5) #E6E6E6;
         }
 
     }
@@ -32,7 +32,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: black;
+        background-color: #272727;
         transition: all .5s;
 
         &::before {

@@ -15,6 +15,8 @@ const MainContent = props => {
         setCount, 
         countingStatus, 
         setCountingStatus,
+        currentPrompt,
+        promptIsLoading,
         userInput, 
         setUserInput, 
         setUserActivity 
@@ -54,6 +56,8 @@ const MainContent = props => {
                 <CommunalPrompts 
                     contributePrompt={contributePrompt}
                     setContributePrompt={setContributePrompt}
+                    currentPrompt={currentPrompt}
+                    promptIsLoading={promptIsLoading}
                     setContributeFadingOut={setContributeFadingOut}
                 />
                 <div className="primaryInteraction">

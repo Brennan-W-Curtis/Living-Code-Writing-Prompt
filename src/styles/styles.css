@@ -374,6 +374,94 @@ textarea {
     opacity: 0;
   }
 }
+.morningDisplay {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-color: white;
+}
+.morningDisplay * {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.eveningDisplay {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-color: #272727;
+}
+.eveningDisplay * {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.eveningDisplay .brandLogo h1,
+.eveningDisplay .brandLogo .iconContent {
+  color: white;
+}
+.eveningDisplay .brandLogo .iconNegative {
+  color: #272727;
+}
+.eveningDisplay .mainNavigation .individualLinks {
+  color: #E6E6E6;
+}
+.eveningDisplay .userAuthentication .currentUser p,
+.eveningDisplay .userAuthentication .currentUser .logoutRedirect {
+  color: #E6E6E6;
+}
+.eveningDisplay .productDescription {
+  color: white;
+}
+.eveningDisplay .productDescription .descriptionContent {
+  color: #E6E6E6;
+}
+.eveningDisplay .productFeatures {
+  color: #E6E6E6;
+}
+.eveningDisplay .productFeatures h3,
+.eveningDisplay .productFeatures .featureIcon {
+  color: white;
+}
+.eveningDisplay .promptDisplay p {
+  color: white;
+}
+.eveningDisplay .countdownTimer .playbackButtons button {
+  color: #E6E6E6;
+}
+.eveningDisplay .countdownTimer .increaseTime button,
+.eveningDisplay .countdownTimer .incrementTime button,
+.eveningDisplay .countdownTimer .decrementTime button,
+.eveningDisplay .countdownTimer .decreaseTime button {
+  color: #E6E6E6;
+}
+.eveningDisplay .countdownTimer .currentTime {
+  color: white;
+}
+.eveningDisplay .writingSpace textarea {
+  background-color: #272727;
+  color: #E6E6E6;
+}
+.eveningDisplay .eventsSection .wordCount {
+  color: #E6E6E6;
+}
+.eveningDisplay .musicSection .musicDescription h2 {
+  color: white;
+}
+.eveningDisplay .musicSection .musicDescription p {
+  color: #E6E6E6;
+}
+.eveningDisplay .musicSection .apiLogin button {
+  color: #E6E6E6;
+}
+.eveningDisplay .loadingSection .loadingDescription h2 {
+  color: white;
+}
+.eveningDisplay .loadingSection .loadingDescription p {
+  color: #E6E6E6;
+}
+.eveningDisplay .loadingSection .articleOptions p,
+.eveningDisplay .loadingSection .articleOptions button {
+  color: #E6E6E6;
+}
+
 header .brandLogo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -621,7 +709,7 @@ header .displayToggle {
   height: 0;
 }
 .toggleLabel input:checked + .modeSlider {
-  background-color: white;
+  background-color: #E6E6E6;
 }
 .toggleLabel input:checked + .modeSlider::before {
   background-color: black;
@@ -629,8 +717,8 @@ header .displayToggle {
           transform: translateX(calc(1.3rem * .5));
 }
 .toggleLabel input:focus + .modeSlider {
-  -webkit-box-shadow: 0 0 calc(.05rem * .5) white;
-          box-shadow: 0 0 calc(.05rem * .5) white;
+  -webkit-box-shadow: 0 0 calc(.05rem * .5) #E6E6E6;
+          box-shadow: 0 0 calc(.05rem * .5) #E6E6E6;
 }
 .toggleLabel .modeSlider {
   position: absolute;
@@ -639,7 +727,7 @@ header .displayToggle {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: black;
+  background-color: #272727;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -688,8 +776,11 @@ header .displayToggle {
 .productFeatures .featuresList li {
   width: calc((100% / 3) - 1rem);
   text-align: center;
-  margin: 0 0.5rem;
+  margin: 1rem 0.5rem;
   min-height: 5rem;
+}
+.productFeatures .featuresList li .featureIcon {
+  font-size: 1.5rem;
 }
 .productFeatures .featuresList li p {
   font-size: 0.75rem;
@@ -778,7 +869,6 @@ header .displayToggle {
 }
 .contributePrompts .submitButton {
   font-size: 0.75rem;
-  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
@@ -979,11 +1069,10 @@ header .displayToggle {
   padding: 0.5rem;
   border: none;
   resize: none;
-  z-index: 10;
 }
 .writingSection .writingSpace textarea:focus {
   outline: none;
-  border-left: 2px solid black;
+  border-left: 1px solid black;
 }
 .writingSection .colourOverlay {
   position: absolute;
@@ -1125,13 +1214,13 @@ header .displayToggle {
 .findMusic .apiLogin button,
 .findMusic .revealPlaylists button {
   font-size: 0.75rem;
-  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  padding: 0.5rem 1rem;
 }
 .findMusic .apiLogin button:hover, .findMusic .apiLogin button:focus,
 .findMusic .revealPlaylists button:hover,
@@ -1162,6 +1251,14 @@ header .displayToggle {
 }
 .findMusic .playlistCollection li p {
   font-size: 0.75rem;
+}
+.findMusic .playlistCollection .imageContainer {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.findMusic .playlistCollection .imageContainer:hover, .findMusic .playlistCollection .imageContainer:focus-within {
+  -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
 }
 
 .loadingSection .loadingDescription {
@@ -1261,6 +1358,8 @@ header .displayToggle {
   top: -0.1rem;
   right: -0.05rem;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .authenticationSection {
@@ -1328,7 +1427,6 @@ header .displayToggle {
 }
 .authenticationForm form button {
   font-size: 0.75rem;
-  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;
@@ -1406,7 +1504,6 @@ header .displayToggle {
 }
 .registrationForm form button {
   font-size: 0.75rem;
-  padding: 0.5rem 1rem;
   background: none;
   border: none;
   border-radius: 5px;

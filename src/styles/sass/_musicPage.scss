@@ -28,6 +28,7 @@
 
         button {
             @include genericButtons;
+            padding: .5rem 1rem;
         }
 
     }
@@ -49,6 +50,16 @@
 
             p {
                 font-size: .75rem;
+            }
+
+        }
+
+        .imageContainer {
+            transition: all .5s;
+
+            &:hover,
+            &:focus-within {
+                transform: translateY(-.5rem);
             }
 
         }

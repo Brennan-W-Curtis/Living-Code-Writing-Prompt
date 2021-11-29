@@ -1,18 +1,12 @@
 const ModeToggle = ({ setToggleMode, toggleMode }) => {
 
-    // Handles changing the current theme rendered to the page.
-    const handleChange = () => {
-        setToggleMode(!toggleMode);
-    }
-
     return (
         <div className="modeToggle">
-            <label htmlFor="modeToggle" className="toggleLabel">
+            <label className="toggleLabel">
                 <input 
                     type="checkbox" 
-                    name="modeToggle" 
-                    id="modeToggle" 
-                    onChange={handleChange}
+                    // Handles changing the current theme rendered to the page.
+                    onChange={() =>setToggleMode(!toggleMode)}
                 />
                 <span className="modeSlider"></span>
             </label>

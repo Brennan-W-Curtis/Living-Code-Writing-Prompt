@@ -1,26 +1,77 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import realtime from './firebase';
+import { ref, onValue } from 'firebase/database';
 import './styles/styles.css';
 import HeaderContent from './components/HeaderContent';
 import MainContent from './components/MainContent';
 import LoadArticles from './components/LoadArticles';
 import FindMusic from './components/FindMusic';
-import ErrorPage from './components/ErrorPage';
 import UserRegistration from './components/UserRegistration';
+import UserAuthentication from './components/UserAuthentication';
+import ErrorPage from './components/ErrorPage';
 import LandingPage from './components/LandingPage';
 import UserNotifications from './components/UserNotifications';
-import UserAuthentication from './components/UserAuthentication';
 
 const App = () => {
   // Store all state values for the application in the following variables.
   const [ count, setCount ] = useState(0); // Stores the total amount of time set by the user in seconds.
   const [ countingStatus, setCountingStatus] = useState(null); // Determines whether the timer is counting down and which buttons are rendered.
-  const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
+  const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
+  const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
+  const [ promptIsLoading, setPromptIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
+  const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
   const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
-  const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
+  const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
+
+   // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
+   useEffect(() => {
+    // Store a reference to the realtime database.
+    const dbRef = ref(realtime);
+
+    onValue(dbRef, snapshot => {
+
+        // Store a reference of the snapshot of the realtime database to access it's values.
+        const myData = snapshot.val();
+
+        // Create an empty array to store all of the prompts from the realtime database.
+        const databasePrompts = [];
+
+        // Iterate through the entirety of the myData object and push each value into an array.
+        for (let value in myData) {
+
+            // Declare an object that stores an individual prompt with it's respective id.
+            const promptObject = {
+                id: value,
+                prompt: myData[value]
+            }
+
+            // Push each prompt object to an array declared within the lexical scope.
+            databasePrompts.push(promptObject);
+
+        }
+
+        // Set the state variable with an empty array to an array with all of the prompt objects.
+        setStoredPrompts(databasePrompts);
+
+    });
+    
+}, []);
+
+useEffect(() => {
+        
+  // If the storedPrompts array length is greater than zero set the currentPrompt state variable to a prompt based on a randomly generated index. 
+  if (storedPrompts.length > 0) {
+      const randomIndex = Math.floor(Math.random() * storedPrompts.length);
+      setCurrentPrompt(storedPrompts[randomIndex].prompt);
+      setPromptIsLoading(false);
+  }
+
+  // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
+}, [storedPrompts]);
 
   return (
     <Router>
@@ -38,7 +89,7 @@ const App = () => {
         <div className="wrapper">
           <Switch>
             <Route exact path="/">
-              <section>
+              <section className="landingSection">
                 <LandingPage />
               </section>
             </Route>
@@ -49,6 +100,9 @@ const App = () => {
                 setCount={setCount}
                 countingStatus={countingStatus}
                 setCountingStatus={setCountingStatus}
+                currentPrompt={currentPrompt}
+                storedPrompts={storedPrompts}
+                promptIsLoading={promptIsLoading}
                 userInput={userInput}
                 setUserInput={setUserInput}
                 userActivity={userActivity}

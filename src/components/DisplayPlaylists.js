@@ -62,7 +62,7 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
                     // Iterate through all of the available playlists and render the artwork with a link to the playlist in spotify and some information about it.
                         playlistData.items.map((playlist, index) => {
                             return (
-                                <li key={index} className="fadeIn">
+                                <li key={index} className="userPlaylist fadeIn">
                                     <div className="imageContainer">
                                         <a href={playlist.spotifyUrl} target="_blank" rel="noreferrer">
                                             <img 

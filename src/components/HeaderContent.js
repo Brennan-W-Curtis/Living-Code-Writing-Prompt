@@ -8,7 +8,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
         <header>
             <div className="headerMenu">
                 <nav className="menuLinks">
-                <BrandLogo />
+                <Link to="/"><BrandLogo /></Link>
                     <ul className="mainNavigation">
                         <li>
                             <Link to="writing-space" className="individualLinks">Writing Space</Link>

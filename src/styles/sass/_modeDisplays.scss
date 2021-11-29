@@ -1,0 +1,180 @@
+.morningDisplay {
+    transition: all .5s;
+    background-color: white;
+
+    * {
+        transition: all .5s;
+    }
+
+    textarea {
+                    &:focus {
+                outline: none;
+                border-left: 1px solid black;
+            }
+    }
+
+}
+
+.eveningDisplay {
+    transition: all .5s;
+    background-color: $eveningBackground;
+
+    * {
+        transition: all .5s;
+    }
+
+    .brandLogo {
+
+        h1,
+        .iconContent {
+            color: $eveningHeadlines;
+        }
+
+        .iconNegative {
+            color: $eveningBackground;
+        }
+
+    }
+
+    .mainNavigation {
+
+        .individualLinks {
+            color: $eveningBody;
+        }
+
+    }
+
+    .userAuthentication {
+
+        .currentUser {
+
+            p,
+            .logoutRedirect {
+                color: $eveningBody;
+            }
+
+        }
+
+    }
+
+    .productDescription {
+        color: $eveningHeadlines;
+
+        .descriptionContent {
+            color: $eveningBody;
+        }
+
+    }
+
+    .productFeatures {
+        color: $eveningBody;
+
+        h3,
+        .featureIcon {
+            color: $eveningHeadlines;
+        }
+
+    }
+
+    .promptDisplay {
+
+        p {
+            color: $eveningHeadlines;
+        }
+
+    }
+
+    .countdownTimer {
+
+        .playbackButtons {
+
+            button {
+                color: $eveningBody;
+            }
+
+        }
+
+        .increaseTime,
+        .incrementTime,
+        .decrementTime,
+        .decreaseTime {
+
+            button {
+                color: $eveningBody;
+            }
+
+        }
+
+        .currentTime {
+            color: $eveningHeadlines;
+        }
+
+    }
+
+    .writingSpace {
+
+        textarea {
+            background-color: $eveningBackground;
+            color: $eveningBody;
+        }
+
+    }
+
+    .eventsSection {
+
+        .wordCount {
+            color: $eveningBody;
+        }
+
+    }
+
+    .musicSection {
+
+        .musicDescription {
+
+            h2 {
+                color: $eveningHeadlines;
+            }
+
+            p {
+                color: $eveningBody;
+            }
+
+        }
+
+        .apiLogin {
+
+            button {
+                color: $eveningBody;
+            }
+
+        }
+
+    }
+
+    .loadingSection {
+
+        .loadingDescription {
+
+            h2 {
+                color: $eveningHeadlines;
+            }
+
+            p {
+                color: $eveningBody;
+            }
+
+        }
+
+        .articleOptions {
+
+            p,
+            button {
+                color: $eveningBody;
+            }
+
+        }
+
+    }
+
+}
