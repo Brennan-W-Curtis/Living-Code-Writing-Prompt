@@ -63,10 +63,25 @@ header {
                 display: flex;
             }
 
+            .userGreeting {
+                display: flex;
+            }
+
+            .welcomeMessage {
+                display: flex;
+                align-items: center;
+                font-size: .8rem;
+            }
+
+            .userPreferences {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
             .displayName,
             .loginLink,
             .loadingName {
-                margin-right: 1rem;
                 font-size: .8rem;
             }
 
@@ -77,18 +92,19 @@ header {
 
             .logoutRedirect {
                 display: flex;
-                position: relative;
+                align-items: center;
                 @include linkHovers;
             }
 
             .registerLink {
-                position: relative;
                 @include linkHovers;
             }
 
             .logoutRedirect,
             .registerLink {
                 font-size: .8rem;
+                position: relative;
+                margin-left: 1rem;
             }
 
             .loginLink {

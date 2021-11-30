@@ -89,6 +89,12 @@
             right: -.05rem;
             cursor: pointer;
             transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: rotateZ(180deg);
+            }
+
         }
 
     }

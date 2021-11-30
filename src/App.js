@@ -24,7 +24,10 @@ const App = () => {
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
-  const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
+  const [ savingArticle, setSavingArticle ] = useState(false); // Indicates whether a user is currently saving their article.
+  const [ userActivity, setUserActivity ] = useState("Success!"); // Stores a message for the user based on recent interaction events.
+  const [ displayActivity, setDisplayActivity ] = useState(null); // Determines whether the notification window is displayed for the user with either a positive or negative indicator.
+  const [ activityFadingOut, setActivityFadingOut ] = useState(false); // Determines whether the notification window is either fading in our fading out.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
 
    // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
@@ -59,19 +62,51 @@ const App = () => {
 
     });
     
-}, []);
+  }, []);
 
-useEffect(() => {
-        
-  // If the storedPrompts array length is greater than zero set the currentPrompt state variable to a prompt based on a randomly generated index. 
-  if (storedPrompts.length > 0) {
-      const randomIndex = Math.floor(Math.random() * storedPrompts.length);
-      setCurrentPrompt(storedPrompts[randomIndex].prompt);
-      setPromptIsLoading(false);
-  }
+  useEffect(() => {
+          
+    // If the storedPrompts array length is greater than zero set the currentPrompt state variable to a prompt based on a randomly generated index. 
+    if (storedPrompts.length > 0) {
+        const randomIndex = Math.floor(Math.random() * storedPrompts.length);
+        setCurrentPrompt(storedPrompts[randomIndex].prompt);
+        setPromptIsLoading(false);
+    }
 
-  // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
-}, [storedPrompts]);
+    // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
+  }, [storedPrompts]);
+
+  useEffect(() => {
+
+    // If the current user is not authenticated than set the value of userVerified to false to prevent them from accessing the previous user's playlists.
+    if (!authenticatedUser) setUserVerified(false);
+
+  }, [authenticatedUser]);
+
+  // Conditional statements that determine what notification is communicated to the user after an event.
+  useEffect(() => {
+
+    const animateNotifications = () => {
+      setTimeout(() => setUserActivity(""), 4500);
+      setTimeout(() => setActivityFadingOut(true), 4000);
+      setTimeout(() => setDisplayActivity(null), 4500);
+      setTimeout(() => setActivityFadingOut(false), 4500);
+    }
+    
+    // Notifies the user whether they have successfully authenticated their identity. 
+    if (authenticatedUser && displayActivity) {
+      setUserActivity("Success, you're now signed in!")
+      animateNotifications();
+    } 
+
+    // Notifies the user whether they have successfully saved their article.
+    if (savingArticle && displayActivity) {
+      setUserActivity("Success, your article is saved!");
+      animateNotifications();
+      setTimeout(() => setSavingArticle(false), 4500);
+    }
+
+  }, [authenticatedUser, displayActivity, savingArticle]);
 
   return (
     <Router>
@@ -100,11 +135,13 @@ useEffect(() => {
                 setCount={setCount}
                 countingStatus={countingStatus}
                 setCountingStatus={setCountingStatus}
+                setDisplayActivity={setDisplayActivity}
                 currentPrompt={currentPrompt}
                 storedPrompts={storedPrompts}
                 promptIsLoading={promptIsLoading}
                 userInput={userInput}
                 setUserInput={setUserInput}
+                setSavingArticle={setSavingArticle}
                 userActivity={userActivity}
                 setUserActivity={setUserActivity}
               />
@@ -127,21 +164,30 @@ useEffect(() => {
                 />
               </section>
             </Route>
-            <Route path="/authenticate-user">
-              <section className="authenticationSection">
-                <UserAuthentication 
-                  authenticatedUser={authenticatedUser}
-                  setAuthenticatedUser={setAuthenticatedUser}
-                />
-              </section>
-            </Route>
-            <Route path="/register-account">
-              <section className="registrationSection">
-                <UserRegistration 
-                  setAuthenticatedUser={setAuthenticatedUser}
-                />
-              </section>
-            </Route>
+            {
+              !authenticatedUser ?
+                <Route path="/authenticate-user">
+                  <section className="authenticationSection">
+                    <UserAuthentication 
+                      authenticatedUser={authenticatedUser}
+                      setAuthenticatedUser={setAuthenticatedUser}
+                      setDisplayActivity={setDisplayActivity}
+                    />
+                  </section>
+                </Route> :
+                null
+            }
+            {
+              !authenticatedUser ?
+                <Route path="/register-account">
+                  <section className="registrationSection">
+                    <UserRegistration 
+                      setAuthenticatedUser={setAuthenticatedUser}
+                    />
+                  </section>
+                </Route> :
+                null
+            }
             <Route path="*">
               <section className="errorSection">
                 <ErrorPage />
@@ -153,7 +199,9 @@ useEffect(() => {
       <footer className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
           <UserNotifications 
+            displayActivity={displayActivity}
             userActivity={userActivity}
+            activityFadingOut={activityFadingOut}
           />
         </div>
       </footer>

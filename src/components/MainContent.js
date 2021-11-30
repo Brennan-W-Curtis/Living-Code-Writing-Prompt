@@ -8,16 +8,18 @@ import WordCount from './WordCount';
 import SaveWriting from './SaveWriting';
 
 const MainContent = props => {
-    // Destructured all state values passed as props.
+    // Destructure all state values passed as props.
     const { 
         authenticatedUser, 
         count, 
         setCount, 
         countingStatus, 
         setCountingStatus,
+        setDisplayActivity,
         currentPrompt,
         promptIsLoading,
         userInput, 
+        setSavingArticle,
         setUserInput, 
         setUserActivity 
     } = props;
@@ -101,10 +103,13 @@ const MainContent = props => {
                     authenticatedUser={authenticatedUser}
                     count={count}
                     countingStatus={countingStatus}
+                    setDisplayActivity={setDisplayActivity}
                     displaySaving={displaySaving}
                     setDisplaySaving={setDisplaySaving}
                     saveFadingOut={saveFadingOut}
                     setSaveFadingOut={setSaveFadingOut}
+                    setUserActivity={setUserActivity}
+                    setSavingArticle={setSavingArticle}
                     userInput={userInput}
                     setUserInput={setUserInput}
                 />

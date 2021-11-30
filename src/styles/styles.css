@@ -383,6 +383,10 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.morningDisplay textarea:focus {
+  outline: none;
+  border-left: 1px solid black;
+}
 
 .eveningDisplay {
   -webkit-transition: all 0.5s;
@@ -538,10 +542,28 @@ header .headerMenu .menuAuthentication .currentUser {
   display: -ms-flexbox;
   display: flex;
 }
+header .headerMenu .menuAuthentication .userGreeting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header .headerMenu .menuAuthentication .welcomeMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+}
+header .headerMenu .menuAuthentication .userPreferences {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 header .headerMenu .menuAuthentication .displayName,
 header .headerMenu .menuAuthentication .loginLink,
 header .headerMenu .menuAuthentication .loadingName {
-  margin-right: 1rem;
   font-size: 0.8rem;
 }
 header .headerMenu .menuAuthentication .loginLink {
@@ -574,7 +596,9 @@ header .headerMenu .menuAuthentication .logoutRedirect {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 header .headerMenu .menuAuthentication .logoutRedirect:hover, header .headerMenu .menuAuthentication .logoutRedirect:focus {
   color: #23395B;
@@ -598,9 +622,6 @@ header .headerMenu .menuAuthentication .logoutRedirect:hover::after, header .hea
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
-}
-header .headerMenu .menuAuthentication .registerLink {
-  position: relative;
 }
 header .headerMenu .menuAuthentication .registerLink:hover, header .headerMenu .menuAuthentication .registerLink:focus {
   color: #23395B;
@@ -628,6 +649,8 @@ header .headerMenu .menuAuthentication .registerLink:hover::after, header .heade
 header .headerMenu .menuAuthentication .logoutRedirect,
 header .headerMenu .menuAuthentication .registerLink {
   font-size: 0.8rem;
+  position: relative;
+  margin-left: 1rem;
 }
 header .headerMenu .menuAuthentication .loginLink {
   background: none;
@@ -1180,6 +1203,29 @@ header .displayToggle {
   margin: 0.1rem 0 0 0;
 }
 
+.userNotifications {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: calc(25% * .75);
+  max-width: 10rem;
+  height: calc(20% * .75);
+  border-left: 1px solid black;
+}
+.userNotifications p {
+  font-size: 0.75rem;
+}
+
 .findMusic .musicDescription {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1360,6 +1406,10 @@ header .displayToggle {
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+.loadingSection .articleList .deleteArticle:hover, .loadingSection .articleList .deleteArticle:focus {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
 }
 
 .authenticationSection {

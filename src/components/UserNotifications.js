@@ -1,12 +1,14 @@
-// import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-
-const UserNotifications = ({ userActivity }) => {
+const UserNotifications = ({ displayActivity, userActivity, activityFadingOut }) => {
     return (
-        <div>
-            {/* <FaCheckCircle />
-            <FaTimesCircle /> */}
-            <p>{userActivity}</p>
-        </div>
+        <>
+            {
+                displayActivity ?
+                    <div className={!activityFadingOut ? "userNotifications fadeIn" : "userNotifications fadeOut"}>
+                        <p>{userActivity}</p>
+                    </div> :
+                    null
+            }
+        </>
     )
 }
 

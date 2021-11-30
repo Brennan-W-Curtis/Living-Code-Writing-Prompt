@@ -5,7 +5,22 @@ import MyDocument from "./MyDocument";
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { FaWindowClose } from 'react-icons/fa';
 
-const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, setDisplaySaving, saveFadingOut, setSaveFadingOut, userInput, setUserInput }) => {
+const SaveWriting = props => {
+    // Destructure all state values passed as props.
+    const { 
+        authenticatedUser, 
+        count, 
+        countingStatus,
+        setDisplayActivity, 
+        displaySaving, 
+        setDisplaySaving, 
+        saveFadingOut, 
+        setSaveFadingOut, 
+        setSavingArticle,
+        userInput, 
+        setUserInput 
+    } = props;
+
     // Store all state values for the component in the following variables.
     const [ articleTitle, setArticleTitle ] = useState(""); // Store the title chosen by the user for their article.
 
@@ -34,8 +49,10 @@ const SaveWriting = ({ authenticatedUser, count, countingStatus, displaySaving, 
             // Clear the user input and article title inputs.
             setUserInput("");
             setArticleTitle("");
-            
-            console.log("Article successfully saved.")
+
+            // Display the user notification window and communicate the article has saved.
+            setSavingArticle(true);
+            setDisplayActivity(true);
 
         } catch(error) {
             console.log("Error adding document: ", error.message);
