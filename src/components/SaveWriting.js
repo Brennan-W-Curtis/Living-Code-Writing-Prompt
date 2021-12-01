@@ -54,8 +54,11 @@ const SaveWriting = props => {
             setSavingArticle(true);
             setDisplayActivity(true);
 
+            // Prevents the notification from rendering to the page on each page load.
+            setTimeout(() => setSavingArticle(false), 1000);
+
         } catch(error) {
-            console.log("Error adding document: ", error.message);
+            console.log("Sorry, currently unable to complete your request");
         }
 
     }

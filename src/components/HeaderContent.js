@@ -17,7 +17,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                             <Link to="suggested-music" className="individualLinks">Find Music</Link>
                         </li> 
                         <li>
-                            <Link to="saved-articles" className="individualLinks">Saved Articles</Link>
+                            <Link to="saved-articles" className="individualLinks">Saved Entries</Link>
                         </li> 
                     </ul>
                 </nav>

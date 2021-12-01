@@ -24,8 +24,7 @@ const App = () => {
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
-  const [ savingArticle, setSavingArticle ] = useState(false); // Indicates whether a user is currently saving their article.
-  const [ userActivity, setUserActivity ] = useState("Success!"); // Stores a message for the user based on recent interaction events.
+  const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
   const [ displayActivity, setDisplayActivity ] = useState(null); // Determines whether the notification window is displayed for the user with either a positive or negative indicator.
   const [ activityFadingOut, setActivityFadingOut ] = useState(false); // Determines whether the notification window is either fading in our fading out.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
@@ -83,30 +82,13 @@ const App = () => {
 
   }, [authenticatedUser]);
 
-  // Conditional statements that determine what notification is communicated to the user after an event.
-  useEffect(() => {
-
-    const animateNotifications = () => {
-      setTimeout(() => setUserActivity(""), 4500);
-      setTimeout(() => setActivityFadingOut(true), 4000);
-      setTimeout(() => setDisplayActivity(null), 4500);
-      setTimeout(() => setActivityFadingOut(false), 4500);
-    }
-    
-    // Notifies the user whether they have successfully authenticated their identity. 
-    if (authenticatedUser && displayActivity) {
-      setUserActivity("Success, you're now signed in!")
-      animateNotifications();
-    } 
-
-    // Notifies the user whether they have successfully saved their article.
-    if (savingArticle && displayActivity) {
-      setUserActivity("Success, your article is saved!");
-      animateNotifications();
-      setTimeout(() => setSavingArticle(false), 4500);
-    }
-
-  }, [authenticatedUser, displayActivity, savingArticle]);
+  // Handles the animating of the notification window.
+  const animateIndicator = () => {
+    setTimeout(() => setActivityFadingOut(true), 4000);
+    setTimeout(() => setUserActivity(""), 4500);
+    setTimeout(() => setDisplayActivity(null), 4500);
+    setTimeout(() => setActivityFadingOut(false), 4500);
+  }
 
   return (
     <Router>
@@ -125,23 +107,30 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <section className="landingSection">
-                <LandingPage />
+                <LandingPage 
+                  animateIndicator={animateIndicator}
+                  authenticatedUser={authenticatedUser}
+                  setUserActivity={setUserActivity}
+                  setActivityFadingOut={setActivityFadingOut}
+                  displayActivity={displayActivity}
+                  setDisplayActivity={setDisplayActivity}
+                />
               </section>
             </Route>
             <Route path="/writing-space">
               <MainContent 
+                animateIndicator={animateIndicator}
                 authenticatedUser={authenticatedUser}
                 count={count}
                 setCount={setCount}
                 countingStatus={countingStatus}
                 setCountingStatus={setCountingStatus}
+                displayActivity={displayActivity}
                 setDisplayActivity={setDisplayActivity}
                 currentPrompt={currentPrompt}
-                storedPrompts={storedPrompts}
                 promptIsLoading={promptIsLoading}
                 userInput={userInput}
                 setUserInput={setUserInput}
-                setSavingArticle={setSavingArticle}
                 userActivity={userActivity}
                 setUserActivity={setUserActivity}
               />

@@ -11,14 +11,13 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
     const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
     const [ displayName, setDisplayName ] = useState(""); // Stores the user's username to display in the menu. 
     const [ isLoading, setIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
+    const [ sidebarActive, setSidebarActive ] = useState(false); // Determines whether the sidebar menu is visible to the user.
 
     // Store a reference to the useHistory hook in a variable.
     const windowHistory = useHistory();
 
     // Sets the state value authenticatedUser when there's a change in the authenticated state.
-    onAuthStateChanged(auth, currentUser => {
-        setAuthenticatedUser(currentUser);
-    });
+    onAuthStateChanged(auth, currentUser => setAuthenticatedUser(currentUser));
 
     // Asynchronously handle signing the user in by accessing an existing user created within Firebase based on their input email and password.
     const loginUser = async event => {
@@ -46,13 +45,10 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
     }
 
     // Asynchronously handles signing the current authenticated user out. 
-    const logoutUser = async () => {
-        await signOut(auth);
-    }
+    const logoutUser = async () => await signOut(auth);
 
-    const revealOptions = () => {
-        // Display options menu to the user
-    }
+    // Reveals the sidebar menu to the user when they click on their name.
+    const revealOptions = () => setSidebarActive(true);
 
     useEffect(() => {
 

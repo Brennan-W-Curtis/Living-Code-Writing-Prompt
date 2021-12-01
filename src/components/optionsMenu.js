@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { FaRegSquare, FaCheckSquare } from 'react-icons/fa';
+import { FaBars, FaAngleRight, FaRegSquare, FaCheckSquare } from 'react-icons/fa';
 
 const optionsMenu = () => {
-
     const [ focusEnabled, setFocusEnabled ] = useState(false);
     const [ darkEnabled, setDarkEnabled ] = useState(false);
     const [ communalEnabled, setCommunalEnabled ] = useState(false);
@@ -10,22 +9,25 @@ const optionsMenu = () => {
     const [ countdownEnabled, setCountdownEnabled ] = useState(false);
 
     return (
-        <div className="userPreferences">
+        <div className={sidebarActive ? "userPreferences sidebarActive" : "userPreferences sidebarInactive"}>
             <ul className="preferencesList">
-                <li>
-                    <p><span>{!focusEnabled ? <FaRegSquare /> : <FaCheckSquare />}</span>Focus Mode</p>
+                <li className="sidebarToggle">
+                    <span><p>Plume Writing </p><FaAngleRight /></span>
                 </li>
                 <li>
-                    <p><span>{!darkEnabled ? <FaRegSquare /> : <FaCheckSquare />}</span>Dark Mode</p>
+                    <span>{!focusEnabled ? <FaRegSquare /> : <FaCheckSquare />}<p>Focus Mode</p></span>
                 </li>
                 <li>
-                    <p><span>{!communalEnabled ? <FaRegSquare /> : <FaCheckSquare />}</span>Communal Prompts</p>
+                    <span>{!darkEnabled ? <FaRegSquare /> : <FaCheckSquare />}<p>Dark Mode</p></span>
                 </li>
                 <li>
-                    <p><span>{!contributeEnabled ? <FaRegSquare /> : <FaCheckSquare />}</span>Contribute Prompt</p>
+                    <span>{!communalEnabled ? <FaRegSquare /> : <FaCheckSquare />}<p>Communal Prompts</p></span>
                 </li>
                 <li>
-                    <p><span>{!countdownEnabled ? <FaRegSquare /> : <FaCheckSquare />}</span>Countdown Timer</p>
+                    <span>{!contributeEnabled ? <FaRegSquare /> : <FaCheckSquare />}<p>Contribute Prompt</p></span>
+                </li>
+                <li>
+                    <span>{!countdownEnabled ? <FaRegSquare /> : <FaCheckSquare />}<p>Countdown Timer</p></span>
                 </li>
             </ul>
         </div>

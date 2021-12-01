@@ -23,7 +23,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
 
         // Update the values stored in the variables by conditionally rendering them with a zero if they are less than ten.
         hours = conditionalFormatting(hours);
-        minutes = conditionalFormatting(minutes);
+        minutes = conditionalFormatting(minutes) === "" && totalCount >= 3600 ? "00:" : conditionalFormatting(minutes);
         seconds = seconds >= 10 ? seconds : "0" + seconds;
 
         // Return the amount input by the user as a format that can be read by minutes and seconds.

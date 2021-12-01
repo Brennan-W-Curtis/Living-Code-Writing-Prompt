@@ -1,6 +1,19 @@
+import { useEffect } from 'react';
 import { FaUserClock, FaHandHoldingHeart, FaHandsHelping, FaWalking, FaFileDownload, FaSpotify } from 'react-icons/fa';
 
-const LandingPage = () => {
+const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, setActivityFadingOut, displayActivity, setDisplayActivity }) => {
+
+    // Briefly displays a notification that indicates to the user has successfully authenticated their identity.
+    useEffect(() => {
+   
+        // Conditional statement that determines whether the notificaiton will display render to the page.
+        if (authenticatedUser && displayActivity) {
+            setUserActivity("Success, you're now signed in!")
+            animateIndicator();
+        } 
+
+    }, [animateIndicator, authenticatedUser, displayActivity, setDisplayActivity, setUserActivity, setActivityFadingOut]);
+
     return (
         <div>
             <div className="productDescription">

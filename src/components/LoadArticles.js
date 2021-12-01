@@ -88,12 +88,12 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
         <div>
             <div className="loadingDescription">
                 <h2>Previous Works</h2>
-                <p>Continue working on previous articles by selecting a title.</p>
+                <p>Continue working on previous entries by selecting a title.</p>
             </div>
             <div className="articleOptions">
                 {
                     savedArticles !== undefined ?
-                        <p className="articleCounter">You currently have <span>{savedArticles.length}</span> articles saved.</p> :
+                        <p className="articleCounter">You currently have <span>{savedArticles.length}</span> entries saved.</p> :
                         null
                 }
                 {
