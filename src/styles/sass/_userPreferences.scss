@@ -1,0 +1,42 @@
+.userPreferences {
+    position: fixed;
+    background-color: white;
+    top: 0;
+    right: -20rem;
+    width: 25%;
+    max-width: 20rem;
+    height: 100%;
+    z-index: 100;
+    border-left: 1px solid black;    
+}
+
+.preferencesActive {
+    right: 0rem;
+}
+
+.preferencesList {
+    display: flex;
+    flex-direction: column;
+
+    .preferenceOption {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-within {
+            background-color: $eveningSecondary;
+        }
+
+        .optionText {
+            display: flex;
+            margin: 0 0 0 1rem;
+            align-items: center;
+            font-size: .75rem;
+            width: 100%;
+        }
+
+    }
+
+}

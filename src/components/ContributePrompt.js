@@ -2,7 +2,7 @@ import { useState } from 'react';
 import realtime from '../firebase';
 import { ref, push } from 'firebase/database';
 
-const ContributeModal = ({ setContributePrompt, contributeFadingOut, setContributeFadingOut, setDisplayActivity, setUserActivity }) => {
+const ContributeModal = ({ setContributePrompt, contributeFadingOut, setContributeFadingOut, setDisplayActivity }) => {
     // Store all state values for the component in the following variables.
     const [ userInput, setUserInput ] = useState(""); // Stores the user's current input in state for submitting to the realtime database. 
 

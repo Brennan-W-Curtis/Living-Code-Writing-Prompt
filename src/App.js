@@ -12,14 +12,19 @@ import UserAuthentication from './components/UserAuthentication';
 import ErrorPage from './components/ErrorPage';
 import LandingPage from './components/LandingPage';
 import UserNotifications from './components/UserNotifications';
+import UserPreferences from './components/UserPreferences';
 
 const App = () => {
   // Store all state values for the application in the following variables.
   const [ count, setCount ] = useState(0); // Stores the total amount of time set by the user in seconds.
   const [ countingStatus, setCountingStatus] = useState(null); // Determines whether the timer is counting down and which buttons are rendered.
-  const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
+  const [ promptDisplay, setPromptDisplay ] = useState(true); // Determines whether the writing prompt is either visible or hidden.
   const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
+  const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
+  const [ promptFadingOut, setPromptFadingOut ] = useState(false) // Determines whether the prompt display component either fades in or out.
+  const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether the component that allows the user to contribute a prompt is either visible or hidden.
   const [ promptIsLoading, setPromptIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
+  const [ contributeFadingOut, setContributeFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
@@ -28,6 +33,7 @@ const App = () => {
   const [ displayActivity, setDisplayActivity ] = useState(null); // Determines whether the notification window is displayed for the user with either a positive or negative indicator.
   const [ activityFadingOut, setActivityFadingOut ] = useState(false); // Determines whether the notification window is either fading in our fading out.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
+  const [ sidebarActive, setSidebarActive ] = useState(false); // Determines whether the sidebar menu is visible to the user.
 
    // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
    useEffect(() => {
@@ -95,12 +101,25 @@ const App = () => {
       <header className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
           <HeaderContent 
-            setToggleMode={setToggleMode}
-            toggleMode={toggleMode}
             authenticatedUser={authenticatedUser}
             setAuthenticatedUser={setAuthenticatedUser}
+            toggleMode={toggleMode}
+            setToggleMode={setToggleMode}
+            setSidebarActive={setSidebarActive}
           />
         </div>
+        <aside>
+          <UserPreferences
+            contributePrompt={contributePrompt}
+            setContributePrompt={setContributePrompt}
+            promptDisplay={promptDisplay}
+            setPromptFadingOut={setPromptFadingOut}
+            setPromptDisplay={setPromptDisplay}
+            setContributeFadingOut={setContributeFadingOut}
+            sidebarActive={sidebarActive}
+            setSidebarActive={setSidebarActive}
+          />
+        </aside>
       </header>
       <main className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
         <div className="wrapper">
@@ -117,10 +136,14 @@ const App = () => {
                 />
               </section>
             </Route>
-            <Route path="/writing-space">
+            <Route path="/journal-page">
               <MainContent 
                 animateIndicator={animateIndicator}
                 authenticatedUser={authenticatedUser}
+                contributePrompt={contributePrompt}
+                setContributePrompt={setContributePrompt}
+                contributeFadingOut={contributeFadingOut}
+                setContributeFadingOut={setContributeFadingOut}
                 count={count}
                 setCount={setCount}
                 countingStatus={countingStatus}
@@ -128,31 +151,41 @@ const App = () => {
                 displayActivity={displayActivity}
                 setDisplayActivity={setDisplayActivity}
                 currentPrompt={currentPrompt}
+                promptFadingOut={promptFadingOut}
                 promptIsLoading={promptIsLoading}
+                sidebarActive={sidebarActive}
                 userInput={userInput}
                 setUserInput={setUserInput}
                 userActivity={userActivity}
                 setUserActivity={setUserActivity}
               />
             </Route>
-            <Route path="/saved-articles">
-              <section className="loadingSection">
-                <LoadArticles 
-                  authenticatedUser={authenticatedUser}
-                  setUserInput={setUserInput}
-                />
-              </section>
-            </Route>
-            <Route path="/suggested-music">
-              <section className="musicSection">
-                <FindMusic 
-                  accessToken={accessToken}
-                  setAccessToken={setAccessToken}
-                  userVerified={userVerified}
-                  setUserVerified={setUserVerified}
-                />
-              </section>
-            </Route>
+            {
+              authenticatedUser ?
+                <Route path="/saved-entries">
+                  <section className="loadingSection">
+                    <LoadArticles 
+                      authenticatedUser={authenticatedUser}
+                      setUserInput={setUserInput}
+                    />
+                  </section>
+                </Route> :
+                null
+            }
+            {
+              authenticatedUser ?
+                <Route path="/suggested-music">
+                  <section className="musicSection">
+                    <FindMusic 
+                      accessToken={accessToken}
+                      setAccessToken={setAccessToken}
+                      userVerified={userVerified}
+                      setUserVerified={setUserVerified}
+                    />
+                  </section>
+                </Route> :
+                null
+            }
             {
               !authenticatedUser ?
                 <Route path="/authenticate-user">

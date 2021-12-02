@@ -110,14 +110,14 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
             <ul className="articleList">
                 {
                     // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.
-                    savedArticles ? 
+                    savedArticles.length > 0 ?
                         savedArticles.map((article, index) => {
                             const {articleBody, articleTitle } = article;
                             return (
                                 <li key={index} className="fadeIn">
                                     <span>
                                         <Link 
-                                            to="/"
+                                            to="journal-page"
                                             onClick={() => handleLoading(articleBody)}
                                         >
                                             {articleTitle}
@@ -130,10 +130,9 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                                 </li>
                             )
                         }) :
-                        // Conditionally render a different message to the user depending on whether their identity has been authenticated.
-                        authenticatedUser !== null ?
-                            <p>Currently you do not have any saved articles.</p> :
-                            <p>You must be signed in to access saved articles.</p>
+                        <div className="emptyMessage">
+                            <p>Your journal is empty, let's change that!</p>
+                        </div>
                 }
             </ul>
         </div>

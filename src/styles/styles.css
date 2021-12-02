@@ -377,7 +377,7 @@ textarea {
 .morningDisplay {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  background-color: white;
+  background-color: #FFFFFF;
 }
 .morningDisplay * {
   -webkit-transition: all 0.5s;
@@ -399,7 +399,7 @@ textarea {
 }
 .eveningDisplay .brandLogo h1,
 .eveningDisplay .brandLogo .iconContent {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .brandLogo .iconNegative {
   color: #272727;
@@ -412,7 +412,7 @@ textarea {
   color: #E6E6E6;
 }
 .eveningDisplay .productDescription {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .productDescription .descriptionContent {
   color: #E6E6E6;
@@ -422,10 +422,10 @@ textarea {
 }
 .eveningDisplay .productFeatures h3,
 .eveningDisplay .productFeatures .featureIcon {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .promptDisplay p {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .countdownTimer .playbackButtons button {
   color: #E6E6E6;
@@ -437,7 +437,7 @@ textarea {
   color: #E6E6E6;
 }
 .eveningDisplay .countdownTimer .currentTime {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .writingSpace textarea {
   background-color: #272727;
@@ -447,7 +447,7 @@ textarea {
   color: #E6E6E6;
 }
 .eveningDisplay .musicSection .musicDescription h2 {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .musicSection .musicDescription p {
   color: #E6E6E6;
@@ -456,7 +456,7 @@ textarea {
   color: #E6E6E6;
 }
 .eveningDisplay .loadingSection .loadingDescription h2 {
-  color: white;
+  color: #FFFFFF;
 }
 .eveningDisplay .loadingSection .loadingDescription p {
   color: #E6E6E6;
@@ -556,7 +556,7 @@ header .headerMenu .menuAuthentication .welcomeMessage {
           align-items: center;
   font-size: 0.8rem;
 }
-header .headerMenu .menuAuthentication .userPreferences {
+header .headerMenu .menuAuthentication .accessPreferences {
   background: none;
   border: none;
   cursor: pointer;
@@ -689,6 +689,23 @@ header .displayToggle {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   width: 100%;
+  -webkit-transition: none;
+  transition: none;
+}
+.menuLinks .visitorNavigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  margin: 0 0 0 2.05rem;
+  -webkit-transition: none;
+  transition: none;
 }
 .menuLinks .individualLinks {
   font-size: 0.8rem;
@@ -718,6 +735,56 @@ header .displayToggle {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
+}
+
+.userPreferences {
+  position: fixed;
+  background-color: white;
+  top: 0;
+  right: -20rem;
+  width: 25%;
+  max-width: 20rem;
+  height: 100%;
+  z-index: 100;
+  border-left: 1px solid black;
+}
+
+.preferencesActive {
+  right: 0rem;
+}
+
+.preferencesList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.preferencesList .preferenceOption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+  cursor: pointer;
+}
+.preferencesList .preferenceOption:hover, .preferencesList .preferenceOption:focus-within {
+  background-color: #E6E6E6;
+}
+.preferencesList .preferenceOption .optionText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 0 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.75rem;
+  width: 100%;
 }
 
 .toggleLabel {
@@ -1433,6 +1500,22 @@ header .displayToggle {
   -webkit-transform: rotateZ(180deg);
           transform: rotateZ(180deg);
 }
+.loadingSection .articleList .emptyMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50vh;
+}
+.loadingSection .articleList .emptyMessage p {
+  font-size: 0.75rem;
+}
 
 .authenticationSection {
   height: 80vh;
@@ -1505,6 +1588,7 @@ header .displayToggle {
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  padding: 0.5rem 1rem;
 }
 .authenticationForm form button:hover, .authenticationForm form button:focus {
   background-color: black;
@@ -1582,6 +1666,7 @@ header .displayToggle {
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  padding: 0.5rem 1rem;
 }
 .registrationForm form button:hover, .registrationForm form button:focus {
   background-color: black;

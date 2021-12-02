@@ -1,16 +1,18 @@
 .morningDisplay {
     transition: all .5s;
-    background-color: white;
+    background-color: $eveningPrimary;
 
     * {
         transition: all .5s;
     }
 
     textarea {
-                    &:focus {
-                outline: none;
-                border-left: 1px solid black;
-            }
+
+        &:focus {
+            outline: none;
+            border-left: 1px solid black;
+        }
+
     }
 
 }
@@ -27,7 +29,7 @@
 
         h1,
         .iconContent {
-            color: $eveningHeadlines;
+            color: $eveningPrimary;
         }
 
         .iconNegative {
@@ -39,7 +41,7 @@
     .mainNavigation {
 
         .individualLinks {
-            color: $eveningBody;
+            color: $eveningSecondary;
         }
 
     }
@@ -50,7 +52,7 @@
 
             p,
             .logoutRedirect {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
@@ -58,20 +60,20 @@
     }
 
     .productDescription {
-        color: $eveningHeadlines;
+        color: $eveningPrimary;
 
         .descriptionContent {
-            color: $eveningBody;
+            color: $eveningSecondary;
         }
 
     }
 
     .productFeatures {
-        color: $eveningBody;
+        color: $eveningSecondary;
 
         h3,
         .featureIcon {
-            color: $eveningHeadlines;
+            color: $eveningPrimary;
         }
 
     }
@@ -79,7 +81,7 @@
     .promptDisplay {
 
         p {
-            color: $eveningHeadlines;
+            color: $eveningPrimary;
         }
 
     }
@@ -89,7 +91,7 @@
         .playbackButtons {
 
             button {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
@@ -100,13 +102,13 @@
         .decreaseTime {
 
             button {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
 
         .currentTime {
-            color: $eveningHeadlines;
+            color: $eveningPrimary;
         }
 
     }
@@ -115,7 +117,7 @@
 
         textarea {
             background-color: $eveningBackground;
-            color: $eveningBody;
+            color: $eveningSecondary;
         }
 
     }
@@ -123,7 +125,7 @@
     .eventsSection {
 
         .wordCount {
-            color: $eveningBody;
+            color: $eveningSecondary;
         }
 
     }
@@ -133,11 +135,11 @@
         .musicDescription {
 
             h2 {
-                color: $eveningHeadlines;
+                color: $eveningPrimary;
             }
 
             p {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
@@ -145,7 +147,7 @@
         .apiLogin {
 
             button {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
@@ -157,11 +159,11 @@
         .loadingDescription {
 
             h2 {
-                color: $eveningHeadlines;
+                color: $eveningPrimary;
             }
 
             p {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }
@@ -170,7 +172,7 @@
 
             p,
             button {
-                color: $eveningBody;
+                color: $eveningSecondary;
             }
 
         }

@@ -12,6 +12,16 @@
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
+        transition: none;
+    }
+
+    .visitorNavigation {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 0 0 0 2.05rem;
+        transition: none;
     }
 
     .individualLinks {

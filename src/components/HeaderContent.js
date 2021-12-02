@@ -3,22 +3,30 @@ import ModeToggle from './ModeToggle';
 import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
 
-const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, setToggleMode }) => {
+const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActive, toggleMode, setToggleMode }) => {
     return (
         <header>
             <div className="headerMenu">
                 <nav className="menuLinks">
                 <Link to="/"><BrandLogo /></Link>
-                    <ul className="mainNavigation">
+                    <ul className={authenticatedUser ? "mainNavigation" : "visitorNavigation"}>
                         <li>
-                            <Link to="writing-space" className="individualLinks">Writing Space</Link>
+                            <Link to="journal-page" className="individualLinks">Journal Page</Link>
                         </li>
-                        <li>
-                            <Link to="suggested-music" className="individualLinks">Find Music</Link>
-                        </li> 
-                        <li>
-                            <Link to="saved-articles" className="individualLinks">Saved Entries</Link>
-                        </li> 
+                        {
+                            authenticatedUser ?
+                            <li>
+                                <Link to="suggested-music" className="individualLinks">Find Music</Link>
+                            </li> :
+                            null
+                        }
+                        {   
+                            authenticatedUser ?
+                            <li>
+                                <Link to="saved-entries" className="individualLinks">Saved Entries</Link>
+                            </li> :
+                            null
+                        }
                     </ul>
                 </nav>
                 <div className="menuAuthentication">
@@ -37,6 +45,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, toggleMode, se
                                 <UserAuthentication 
                                     authenticatedUser={authenticatedUser}
                                     setAuthenticatedUser={setAuthenticatedUser}
+                                    setSidebarActive={setSidebarActive}
                                 /> :
                                 null
                     }

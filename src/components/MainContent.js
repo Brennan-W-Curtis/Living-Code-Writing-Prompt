@@ -8,10 +8,14 @@ import WordCount from './WordCount';
 import SaveWriting from './SaveWriting';
 
 const MainContent = props => {
-    // Destructure all state values passed as props.
+    // Destructure all state values and functions passed as props.
     const { 
         animateIndicator,
-        authenticatedUser, 
+        authenticatedUser,
+        contributePrompt,
+        setContributePrompt,
+        contributeFadingOut,
+        setContributeFadingOut,
         count, 
         setCount, 
         countingStatus, 
@@ -19,7 +23,9 @@ const MainContent = props => {
         displayActivity,
         setDisplayActivity,
         currentPrompt,
+        promptFadingOut,
         promptIsLoading,
+        sidebarActive,
         userInput, 
         setUserInput, 
         setUserActivity 
@@ -29,8 +35,6 @@ const MainContent = props => {
     const timeInterval = useRef(null);
     
     // Store all state values for the component in the following variables.
-    const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether a component allowing the user to enter a prompt is displayed.
-    const [ contributeFadingOut, setContributeFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
     const [ currentInterval, setCurrentInterval ] = useState(); // Stores the information of the current interval. 
     const [ displaySaving, setDisplaySaving ] = useState(false); // Determines whether the saving options window is rendered to the page.
     const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
@@ -42,7 +46,7 @@ const MainContent = props => {
 
         // Conditional statement that determines whether the notificaiton will display render to the page.
         if (savingArticle && displayActivity) {
-            setUserActivity("Success, your article is saved!");
+            setUserActivity("Success, your entry is saved!");
             animateIndicator();
         }
 
@@ -84,11 +88,10 @@ const MainContent = props => {
         <>
             <section className="featuresSection">
                 <CommunalPrompts 
-                    contributePrompt={contributePrompt}
-                    setContributePrompt={setContributePrompt}
                     currentPrompt={currentPrompt}
+                    promptFadingOut={promptFadingOut}
                     promptIsLoading={promptIsLoading}
-                    setContributeFadingOut={setContributeFadingOut}
+                    sidebarActive={sidebarActive}
                 />
                 <div className="primaryInteraction">
                     {
@@ -98,7 +101,6 @@ const MainContent = props => {
                                 contributeFadingOut={contributeFadingOut}
                                 setContributeFadingOut={setContributeFadingOut}
                                 setDisplayActivity={setDisplayActivity}
-                                setUserActivity={setUserActivity}
                             /> :
                             null
                     }

@@ -5,13 +5,12 @@ import { doc, getDoc } from 'firebase/firestore';
 import { Link, useHistory } from 'react-router-dom';
 import AuthenticationForm from './AuthenticationForm';
 
-const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDisplayActivity }) => {
+const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDisplayActivity, setSidebarActive }) => {
     // Store all state values for the component in the following variables.
     const [ loginEmail, setLoginEmail ] = useState(""); // Stores the user email input while signning in.
     const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
     const [ displayName, setDisplayName ] = useState(""); // Stores the user's username to display in the menu. 
     const [ isLoading, setIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
-    const [ sidebarActive, setSidebarActive ] = useState(false); // Determines whether the sidebar menu is visible to the user.
 
     // Store a reference to the useHistory hook in a variable.
     const windowHistory = useHistory();
@@ -46,9 +45,6 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
 
     // Asynchronously handles signing the current authenticated user out. 
     const logoutUser = async () => await signOut(auth);
-
-    // Reveals the sidebar menu to the user when they click on their name.
-    const revealOptions = () => setSidebarActive(true);
 
     useEffect(() => {
 
@@ -96,8 +92,9 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
                                 <span className="userGreeting">
                                     <p className="welcomeMessage">Welcome, </p>
                                     <button 
-                                        className="userPreferences"
-                                        onClick={revealOptions}
+                                        className="accessPreferences"
+                                        // Reveals the sidebar menu to the user when they click on their name.
+                                        onClick={() => setSidebarActive(true)}
                                     >
                                         <p className="displayName">{authenticatedUser ? `${displayName}` : ""}</p>
                                     </button>

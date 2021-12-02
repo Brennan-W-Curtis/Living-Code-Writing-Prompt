@@ -1,24 +1,16 @@
-const CommunalPrompts = ({ contributePrompt, setContributePrompt, currentPrompt, promptIsLoading, setContributeFadingOut }) => {
-    // Toggles whether the input form is either visible for the user to contribute a prompt and submit it to the realtime database.
-    const toggleContribute = () => {
-        if (contributePrompt) {
-            setContributeFadingOut(true)
-            setTimeout(() => setContributePrompt(false), 1000);
-        } else {
-            setContributeFadingOut(false);
-            setContributePrompt(true)
-        }
-    }
+const CommunalPrompts = ({ currentPrompt, promptFadingOut, promptIsLoading, sidebarActive }) => {
     
     return (
         <div className="communalPrompts">
-            <div className="promptDisplay">
-                <button
-                    className="contributeButton"
-                    onClick={toggleContribute}
-                >
-                    Contribute
-                </button>
+            <div 
+                className={
+                    !sidebarActive ?
+                        "promptDisplay" :
+                        !promptFadingOut ? 
+                            "promptDisplay fadeIn" : 
+                            "promptDisplay fadeOut" 
+                }
+            >
                 {
                     promptIsLoading ?
                         <p className="currentPrompt">Loading...</p> :
