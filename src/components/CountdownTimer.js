@@ -12,6 +12,7 @@ const CountdownTimer = props => {
         countingStatus, 
         setCountingStatus, 
         currentInterval, 
+        displayCountdown,
         setDisplaySaving,
         timeInterval
     } = props;
@@ -70,7 +71,7 @@ const CountdownTimer = props => {
     }
 
     return (
-        <div className="countdownTimer">
+        <div className={displayCountdown ? "countdownTimer" : "countdownTimer hiddenComponent"}>
             <TimerButtons 
                 countingStatus={countingStatus}
                 handleReset={handleReset}

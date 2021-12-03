@@ -1,20 +1,24 @@
-const CommunalPrompts = ({ currentPrompt, promptFadingOut, promptIsLoading, sidebarActive }) => {
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+
+const CommunalPrompts = ({ currentPrompt, promptDisplay, promptLock, promptFadingOut, promptIsLoading, sidebarActive }) => {
     
     return (
         <div className="communalPrompts">
             <div 
                 className={
-                    !sidebarActive ?
+                    promptDisplay && promptLock && (!sidebarActive || sidebarActive)  ?
                         "promptDisplay" :
-                        !promptFadingOut ? 
-                            "promptDisplay fadeIn" : 
-                            "promptDisplay fadeOut" 
+                        !promptDisplay && promptLock ?
+                            "hiddenComponent promptDisplay" :
+                            !promptFadingOut && !promptLock ? 
+                                "promptDisplay fadeIn" : 
+                                "promptDisplay fadeOut" 
                 }
             >
                 {
                     promptIsLoading ?
                         <p className="currentPrompt">Loading...</p> :
-                        <p className="currentPrompt"><span>"</span>{currentPrompt}<span>"</span></p>
+                        <p className="currentPrompt"><FaQuoteLeft className="quoteIcons quoteLeft"/>{currentPrompt}<FaQuoteRight className="quoteIcons quoteRight"/></p>
                 }
             </div>
         </div>

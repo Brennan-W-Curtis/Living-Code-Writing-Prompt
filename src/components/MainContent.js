@@ -20,9 +20,12 @@ const MainContent = props => {
         setCount, 
         countingStatus, 
         setCountingStatus,
+        displayCountdown,
         displayActivity,
         setDisplayActivity,
         currentPrompt,
+        promptDisplay,
+        promptLock,
         promptFadingOut,
         promptIsLoading,
         sidebarActive,
@@ -89,6 +92,8 @@ const MainContent = props => {
             <section className="featuresSection">
                 <CommunalPrompts 
                     currentPrompt={currentPrompt}
+                    promptDisplay={promptDisplay}
+                    promptLock={promptLock}
                     promptFadingOut={promptFadingOut}
                     promptIsLoading={promptIsLoading}
                     sidebarActive={sidebarActive}
@@ -112,6 +117,7 @@ const MainContent = props => {
                         setCountingStatus={setCountingStatus}
                         currentInterval={currentInterval}
                         setCurrentInterval={setCurrentInterval}
+                        displayCountdown={displayCountdown}
                         setDisplaySaving={setDisplaySaving}
                         timeInterval={timeInterval}
                     />

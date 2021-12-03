@@ -58,6 +58,11 @@ textarea {
     font-family: $bodyFont;
 }
 
+.hiddenComponent {
+    visibility: hidden;
+    opacity: 0;
+}
+
 // Animation Classes
 .fadeIn {
     animation: fadeIn 1s cubic-bezier(.25, .1, .25, 1);

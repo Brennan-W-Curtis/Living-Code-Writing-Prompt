@@ -6,11 +6,47 @@
         transition: all .5s;
     }
 
+    .menuLinks {
+
+        .individualLinks {
+            @include linkHovers($primaryColour);
+        }
+
+    }
+    
+    .menuAuthentication {
+
+        .loginLink,
+        .logoutRedirect,
+        .registerLink {
+            @include linkHovers($primaryColour);
+        }
+
+    }
+
     textarea {
 
         &:focus {
             outline: none;
             border-left: 1px solid black;
+        }
+
+    }
+
+    .emptyMessage {
+
+        .emptyRedirect {
+            position: relative;
+            @include linkHovers($primaryColour);
+        }
+
+    }
+
+    .errorPage {
+
+        .errorRedirect {
+            position: relative;
+            @include linkHovers($primaryColour);
         }
 
     }
@@ -24,54 +60,85 @@
     * {
         transition: all .5s;
     }
+    
+    h2,
+    h3 {
+        color: $eveningPrimary;
+    }
+
+    p,
+    a
+    button {
+        color: $eveningSecondary;
+    }
 
     .brandLogo {
-
+        
         h1,
         .iconContent {
             color: $eveningPrimary;
         }
-
+        
         .iconNegative {
             color: $eveningBackground;
         }
+        
+    }
+    
+    .headerMenu {
+
+        .homeLink {
+    
+            &:hover,
+            &:focus {
+                color: $secondaryColour;
+            }  
+    
+        }
 
     }
-
-    .mainNavigation {
+        
+    .menuLinks {
 
         .individualLinks {
             color: $eveningSecondary;
+            @include linkHovers($secondaryColour);
         }
 
     }
 
-    .userAuthentication {
+    .menuAuthentication {
 
-        .currentUser {
+        .loginLink,
+        .logoutRedirect,
+        .registerLink {
+            color: $eveningSecondary;
+            @include linkHovers($secondaryColour);
+        }
 
-            p,
-            .logoutRedirect {
-                color: $eveningSecondary;
+    }
+
+    .userPreferences {
+        background-color: $eveningBackground;
+        border-left: 1px solid $eveningPrimary;
+
+        .preferenceOption {
+
+            &:hover,
+            &:focus-within {
+                background-color: $morningPrimary;
+            }
+
+            .statusIcon {
+                color: $eveningPrimary;
             }
 
         }
 
     }
 
-    .productDescription {
-        color: $eveningPrimary;
-
-        .descriptionContent {
-            color: $eveningSecondary;
-        }
-
-    }
-
     .productFeatures {
-        color: $eveningSecondary;
 
-        h3,
         .featureIcon {
             color: $eveningPrimary;
         }
@@ -82,6 +149,20 @@
 
         p {
             color: $eveningPrimary;
+        }
+
+    }
+
+    .contributePrompts {
+
+        .submitPrompt {
+            background-color: $eveningBackground;
+            color: $eveningSecondary;
+            border-bottom: 1px solid $eveningPrimary;
+        }
+
+        .submitButton {
+            color: $eveningSecondary;
         }
 
     }
@@ -117,7 +198,7 @@
 
         textarea {
             background-color: $eveningBackground;
-            color: $eveningSecondary;
+            color: $eveningPrimary;
         }
 
     }
@@ -175,6 +256,64 @@
                 color: $eveningSecondary;
             }
 
+        }
+
+        .articleList {
+
+            li {
+                border: 1px solid $eveningSecondary
+            }
+
+            a {
+                color: $eveningSecondary;
+            }
+
+            .deleteArticle {
+                color: $eveningSecondary;
+            }
+
+        }
+
+        .emptyMessage {
+
+            .emptyRedirect {
+                position: relative;
+                @include linkHovers($secondaryColour);
+            }
+    
+        }
+
+    }
+
+    .authenticationContent {
+
+        input {
+            background-color: $eveningBackground;
+            color: $eveningSecondary;
+            
+            &:focus {
+                outline: 1px solid $secondaryColour; 
+            }
+
+        }
+
+    }
+
+    .errorPage {
+
+        .errorRedirect {
+            position: relative;
+            @include linkHovers($secondaryColour);
+        }
+
+    }
+
+    .userNotifications {
+        background-color: $eveningBackground;
+        border-left: 1px solid $eveningPrimary
+        
+        p {
+            color: $eveningSecondary;
         }
 
     }

@@ -3,11 +3,6 @@ header {
     .brandLogo {
         display: flex;
         transition: all .5s;
-
-        &:hover {
-            color: $primaryColour;
-        }
-
     }
 
     .brandIcon {
@@ -33,13 +28,7 @@ header {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-
-        // &::after {
-        //     content: "";
-        //     border-bottom: 1px solid black;
-        //     margin: .5rem 0 0 0;
-        //     width: 100%;
-        // }
+        padding: 0 0 2.35rem 0;
 
         .menuAuthentication {
             display: flex;
@@ -87,17 +76,11 @@ header {
 
             .loginLink {
                 position: relative;
-                @include linkHovers;
             }
 
             .logoutRedirect {
                 display: flex;
                 align-items: center;
-                @include linkHovers;
-            }
-
-            .registerLink {
-                @include linkHovers;
             }
 
             .logoutRedirect,

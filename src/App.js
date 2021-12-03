@@ -18,8 +18,10 @@ const App = () => {
   // Store all state values for the application in the following variables.
   const [ count, setCount ] = useState(0); // Stores the total amount of time set by the user in seconds.
   const [ countingStatus, setCountingStatus] = useState(null); // Determines whether the timer is counting down and which buttons are rendered.
+  const [ displayCountdown, setDisplayCountdown ] = useState(true); // Determines whether the countdown timer is either visibile or hidden.
   const [ promptDisplay, setPromptDisplay ] = useState(true); // Determines whether the writing prompt is either visible or hidden.
   const [ currentPrompt, setCurrentPrompt ] = useState(""); // Stores a randomly selected prompt from the storedPrompts state variable.
+  const [ promptLock, setPromptLock ] = useState(true) // Prevents the writing prompt from fading in upon the sidebar menu being revealed.
   const [ storedPrompts, setStoredPrompts ] = useState([]); // Stores an array of string values that it receives from the realtime database that includes all of the submitted prompts by users.
   const [ promptFadingOut, setPromptFadingOut ] = useState(false) // Determines whether the prompt display component either fades in or out.
   const [ contributePrompt, setContributePrompt ] = useState(false); // Determines whether the component that allows the user to contribute a prompt is either visible or hidden.
@@ -103,8 +105,6 @@ const App = () => {
           <HeaderContent 
             authenticatedUser={authenticatedUser}
             setAuthenticatedUser={setAuthenticatedUser}
-            toggleMode={toggleMode}
-            setToggleMode={setToggleMode}
             setSidebarActive={setSidebarActive}
           />
         </div>
@@ -112,12 +112,17 @@ const App = () => {
           <UserPreferences
             contributePrompt={contributePrompt}
             setContributePrompt={setContributePrompt}
+            displayCountdown={displayCountdown}
+            setDisplayCountdown={setDisplayCountdown}
             promptDisplay={promptDisplay}
-            setPromptFadingOut={setPromptFadingOut}
             setPromptDisplay={setPromptDisplay}
+            setPromptLock={setPromptLock}
+            setPromptFadingOut={setPromptFadingOut}
             setContributeFadingOut={setContributeFadingOut}
             sidebarActive={sidebarActive}
             setSidebarActive={setSidebarActive}
+            toggleMode={toggleMode}
+            setToggleMode={setToggleMode}
           />
         </aside>
       </header>
@@ -147,12 +152,15 @@ const App = () => {
                 count={count}
                 setCount={setCount}
                 countingStatus={countingStatus}
+                displayCountdown={displayCountdown}
+                currentPrompt={currentPrompt}
+                promptDisplay={promptDisplay}
+                promptLock={promptLock}
+                promptFadingOut={promptFadingOut}
+                promptIsLoading={promptIsLoading}
                 setCountingStatus={setCountingStatus}
                 displayActivity={displayActivity}
                 setDisplayActivity={setDisplayActivity}
-                currentPrompt={currentPrompt}
-                promptFadingOut={promptFadingOut}
-                promptIsLoading={promptIsLoading}
                 sidebarActive={sidebarActive}
                 userInput={userInput}
                 setUserInput={setUserInput}
@@ -210,6 +218,11 @@ const App = () => {
                 </Route> :
                 null
             }
+            <Route path="/spotify-unresponsive">
+              <section className="unresponsiveSection">
+                {/* <ApiUnresponsive /> */}
+              </section>
+            </Route>
             <Route path="*">
               <section className="errorSection">
                 <ErrorPage />

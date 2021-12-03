@@ -17,10 +17,10 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
     return (
         <div>
             <div className="productDescription">
-                <h2>Your Time is Valuable</h2>
+                <h2>A Journal That Values Your Time</h2>
                 <div className="descriptionContent">
-                    <p>Modern word processors purposefully remove features to prevent distracting you from writing, we follow in this tradition because we value your time.</p>
-                    <p>Plume is a simple text editor designed for writers to focus on writing their story by creating a constructive environment while also helping them set healthy boundaries.</p>
+                    <p>A modern journal that keeps the user in mind to prevent distractions and customize their experience to align with their unique preferences.</p>
+                    <p>Plume is a simple text editor designed for writers to focus on writing their experiences by creating a constructive environment that also helping them set healthy boundaries.</p>
                 </div>
             </div>
             <div className="productFeatures">
@@ -28,32 +28,32 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
                     <li>
                         <FaUserClock className="featureIcon" />
                         <h3>Set and Forget</h3>
-                        <p>Determine how long you would like to spend writing and we'll help you stay accountable to your schedule.</p>
+                        <p>Determine how long you would like to spend writing and we'll help you stay accountable to your target goals.</p>
                     </li>
                     <li>
                         <FaHandHoldingHeart className="featureIcon" />
                         <h3>Gentle Reminders</h3>
-                        <p>Stay focused on creating your next piece with an idle timer that notifies you when it may be time for a break.</p>
+                        <p>Stay focused on writing your next entry with an idle timer that notifies you when it may be time for a break.</p>
                     </li>
                     <li>
                         <FaHandsHelping className="featureIcon" />
                         <h3>Foster Community</h3>
-                        <p>We encourage users to support others by making writing prompts they contribute accessible to all.</p>
+                        <p>We encourage all users to support each other by contributing writing prompts that everyone has access to.</p>
                     </li>
                     <li>
                         <FaWalking className="featureIcon" />
                         <h3>Take a Break</h3>
-                        <p>Users that register have the ability to save as many in-progress articles to our database as they want.</p>
+                        <p>Registered users have the ability to save as many in-progress journal entries to our database as they desire.</p>
                     </li>
                     <li>
                         <FaFileDownload className="featureIcon" />
                         <h3>Keep Your Work</h3>
-                        <p>When you're ready to move on and export your piece we'll prepare a download of the file in a PDF format.</p>
+                        <p>When you're ready to move on and export your journal entry registered users can download it as a PDF file.</p>
                     </li>
                     <li>
                         <FaSpotify className="featureIcon" />
                         <h3>Set the Mood</h3>
-                        <p>Create the right atmosphere by listening to your music while you write through our Spotify Integration.</p>
+                        <p>Create the right atmosphere by listening to your favourite music while you journal thanks to our Spotify Integration.</p>
                     </li>
                 </ul>
             </div>

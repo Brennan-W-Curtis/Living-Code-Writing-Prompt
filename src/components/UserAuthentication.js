@@ -13,7 +13,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
     const [ isLoading, setIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
 
     // Store a reference to the useHistory hook in a variable.
-    const windowHistory = useHistory();
+    const browserHistory = useHistory();
 
     // Sets the state value authenticatedUser when there's a change in the authenticated state.
     onAuthStateChanged(auth, currentUser => setAuthenticatedUser(currentUser));
@@ -35,7 +35,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
             setDisplayActivity(true);
 
             // Redirect the user to the landing page after signing in.
-            windowHistory.push("/");
+            browserHistory.push("/");
 
         } catch (error) {
             console.log(error.message);

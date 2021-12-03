@@ -5,17 +5,18 @@ const UserPreferences = props => {
     const { 
         contributePrompt, 
         setContributePrompt, 
+        displayCountdown,
+        setDisplayCountdown,
         promptDisplay, 
         setPromptDisplay,
+        setPromptLock,
         setPromptFadingOut, 
         setContributeFadingOut, 
         sidebarActive, 
-        setSidebarActive 
+        setSidebarActive,
+        toggleMode,
+        setToggleMode 
     } = props;
-
-    // const [ darkEnabled, setDarkEnabled ] = useState(false);
-    // const [ focusEnabled, setFocusEnabled ] = useState(false);
-    // const [ countdownEnabled, setCountdownEnabled ] = useState(false);
 
     const togglePreference = (userPreference, preferenceFading, preferenceDisplay) => {
         if (userPreference) {
@@ -32,43 +33,42 @@ const UserPreferences = props => {
             <ul className="preferencesList">
                 <li 
                     className="preferenceOption"
-                    onClick={() => setSidebarActive(false)}
+                    onClick={() => {
+                        setPromptLock(true);
+                        setSidebarActive(false);
+                    }}
                 >
                     <span className="optionText">
                         <p>Plume Journals</p>
                         <FaAngleRight className="preferencesToggle" />
                     </span>
                 </li>
-                {/* <li className="preferenceOption">
+                <li 
+                    className="preferenceOption"
+                    onClick={() => setToggleMode(!toggleMode)}
+                >
                     <span className="optionText">
                         {
-                            !focusEnabled ? 
-                                <FaRegSquare /> : 
-                                <FaCheckSquare />
+                            !toggleMode ? 
+                                <FaRegSquare className="statusIcon" /> :
+                                <FaCheckSquare className="statusIcon" />
                         }
-                        <p>Focus Mode</p>
+                        <p>Evening Mode</p>
                     </span>
                 </li>
-                <li className="preferenceOption">
-                    <span className="optionText">
-                        {
-                            !darkEnabled ? 
-                                <FaRegSquare /> :
-                                <FaCheckSquare />
-                        }
-                        <p>Dark Mode</p>
-                    </span>
-                </li> */}
                 <li 
                     className="preferenceOption"
                     // Toggles whether the writing prompt display is either visible or hidden for the user.
-                    onClick={() => togglePreference(promptDisplay, setPromptFadingOut, setPromptDisplay)}
+                    onClick={() => {
+                        togglePreference(promptDisplay, setPromptFadingOut, setPromptDisplay);
+                        setPromptLock(false);
+                    }}
                 >
                     <span className="optionText">
                         {
                             promptDisplay ? 
-                                <FaCheckSquare /> :
-                                <FaRegSquare /> 
+                                <FaCheckSquare className="statusIcon" /> :
+                                <FaRegSquare className="statusIcon" /> 
                         }
                         <p>Display Prompts</p>
                     </span>
@@ -81,22 +81,25 @@ const UserPreferences = props => {
                     <span className="optionText">
                         {
                             !contributePrompt ? 
-                                <FaRegSquare /> : 
-                                <FaCheckSquare />
+                                <FaRegSquare className="statusIcon" /> : 
+                                <FaCheckSquare className="statusIcon" />
                         }
                         <p>Contribute Prompt</p>
                     </span>
                 </li>
-                {/* <li className="preferenceOption">
+                <li 
+                    className="preferenceOption"
+                    onClick={() => setDisplayCountdown(!displayCountdown)}
+                >
                     <span className="optionText">
                         {
-                            !countdownEnabled ? 
-                                <FaRegSquare /> : 
-                                <FaCheckSquare />
+                            displayCountdown ? 
+                                <FaCheckSquare className="statusIcon" /> :
+                                <FaRegSquare className="statusIcon" />  
                         }
                         <p>Countdown Timer</p>
                     </span>
-                </li> */}
+                </li>
             </ul>
         </div>
     )

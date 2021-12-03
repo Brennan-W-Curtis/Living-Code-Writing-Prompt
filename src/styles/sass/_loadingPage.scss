@@ -32,10 +32,8 @@
         }
         
         .deleteArticles {
-            font-size: .75rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+            @include genericButtons();
+            padding: .5rem 1rem;
         }
 
     }

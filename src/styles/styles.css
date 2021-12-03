@@ -286,6 +286,11 @@ textarea {
   font-family: "futura-pt", sans-serif;
 }
 
+.hiddenComponent {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .fadeIn {
   -webkit-animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
           animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -383,9 +388,117 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.morningDisplay .menuLinks .individualLinks:hover, .morningDisplay .menuLinks .individualLinks:focus {
+  color: #23395B;
+}
+.morningDisplay .menuLinks .individualLinks::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.morningDisplay .menuLinks .individualLinks:hover::after, .morningDisplay .menuLinks .individualLinks:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
+}
+.morningDisplay .menuAuthentication .loginLink:hover, .morningDisplay .menuAuthentication .loginLink:focus,
+.morningDisplay .menuAuthentication .logoutRedirect:hover,
+.morningDisplay .menuAuthentication .logoutRedirect:focus,
+.morningDisplay .menuAuthentication .registerLink:hover,
+.morningDisplay .menuAuthentication .registerLink:focus {
+  color: #23395B;
+}
+.morningDisplay .menuAuthentication .loginLink::after,
+.morningDisplay .menuAuthentication .logoutRedirect::after,
+.morningDisplay .menuAuthentication .registerLink::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.morningDisplay .menuAuthentication .loginLink:hover::after, .morningDisplay .menuAuthentication .loginLink:focus-within::after,
+.morningDisplay .menuAuthentication .logoutRedirect:hover::after,
+.morningDisplay .menuAuthentication .logoutRedirect:focus-within::after,
+.morningDisplay .menuAuthentication .registerLink:hover::after,
+.morningDisplay .menuAuthentication .registerLink:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
+}
 .morningDisplay textarea:focus {
   outline: none;
   border-left: 1px solid black;
+}
+.morningDisplay .emptyMessage .emptyRedirect {
+  position: relative;
+}
+.morningDisplay .emptyMessage .emptyRedirect:hover, .morningDisplay .emptyMessage .emptyRedirect:focus {
+  color: #23395B;
+}
+.morningDisplay .emptyMessage .emptyRedirect::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.morningDisplay .emptyMessage .emptyRedirect:hover::after, .morningDisplay .emptyMessage .emptyRedirect:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
+}
+.morningDisplay .errorPage .errorRedirect {
+  position: relative;
+}
+.morningDisplay .errorPage .errorRedirect:hover, .morningDisplay .errorPage .errorRedirect:focus {
+  color: #23395B;
+}
+.morningDisplay .errorPage .errorRedirect::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.morningDisplay .errorPage .errorRedirect:hover::after, .morningDisplay .errorPage .errorRedirect:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #23395B;
 }
 
 .eveningDisplay {
@@ -397,6 +510,14 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.eveningDisplay h2,
+.eveningDisplay h3 {
+  color: #FFFFFF;
+}
+.eveningDisplay p,
+.eveningDisplay a button {
+  color: #E6E6E6;
+}
 .eveningDisplay .brandLogo h1,
 .eveningDisplay .brandLogo .iconContent {
   color: #FFFFFF;
@@ -404,28 +525,96 @@ textarea {
 .eveningDisplay .brandLogo .iconNegative {
   color: #272727;
 }
-.eveningDisplay .mainNavigation .individualLinks {
+.eveningDisplay .headerMenu .homeLink:hover, .eveningDisplay .headerMenu .homeLink:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .menuLinks .individualLinks {
   color: #E6E6E6;
 }
-.eveningDisplay .userAuthentication .currentUser p,
-.eveningDisplay .userAuthentication .currentUser .logoutRedirect {
+.eveningDisplay .menuLinks .individualLinks:hover, .eveningDisplay .menuLinks .individualLinks:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .menuLinks .individualLinks::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.eveningDisplay .menuLinks .individualLinks:hover::after, .eveningDisplay .menuLinks .individualLinks:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .menuAuthentication .loginLink,
+.eveningDisplay .menuAuthentication .logoutRedirect,
+.eveningDisplay .menuAuthentication .registerLink {
   color: #E6E6E6;
 }
-.eveningDisplay .productDescription {
+.eveningDisplay .menuAuthentication .loginLink:hover, .eveningDisplay .menuAuthentication .loginLink:focus,
+.eveningDisplay .menuAuthentication .logoutRedirect:hover,
+.eveningDisplay .menuAuthentication .logoutRedirect:focus,
+.eveningDisplay .menuAuthentication .registerLink:hover,
+.eveningDisplay .menuAuthentication .registerLink:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .menuAuthentication .loginLink::after,
+.eveningDisplay .menuAuthentication .logoutRedirect::after,
+.eveningDisplay .menuAuthentication .registerLink::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.eveningDisplay .menuAuthentication .loginLink:hover::after, .eveningDisplay .menuAuthentication .loginLink:focus-within::after,
+.eveningDisplay .menuAuthentication .logoutRedirect:hover::after,
+.eveningDisplay .menuAuthentication .logoutRedirect:focus-within::after,
+.eveningDisplay .menuAuthentication .registerLink:hover::after,
+.eveningDisplay .menuAuthentication .registerLink:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .userPreferences {
+  background-color: #272727;
+  border-left: 1px solid #FFFFFF;
+}
+.eveningDisplay .userPreferences .preferenceOption:hover, .eveningDisplay .userPreferences .preferenceOption:focus-within {
+  background-color: #000000;
+}
+.eveningDisplay .userPreferences .preferenceOption .statusIcon {
   color: #FFFFFF;
 }
-.eveningDisplay .productDescription .descriptionContent {
-  color: #E6E6E6;
-}
-.eveningDisplay .productFeatures {
-  color: #E6E6E6;
-}
-.eveningDisplay .productFeatures h3,
 .eveningDisplay .productFeatures .featureIcon {
   color: #FFFFFF;
 }
 .eveningDisplay .promptDisplay p {
   color: #FFFFFF;
+}
+.eveningDisplay .contributePrompts .submitPrompt {
+  background-color: #272727;
+  color: #E6E6E6;
+  border-bottom: 1px solid #FFFFFF;
+}
+.eveningDisplay .contributePrompts .submitButton {
+  color: #E6E6E6;
 }
 .eveningDisplay .countdownTimer .playbackButtons button {
   color: #E6E6E6;
@@ -441,7 +630,7 @@ textarea {
 }
 .eveningDisplay .writingSpace textarea {
   background-color: #272727;
-  color: #E6E6E6;
+  color: #FFFFFF;
 }
 .eveningDisplay .eventsSection .wordCount {
   color: #E6E6E6;
@@ -465,6 +654,79 @@ textarea {
 .eveningDisplay .loadingSection .articleOptions button {
   color: #E6E6E6;
 }
+.eveningDisplay .loadingSection .articleList li {
+  border: 1px solid #E6E6E6;
+}
+.eveningDisplay .loadingSection .articleList a {
+  color: #E6E6E6;
+}
+.eveningDisplay .loadingSection .articleList .deleteArticle {
+  color: #E6E6E6;
+}
+.eveningDisplay .loadingSection .emptyMessage .emptyRedirect {
+  position: relative;
+}
+.eveningDisplay .loadingSection .emptyMessage .emptyRedirect:hover, .eveningDisplay .loadingSection .emptyMessage .emptyRedirect:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .loadingSection .emptyMessage .emptyRedirect::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.eveningDisplay .loadingSection .emptyMessage .emptyRedirect:hover::after, .eveningDisplay .loadingSection .emptyMessage .emptyRedirect:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .authenticationContent input {
+  background-color: #272727;
+  color: #E6E6E6;
+}
+.eveningDisplay .authenticationContent input:focus {
+  outline: 1px solid #78CAD2;
+}
+.eveningDisplay .errorPage .errorRedirect {
+  position: relative;
+}
+.eveningDisplay .errorPage .errorRedirect:hover, .eveningDisplay .errorPage .errorRedirect:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .errorPage .errorRedirect::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-bottom: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.eveningDisplay .errorPage .errorRedirect:hover::after, .eveningDisplay .errorPage .errorRedirect:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .userNotifications {
+  background-color: #272727;
+  border-left: 1px solid #FFFFFF p;
+  border-left-color: #E6E6E6;
+}
 
 header .brandLogo {
   display: -webkit-box;
@@ -472,9 +734,6 @@ header .brandLogo {
   display: flex;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-header .brandLogo:hover {
-  color: #23395B;
 }
 header .brandIcon {
   position: relative;
@@ -506,6 +765,7 @@ header .headerMenu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 0 0 2.35rem 0;
 }
 header .headerMenu .menuAuthentication {
   display: -webkit-box;
@@ -569,29 +829,6 @@ header .headerMenu .menuAuthentication .loadingName {
 header .headerMenu .menuAuthentication .loginLink {
   position: relative;
 }
-header .headerMenu .menuAuthentication .loginLink:hover, header .headerMenu .menuAuthentication .loginLink:focus {
-  color: #23395B;
-}
-header .headerMenu .menuAuthentication .loginLink::after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.05rem;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  border-bottom: 1px solid black;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-header .headerMenu .menuAuthentication .loginLink:hover::after, header .headerMenu .menuAuthentication .loginLink:focus-within::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-bottom: 1px solid #23395B;
-}
 header .headerMenu .menuAuthentication .logoutRedirect {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -599,52 +836,6 @@ header .headerMenu .menuAuthentication .logoutRedirect {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-header .headerMenu .menuAuthentication .logoutRedirect:hover, header .headerMenu .menuAuthentication .logoutRedirect:focus {
-  color: #23395B;
-}
-header .headerMenu .menuAuthentication .logoutRedirect::after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.05rem;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  border-bottom: 1px solid black;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-header .headerMenu .menuAuthentication .logoutRedirect:hover::after, header .headerMenu .menuAuthentication .logoutRedirect:focus-within::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-bottom: 1px solid #23395B;
-}
-header .headerMenu .menuAuthentication .registerLink:hover, header .headerMenu .menuAuthentication .registerLink:focus {
-  color: #23395B;
-}
-header .headerMenu .menuAuthentication .registerLink::after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.05rem;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  border-bottom: 1px solid black;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-header .headerMenu .menuAuthentication .registerLink:hover::after, header .headerMenu .menuAuthentication .registerLink:focus-within::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-bottom: 1px solid #23395B;
 }
 header .headerMenu .menuAuthentication .logoutRedirect,
 header .headerMenu .menuAuthentication .registerLink {
@@ -703,7 +894,7 @@ header .displayToggle {
       -ms-flex-pack: start;
           justify-content: flex-start;
   width: 100%;
-  margin: 0 0 0 2.05rem;
+  margin: 0 0 0 2.5rem;
   -webkit-transition: none;
   transition: none;
 }
@@ -712,29 +903,6 @@ header .displayToggle {
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-.menuLinks .individualLinks:hover, .menuLinks .individualLinks:focus {
-  color: #23395B;
-}
-.menuLinks .individualLinks::after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.05rem;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  border-bottom: 1px solid black;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.menuLinks .individualLinks:hover::after, .menuLinks .individualLinks:focus-within::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-bottom: 1px solid #23395B;
 }
 
 .userPreferences {
@@ -787,52 +955,6 @@ header .displayToggle {
   width: 100%;
 }
 
-.toggleLabel {
-  position: relative;
-  display: inline-block;
-  width: calc(3rem * .5);
-  height: calc(1.7rem * .5);
-}
-.toggleLabel input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.toggleLabel input:checked + .modeSlider {
-  background-color: #E6E6E6;
-}
-.toggleLabel input:checked + .modeSlider::before {
-  background-color: black;
-  -webkit-transform: translateX(calc(1.3rem * .5));
-          transform: translateX(calc(1.3rem * .5));
-}
-.toggleLabel input:focus + .modeSlider {
-  -webkit-box-shadow: 0 0 calc(.05rem * .5) #E6E6E6;
-          box-shadow: 0 0 calc(.05rem * .5) #E6E6E6;
-}
-.toggleLabel .modeSlider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #272727;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.toggleLabel .modeSlider::before {
-  content: "";
-  position: absolute;
-  height: calc(1.3rem * .5);
-  width: calc(1.3rem * .5);
-  left: calc(.2rem * .5);
-  bottom: calc(.2rem * .5);
-  background-color: white;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
 .productDescription .descriptionContent {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -840,8 +962,9 @@ header .displayToggle {
 }
 .productDescription .descriptionContent p {
   font-size: 0.75rem;
-  width: 100%;
+  width: 50%;
   margin: 0.5rem 0;
+  padding: 0 1rem 0 0;
 }
 
 .productFeatures {
@@ -909,6 +1032,15 @@ header .displayToggle {
 .communalPrompts .promptDisplay {
   width: 100%;
   margin: 0 0 0.5rem 0;
+}
+.communalPrompts .promptDisplay .quoteIcons {
+  font-size: 0.75rem;
+}
+.communalPrompts .promptDisplay .quoteLeft {
+  margin: 0 0.25rem 0 0;
+}
+.communalPrompts .promptDisplay .quoteRight {
+  margin: 0 0 0 0.25rem;
 }
 .communalPrompts .promptDisplay p {
   display: -webkit-box;
@@ -1432,7 +1564,15 @@ header .displayToggle {
   font-size: 0.75rem;
   background: none;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding: 0.5rem 1rem;
+}
+.loadingSection .articleOptions .deleteArticles:hover, .loadingSection .articleOptions .deleteArticles:focus {
+  background-color: black;
+  color: white;
 }
 .loadingSection .articleList {
   display: -webkit-box;
@@ -1697,7 +1837,4 @@ header .displayToggle {
   text-align: center;
   width: 100%;
   margin: 0.5rem 0 0 0;
-}
-.errorPage P span {
-  text-decoration: underline;
 }

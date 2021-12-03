@@ -9,49 +9,49 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
         // Store a string value of the playlist endpoint to a variable.
         const playlistsEndpoint = "https://api.spotify.com/v1/me/playlists";
 
-        try {
-            // Make a request to the API to access the user's playlists.
-            axios({
-                url: playlistsEndpoint,
-                method: "GET",
-                dataResponse: "json",
-                headers: {
-                    Authorization: "Bearer " + accessToken
-                }
-            })
-            .then(response => {
+        // Make a request to the API to access the user's playlists.
+        axios({
+            url: playlistsEndpoint,
+            method: "GET",
+            dataResponse: "json",
+            headers: {
+                Authorization: "Bearer " + accessToken
+            }
+        })
+        .then(response => {
 
-                // Store a reference to the playlist objects.
-                const playlistArray = response.data;
-                
-                // Create an empty array to store the user's playlist array.
-                const playlistDetails = {};
+            // Should the 
+            if (response.status > 400 && response.status < 600) {
+                throw Error("Sorry, we're currently unable to complete your request. Please wait a few minutes and refresh.")
+            }
 
-                // Store a new array with only the relevant properties in a new variable.
-                playlistDetails.items = playlistArray.items.map(playlist => {
-
-                    return {
-                        spotifyUrl: playlist.external_urls.spotify,
-                        playlistName: playlist.name,
-                        albumCollage: playlist.images[0].url,
-                        trackNumbers: playlist.tracks.total
-                    }
-
-                });
-
-                // Store the data returned by the API in a state variable.
-                setPlaylistData(playlistDetails);
-                    
-            })
-            .catch(error => {
-                console.log(error);
-                setUserVerified(false);
-            });
+            // Store a reference to the playlist objects.
+            const playlistArray = response.data;
             
-        } catch(error) {
-            console.log(error.message);
-        }
+            // Create an empty array to store the user's playlist array.
+            const playlistDetails = {};
 
+            // Store a new array with only the relevant properties in a new variable.
+            playlistDetails.items = playlistArray.items.map(playlist => {
+
+                return {
+                    spotifyUrl: playlist.external_urls.spotify,
+                    playlistName: playlist.name,
+                    albumCollage: playlist.images[0].url,
+                    trackNumbers: playlist.tracks.total
+                }
+
+            });
+
+            // Store the data returned by the API in a state variable.
+            setPlaylistData(playlistDetails);
+                
+        })
+        .catch(error => {
+            console.log(error);
+            setUserVerified(false);
+        });
+            
     }, [accessToken, playlistData, setPlaylistData, setUserVerified]);
 
     return (

@@ -109,30 +109,32 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
             </div>
             <ul className="articleList">
                 {
-                    // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.
-                    savedArticles.length > 0 ?
-                        savedArticles.map((article, index) => {
-                            const {articleBody, articleTitle } = article;
-                            return (
-                                <li key={index} className="fadeIn">
-                                    <span>
-                                        <Link 
-                                            to="journal-page"
-                                            onClick={() => handleLoading(articleBody)}
-                                        >
-                                            {articleTitle}
-                                        </Link>
-                                        <FaWindowClose 
-                                            className="deleteArticle"
-                                            onClick={() => handleDelete(index)}
-                                        />
-                                    </span>
-                                </li>
-                            )
-                        }) :
-                        <div className="emptyMessage">
-                            <p>Your journal is empty, let's change that!</p>
-                        </div>
+                    // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.  
+                    savedArticles === undefined ?
+                        null :
+                        savedArticles.length > 0 ?
+                            savedArticles.map((article, index) => {
+                                const {articleBody, articleTitle } = article;
+                                return (
+                                    <li key={index} className="fadeIn">
+                                        <span>
+                                            <Link 
+                                                to="journal-page"
+                                                onClick={() => handleLoading(articleBody)}
+                                            >
+                                                {articleTitle}
+                                            </Link>
+                                            <FaWindowClose 
+                                                className="deleteArticle"
+                                                onClick={() => handleDelete(index)}
+                                            />
+                                        </span>
+                                    </li>
+                                )
+                            }) :
+                            <div className="emptyMessage">
+                                <p>Your journal is empty, let's change that <Link to="journal-page" className="emptyRedirect">here</Link>!</p>
+                            </div>
                 }
             </ul>
         </div>

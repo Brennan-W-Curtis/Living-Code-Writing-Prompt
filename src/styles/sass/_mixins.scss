@@ -1,8 +1,8 @@
-@mixin linkHovers() {
+@mixin linkHovers($activeColour) {
 
     &:hover,
     &:focus {
-        color: $primaryColour;
+        color: $activeColour;
     }
     
     &::after {
@@ -21,7 +21,7 @@
     &:focus-within::after {
         transform: scaleX(1);
         transition: all .5s;
-        border-bottom: 1px solid $primaryColour;
+        border-bottom: 1px solid $activeColour;
     }
 
 }
