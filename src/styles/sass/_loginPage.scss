@@ -41,6 +41,7 @@
         flex-direction: column;
         align-items: center;
         width: 75%;
+        position: relative;
 
         input {
             font-size: .75rem;
@@ -48,6 +49,21 @@
             border: none;
             border-bottom: 1px solid black;
             width: 100%;
+        }
+
+        .invalidEmail,
+        .invalidPassword {
+            font-size: .75rem;
+            width: 100%;
+        }
+
+        .invalidPassword {
+            position: absolute;
+            top: 3rem;
+        }
+
+        .displayError {
+            outline: none;
         }
 
         button {

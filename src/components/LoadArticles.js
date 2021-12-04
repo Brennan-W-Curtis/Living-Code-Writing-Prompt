@@ -1,36 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cloud } from '../firebase';
 import { deleteField, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { FaWindowClose } from 'react-icons/fa';
 
-const LoadArticles = ({ authenticatedUser, setUserInput }) => {
-    // Store all state values for the component in the following variables.
-    const [ savedArticles, setSavedArticles ] = useState([]); // Stores a reference to all of the user's previously saved articles in the database.
-
-    useEffect(() => {
-
-        const renderArticles = async () => {
-            // Conditionally access previously saved articles if the current user is authenticated
-            if (authenticatedUser !== null) {
-                // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
-                const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
-    
-                // Asynchronously store a reference to a readable snapshot of the document. 
-                const docSnapshot = await getDoc(docRef);
-                
-                // If a document exists set the state value savedArticles to the array of values in its userArticles property.
-                if (docSnapshot.exists()) {
-                    setSavedArticles(docSnapshot.data().userArticles);
-                }
-
-            }
-
-        }
-    
-        renderArticles();
-
-    }, [authenticatedUser, savedArticles]);
+const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
 
     // Handles loading the selected article to the writing space on the homepage.
     const handleLoading = bodyText => {
@@ -97,7 +70,7 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
                         null
                 }
                 {
-                    savedArticles ?
+                    savedArticles !== undefined ?
                         <button
                             className="deleteArticles"
                             onClick={deleteArticles}
@@ -110,31 +83,29 @@ const LoadArticles = ({ authenticatedUser, setUserInput }) => {
             <ul className="articleList">
                 {
                     // If there are articles present within state iterate through each of them and render them to the page as part of an unordered list.  
-                    savedArticles === undefined ?
-                        null :
-                        savedArticles.length > 0 ?
-                            savedArticles.map((article, index) => {
-                                const {articleBody, articleTitle } = article;
-                                return (
-                                    <li key={index} className="fadeIn">
-                                        <span>
-                                            <Link 
-                                                to="journal-page"
-                                                onClick={() => handleLoading(articleBody)}
-                                            >
-                                                {articleTitle}
-                                            </Link>
-                                            <FaWindowClose 
-                                                className="deleteArticle"
-                                                onClick={() => handleDelete(index)}
-                                            />
-                                        </span>
-                                    </li>
-                                )
-                            }) :
-                            <div className="emptyMessage">
-                                <p>Your journal is empty, let's change that <Link to="journal-page" className="emptyRedirect">here</Link>!</p>
-                            </div>
+                    savedArticles === undefined || savedArticles.length === 0 ?
+                        <div className="emptyMessage">
+                            <p>Your journal is empty, let's change that <Link to="journal-page" className="emptyRedirect">here</Link>!</p>
+                        </div> : 
+                        savedArticles.map((article, index) => {
+                            const {articleBody, articleTitle } = article;
+                            return (
+                                <li key={index} className="fadeIn">
+                                    <span>
+                                        <Link 
+                                            to="journal-page"
+                                            onClick={() => handleLoading(articleBody)}
+                                        >
+                                            {articleTitle}
+                                        </Link>
+                                        <FaWindowClose 
+                                            className="deleteArticle"
+                                            onClick={() => handleDelete(index)}
+                                        />
+                                    </span>
+                                </li>
+                            )
+                        }) 
                 }
             </ul>
         </div>

@@ -1,6 +1,18 @@
 const RegisterationForm = props => {
-    
-    const { registerUser, registerEmail, setRegisterEmail, registerPassword, setRegisterPassword, registerUsername, setRegisterUsername } = props;
+    // Destructure all state values and functions passed as props.
+    const { 
+        displayInvalidEmail,
+        displayInvalidPassword,
+        errorInvalidEmail,
+        errorInvalidPassword,
+        registerUser, 
+        registerEmail, 
+        setRegisterEmail, 
+        registerPassword, 
+        setRegisterPassword, 
+        registerUsername, 
+        setRegisterUsername 
+    } = props;
 
     return (
         <div className="registrationForm fadeIn">
@@ -15,9 +27,13 @@ const RegisterationForm = props => {
                     onChange={event => setRegisterUsername(event.target.value)}
                     value={registerUsername}
                 />
+                <span className={ displayInvalidEmail ? "invalidEmail" : "hiddenComponent invalidEmail"}>
+                    <p>{errorInvalidEmail}</p>
+                </span>
                 <label htmlFor="registerEmail" className="sr-only">Register Email</label>
                 <input 
-                    type="email" 
+                    type="email"
+                    className={displayInvalidEmail ? "displayError" : ""} 
                     id="registerEmail" 
                     name="registerEmail" 
                     placeholder="Email" 
@@ -25,9 +41,13 @@ const RegisterationForm = props => {
                     onChange={event => setRegisterEmail(event.target.value)}
                     value={registerEmail}
                 />
+                <span className={ displayInvalidPassword ? "invalidPassword" : "hiddenComponent invalidPassword"}>
+                    <p>{errorInvalidPassword}</p>
+                </span>
                 <label htmlFor="registerPassword" className="sr-only">Register Password</label>
                 <input 
                     type="password" 
+                    className={displayInvalidPassword ? "displayError" : ""} 
                     id="registerPassword" 
                     name="registerPassword" 
                     placeholder="Password"

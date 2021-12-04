@@ -2,16 +2,24 @@
 @import url("https://use.typekit.net/rhu3qmo.css"); // Futura PT
 @import url("https://use.typekit.net/rhu3qmo.css"); // Nimbus Roman
 
-// Colours
+// Brand Colours
 $primaryColour: #23395B;
 $secondaryColour: #78CAD2;
 $tertiaryColour: #EAE5E9;
 
-// Displays
+// Interface Colours
+$primaryError: #D11124;
+$secondaryError: #F46675;
+
+// Display Colours
 $eveningPrimary: #FFFFFF;
 $eveningSecondary: #E6E6E6;
 $eveningBackground: #272727;
+
 $morningPrimary: #000000;
+$morningSecondary: #272727;
+$morningBackground: #FFFFFF;
+
 
 // Typography
 $headingFont: 'nimbus-roman', serif;

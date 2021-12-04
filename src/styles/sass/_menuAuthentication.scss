@@ -1,0 +1,83 @@
+.menuAuthentication {
+    display: flex;
+    width: 50%;
+
+    .userOptions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+
+        .loginLink {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+    }
+
+    .userAuthentication {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .currentUser {
+        display: flex;
+
+        .logoutRedirect {
+            display: flex;
+            align-items: center;
+        }
+
+        .userGreeting {
+            display: flex;
+
+            .welcomeMessage {
+                display: flex;
+                align-items: center;
+                font-size: .8rem;
+            }
+
+        }
+    
+    }
+
+    .accessPreferences {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+
+        .preferencesIcon {
+            font-size: .5rem;
+            position: absolute;
+            right: -.25rem;
+            top: 0;
+            transition: all .5s;
+    
+            &:hover,
+            &:focus {
+                transform: rotateZ(180deg);
+            }
+    
+        }
+
+    }
+
+    .displayName,
+    .loginLink,
+    .loadingName {
+        font-size: .8rem;
+    }
+
+    .logoutRedirect,
+    .registerLink {
+        font-size: .8rem;
+        position: relative;
+        margin-left: 1rem;
+    }
+
+}

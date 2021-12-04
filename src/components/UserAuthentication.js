@@ -4,8 +4,25 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from '@fireba
 import { doc, getDoc } from 'firebase/firestore';
 import { Link, useHistory } from 'react-router-dom';
 import AuthenticationForm from './AuthenticationForm';
+import { FaCog } from 'react-icons/fa';
 
-const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDisplayActivity, setSidebarActive }) => {
+const UserAuthentication = props => {
+    // Destructure all state values and functions passed as props.
+    const { 
+        authenticatedUser, 
+        setAuthenticatedUser,
+        displayInvalidEmail, 
+        setDisplayInvalidEmail,
+        displayInvalidPassword,
+        setDisplayInvalidPassword, 
+        errorInvalidEmail, 
+        setErrorInvalidEmail, 
+        errorInvalidPassword,
+        setErrorInvalidPassword, 
+        setDisplayActivity, 
+        setSidebarActive 
+    } = props;
+
     // Store all state values for the component in the following variables.
     const [ loginEmail, setLoginEmail ] = useState(""); // Stores the user email input while signning in.
     const [ loginPassword, setLoginPassword ] = useState(""); // Stores the user password input while signning in.
@@ -31,6 +48,12 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
             setLoginEmail("");
             setLoginPassword("");
 
+            // Clear all error messages currently rendered on the page upon successfully authenticating.
+            setErrorInvalidEmail("");
+            setDisplayInvalidEmail(false);
+            setErrorInvalidPassword("");
+            setDisplayInvalidPassword(false);
+
             // Displays the user notification window upon the user successfully signing in.
             setDisplayActivity(true);
 
@@ -38,7 +61,34 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
             browserHistory.push("/");
 
         } catch (error) {
-            console.log(error.message);
+
+            // Conditionally render an error message if the user inputs an invalid email.
+            if (error.message === "Firebase: Error (auth/invalid-email).") {
+                setErrorInvalidEmail("Please enter a valid email.");
+                setDisplayInvalidEmail(true);
+            } else {
+                setErrorInvalidEmail("");
+                setDisplayInvalidEmail(false);
+            }
+
+            // Conditionally render an error message if the user attempts to sign into an account that does not exist.
+            if (error.message === "Firebase: Error (auth/user-not-found).") {
+                setErrorInvalidEmail("Sorry, user not found.");
+                setDisplayInvalidEmail(true);
+            } else {
+                setErrorInvalidEmail("");
+                setDisplayInvalidEmail(false);
+            }
+
+            // Conditionally render an error message if the user inputs an invalid password.
+            if (error.message === "Firebase: Error (auth/wrong-password).") {
+                setErrorInvalidPassword("Sorry, the password you entered is incorrect.");
+                setDisplayInvalidPassword(true);
+            } else {
+                setErrorInvalidPassword("");
+                setDisplayInvalidPassword(false);
+            }
+
         }
         
     }
@@ -78,6 +128,10 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
                 // If the state value authenticatedUser evaluates to false then render the register and login forms to the page.
                 !authenticatedUser ?
                     <AuthenticationForm 
+                        displayInvalidEmail={displayInvalidEmail}
+                        displayInvalidPassword={displayInvalidPassword}
+                        errorInvalidEmail={errorInvalidEmail}
+                        errorInvalidPassword={errorInvalidPassword} 
                         loginUser={loginUser}
                         loginEmail={loginEmail}
                         setLoginEmail={setLoginEmail}
@@ -97,6 +151,7 @@ const UserAuthentication = ({ authenticatedUser, setAuthenticatedUser, setDispla
                                         onClick={() => setSidebarActive(true)}
                                     >
                                         <p className="displayName">{authenticatedUser ? `${displayName}` : ""}</p>
+                                        <FaCog className="preferencesIcon" aria-hidden="true"/>
                                     </button>
                                 </span>
                         }

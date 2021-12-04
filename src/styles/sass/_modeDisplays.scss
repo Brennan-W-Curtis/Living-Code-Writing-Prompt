@@ -3,7 +3,7 @@
     background-color: $eveningPrimary;
 
     * {
-        transition: all .5s;
+        transition: color .5s, background-color .5s;
     }
 
     .menuLinks {
@@ -25,10 +25,33 @@
     }
 
     textarea {
+        background-color: $morningBackground;
+        color: $morningPrimary;
+        border: none;
 
         &:focus {
+            border-left: 1px solid $morningPrimary;
             outline: none;
-            border-left: 1px solid black;
+        }
+
+    }
+
+    .savingOptions {
+
+        .articleTitle {
+            color: $morningPrimary;
+            border: none;
+            border-bottom: 1px solid $morningPrimary;
+        }
+
+    }
+
+    .inactivityWarning {
+        
+        .warningModal {
+            background-color: $morningBackground;
+            color: $morningPrimary;
+            border-left: 1px solid $morningPrimary;
         }
 
     }
@@ -42,11 +65,36 @@
 
     }
 
+    .authenticationContent,
+    .registrationContent {
+
+        .invalidEmail,
+        .invalidPassword {
+            color: $primaryError;
+        }
+
+        .displayError {
+            border-bottom: 1px solid $primaryError;
+            outline: none;
+        }
+
+    }
+
     .errorPage {
 
         .errorRedirect {
             position: relative;
             @include linkHovers($primaryColour);
+        }
+
+    }
+
+    .userNotifications {
+        background-color: $morningBackground;
+        border-left: 1px solid $morningPrimary;
+        
+        p {
+            color: $morningPrimary;
         }
 
     }
@@ -58,7 +106,7 @@
     background-color: $eveningBackground;
 
     * {
-        transition: all .5s;
+        transition: color .5s, background-color .5s;
     }
     
     h2,
@@ -66,8 +114,7 @@
         color: $eveningPrimary;
     }
 
-    p,
-    a
+    a,
     button {
         color: $eveningSecondary;
     }
@@ -109,6 +156,15 @@
 
     .menuAuthentication {
 
+        .userGreeting {
+            color: $eveningSecondary;
+
+            .preferencesIcon {
+                color: $eveningPrimary;
+            }
+
+        }
+
         .loginLink,
         .logoutRedirect,
         .registerLink {
@@ -122,6 +178,10 @@
         background-color: $eveningBackground;
         border-left: 1px solid $eveningPrimary;
 
+        p {
+            color: $eveningSecondary;
+        }
+
         .preferenceOption {
 
             &:hover,
@@ -129,6 +189,7 @@
                 background-color: $morningPrimary;
             }
 
+            .preferencesToggle,
             .statusIcon {
                 color: $eveningPrimary;
             }
@@ -137,7 +198,19 @@
 
     }
 
+    .productDescription {
+
+        p {
+            color: $eveningSecondary;
+        }
+
+    }
+
     .productFeatures {
+
+        p {
+            color: $eveningSecondary;
+        }
 
         .featureIcon {
             color: $eveningPrimary;
@@ -199,6 +272,37 @@
         textarea {
             background-color: $eveningBackground;
             color: $eveningPrimary;
+            border: none;
+
+            &:focus {
+                outline: none;
+                border-left: 1px solid $eveningPrimary;
+            }
+
+        }
+    
+    }
+
+    .savingOptions {
+
+        .closeIcon {
+            color: $eveningPrimary;
+        }
+
+        .articleTitle {
+            color: $eveningSecondary;
+            border: none;
+            border-bottom: 1px solid $eveningPrimary;
+        }
+
+    }
+    
+    .inactivityWarning {
+        
+        .warningModal {
+            background-color: $eveningBackground;
+            color: $eveningSecondary;
+            border-left: 1px solid $eveningPrimary;
         }
 
     }
@@ -276,6 +380,10 @@
 
         .emptyMessage {
 
+            p {
+                color: $eveningSecondary;
+            }
+
             .emptyRedirect {
                 position: relative;
                 @include linkHovers($secondaryColour);
@@ -285,16 +393,40 @@
 
     }
 
-    .authenticationContent {
+    .authenticationContent,
+    .registrationContent {
 
         input {
             background-color: $eveningBackground;
             color: $eveningSecondary;
+            border-bottom: 1px solid $eveningPrimary;
             
             &:focus {
                 outline: 1px solid $secondaryColour; 
             }
 
+        }
+
+        button {
+            color: $eveningSecondary;
+        }
+
+        .invalidEmail,
+        .invalidPassword {
+            color: $secondaryError;
+        }
+
+        .displayError {
+            border-bottom: 1px solid $secondaryError;
+        }
+
+    }
+
+    .authenticationDescription,
+    .registerationDescription {
+
+        p {
+            color: $eveningSecondary;
         }
 
     }
@@ -310,7 +442,7 @@
 
     .userNotifications {
         background-color: $eveningBackground;
-        border-left: 1px solid $eveningPrimary
+        border-left: 1px solid $eveningPrimary;
         
         p {
             color: $eveningSecondary;

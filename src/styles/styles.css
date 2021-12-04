@@ -385,8 +385,8 @@ textarea {
   background-color: #FFFFFF;
 }
 .morningDisplay * {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: color 0.5s, background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
 }
 .morningDisplay .menuLinks .individualLinks:hover, .morningDisplay .menuLinks .individualLinks:focus {
   color: #23395B;
@@ -444,9 +444,24 @@ textarea {
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
 }
+.morningDisplay textarea {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
+}
 .morningDisplay textarea:focus {
+  border-left: 1px solid #000000;
   outline: none;
-  border-left: 1px solid black;
+}
+.morningDisplay .savingOptions .articleTitle {
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+.morningDisplay .inactivityWarning .warningModal {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-left: 1px solid #000000;
 }
 .morningDisplay .emptyMessage .emptyRedirect {
   position: relative;
@@ -474,6 +489,17 @@ textarea {
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
 }
+.morningDisplay .authenticationContent .invalidEmail,
+.morningDisplay .authenticationContent .invalidPassword,
+.morningDisplay .registrationContent .invalidEmail,
+.morningDisplay .registrationContent .invalidPassword {
+  color: #D11124;
+}
+.morningDisplay .authenticationContent .displayError,
+.morningDisplay .registrationContent .displayError {
+  border-bottom: 1px solid #D11124;
+  outline: none;
+}
 .morningDisplay .errorPage .errorRedirect {
   position: relative;
 }
@@ -500,6 +526,13 @@ textarea {
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
 }
+.morningDisplay .userNotifications {
+  background-color: #FFFFFF;
+  border-left: 1px solid #000000;
+}
+.morningDisplay .userNotifications p {
+  color: #000000;
+}
 
 .eveningDisplay {
   -webkit-transition: all 0.5s;
@@ -507,15 +540,15 @@ textarea {
   background-color: #272727;
 }
 .eveningDisplay * {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: color 0.5s, background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
 }
 .eveningDisplay h2,
 .eveningDisplay h3 {
   color: #FFFFFF;
 }
-.eveningDisplay p,
-.eveningDisplay a button {
+.eveningDisplay a,
+.eveningDisplay button {
   color: #E6E6E6;
 }
 .eveningDisplay .brandLogo h1,
@@ -553,6 +586,12 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .menuAuthentication .userGreeting {
+  color: #E6E6E6;
+}
+.eveningDisplay .menuAuthentication .userGreeting .preferencesIcon {
+  color: #FFFFFF;
 }
 .eveningDisplay .menuAuthentication .loginLink,
 .eveningDisplay .menuAuthentication .logoutRedirect,
@@ -596,11 +635,21 @@ textarea {
   background-color: #272727;
   border-left: 1px solid #FFFFFF;
 }
+.eveningDisplay .userPreferences p {
+  color: #E6E6E6;
+}
 .eveningDisplay .userPreferences .preferenceOption:hover, .eveningDisplay .userPreferences .preferenceOption:focus-within {
   background-color: #000000;
 }
+.eveningDisplay .userPreferences .preferenceOption .preferencesToggle,
 .eveningDisplay .userPreferences .preferenceOption .statusIcon {
   color: #FFFFFF;
+}
+.eveningDisplay .productDescription p {
+  color: #E6E6E6;
+}
+.eveningDisplay .productFeatures p {
+  color: #E6E6E6;
 }
 .eveningDisplay .productFeatures .featureIcon {
   color: #FFFFFF;
@@ -631,6 +680,24 @@ textarea {
 .eveningDisplay .writingSpace textarea {
   background-color: #272727;
   color: #FFFFFF;
+  border: none;
+}
+.eveningDisplay .writingSpace textarea:focus {
+  outline: none;
+  border-left: 1px solid #FFFFFF;
+}
+.eveningDisplay .savingOptions .closeIcon {
+  color: #FFFFFF;
+}
+.eveningDisplay .savingOptions .articleTitle {
+  color: #E6E6E6;
+  border: none;
+  border-bottom: 1px solid #FFFFFF;
+}
+.eveningDisplay .inactivityWarning .warningModal {
+  background-color: #272727;
+  color: #E6E6E6;
+  border-left: 1px solid #FFFFFF;
 }
 .eveningDisplay .eventsSection .wordCount {
   color: #E6E6E6;
@@ -663,6 +730,9 @@ textarea {
 .eveningDisplay .loadingSection .articleList .deleteArticle {
   color: #E6E6E6;
 }
+.eveningDisplay .loadingSection .emptyMessage p {
+  color: #E6E6E6;
+}
 .eveningDisplay .loadingSection .emptyMessage .emptyRedirect {
   position: relative;
 }
@@ -689,12 +759,33 @@ textarea {
   transition: all 0.5s;
   border-bottom: 1px solid #78CAD2;
 }
-.eveningDisplay .authenticationContent input {
+.eveningDisplay .authenticationContent input,
+.eveningDisplay .registrationContent input {
   background-color: #272727;
   color: #E6E6E6;
+  border-bottom: 1px solid #FFFFFF;
 }
-.eveningDisplay .authenticationContent input:focus {
+.eveningDisplay .authenticationContent input:focus,
+.eveningDisplay .registrationContent input:focus {
   outline: 1px solid #78CAD2;
+}
+.eveningDisplay .authenticationContent button,
+.eveningDisplay .registrationContent button {
+  color: #E6E6E6;
+}
+.eveningDisplay .authenticationContent .invalidEmail,
+.eveningDisplay .authenticationContent .invalidPassword,
+.eveningDisplay .registrationContent .invalidEmail,
+.eveningDisplay .registrationContent .invalidPassword {
+  color: #F46675;
+}
+.eveningDisplay .authenticationContent .displayError,
+.eveningDisplay .registrationContent .displayError {
+  border-bottom: 1px solid #F46675;
+}
+.eveningDisplay .authenticationDescription p,
+.eveningDisplay .registerationDescription p {
+  color: #E6E6E6;
 }
 .eveningDisplay .errorPage .errorRedirect {
   position: relative;
@@ -724,8 +815,10 @@ textarea {
 }
 .eveningDisplay .userNotifications {
   background-color: #272727;
-  border-left: 1px solid #FFFFFF p;
-  border-left-color: #E6E6E6;
+  border-left: 1px solid #FFFFFF;
+}
+.eveningDisplay .userNotifications p {
+  color: #E6E6E6;
 }
 
 header .brandLogo {
@@ -766,95 +859,6 @@ header .headerMenu {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 0 2.35rem 0;
-}
-header .headerMenu .menuAuthentication {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 50%;
-}
-header .headerMenu .menuAuthentication .userOptions {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 100%;
-}
-header .headerMenu .menuAuthentication .userAuthentication {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 100%;
-}
-header .headerMenu .menuAuthentication .currentUser {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-header .headerMenu .menuAuthentication .userGreeting {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-header .headerMenu .menuAuthentication .welcomeMessage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 0.8rem;
-}
-header .headerMenu .menuAuthentication .accessPreferences {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-header .headerMenu .menuAuthentication .displayName,
-header .headerMenu .menuAuthentication .loginLink,
-header .headerMenu .menuAuthentication .loadingName {
-  font-size: 0.8rem;
-}
-header .headerMenu .menuAuthentication .loginLink {
-  position: relative;
-}
-header .headerMenu .menuAuthentication .logoutRedirect {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-header .headerMenu .menuAuthentication .logoutRedirect,
-header .headerMenu .menuAuthentication .registerLink {
-  font-size: 0.8rem;
-  position: relative;
-  margin-left: 1rem;
-}
-header .headerMenu .menuAuthentication .loginLink {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-header .displayToggle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
 }
 
 .menuLinks {
@@ -905,6 +909,99 @@ header .displayToggle {
   transition: all 0.5s;
 }
 
+.menuAuthentication {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+}
+.menuAuthentication .userOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+.menuAuthentication .userOptions .loginLink {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menuAuthentication .userAuthentication {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+.menuAuthentication .currentUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.menuAuthentication .currentUser .logoutRedirect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.menuAuthentication .currentUser .userGreeting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.menuAuthentication .currentUser .userGreeting .welcomeMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+}
+.menuAuthentication .accessPreferences {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.menuAuthentication .accessPreferences .preferencesIcon {
+  font-size: 0.5rem;
+  position: absolute;
+  right: -0.25rem;
+  top: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menuAuthentication .accessPreferences .preferencesIcon:hover, .menuAuthentication .accessPreferences .preferencesIcon:focus {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+.menuAuthentication .displayName,
+.menuAuthentication .loginLink,
+.menuAuthentication .loadingName {
+  font-size: 0.8rem;
+}
+.menuAuthentication .logoutRedirect,
+.menuAuthentication .registerLink {
+  font-size: 0.8rem;
+  position: relative;
+  margin-left: 1rem;
+}
+
 .userPreferences {
   position: fixed;
   background-color: white;
@@ -915,6 +1012,8 @@ header .displayToggle {
   height: 100%;
   z-index: 100;
   border-left: 1px solid black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .preferencesActive {
@@ -1289,12 +1388,7 @@ header .displayToggle {
   font-size: 0.75rem;
   width: 100%;
   padding: 0.5rem;
-  border: none;
   resize: none;
-}
-.writingSection .writingSpace textarea:focus {
-  outline: none;
-  border-left: 1px solid black;
 }
 .writingSection .colourOverlay {
   position: absolute;
@@ -1322,8 +1416,6 @@ header .displayToggle {
           justify-content: center;
   width: 50%;
   margin: 0 auto;
-  background: white;
-  border-left: 1px solid black;
   height: 10rem;
 }
 .writingSection .inactivityWarning .warningModal p {
@@ -1389,6 +1481,10 @@ header .displayToggle {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+.writingSection .savingOptions .closeIcon:hover, .writingSection .savingOptions .closeIcon:focus {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
 .writingSection .savingOptions .savingButtons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1402,8 +1498,6 @@ header .displayToggle {
   font-size: 0.75rem;
   width: 100%;
   background: none;
-  border: none;
-  border-bottom: 1px solid black;
 }
 .writingSection .savingOptions button {
   font-size: 0.75rem;
@@ -1429,7 +1523,6 @@ header .displayToggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1442,7 +1535,6 @@ header .displayToggle {
   width: calc(25% * .75);
   max-width: 10rem;
   height: calc(20% * .75);
-  border-left: 1px solid black;
 }
 .userNotifications p {
   font-size: 0.75rem;
@@ -1712,6 +1804,7 @@ header .displayToggle {
       -ms-flex-align: center;
           align-items: center;
   width: 75%;
+  position: relative;
 }
 .authenticationForm form input {
   font-size: 0.75rem;
@@ -1719,6 +1812,18 @@ header .displayToggle {
   border: none;
   border-bottom: 1px solid black;
   width: 100%;
+}
+.authenticationForm form .invalidEmail,
+.authenticationForm form .invalidPassword {
+  font-size: 0.75rem;
+  width: 100%;
+}
+.authenticationForm form .invalidPassword {
+  position: absolute;
+  top: 3rem;
+}
+.authenticationForm form .displayError {
+  outline: none;
 }
 .authenticationForm form button {
   font-size: 0.75rem;
@@ -1790,6 +1895,7 @@ header .displayToggle {
       -ms-flex-align: center;
           align-items: center;
   width: 75%;
+  position: relative;
 }
 .registrationForm form input {
   font-size: 0.75rem;
@@ -1811,6 +1917,22 @@ header .displayToggle {
 .registrationForm form button:hover, .registrationForm form button:focus {
   background-color: black;
   color: white;
+}
+.registrationForm form .invalidEmail,
+.registrationForm form .invalidPassword {
+  font-size: 0.75rem;
+  width: 100%;
+}
+.registrationForm form .invalidEmail {
+  position: absolute;
+  top: 3rem;
+}
+.registrationForm form .invalidPassword {
+  position: absolute;
+  top: 6rem;
+}
+.registrationForm form .displayError {
+  outline: none;
 }
 
 .errorPage {

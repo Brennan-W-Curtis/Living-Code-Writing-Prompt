@@ -1,4 +1,17 @@
-const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPassword, setLoginPassword }) => {
+const AuthenticationForm = props => {
+    // Destructure all state values and functions passed as props.
+    const {
+        displayInvalidEmail,
+        displayInvalidPassword,
+        errorInvalidEmail,
+        errorInvalidPassword, 
+        loginUser, 
+        loginEmail, 
+        setLoginEmail, 
+        loginPassword, 
+        setLoginPassword 
+    } = props;
+
     return (
         <div className="authenticationContent">
             <div className="authenticationDescription">
@@ -7,9 +20,13 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
             </div>
             <div className="authenticationForm fadeIn">
                 <form action="submit">
+                    <span className={ displayInvalidEmail ? "invalidEmail" : "hiddenComponent invalidEmail"}>
+                        <p>{errorInvalidEmail}</p>
+                    </span>
                     <label htmlFor="loginEmail" className="sr-only">Login Email</label>
                     <input 
                         type="email" 
+                        className={displayInvalidEmail ? "displayError" : ""} 
                         id="loginEmail" 
                         name="loginEmail" 
                         placeholder="Email"
@@ -17,9 +34,13 @@ const AuthenticationForm = ({ loginUser, loginEmail, setLoginEmail, loginPasswor
                         onChange={event => setLoginEmail(event.target.value)}
                         value={loginEmail}
                     />
+                    <span className={ displayInvalidPassword ? "invalidPassword" : "hiddenComponent invalidPassword"}>
+                        <p>{errorInvalidPassword}</p>
+                    </span>
                     <label htmlFor="loginPassword" className="sr-only">Login Password</label>
                     <input 
                         type="password" 
+                        className={displayInvalidPassword ? "displayError" : ""} 
                         id="loginPassword" 
                         name="loginPassword" 
                         placeholder="Password"

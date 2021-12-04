@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import realtime from './firebase';
 import { ref, onValue } from 'firebase/database';
+import { cloud } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import './styles/styles.css';
 import HeaderContent from './components/HeaderContent';
 import MainContent from './components/MainContent';
@@ -30,12 +32,19 @@ const App = () => {
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
+  const [ savedArticles, setSavedArticles ] = useState([]); // Stores a reference to all of the user's previously saved articles in the database.
   const [ userInput, setUserInput ] = useState(""); // Stores the input by the user as it changes within the textarea element.
   const [ userActivity, setUserActivity ] = useState(""); // Stores a message for the user based on recent interaction events.
   const [ displayActivity, setDisplayActivity ] = useState(null); // Determines whether the notification window is displayed for the user with either a positive or negative indicator.
   const [ activityFadingOut, setActivityFadingOut ] = useState(false); // Determines whether the notification window is either fading in our fading out.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
   const [ sidebarActive, setSidebarActive ] = useState(false); // Determines whether the sidebar menu is visible to the user.
+
+  // Store all error handling state values for user registration in the following variables.
+  const [ displayInvalidEmail, setDisplayInvalidEmail ] = useState(false); // Determines whether the invalid email indicator is displayed for the user.
+  const [ errorInvalidEmail, setErrorInvalidEmail ] = useState(""); // Stores the invalid email error message is displayed for the user to read.
+  const [ displayInvalidPassword, setDisplayInvalidPassword ] = useState(false); // Determines whether the invalid password indicator is displayed for the user.
+  const [ errorInvalidPassword, setErrorInvalidPassword ] = useState(""); // Stores the invalid password error message is displayed for the user to read.
 
    // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
    useEffect(() => {
@@ -71,6 +80,7 @@ const App = () => {
     
   }, []);
 
+  // On page load and when the storedPrompts value changes a random prompt is selected and stored in the currentPrompt state value.
   useEffect(() => {
           
     // If the storedPrompts array length is greater than zero set the currentPrompt state variable to a prompt based on a randomly generated index. 
@@ -83,6 +93,7 @@ const App = () => {
     // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
   }, [storedPrompts]);
 
+  // When the current user signs out the userVerfied state value is changed to false to prevent the previous authenticated user's playlists from displaying.
   useEffect(() => {
 
     // If the current user is not authenticated than set the value of userVerified to false to prevent them from accessing the previous user's playlists.
@@ -90,7 +101,33 @@ const App = () => {
 
   }, [authenticatedUser]);
 
-  // Handles the animating of the notification window.
+  // When the user signs in and upon a change occuring within the savedArticles state value the current authenticated user's journal entries will be rendered to the page.
+  useEffect(() => {
+
+    // Access the user's saved articles from the cloud database.
+    const renderArticles = async () => {
+        // Conditionally access previously saved entries if the current user is authenticated
+        if (authenticatedUser !== null) {
+            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+
+            // Asynchronously store a reference to a readable snapshot of the document. 
+            const docSnapshot = await getDoc(docRef);
+            
+            // If a document exists set the state value savedArticles to the array of values in its userArticles property.
+            if (docSnapshot.exists()) {
+                setSavedArticles(docSnapshot.data().userArticles);
+            }
+
+        }
+
+    }
+
+    renderArticles();
+
+}, [authenticatedUser, savedArticles]);
+
+  // Handles the animating of the notification window as it fades in and out of view.
   const animateIndicator = () => {
     setTimeout(() => setActivityFadingOut(true), 4000);
     setTimeout(() => setUserActivity(""), 4500);
@@ -174,6 +211,7 @@ const App = () => {
                   <section className="loadingSection">
                     <LoadArticles 
                       authenticatedUser={authenticatedUser}
+                      savedArticles={savedArticles}
                       setUserInput={setUserInput}
                     />
                   </section>
@@ -201,6 +239,14 @@ const App = () => {
                     <UserAuthentication 
                       authenticatedUser={authenticatedUser}
                       setAuthenticatedUser={setAuthenticatedUser}
+                      displayInvalidEmail={displayInvalidEmail}
+                      setDisplayInvalidEmail={setDisplayInvalidEmail}
+                      displayInvalidPassword={displayInvalidPassword}
+                      setDisplayInvalidPassword={setDisplayInvalidPassword}
+                      errorInvalidEmail={errorInvalidEmail}
+                      setErrorInvalidEmail={setErrorInvalidEmail}
+                      errorInvalidPassword={errorInvalidPassword}
+                      setErrorInvalidPassword={setErrorInvalidPassword}
                       setDisplayActivity={setDisplayActivity}
                     />
                   </section>
@@ -212,6 +258,14 @@ const App = () => {
                 <Route path="/register-account">
                   <section className="registrationSection">
                     <UserRegistration 
+                      displayInvalidEmail={displayInvalidEmail}
+                      setDisplayInvalidEmail={setDisplayInvalidEmail}
+                      displayInvalidPassword={displayInvalidPassword}
+                      setDisplayInvalidPassword={setDisplayInvalidPassword}
+                      errorInvalidEmail={errorInvalidEmail}
+                      setErrorInvalidEmail={setErrorInvalidEmail}
+                      errorInvalidPassword={errorInvalidPassword}
+                      setErrorInvalidPassword={setErrorInvalidPassword}
                       setAuthenticatedUser={setAuthenticatedUser}
                     />
                   </section>

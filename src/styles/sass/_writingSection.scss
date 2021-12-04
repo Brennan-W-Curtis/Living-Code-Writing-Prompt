@@ -16,14 +16,7 @@
             font-size: .75rem;
             width: 100%;
             padding: .5rem;
-            border: none;
             resize: none;
-
-            &:focus {
-                outline: none;
-                border-left: 1px solid black;
-            }
-
         }
 
     }
@@ -48,8 +41,6 @@
             justify-content: center;
             width: 50%;
             margin: 0 auto;
-            background: white;
-            border-left: 1px solid black;
             height: 10rem;
 
             p {
@@ -98,6 +89,12 @@
             font-size: .75rem;
             cursor: pointer;
             transition: all .5s;
+
+            &:hover,
+            &:focus {
+                transform: rotateZ(180deg);
+            }
+
         }
 
         .savingButtons {
@@ -110,8 +107,6 @@
             font-size: .75rem;
             width: 100%;
             background: none;
-            border: none;
-            border-bottom: 1px solid black;
         }
 
         button {
