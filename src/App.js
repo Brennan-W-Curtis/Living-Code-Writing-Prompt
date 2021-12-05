@@ -160,6 +160,7 @@ const App = () => {
             setSidebarActive={setSidebarActive}
             toggleMode={toggleMode}
             setToggleMode={setToggleMode}
+            setUserInput={setUserInput}
           />
         </aside>
       </header>
@@ -189,16 +190,17 @@ const App = () => {
                 count={count}
                 setCount={setCount}
                 countingStatus={countingStatus}
+                setCountingStatus={setCountingStatus}
                 displayCountdown={displayCountdown}
                 currentPrompt={currentPrompt}
+                displayActivity={displayActivity}
+                setDisplayActivity={setDisplayActivity}
                 promptDisplay={promptDisplay}
                 promptLock={promptLock}
                 promptFadingOut={promptFadingOut}
                 promptIsLoading={promptIsLoading}
-                setCountingStatus={setCountingStatus}
-                displayActivity={displayActivity}
-                setDisplayActivity={setDisplayActivity}
                 sidebarActive={sidebarActive}
+                storedPrompts={storedPrompts}
                 userInput={userInput}
                 setUserInput={setUserInput}
                 userActivity={userActivity}

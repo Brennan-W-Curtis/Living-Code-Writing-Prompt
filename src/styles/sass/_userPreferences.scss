@@ -30,12 +30,22 @@
             background-color: $eveningSecondary;
         }
 
+        .preferencesToggle {
+            font-size: 1rem;
+            margin-left: .5rem;
+        }
+
         .optionText {
             display: flex;
             margin: 0 0 0 1rem;
             align-items: center;
             font-size: .75rem;
             width: 100%;
+        }
+
+        .sidebarIcon {
+            margin-right: .5rem;
+            font-size: 1rem;
         }
 
     }

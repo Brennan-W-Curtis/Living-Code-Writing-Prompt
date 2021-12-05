@@ -20,9 +20,14 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
         })
         .then(response => {
 
-            // Should the 
-            if (response.status > 400 && response.status < 600) {
-                throw Error("Sorry, we're currently unable to complete your request. Please wait a few minutes and refresh.")
+            // If the client is unauthorized to access the content throw an exception.
+            if (response.status > 399 && response.status < 500) {
+                throw Error("Client denied access.");
+            }
+
+            // If the server is unable to fulfill the client's request throw an exception.
+            if (response.status > 499 && response.status < 600) {
+                throw Error("Server unable to fulfill request.");
             }
 
             // Store a reference to the playlist objects.
@@ -48,7 +53,7 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
                 
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.message, "Sorry, we're currently unable to complete your request. Please wait a few minutes and refresh.");
             setUserVerified(false);
         });
             

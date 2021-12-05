@@ -1,4 +1,4 @@
-import { FaAngleRight, FaRegSquare, FaCheckSquare } from 'react-icons/fa';
+import { FaAngleRight, FaFile, FaSave, FaRegSquare, FaCheckSquare } from 'react-icons/fa';
 
 const UserPreferences = props => {
     // Destructure all state values and functions passed as props.
@@ -15,9 +15,11 @@ const UserPreferences = props => {
         sidebarActive, 
         setSidebarActive,
         toggleMode,
-        setToggleMode 
+        setToggleMode,
+        setUserInput 
     } = props;
 
+    // Toggles the visibility of a feature based on whether the current authenticated user has enabled it.
     const togglePreference = (userPreference, preferenceFading, preferenceDisplay) => {
         if (userPreference) {
             preferenceFading(true);
@@ -43,6 +45,31 @@ const UserPreferences = props => {
                         <FaAngleRight className="preferencesToggle" />
                     </span>
                 </li>
+                <li
+                    className="preferenceOption"
+                    onClick={() => setUserInput("")}
+                >
+                    <span className="optionText">
+                        <FaFile className="sidebarIcon" />
+                        <p>New</p>
+                    </span>
+                </li>
+                <li
+                    className="preferenceOption"
+                >
+                    <span className="optionText">
+                        <FaSave className="sidebarIcon" />
+                        <p>Save</p>
+                    </span>
+                </li>
+                {/* <li
+                    className="preferenceOption"
+                >
+                    <span className="optionText">
+                        <FaCog className="sidebarIcon" />
+                        <p>Preferences</p>
+                    </span>
+                </li> */}
                 <li 
                     className="preferenceOption"
                     onClick={() => setToggleMode(!toggleMode)}
@@ -50,8 +77,8 @@ const UserPreferences = props => {
                     <span className="optionText">
                         {
                             !toggleMode ? 
-                                <FaRegSquare className="statusIcon" /> :
-                                <FaCheckSquare className="statusIcon" />
+                                <FaRegSquare className="sidebarIcon" /> :
+                                <FaCheckSquare className="sidebarIcon" />
                         }
                         <p>Evening Mode</p>
                     </span>
@@ -67,8 +94,8 @@ const UserPreferences = props => {
                     <span className="optionText">
                         {
                             promptDisplay ? 
-                                <FaCheckSquare className="statusIcon" /> :
-                                <FaRegSquare className="statusIcon" /> 
+                                <FaCheckSquare className="sidebarIcon" /> :
+                                <FaRegSquare className="sidebarIcon" /> 
                         }
                         <p>Display Prompts</p>
                     </span>
@@ -81,8 +108,8 @@ const UserPreferences = props => {
                     <span className="optionText">
                         {
                             !contributePrompt ? 
-                                <FaRegSquare className="statusIcon" /> : 
-                                <FaCheckSquare className="statusIcon" />
+                                <FaRegSquare className="sidebarIcon" /> : 
+                                <FaCheckSquare className="sidebarIcon" />
                         }
                         <p>Contribute Prompt</p>
                     </span>
@@ -94,11 +121,14 @@ const UserPreferences = props => {
                     <span className="optionText">
                         {
                             displayCountdown ? 
-                                <FaCheckSquare className="statusIcon" /> :
-                                <FaRegSquare className="statusIcon" />  
+                                <FaCheckSquare className="sidebarIcon" /> :
+                                <FaRegSquare className="sidebarIcon" />  
                         }
                         <p>Countdown Timer</p>
                     </span>
+                </li>
+                <li>
+                    <div></div>
                 </li>
             </ul>
         </div>

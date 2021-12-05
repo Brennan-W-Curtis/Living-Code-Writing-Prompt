@@ -35,6 +35,10 @@ html {
 }
 
 // General Styles
+* {
+    transition: all .5s;
+}
+
 main {
     min-height: 80vh;
 }

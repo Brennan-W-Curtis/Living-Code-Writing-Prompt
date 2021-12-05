@@ -2,14 +2,10 @@
     transition: all .5s;
     background-color: $eveningPrimary;
 
-    * {
-        transition: color .5s, background-color .5s;
-    }
-
     .menuLinks {
 
         .individualLinks {
-            @include linkHovers($primaryColour);
+            @include linkHovers($primaryColour, $morningPrimary);
         }
 
     }
@@ -19,7 +15,33 @@
         .loginLink,
         .logoutRedirect,
         .registerLink {
-            @include linkHovers($primaryColour);
+            @include linkHovers($primaryColour, $morningPrimary);
+        }
+
+    }
+
+    .contributePrompts {
+        
+        .invalidPrompt {
+            font-size: .75rem;
+            color: $primaryError;
+        }
+    
+        .displayError {
+            border-bottom: 1px solid $secondaryError;
+            outline: none;
+        }
+
+    }
+
+    .decreaseButton,
+    .decrementButton,
+    .increaseButton,
+    .incrementButton {
+
+        &:hover,
+        &:focus {
+            color: $primaryColour;
         }
 
     }
@@ -60,7 +82,7 @@
 
         .emptyRedirect {
             position: relative;
-            @include linkHovers($primaryColour);
+            @include linkHovers($primaryColour, $morningPrimary);
         }
 
     }
@@ -84,7 +106,7 @@
 
         .errorRedirect {
             position: relative;
-            @include linkHovers($primaryColour);
+            @include linkHovers($primaryColour, $morningPrimary);
         }
 
     }
@@ -105,10 +127,6 @@
     transition: all .5s;
     background-color: $eveningBackground;
 
-    * {
-        transition: color .5s, background-color .5s;
-    }
-    
     h2,
     h3 {
         color: $eveningPrimary;
@@ -149,7 +167,7 @@
 
         .individualLinks {
             color: $eveningSecondary;
-            @include linkHovers($secondaryColour);
+            @include linkHovers($secondaryColour, $eveningSecondary);
         }
 
     }
@@ -165,11 +183,20 @@
 
         }
 
+        .accessPreferences {
+
+            &:hover,
+            &:focus {
+                color: $secondaryColour;
+            }
+
+        }
+
         .loginLink,
         .logoutRedirect,
         .registerLink {
             color: $eveningSecondary;
-            @include linkHovers($secondaryColour);
+            @include linkHovers($secondaryColour, $eveningSecondary);
         }
 
     }
@@ -190,7 +217,7 @@
             }
 
             .preferencesToggle,
-            .statusIcon {
+            .sidebarIcon {
                 color: $eveningPrimary;
             }
 
@@ -227,6 +254,16 @@
     }
 
     .contributePrompts {
+        
+        .invalidPrompt {
+            font-size: .75rem;
+            color: $secondaryError;
+        }
+    
+        .displayError {
+            border-bottom: 1px solid $secondaryError;
+            outline: none;
+        }
 
         .submitPrompt {
             background-color: $eveningBackground;
@@ -237,7 +274,7 @@
         .submitButton {
             color: $eveningSecondary;
         }
-
+    
     }
 
     .countdownTimer {
@@ -257,6 +294,26 @@
 
             button {
                 color: $eveningSecondary;
+            }
+
+        }
+
+        .increaseButton,
+        .incrementButton {
+
+            &:hover,
+            &:focus {
+                color: $secondaryColour;
+            }
+
+        }
+
+        .decreaseButton,
+        .decrementButton {
+
+            &:hover,
+            &:focus {
+                color: $secondaryColour;
             }
 
         }
@@ -386,7 +443,7 @@
 
             .emptyRedirect {
                 position: relative;
-                @include linkHovers($secondaryColour);
+                @include linkHovers($secondaryColour, $eveningSecondary);
             }
     
         }
@@ -435,7 +492,7 @@
 
         .errorRedirect {
             position: relative;
-            @include linkHovers($secondaryColour);
+            @include linkHovers($secondaryColour, $eveningSecondary);
         }
 
     }

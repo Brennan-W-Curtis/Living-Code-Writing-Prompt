@@ -29,6 +29,7 @@ const MainContent = props => {
         promptFadingOut,
         promptIsLoading,
         sidebarActive,
+        storedPrompts,
         userInput, 
         setUserInput, 
         setUserActivity 
@@ -58,13 +59,8 @@ const MainContent = props => {
     // Briefly displays a notification that indicates to the user whether their prompt has been submitted or rejected.
     useEffect(() => {
 
-        if (contributePrompt && displayActivity === "true") {
+        if (contributePrompt && displayActivity) {
             setUserActivity("Success, your prompt is added!");
-            animateIndicator();
-        }
-
-        if (contributePrompt && displayActivity === "false") {
-            setUserActivity("Please enter a valid prompt.");
             animateIndicator();
         }
 
@@ -102,9 +98,10 @@ const MainContent = props => {
                     {
                         contributePrompt ?
                             <ContributePrompt 
-                                setContributePrompt={setContributePrompt}
                                 contributeFadingOut={contributeFadingOut}
                                 setContributeFadingOut={setContributeFadingOut}
+                                storedPrompts={storedPrompts}
+                                setContributePrompt={setContributePrompt}
                                 setDisplayActivity={setDisplayActivity}
                             /> :
                             null

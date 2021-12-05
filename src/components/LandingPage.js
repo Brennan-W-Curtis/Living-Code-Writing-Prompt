@@ -17,10 +17,10 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
     return (
         <div>
             <div className="productDescription">
-                <h2>A Journal That Values Your Time</h2>
+                <h2>We Value Your Time</h2>
                 <div className="descriptionContent">
-                    <p>A modern journal that keeps the user in mind to prevent distractions and customize their experience to align with their unique preferences.</p>
-                    <p>Plume is a simple text editor designed for writers to focus on writing their experiences by creating a constructive environment that also helping them set healthy boundaries.</p>
+                    <p>A modern journal that focuses on enhancing the user's experience with the flexibility to customize it's interface to align with their unique preferences.</p>
+                    <p>Plume is a simple text editor designed for journalists to focus on their writing experiences by creating a constructive distraction free environment that also helps them set healthy boundaries.</p>
                 </div>
             </div>
             <div className="productFeatures">

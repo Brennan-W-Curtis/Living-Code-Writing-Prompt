@@ -263,6 +263,11 @@ html {
   margin: 0 auto;
 }
 
+* {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 main {
   min-height: 80vh;
 }
@@ -384,10 +389,6 @@ textarea {
   transition: all 0.5s;
   background-color: #FFFFFF;
 }
-.morningDisplay * {
-  -webkit-transition: color 0.5s, background-color 0.5s;
-  transition: color 0.5s, background-color 0.5s;
-}
 .morningDisplay .menuLinks .individualLinks:hover, .morningDisplay .menuLinks .individualLinks:focus {
   color: #23395B;
 }
@@ -400,7 +401,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000000;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -429,7 +430,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000000;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -443,6 +444,23 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
+}
+.morningDisplay .contributePrompts .invalidPrompt {
+  font-size: 0.75rem;
+  color: #D11124;
+}
+.morningDisplay .contributePrompts .displayError {
+  border-bottom: 1px solid #F46675;
+  outline: none;
+}
+.morningDisplay .decreaseButton:hover, .morningDisplay .decreaseButton:focus,
+.morningDisplay .decrementButton:hover,
+.morningDisplay .decrementButton:focus,
+.morningDisplay .increaseButton:hover,
+.morningDisplay .increaseButton:focus,
+.morningDisplay .incrementButton:hover,
+.morningDisplay .incrementButton:focus {
+  color: #23395B;
 }
 .morningDisplay textarea {
   background-color: #FFFFFF;
@@ -478,7 +496,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000000;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -515,7 +533,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000000;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -538,10 +556,6 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background-color: #272727;
-}
-.eveningDisplay * {
-  -webkit-transition: color 0.5s, background-color 0.5s;
-  transition: color 0.5s, background-color 0.5s;
 }
 .eveningDisplay h2,
 .eveningDisplay h3 {
@@ -576,7 +590,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #E6E6E6;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -592,6 +606,9 @@ textarea {
 }
 .eveningDisplay .menuAuthentication .userGreeting .preferencesIcon {
   color: #FFFFFF;
+}
+.eveningDisplay .menuAuthentication .accessPreferences:hover, .eveningDisplay .menuAuthentication .accessPreferences:focus {
+  color: #78CAD2;
 }
 .eveningDisplay .menuAuthentication .loginLink,
 .eveningDisplay .menuAuthentication .logoutRedirect,
@@ -616,7 +633,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #E6E6E6;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -642,7 +659,7 @@ textarea {
   background-color: #000000;
 }
 .eveningDisplay .userPreferences .preferenceOption .preferencesToggle,
-.eveningDisplay .userPreferences .preferenceOption .statusIcon {
+.eveningDisplay .userPreferences .preferenceOption .sidebarIcon {
   color: #FFFFFF;
 }
 .eveningDisplay .productDescription p {
@@ -656,6 +673,14 @@ textarea {
 }
 .eveningDisplay .promptDisplay p {
   color: #FFFFFF;
+}
+.eveningDisplay .contributePrompts .invalidPrompt {
+  font-size: 0.75rem;
+  color: #F46675;
+}
+.eveningDisplay .contributePrompts .displayError {
+  border-bottom: 1px solid #F46675;
+  outline: none;
 }
 .eveningDisplay .contributePrompts .submitPrompt {
   background-color: #272727;
@@ -673,6 +698,16 @@ textarea {
 .eveningDisplay .countdownTimer .decrementTime button,
 .eveningDisplay .countdownTimer .decreaseTime button {
   color: #E6E6E6;
+}
+.eveningDisplay .countdownTimer .increaseButton:hover, .eveningDisplay .countdownTimer .increaseButton:focus,
+.eveningDisplay .countdownTimer .incrementButton:hover,
+.eveningDisplay .countdownTimer .incrementButton:focus {
+  color: #78CAD2;
+}
+.eveningDisplay .countdownTimer .decreaseButton:hover, .eveningDisplay .countdownTimer .decreaseButton:focus,
+.eveningDisplay .countdownTimer .decrementButton:hover,
+.eveningDisplay .countdownTimer .decrementButton:focus {
+  color: #78CAD2;
 }
 .eveningDisplay .countdownTimer .currentTime {
   color: #FFFFFF;
@@ -748,7 +783,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #E6E6E6;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -802,7 +837,7 @@ textarea {
   width: 100%;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #E6E6E6;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -1042,6 +1077,10 @@ header .headerMenu {
 .preferencesList .preferenceOption:hover, .preferencesList .preferenceOption:focus-within {
   background-color: #E6E6E6;
 }
+.preferencesList .preferenceOption .preferencesToggle {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
 .preferencesList .preferenceOption .optionText {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1052,6 +1091,10 @@ header .headerMenu {
           align-items: center;
   font-size: 0.75rem;
   width: 100%;
+}
+.preferencesList .preferenceOption .sidebarIcon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
 }
 
 .productDescription .descriptionContent {
@@ -1179,6 +1222,9 @@ header .headerMenu {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 50%;
+}
+.contributePrompts .invalidPrompt {
+  font-size: 0.75rem;
 }
 .contributePrompts .contributeInstructions {
   font-size: 0.75rem;
@@ -1315,39 +1361,25 @@ header .headerMenu {
   left: 0.15rem;
   margin: 0 0.75rem;
 }
-.countdownTimer .timerDisplay .increaseButton {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.countdownTimer .timerDisplay .increaseButton:hover, .countdownTimer .timerDisplay .increaseButton:focus {
-  color: #23395B;
-  -webkit-transform: translateY(-0.15rem);
-          transform: translateY(-0.15rem);
-}
+.countdownTimer .timerDisplay .increaseButton,
 .countdownTimer .timerDisplay .incrementButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .incrementButton:hover, .countdownTimer .timerDisplay .incrementButton:focus {
-  color: #23395B;
+.countdownTimer .timerDisplay .increaseButton:hover, .countdownTimer .timerDisplay .increaseButton:focus,
+.countdownTimer .timerDisplay .incrementButton:hover,
+.countdownTimer .timerDisplay .incrementButton:focus {
   -webkit-transform: translateY(-0.15rem);
           transform: translateY(-0.15rem);
 }
-.countdownTimer .timerDisplay .decreaseButton {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.countdownTimer .timerDisplay .decreaseButton:hover, .countdownTimer .timerDisplay .decreaseButton:focus {
-  color: #23395B;
-  -webkit-transform: translateY(0.15rem);
-          transform: translateY(0.15rem);
-}
+.countdownTimer .timerDisplay .decreaseButton,
 .countdownTimer .timerDisplay .decrementButton {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.countdownTimer .timerDisplay .decrementButton:hover, .countdownTimer .timerDisplay .decrementButton:focus {
-  color: #23395B;
+.countdownTimer .timerDisplay .decreaseButton:hover, .countdownTimer .timerDisplay .decreaseButton:focus,
+.countdownTimer .timerDisplay .decrementButton:hover,
+.countdownTimer .timerDisplay .decrementButton:focus {
   -webkit-transform: translateY(0.15rem);
           transform: translateY(0.15rem);
 }

@@ -55,6 +55,10 @@
     flex-direction: column;
     width: 50%;
 
+    .invalidPrompt {
+        font-size: .75rem;
+    }
+
     .contributeInstructions {
         font-size: .75rem;
     }
