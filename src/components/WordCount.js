@@ -10,10 +10,10 @@ const WordCount = ({ userInput }) => {
         // Iterate through the length of the array.
         for (let i = 0; i < allWords.length; i++) {
 
-            // Temporarily store the current word in a variable after changing all it's characters to lower case.
+            // Temporarily store the current word in a variable after changing all of it's characters to lower case.
             const currentWord = allWords[i].toLowerCase();
 
-            // Assess whether the current word is an alphabet character should it satisfy this condition it wil be added to the object.
+            // Assess whether the current word is an alphabet character, should it satisfy this condition it wil be added to the object.
             if (!/\d+/.test(currentWord)) {
 
                 // If the word is not present within the object create a new property otherwise increment the current value.

@@ -4,7 +4,6 @@ import WritingSpace from './WritingSpace';
 import InactivityWarning from './InactivityWarning';
 import CommunalPrompts from './CommunalPrompts';
 import ContributePrompt from './ContributePrompt';
-import WordCount from './WordCount';
 import SaveWriting from './SaveWriting';
 
 const MainContent = props => {
@@ -23,6 +22,10 @@ const MainContent = props => {
         displayCountdown,
         displayActivity,
         setDisplayActivity,
+        enableSaving,
+        setEnableSaving,
+        saveFadingOut,
+        setSaveFadingOut,
         currentPrompt,
         promptDisplay,
         promptLock,
@@ -41,7 +44,7 @@ const MainContent = props => {
     // Store all state values for the component in the following variables.
     const [ currentInterval, setCurrentInterval ] = useState(); // Stores the information of the current interval. 
     const [ displaySaving, setDisplaySaving ] = useState(false); // Determines whether the saving options window is rendered to the page.
-    const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
+    // const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
     const [ displayWarning, setDisplayWarning ] = useState(false); // Determines whether an inactivity warning is displayed to the user.
     const [ savingArticle, setSavingArticle ] = useState(false); // Indicates whether the current user is currently saving their article.
 
@@ -140,17 +143,14 @@ const MainContent = props => {
                     setDisplayActivity={setDisplayActivity}
                     displaySaving={displaySaving}
                     setDisplaySaving={setDisplaySaving}
+                    enableSaving={enableSaving}
+                    setEnableSaving={setEnableSaving}
                     saveFadingOut={saveFadingOut}
                     setSaveFadingOut={setSaveFadingOut}
                     setUserActivity={setUserActivity}
                     setSavingArticle={setSavingArticle}
                     userInput={userInput}
                     setUserInput={setUserInput}
-                />
-              </section>
-              <section className="eventsSection">
-                <WordCount 
-                    userInput={userInput}
                 />
               </section>
         </>

@@ -31,7 +31,7 @@
         .stopButton,
         .resumeButton,
         .resetButton {
-            @include genericButtons();
+            @include genericButton();
         }
        
     }

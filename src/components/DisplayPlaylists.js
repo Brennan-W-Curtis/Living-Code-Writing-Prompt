@@ -20,37 +20,44 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
         })
         .then(response => {
 
-            // If the client is unauthorized to access the content throw an exception.
-            if (response.status > 399 && response.status < 500) {
-                throw Error("Client denied access.");
-            }
+            // If a successful fetch request is made than store the playlist data in state.
+            if (response.status === 200 || response.statusText === "OK") {
+                
+                // Store a reference to the playlist objects.
+                const playlistArray = response.data;
+                
+                // Create an empty array to store the user's playlist array.
+                const playlistDetails = {};
+    
+                // Store a new array with only the relevant properties in a new variable.
+                playlistDetails.items = playlistArray.items.map(playlist => {
+    
+                    return {
+                        spotifyUrl: playlist.external_urls.spotify,
+                        playlistName: playlist.name,
+                        albumCollage: playlist.images[0].url,
+                        trackNumbers: playlist.tracks.total
+                    }
+    
+                });
+    
+                // Store the data returned by the API in a state variable.
+                setPlaylistData(playlistDetails);
 
-            // If the server is unable to fulfill the client's request throw an exception.
-            if (response.status > 499 && response.status < 600) {
-                throw Error("Server unable to fulfill request.");
-            }
+            } else {
 
-            // Store a reference to the playlist objects.
-            const playlistArray = response.data;
-            
-            // Create an empty array to store the user's playlist array.
-            const playlistDetails = {};
-
-            // Store a new array with only the relevant properties in a new variable.
-            playlistDetails.items = playlistArray.items.map(playlist => {
-
-                return {
-                    spotifyUrl: playlist.external_urls.spotify,
-                    playlistName: playlist.name,
-                    albumCollage: playlist.images[0].url,
-                    trackNumbers: playlist.tracks.total
+                // If the client is unauthorized to access the content throw an exception.
+                if (response.status > 399 && response.status < 500) {
+                    throw Error("Client denied access.");
+                }
+    
+                // If the server is unable to fulfill the client's request throw an exception.
+                if (response.status > 499 && response.status < 600) {
+                    throw Error("Server unable to fulfill request.");
                 }
 
-            });
+            }
 
-            // Store the data returned by the API in a state variable.
-            setPlaylistData(playlistDetails);
-                
         })
         .catch(error => {
             console.log(error.message, "Sorry, we're currently unable to complete your request. Please wait a few minutes and refresh.");

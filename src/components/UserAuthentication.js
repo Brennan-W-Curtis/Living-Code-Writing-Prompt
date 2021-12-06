@@ -149,9 +149,10 @@ const UserAuthentication = props => {
                                         className="accessPreferences"
                                         // Reveals the sidebar menu to the user when they click on their name.
                                         onClick={() => setSidebarActive(true)}
+                                        aria-label="Reveal User Preferences"
                                     >
                                         <p className="displayName">{authenticatedUser ? `${displayName}` : ""}</p>
-                                        <FaCog className="preferencesIcon" aria-hidden="true"/>
+                                        <FaCog className="preferencesIcon" aria-label="Options" aria-hidden="true"/>
                                     </button>
                                 </span>
                         }

@@ -1,4 +1,11 @@
-@mixin linkHovers($activeColour, $textColour) {
+@mixin iconContainer() {
+    display: flex;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+@mixin linkHover($activeColour, $textColour) {
 
     &:hover,
     &:focus {
@@ -30,7 +37,7 @@
     
 }
 
-@mixin genericButtons() {
+@mixin genericButton() {
     font-size: .75rem;
     background: none;
     border: none;

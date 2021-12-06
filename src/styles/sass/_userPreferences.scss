@@ -25,11 +25,6 @@
         height: 3rem;
         cursor: pointer;
 
-        &:hover,
-        &:focus-within {
-            background-color: $eveningSecondary;
-        }
-
         .preferencesToggle {
             font-size: 1rem;
             margin-left: .5rem;
@@ -41,11 +36,37 @@
             align-items: center;
             font-size: .75rem;
             width: 100%;
+
+            .iconContainer {
+                @include iconContainer();
+            }
+
         }
 
         .sidebarIcon {
             margin-right: .5rem;
             font-size: 1rem;
+        }
+
+    }
+
+    .preferenceFeatures {
+        display: flex;
+        justify-content: flex-start;
+
+        .featureContainer {
+            display: flex;
+            align-items: flex-end;
+            height: 15rem;
+        }
+        
+        .wordCount {
+            margin: 1rem;
+    
+            p {
+                font-size: .75rem;
+            }
+        
         }
 
     }

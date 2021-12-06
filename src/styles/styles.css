@@ -389,6 +389,12 @@ textarea {
   transition: all 0.5s;
   background-color: #FFFFFF;
 }
+.morningDisplay .brandLogo:hover, .morningDisplay .brandLogo:focus {
+  color: #23395B;
+}
+.morningDisplay .brandLogo .iconNegative {
+  color: #FFFFFF;
+}
 .morningDisplay .menuLinks .individualLinks:hover, .morningDisplay .menuLinks .individualLinks:focus {
   color: #23395B;
 }
@@ -445,6 +451,9 @@ textarea {
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
 }
+.morningDisplay .accessPreferences:hover, .morningDisplay .accessPreferences:focus-within {
+  color: #23395B;
+}
 .morningDisplay .contributePrompts .invalidPrompt {
   font-size: 0.75rem;
   color: #D11124;
@@ -453,21 +462,27 @@ textarea {
   border-bottom: 1px solid #F46675;
   outline: none;
 }
-.morningDisplay .decreaseButton:hover, .morningDisplay .decreaseButton:focus,
-.morningDisplay .decrementButton:hover,
-.morningDisplay .decrementButton:focus,
-.morningDisplay .increaseButton:hover,
-.morningDisplay .increaseButton:focus,
-.morningDisplay .incrementButton:hover,
-.morningDisplay .incrementButton:focus {
+.morningDisplay .contributePrompts .submitPrompt:hover, .morningDisplay .contributePrompts .submitPrompt:focus {
+  outline: 1px solid #23395B;
+}
+.morningDisplay .countdownTimer .decreaseButton:hover, .morningDisplay .countdownTimer .decreaseButton:focus,
+.morningDisplay .countdownTimer .decrementButton:hover,
+.morningDisplay .countdownTimer .decrementButton:focus,
+.morningDisplay .countdownTimer .increaseButton:hover,
+.morningDisplay .countdownTimer .increaseButton:focus,
+.morningDisplay .countdownTimer .incrementButton:hover,
+.morningDisplay .countdownTimer .incrementButton:focus {
   color: #23395B;
 }
-.morningDisplay textarea {
+.morningDisplay .countdownTimer .adjustmentButton:hover, .morningDisplay .countdownTimer .adjustmentButton:focus {
+  color: #23395B;
+}
+.morningDisplay .writingSpace textarea {
   background-color: #FFFFFF;
   color: #000000;
   border: none;
 }
-.morningDisplay textarea:focus {
+.morningDisplay .writingSpace textarea:focus {
   border-left: 1px solid #000000;
   outline: none;
 }
@@ -475,6 +490,12 @@ textarea {
   color: #000000;
   border: none;
   border-bottom: 1px solid #000000;
+}
+.morningDisplay .savingOptions .articleTitle:hover, .morningDisplay .savingOptions .articleTitle:focus {
+  outline: 1px solid #23395B;
+}
+.morningDisplay .inactivityWarning {
+  color: #E6E6E6;
 }
 .morningDisplay .inactivityWarning .warningModal {
   background-color: #FFFFFF;
@@ -506,6 +527,11 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
+}
+.morningDisplay .authenticationContent input:hover, .morningDisplay .authenticationContent input:focus,
+.morningDisplay .registrationContent input:hover,
+.morningDisplay .registrationContent input:focus {
+  outline: 2px solid #23395B;
 }
 .morningDisplay .authenticationContent .invalidEmail,
 .morningDisplay .authenticationContent .invalidPassword,
@@ -561,12 +587,10 @@ textarea {
 .eveningDisplay h3 {
   color: #FFFFFF;
 }
-.eveningDisplay a,
-.eveningDisplay button {
-  color: #E6E6E6;
+.eveningDisplay a {
+  color: #FFFFFF;
 }
-.eveningDisplay .brandLogo h1,
-.eveningDisplay .brandLogo .iconContent {
+.eveningDisplay .brandLogo button {
   color: #FFFFFF;
 }
 .eveningDisplay .brandLogo .iconNegative {
@@ -604,8 +628,8 @@ textarea {
 .eveningDisplay .menuAuthentication .userGreeting {
   color: #E6E6E6;
 }
-.eveningDisplay .menuAuthentication .userGreeting .preferencesIcon {
-  color: #FFFFFF;
+.eveningDisplay .menuAuthentication .accessPreferences {
+  color: #E6E6E6;
 }
 .eveningDisplay .menuAuthentication .accessPreferences:hover, .eveningDisplay .menuAuthentication .accessPreferences:focus {
   color: #78CAD2;
@@ -687,6 +711,9 @@ textarea {
   color: #E6E6E6;
   border-bottom: 1px solid #FFFFFF;
 }
+.eveningDisplay .contributePrompts .submitPrompt:hover, .eveningDisplay .contributePrompts .submitPrompt:focus {
+  outline: 1px solid #78CAD2;
+}
 .eveningDisplay .contributePrompts .submitButton {
   color: #E6E6E6;
 }
@@ -699,14 +726,7 @@ textarea {
 .eveningDisplay .countdownTimer .decreaseTime button {
   color: #E6E6E6;
 }
-.eveningDisplay .countdownTimer .increaseButton:hover, .eveningDisplay .countdownTimer .increaseButton:focus,
-.eveningDisplay .countdownTimer .incrementButton:hover,
-.eveningDisplay .countdownTimer .incrementButton:focus {
-  color: #78CAD2;
-}
-.eveningDisplay .countdownTimer .decreaseButton:hover, .eveningDisplay .countdownTimer .decreaseButton:focus,
-.eveningDisplay .countdownTimer .decrementButton:hover,
-.eveningDisplay .countdownTimer .decrementButton:focus {
+.eveningDisplay .countdownTimer .adjustmentButton:hover, .eveningDisplay .countdownTimer .adjustmentButton:focus {
   color: #78CAD2;
 }
 .eveningDisplay .countdownTimer .currentTime {
@@ -729,12 +749,18 @@ textarea {
   border: none;
   border-bottom: 1px solid #FFFFFF;
 }
+.eveningDisplay .savingOptions .articleTitle:hover, .eveningDisplay .savingOptions .articleTitle:focus {
+  outline: 1px solid #78CAD2;
+}
+.eveningDisplay .savingOptions button {
+  color: #E6E6E6;
+}
 .eveningDisplay .inactivityWarning .warningModal {
   background-color: #272727;
   color: #E6E6E6;
   border-left: 1px solid #FFFFFF;
 }
-.eveningDisplay .eventsSection .wordCount {
+.eveningDisplay .inactivityWarning .warningModal button {
   color: #E6E6E6;
 }
 .eveningDisplay .musicSection .musicDescription h2 {
@@ -800,9 +826,10 @@ textarea {
   color: #E6E6E6;
   border-bottom: 1px solid #FFFFFF;
 }
-.eveningDisplay .authenticationContent input:focus,
+.eveningDisplay .authenticationContent input:hover, .eveningDisplay .authenticationContent input:focus,
+.eveningDisplay .registrationContent input:hover,
 .eveningDisplay .registrationContent input:focus {
-  outline: 1px solid #78CAD2;
+  outline: 2px solid #78CAD2;
 }
 .eveningDisplay .authenticationContent button,
 .eveningDisplay .registrationContent button {
@@ -881,7 +908,6 @@ header .brandIcon .iconContent {
 header .brandIcon .iconNegative {
   position: absolute;
   bottom: 0.65rem;
-  color: white;
   font-size: 0.8rem;
 }
 header .headerMenu {
@@ -915,9 +941,7 @@ header .headerMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  margin: 0 0 0 2.5rem;
   width: 100%;
   -webkit-transition: none;
   transition: none;
@@ -929,11 +953,8 @@ header .headerMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  width: 100%;
   margin: 0 0 0 2.5rem;
+  width: 100%;
   -webkit-transition: none;
   transition: none;
 }
@@ -942,6 +963,10 @@ header .headerMenu {
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+.menuLinks li:nth-child(2),
+.menuLinks li:nth-child(3) {
+  margin: 0 0 0 1rem;
 }
 
 .menuAuthentication {
@@ -1013,6 +1038,25 @@ header .headerMenu {
   cursor: pointer;
   position: relative;
 }
+.menuAuthentication .accessPreferences::after {
+  display: block;
+  content: ".";
+  position: absolute;
+  left: 0rem;
+  top: 0.5rem;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menuAuthentication .accessPreferences:hover::after, .menuAuthentication .accessPreferences:focus-within::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 0.25rem;
+}
 .menuAuthentication .accessPreferences .preferencesIcon {
   font-size: 0.5rem;
   position: absolute;
@@ -1074,9 +1118,6 @@ header .headerMenu {
   height: 3rem;
   cursor: pointer;
 }
-.preferencesList .preferenceOption:hover, .preferencesList .preferenceOption:focus-within {
-  background-color: #E6E6E6;
-}
 .preferencesList .preferenceOption .preferencesToggle {
   font-size: 1rem;
   margin-left: 0.5rem;
@@ -1092,9 +1133,40 @@ header .headerMenu {
   font-size: 0.75rem;
   width: 100%;
 }
+.preferencesList .preferenceOption .optionText .iconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
+}
 .preferencesList .preferenceOption .sidebarIcon {
   margin-right: 0.5rem;
   font-size: 1rem;
+}
+.preferencesList .preferenceFeatures {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.preferencesList .preferenceFeatures .featureContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 15rem;
+}
+.preferencesList .preferenceFeatures .wordCount {
+  margin: 1rem;
+}
+.preferencesList .preferenceFeatures .wordCount p {
+  font-size: 0.75rem;
 }
 
 .productDescription .descriptionContent {
@@ -1422,14 +1494,6 @@ header .headerMenu {
   padding: 0.5rem;
   resize: none;
 }
-.writingSection .colourOverlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
 .writingSection .inactivityWarning {
   position: absolute;
   width: 100%;
@@ -1484,7 +1548,9 @@ header .headerMenu {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  width: 25%;
+  width: 40%;
+  min-width: 23rem;
+  max-width: 23rem;
 }
 .writingSection .savingOptions {
   display: -webkit-box;
@@ -1492,9 +1558,6 @@ header .headerMenu {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   margin: 0 auto;
   width: 100%;
 }
@@ -1508,10 +1571,16 @@ header .headerMenu {
   width: 100%;
 }
 .writingSection .savingOptions .closeIcon {
-  font-size: 0.75rem;
+  font-size: 0.5rem;
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
 }
 .writingSection .savingOptions .closeIcon:hover, .writingSection .savingOptions .closeIcon:focus {
   -webkit-transform: rotateZ(180deg);
@@ -1533,7 +1602,6 @@ header .headerMenu {
 }
 .writingSection .savingOptions button {
   font-size: 0.75rem;
-  margin-top: 0.25rem;
   background: none;
   border: none;
   border-radius: 5px;
@@ -1544,11 +1612,6 @@ header .headerMenu {
 .writingSection .savingOptions button:hover, .writingSection .savingOptions button:focus {
   background-color: black;
   color: white;
-}
-
-.wordCount p {
-  font-size: 0.75rem;
-  margin: 0.1rem 0 0 0;
 }
 
 .userNotifications {
@@ -1720,11 +1783,14 @@ header .headerMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
   border: 1px solid black;
   border-radius: 5px;
   position: relative;
   margin: 0.5rem;
+  padding: 0.5rem;
   width: calc((100% / 5) - 1rem);
+  max-width: 10rem;
   height: 5rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -1992,3 +2058,7 @@ header .headerMenu {
   width: 100%;
   margin: 0.5rem 0 0 0;
 }
+
+/* Portrait tablet and small desktops */
+/* Landscape phone to portrait tablet */
+/* Landscape phones and down */

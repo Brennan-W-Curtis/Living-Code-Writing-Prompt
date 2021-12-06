@@ -51,6 +51,24 @@
         cursor: pointer;
         position: relative;
 
+        &::after {
+            display: block;
+            content: ".";
+            position: absolute;
+            left: 0rem;
+            top: .5rem;
+            width: 100%;
+            transform: scaleX(0);
+            transition: all .5s;
+        }
+
+        &:hover::after,
+        &:focus-within::after {
+            transform: scaleX(1);
+            transition: all .5s;
+            top: .25rem;
+        }
+
         .preferencesIcon {
             font-size: .5rem;
             position: absolute;

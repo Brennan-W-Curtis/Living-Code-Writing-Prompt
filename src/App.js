@@ -30,6 +30,8 @@ const App = () => {
   const [ promptIsLoading, setPromptIsLoading ] = useState(true); // Determines whether a loading indicator is displayed to the user.
   const [ contributeFadingOut, setContributeFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
+  const [ enableSaving, setEnableSaving ] = useState(false); // Determines if the saving menu is either visible or hidden by a button in the sidebar menu. 
+  const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
   const [ savedArticles, setSavedArticles ] = useState([]); // Stores a reference to all of the user's previously saved articles in the database.
@@ -153,14 +155,18 @@ const App = () => {
             setDisplayCountdown={setDisplayCountdown}
             promptDisplay={promptDisplay}
             setPromptDisplay={setPromptDisplay}
-            setPromptLock={setPromptLock}
-            setPromptFadingOut={setPromptFadingOut}
-            setContributeFadingOut={setContributeFadingOut}
+            enableSaving={enableSaving}
+            setEnableSaving={setEnableSaving}
             sidebarActive={sidebarActive}
             setSidebarActive={setSidebarActive}
             toggleMode={toggleMode}
             setToggleMode={setToggleMode}
+            userInput={userInput}
             setUserInput={setUserInput}
+            setPromptLock={setPromptLock}
+            setPromptFadingOut={setPromptFadingOut}
+            setSaveFadingOut={setSaveFadingOut}
+            setContributeFadingOut={setContributeFadingOut}
           />
         </aside>
       </header>
@@ -195,6 +201,10 @@ const App = () => {
                 currentPrompt={currentPrompt}
                 displayActivity={displayActivity}
                 setDisplayActivity={setDisplayActivity}
+                enableSaving={enableSaving}
+                setEnableSaving={setEnableSaving}
+                saveFadingOut={saveFadingOut}
+                setSaveFadingOut={setSaveFadingOut}
                 promptDisplay={promptDisplay}
                 promptLock={promptLock}
                 promptFadingOut={promptFadingOut}
@@ -274,11 +284,6 @@ const App = () => {
                 </Route> :
                 null
             }
-            <Route path="/spotify-unresponsive">
-              <section className="unresponsiveSection">
-                {/* <ApiUnresponsive /> */}
-              </section>
-            </Route>
             <Route path="*">
               <section className="errorSection">
                 <ErrorPage />

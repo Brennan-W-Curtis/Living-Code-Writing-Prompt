@@ -21,15 +21,6 @@
 
     }
 
-    .colourOverlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
     .inactivityWarning {
         position: absolute;
         width: 100%;
@@ -54,7 +45,7 @@
                 max-width: 5rem;
                 margin: 0 auto;
                 padding: .5rem 1rem;
-                @include genericButtons();
+                @include genericButton();
             }
 
         }
@@ -69,13 +60,14 @@
         bottom: 3%;
         left: 50%;
         transform: translateX(-50%);
-        width: 25%;
+        width: 40%;
+        min-width: 23rem;
+        max-width: 23rem;
     }
 
     .savingOptions {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         margin: 0 auto;
         width: 100%;
 
@@ -86,9 +78,10 @@
         }
 
         .closeIcon {
-            font-size: .75rem;
+            font-size: .5rem;
             cursor: pointer;
             transition: all .5s;
+            @include iconContainer();
 
             &:hover,
             &:focus {
@@ -110,20 +103,7 @@
         }
 
         button {
-            font-size: .75rem;
-            margin-top: .25rem;
-            background: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all .5s;
-
-            &:hover,
-            &:focus {
-                background-color: black;
-                color: white;
-            }
-        
+            @include genericButton();
         }
 
     }

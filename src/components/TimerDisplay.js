@@ -35,37 +35,41 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
             {/* Increase */}
             <div className="increaseTime">
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleIncrement(300)}
                 >
                     <FaChevronUp 
                         className="increaseButton"
+                        aria-label="Increase Count by 5 minutes"
                     />
                 </button>
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleIncrement(5)}
                 >
                     <FaChevronUp 
                         className="increaseButton"
+                        aria-label="Increase Count by 5 seconds"
                     />
                 </button>
             </div>
             <div className="incrementTime">
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleIncrement(60)}
                 >
                     <FaChevronUp 
                         className="incrementButton"
+                        aria-label="Increase Count by 1 minute"
                     />
                 </button>
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleIncrement(1)}
                 >
                     <FaChevronUp 
                         className="incrementButton"
+                        aria-label="Increase Count by 5 seconds"
                     />
                 </button>
             </div>
@@ -75,37 +79,41 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
             {/* Decrease */}
             <div className="decrementTime">
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleDecrement(60)}
                 >
                     <FaChevronDown 
                         className="decrementButton"
+                        aria-label="Decrease Count by 1 minute"
                     />
                 </button>
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleDecrement(1)}
                 >
                     <FaChevronDown 
                         className="decrementButton"
+                        aria-label="Decrease Count by 1 second"
                     />
                 </button>
             </div>
             <div className="decreaseTime">
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleDecrement(300)}
                 >
                     <FaChevronDown 
                         className="decreaseButton"
+                        aria-label="Decrease Count by 5 minutes"
                     />
                 </button>
                 <button
-                    className="adjustmentButton"
+                    className={countingStatus === true ? "hiddenComponent adjustmentButton" : "adjustmentButton"}
                     onClick={() => handleDecrement(5)}
                 >
                     <FaChevronDown 
                         className="decreaseButton"
+                        aria-label="Decrease Count by 5 seconds"
                     />
                 </button>
             </div>

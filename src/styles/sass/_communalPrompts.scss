@@ -70,7 +70,7 @@
     }
 
     .submitButton {
-        @include genericButtons;
+        @include genericButton;
     }
 
 }

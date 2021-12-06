@@ -6,8 +6,8 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActi
     return (
         <header>
             <div className="headerMenu">
-                <nav className="menuLinks">
-                <Link to="/" className="homeLink"><BrandLogo /></Link>
+                <nav className="menuLinks" aria-label="Primary Navigation">
+                    <Link to="/" className="homeLink"><BrandLogo /></Link>
                     <ul className={authenticatedUser ? "mainNavigation" : "visitorNavigation"}>
                         <li>
                             <Link to="journal-page" className="individualLinks">Journal Page</Link>

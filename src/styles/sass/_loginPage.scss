@@ -67,7 +67,7 @@
         }
 
         button {
-            @include genericButtons;
+            @include genericButton;
             padding: .5rem 1rem;
         }
 

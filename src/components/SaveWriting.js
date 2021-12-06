@@ -13,7 +13,9 @@ const SaveWriting = props => {
         countingStatus,
         setDisplayActivity, 
         displaySaving, 
-        setDisplaySaving, 
+        setDisplaySaving,
+        enableSaving,
+        setEnableSaving, 
         saveFadingOut, 
         setSaveFadingOut, 
         setSavingArticle,
@@ -28,38 +30,35 @@ const SaveWriting = props => {
     const handleSave = async event => {
         event.preventDefault();
 
-        try {
-            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database. 
-            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+        // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database. 
+        const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
 
-            // Create an object to store the user's article by assigning userInput and articleTitle state values to the articleBody and articleTitle properties respectively.
-            const userArticle = {
-                articleTitle: articleTitle,
-                articleBody: userInput      
-            };
+        // Create an object to store the user's article by assigning userInput and articleTitle state values to the articleBody and articleTitle properties respectively.
+        const userArticle = {
+            articleTitle: articleTitle,
+            articleBody: userInput      
+        };
 
-            // Updates the array stored inside the user's document without overwriting previously saved content by the authenticated user.  
-            const docEntry = {
-                userArticles: arrayUnion(userArticle)
-            };
-            
-            // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one.  
-            await setDoc(docRef, docEntry, { merge: true });
+        // Updates the array stored inside the user's document without overwriting previously saved content by the authenticated user.  
+        const docEntry = {
+            userArticles: arrayUnion(userArticle)
+        };
+        
+        // Asynchronously update the document based on the object passed as it's seconds argument if a document exists otherwise create a new one.  
+        await setDoc(docRef, docEntry, { merge: true });
 
-            // Clear the user input and article title inputs.
-            setUserInput("");
-            setArticleTitle("");
+        // Clear the user input and article title inputs.
+        setUserInput("");
+        setArticleTitle("");
 
-            // Display the user notification window and communicate the article has saved.
-            setSavingArticle(true);
-            setDisplayActivity(true);
+        setEnableSaving(false);
 
-            // Prevents the notification from rendering to the page on each page load.
-            setTimeout(() => setSavingArticle(false), 1000);
+        // Display the user notification window and communicate the article has saved.
+        setSavingArticle(true);
+        setDisplayActivity(true);
 
-        } catch(error) {
-            console.log("Sorry, currently unable to complete your request");
-        }
+        // Prevents the notification from rendering to the page on each page load.
+        setTimeout(() => setSavingArticle(false), 1000);
 
     }
 
@@ -75,21 +74,24 @@ const SaveWriting = props => {
         <div className="saveWriting">
             {   
                 // If the user has engaged the countdown timer and it has reached zero after signing into the application the options to either save or export their writing will be rendered to the page.
-                authenticatedUser && count === 0 && countingStatus === false && displaySaving ?
+                (authenticatedUser && count === 0 && countingStatus === false && displaySaving) || enableSaving ?
                     <div className={saveFadingOut ? "savingOptions fadeOut" : "savingOptions fadeIn"}>
                         <div className="closeWindow">
-                            <FaWindowClose 
-                                className="closeIcon"
-                                onClick={handleClose}
-                            />
+                            <button className="exitContainer">
+                                <FaWindowClose 
+                                    className="closeIcon"
+                                    onClick={handleClose}
+                                />
+                            </button>
                         </div>
-                        <label htmlFor="inputTitle" className="sr-only">Article Title</label>
+                        <label htmlFor="inputTitle" className="sr-only">Journal Entry Title</label>
                         <input 
                             type="text" 
                             name="articleTitle"
                             className="articleTitle" 
                             id="articleTitle" 
-                            placeholder="Title" 
+                            placeholder="Title"
+                            maxLength="50" 
                             onChange={event => setArticleTitle(event.target.value)}
                             value={articleTitle}
                             required

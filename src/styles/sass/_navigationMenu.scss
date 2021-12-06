@@ -10,7 +10,7 @@
     .mainNavigation {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        margin: 0 0 0 2.5rem;
         width: 100%;
         transition: none;
     }
@@ -18,9 +18,8 @@
     .visitorNavigation {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        width: 100%;
         margin: 0 0 0 2.5rem;
+        width: 100%;
         transition: none;
     }
 
@@ -29,5 +28,10 @@
         position: relative;
         transition: all .5s;
     } 
+
+    li:nth-child(2),
+    li:nth-child(3) {
+        margin: 0 0 0 1rem;
+    }
     
 }

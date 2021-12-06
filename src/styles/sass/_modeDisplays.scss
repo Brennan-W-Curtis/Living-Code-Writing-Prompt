@@ -2,10 +2,23 @@
     transition: all .5s;
     background-color: $eveningPrimary;
 
+    .brandLogo {
+
+        &:hover,
+        &:focus {
+            color: $primaryColour;
+        }
+
+        .iconNegative {
+            color: $eveningPrimary;
+        }
+
+    }
+
     .menuLinks {
 
         .individualLinks {
-            @include linkHovers($primaryColour, $morningPrimary);
+            @include linkHover($primaryColour, $morningPrimary);
         }
 
     }
@@ -15,7 +28,16 @@
         .loginLink,
         .logoutRedirect,
         .registerLink {
-            @include linkHovers($primaryColour, $morningPrimary);
+            @include linkHover($primaryColour, $morningPrimary);
+        }
+
+    }
+
+    .accessPreferences {
+
+        &:hover,
+        &:focus-within {
+            color: $primaryColour;
         }
 
     }
@@ -32,28 +54,54 @@
             outline: none;
         }
 
-    }
+        .submitPrompt {
 
-    .decreaseButton,
-    .decrementButton,
-    .increaseButton,
-    .incrementButton {
+            &:hover,
+            &:focus {
+                outline: 1px solid $primaryColour;
+            }
 
-        &:hover,
-        &:focus {
-            color: $primaryColour;
         }
 
     }
 
-    textarea {
-        background-color: $morningBackground;
-        color: $morningPrimary;
-        border: none;
+    .countdownTimer {
 
-        &:focus {
-            border-left: 1px solid $morningPrimary;
-            outline: none;
+        .decreaseButton,
+        .decrementButton,
+        .increaseButton,
+        .incrementButton {
+    
+            &:hover,
+            &:focus {
+                color: $primaryColour;
+            }
+    
+        }
+
+        .adjustmentButton {
+
+            &:hover,
+            &:focus {
+                color: $primaryColour;
+            }
+
+        }
+
+    }
+
+    .writingSpace {
+
+        textarea {
+            background-color: $morningBackground;
+            color: $morningPrimary;
+            border: none;
+    
+            &:focus {
+                border-left: 1px solid $morningPrimary;
+                outline: none;
+            }
+    
         }
 
     }
@@ -64,11 +112,18 @@
             color: $morningPrimary;
             border: none;
             border-bottom: 1px solid $morningPrimary;
+
+            &:hover,
+            &:focus {
+                outline: 1px solid $primaryColour;
+            }
+
         }
 
     }
 
     .inactivityWarning {
+        color: $eveningSecondary;
         
         .warningModal {
             background-color: $morningBackground;
@@ -82,13 +137,22 @@
 
         .emptyRedirect {
             position: relative;
-            @include linkHovers($primaryColour, $morningPrimary);
+            @include linkHover($primaryColour, $morningPrimary);
         }
 
     }
 
     .authenticationContent,
     .registrationContent {
+
+        input {
+
+            &:hover,
+            &:focus {
+                outline: 2px solid $primaryColour;
+            }
+
+        }
 
         .invalidEmail,
         .invalidPassword {
@@ -106,7 +170,7 @@
 
         .errorRedirect {
             position: relative;
-            @include linkHovers($primaryColour, $morningPrimary);
+            @include linkHover($primaryColour, $morningPrimary);
         }
 
     }
@@ -132,24 +196,22 @@
         color: $eveningPrimary;
     }
 
-    a,
-    button {
-        color: $eveningSecondary;
+    a {
+        color: $eveningPrimary;
     }
 
     .brandLogo {
-        
-        h1,
-        .iconContent {
+
+        button {
             color: $eveningPrimary;
         }
-        
+
         .iconNegative {
             color: $eveningBackground;
         }
-        
+
     }
-    
+
     .headerMenu {
 
         .homeLink {
@@ -167,7 +229,7 @@
 
         .individualLinks {
             color: $eveningSecondary;
-            @include linkHovers($secondaryColour, $eveningSecondary);
+            @include linkHover($secondaryColour, $eveningSecondary);
         }
 
     }
@@ -176,14 +238,10 @@
 
         .userGreeting {
             color: $eveningSecondary;
-
-            .preferencesIcon {
-                color: $eveningPrimary;
-            }
-
         }
 
         .accessPreferences {
+            color: $eveningSecondary;
 
             &:hover,
             &:focus {
@@ -196,7 +254,7 @@
         .logoutRedirect,
         .registerLink {
             color: $eveningSecondary;
-            @include linkHovers($secondaryColour, $eveningSecondary);
+            @include linkHover($secondaryColour, $eveningSecondary);
         }
 
     }
@@ -269,6 +327,12 @@
             background-color: $eveningBackground;
             color: $eveningSecondary;
             border-bottom: 1px solid $eveningPrimary;
+
+            &:hover,
+            &:focus {
+                outline: 1px solid $secondaryColour;
+            }
+
         }
 
         .submitButton {
@@ -298,18 +362,7 @@
 
         }
 
-        .increaseButton,
-        .incrementButton {
-
-            &:hover,
-            &:focus {
-                color: $secondaryColour;
-            }
-
-        }
-
-        .decreaseButton,
-        .decrementButton {
+        .adjustmentButton {
 
             &:hover,
             &:focus {
@@ -350,6 +403,16 @@
             color: $eveningSecondary;
             border: none;
             border-bottom: 1px solid $eveningPrimary;
+
+            &:hover,
+            &:focus {
+                outline: 1px solid $secondaryColour;
+            }
+
+        }
+
+        button {
+            color: $eveningSecondary;
         }
 
     }
@@ -360,14 +423,11 @@
             background-color: $eveningBackground;
             color: $eveningSecondary;
             border-left: 1px solid $eveningPrimary;
-        }
 
-    }
+            button {
+                color: $eveningSecondary;
+            }
 
-    .eventsSection {
-
-        .wordCount {
-            color: $eveningSecondary;
         }
 
     }
@@ -443,7 +503,7 @@
 
             .emptyRedirect {
                 position: relative;
-                @include linkHovers($secondaryColour, $eveningSecondary);
+                @include linkHover($secondaryColour, $eveningSecondary);
             }
     
         }
@@ -458,8 +518,9 @@
             color: $eveningSecondary;
             border-bottom: 1px solid $eveningPrimary;
             
+            &:hover,
             &:focus {
-                outline: 1px solid $secondaryColour; 
+                outline: 2px solid $secondaryColour; 
             }
 
         }
@@ -492,7 +553,7 @@
 
         .errorRedirect {
             position: relative;
-            @include linkHovers($secondaryColour, $eveningSecondary);
+            @include linkHover($secondaryColour, $eveningSecondary);
         }
 
     }
