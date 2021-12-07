@@ -12,49 +12,43 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
 
     // Handles deleting individual articles that have been previously saved by the current user.
     const handleDelete = async articleId => {
-        try {
-            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
-            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
-    
-            // Asynchronously store a reference to a readable snapshot of the document. 
-            const docSnapshot = await getDoc(docRef);
 
-            // Destructure the snapshot reference to access the user's articles.
-            const { userArticles } = docSnapshot.data();
+        // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+        const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
 
-            // Filter the array of the article selected by the user based on it's article id.
-            const filteredArticles = userArticles.filter((article, index) => index !== articleId);
+        // Asynchronously store a reference to a readable snapshot of the document. 
+        const docSnapshot = await getDoc(docRef);
 
-            // Store the filtered array within a docEntry object that will be used to update the userArticles field.
-            const docEntry = {
-                userArticles: filteredArticles
-            };
+        // Destructure the snapshot reference to access the user's articles.
+        const { userArticles } = docSnapshot.data();
 
-            // Update the user document with the recently changed field to remove the article from the database. 
-            await updateDoc(docRef, docEntry);
+        // Filter the array of the article selected by the user based on it's article id.
+        const filteredArticles = userArticles.filter((article, index) => index !== articleId);
 
-        } catch(error) {
-            console.log("Unable to delete article, ", error.message);
-        }
+        // Store the filtered array within a docEntry object that will be used to update the userArticles field.
+        const docEntry = {
+            userArticles: filteredArticles
+        };
+
+        // Update the user document with the recently changed field to remove the article from the database. 
+        await updateDoc(docRef, docEntry);
+
     }
 
     // Handles deleting all of the user's saved articles.
     const deleteArticles = async () => {
-        try {
-            // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
-            const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
+        
+        // Asynchronously store a reference to the users collection and the path to the authenticated user's document within the cloud database.
+        const docRef = await doc(cloud, `users/${authenticatedUser.uid}`);
 
-            // Assign a method that deletes the field that it's assigned to delete all of the user's articles. 
-            const docEntry = {
-                userArticles: deleteField()
-            };
+        // Assign a method that deletes the field that it's assigned to delete all of the user's articles. 
+        const docEntry = {
+            userArticles: deleteField()
+        };
 
-            // Asynchronously update the document with the docEntry object.
-            await updateDoc(docRef, docEntry);
-            
-        } catch(error) {
-            console.log(error);
-        }
+        // Asynchronously update the document with the docEntry object.
+        await updateDoc(docRef, docEntry);
+       
     };
 
     return (

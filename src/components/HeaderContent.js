@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
+import { FaBars } from 'react-icons/fa';
 
 const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActive }) => {
     return (
@@ -15,7 +16,7 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActi
                         {
                             authenticatedUser ?
                             <li>
-                                <Link to="suggested-music" className="individualLinks">Find Music</Link>
+                                <Link to="find-music" className="individualLinks">Find Music</Link>
                             </li> :
                             null
                         }

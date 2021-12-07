@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
+const DisplayPlaylists = ({ accessToken, setUserVerified, setDisplayUnfulfilledRequest, setErrorUnfulfilledRequest }) => {
     // Store all state values for the component in the following variables.
     const [ playlistData, setPlaylistData ] = useState({}); // Stores an object with all the data on the authenticated user's playlists returned by the spotify api.
 
@@ -60,11 +60,28 @@ const DisplayPlaylists = ({ accessToken, setUserVerified }) => {
 
         })
         .catch(error => {
-            console.log(error.message, "Sorry, we're currently unable to complete your request. Please wait a few minutes and refresh.");
+            
+            if (error.message === "Client denied access.") {
+                setErrorUnfulfilledRequest("Sorry, we're currently unable to fulfill your request. Please wait a few minutes and try again.");
+                setDisplayUnfulfilledRequest(true);
+            } else {
+                setErrorUnfulfilledRequest("");
+                setDisplayUnfulfilledRequest(false);
+            }
+
+            if (error.message === "Server unable to fulfill request.") {
+                setErrorUnfulfilledRequest("Sorry, the server is currently unable to fulfill your request. Please wait a few minutes and try again.");
+                setDisplayUnfulfilledRequest(true);
+            } else {
+                setErrorUnfulfilledRequest("");
+                setDisplayUnfulfilledRequest(false);
+            }
+
             setUserVerified(false);
+
         });
             
-    }, [accessToken, playlistData, setPlaylistData, setUserVerified]);
+    }, [accessToken, playlistData, setPlaylistData, setUserVerified, setDisplayUnfulfilledRequest, setErrorUnfulfilledRequest]);
 
     return (
         <div className="displayPlaylists">

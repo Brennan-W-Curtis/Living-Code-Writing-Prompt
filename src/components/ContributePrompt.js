@@ -13,7 +13,7 @@ const ContributeModal = ({ contributeFadingOut, setContributeFadingOut, storedPr
     const [ errorFormattingPrompt, setErrorFormattingPrompt ] = useState("");
 
     // Handles submitting the user's input and sending the data to the realtime database.
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         // Prevents the default action of the submit event.
         event.preventDefault();
 
@@ -35,10 +35,10 @@ const ContributeModal = ({ contributeFadingOut, setContributeFadingOut, storedPr
             if (formattedPrompt && comparePrompts.length === 0) {
     
                 // Store a reference to the realtime database.
-                const dbRef = ref(realtime);
+                const dbRef = await ref(realtime);
         
                 // Push the data input by the user to the realtime database.
-                push(dbRef, formattedPrompt);
+                await push(dbRef, formattedPrompt);
 
                 // Clear all error messages currently rendered on the page upon successfully submitting the user's prompt.
                 setErrorFormattingPrompt("");

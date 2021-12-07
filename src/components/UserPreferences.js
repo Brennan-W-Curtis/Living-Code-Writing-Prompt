@@ -37,10 +37,10 @@ const UserPreferences = props => {
 
     return (
         <div className={sidebarActive ? "userPreferences preferencesActive" : "userPreferences"}>
-            <nav aria-label="User Preferences">
-                <ul className="preferencesList">
-                    <li 
-                        className="preferenceOption"
+            <ul className="preferencesList">
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         onClick={() => {
                             setPromptLock(true);
                             setSidebarActive(false);
@@ -48,110 +48,122 @@ const UserPreferences = props => {
                     >
                         <span className="optionText">
                             <p>Plume Journals</p>
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 <FaAngleRight className="preferencesToggle" aria-label="Hide User Preferences" />
-                            </button>
+                            </span>
                         </span>
-                    </li>
-                    <li
-                        className="preferenceOption"
+                    </button>
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         onClick={() => setUserInput("")}
                     >
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 <FaFile className="sidebarIcon" aria-label="New Document" />
-                            </button>
+                            </span>
                             <p>New</p>
                         </span>
-                    </li>
-                    <li
-                        className="preferenceOption"
+                    </button>
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         // Toggles whether the saving window is either visible or hidden for the user.
                         onClick={() => togglePreference(enableSaving, setSaveFadingOut, setEnableSaving)}
                     >
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 <FaSave className="sidebarIcon" aria-label="Save Document" />
-                            </button>
+                            </span>
                             <p>Save</p>
                         </span>
-                    </li>
-                    <li 
-                        className="preferenceOption"
+                    </button>
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         // Toggles whether dark mode is enabled for the user.
                         onClick={() => setToggleMode(!toggleMode)}
-                    >
+                    >    
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 {
                                     !toggleMode ? 
                                         <FaRegSquare className="sidebarIcon" aria-label="Toggle Dark Mode" /> :
                                         <FaCheckSquare className="sidebarIcon" aria-label="Toggle Dark Mode" />
                                 }
-                            </button>
+                            </span>
                             <p>Evening Mode</p>
                         </span>
-                    </li>
-                    <li 
-                        className="preferenceOption"
+                    </button>
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         // Toggles whether the writing prompt display is either visible or hidden for the user.
                         onClick={() => {
                             togglePreference(promptDisplay, setPromptFadingOut, setPromptDisplay);
                             setPromptLock(false);
                         }}
-                    >
+                    > 
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 {
                                     promptDisplay ? 
-                                        <FaCheckSquare className="sidebarIcon" aria-label="Toggle Writing Prompts" /> :
-                                        <FaRegSquare className="sidebarIcon" aria-label="Toggle Writing Prompts" /> 
+                                    <FaCheckSquare className="sidebarIcon" aria-label="Toggle Writing Prompts" /> :
+                                    <FaRegSquare className="sidebarIcon" aria-label="Toggle Writing Prompts" /> 
                                 }
-                            </button>
+                            </span>
                             <p>Display Prompts</p>
                         </span>
-                    </li>
-                    <li 
-                        className="preferenceOption"
+                    </button>   
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         // Toggles whether the input form to contribute a prompt is either visible or hidden for the user.
                         onClick={() => togglePreference(contributePrompt, setContributeFadingOut, setContributePrompt)}
-                    >
+                    > 
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 {
                                     !contributePrompt ? 
-                                        <FaRegSquare className="sidebarIcon" aria-label="Toggle Contribute Prompt" /> : 
-                                        <FaCheckSquare className="sidebarIcon" aria-label="Toggle Contribute Prompt" />
+                                    <FaRegSquare className="sidebarIcon" aria-label="Toggle Contribute Prompt" /> : 
+                                    <FaCheckSquare className="sidebarIcon" aria-label="Toggle Contribute Prompt" />
                                 }
-                            </button>
+                            </span>
                             <p>Contribute Prompt</p>
                         </span>
-                    </li>
-                    <li 
-                        className="preferenceOption"
+                    </button>
+                </li>
+                <li className="preferenceOption">
+                    <button
+                        className="listButton"
                         // Toggles whether the countdown timer is enabled for the user.
                         onClick={() => setDisplayCountdown(!displayCountdown)}
-                    >
+                    > 
                         <span className="optionText">
-                            <button className="iconContainer">
+                            <span className="iconContainer">
                                 {
                                     displayCountdown ? 
-                                        <FaCheckSquare className="sidebarIcon" aria-label="Toggle Countdown Timer" /> :
-                                        <FaRegSquare className="sidebarIcon" aria-label="Toggle Countdown Timer" />  
+                                    <FaCheckSquare className="sidebarIcon" aria-label="Toggle Countdown Timer" /> :
+                                    <FaRegSquare className="sidebarIcon" aria-label="Toggle Countdown Timer" />  
                                 }
-                            </button>
+                            </span>
                             <p>Countdown Timer</p>
                         </span>
-                    </li>
-                    <li className="preferenceFeatures">
-                        <div className="featureContainer">
-                            <WordCount 
-                                userInput={userInput}
-                            />
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+                    </button>
+                </li>
+                <li className="preferenceFeatures">
+                    <div className="featureContainer">
+                        <WordCount 
+                            userInput={userInput}
+                        />
+                    </div>
+                </li>
+            </ul>
         </div>
     )
 }

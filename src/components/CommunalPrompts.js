@@ -1,4 +1,4 @@
-import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+import { FaQuoteLeft, FaQuoteRight, FaRandom } from 'react-icons/fa';
 
 const CommunalPrompts = ({ currentPrompt, promptDisplay, promptLock, promptFadingOut, promptIsLoading, sidebarActive }) => {
     return (
@@ -17,7 +17,12 @@ const CommunalPrompts = ({ currentPrompt, promptDisplay, promptLock, promptFadin
                 {
                     promptIsLoading ?
                         <p className="currentPrompt">Loading...</p> :
-                        <p className="currentPrompt"><FaQuoteLeft className="quoteIcons quoteLeft" aria-hidden="true"/>{currentPrompt}<FaQuoteRight className="quoteIcons quoteRight" aria-hidden="true"/></p>
+                        <p className="currentPrompt">
+                            <FaQuoteLeft className="quoteIcons quoteLeft" aria-hidden="true"/>
+                            {currentPrompt}
+                            <FaQuoteRight className="quoteIcons quoteRight" aria-hidden="true"/>
+                        </p>
+                        
                 }
             </div>
         </div>

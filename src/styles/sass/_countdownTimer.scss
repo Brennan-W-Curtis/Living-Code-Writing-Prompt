@@ -75,28 +75,6 @@
 
         }
 
-        .increaseButton,
-        .incrementButton {
-            transition: all .5s;
-
-            &:hover,
-            &:focus {
-                transform: translateY(-.15rem);
-            }
-
-        }
-
-        .decreaseButton,
-        .decrementButton {
-            transition: all .5s;
-
-            &:hover,
-            &:focus {
-                transform: translateY(.15rem);
-            }
-
-        }
-
         .increaseTime {
             top: .75rem;
         }

@@ -1,11 +1,91 @@
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+
+    .menuLinks {
+        width: 72.5%;
+
+        .mainNavigation {
+        
+            li {
+                max-width: 100%;
+            }
+       
+        }
+
+    }
+
+    .menuAuthentication {
+        width: 27.5%;
+    }
+
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+
+    .productDescription {
+
+        .descriptionContent {
+            display: flex;
+            flex-direction: column;
+            padding: .5rem 0 0 0;
+
+            p {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            p:nth-child(1) {
+                padding: 0 0 .5rem 0;
+            }
+
+        }
+
+    }
+
+    .productFeatures {
+
+        .featuresList {
+
+            li {
+                width: calc((100% / 2) - 1rem);
+            }
+
+        }
+        
+    }
+
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+
+    .mainNavigation {
+        flex-direction: column;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        border-left: 1px solid black;  
+    }
+
+    .productFeatures {
+
+        .featuresList {
+
+            li:nth-child(1) {
+                margin: 1rem .5rem .5rem;
+            }
+
+            li {
+                margin: .5rem;
+                width: calc(100% - 1rem);
+            }
+
+        }
+        
+    }
+
 }

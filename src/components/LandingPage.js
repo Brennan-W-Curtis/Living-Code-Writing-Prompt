@@ -19,8 +19,8 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
             <div className="productDescription">
                 <h2>We Value Your Time</h2>
                 <div className="descriptionContent">
-                    <p>A modern journal that focuses on enhancing the user's experience with the flexibility to customize it's interface to align with their unique preferences.</p>
-                    <p>Plume is a simple text editor designed for journalists to focus on their writing experiences by creating a constructive distraction free environment that also helps them set healthy boundaries.</p>
+                    <p>A modern journal that focuses on enhancing the user's experience with the flexibility to customize aspects of it's interface to align with their preferred and unique preferences.</p>
+                    <p>Plume is a simple text editor designed for writers to focus on their craft by facilitating a constructive environment free of distractions that also helps set healthy boundaries.</p>
                 </div>
             </div>
             <div className="productFeatures">
@@ -33,12 +33,12 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
                     <li>
                         <FaHandHoldingHeart className="featureIcon" />
                         <h3>Gentle Reminders</h3>
-                        <p>Stay focused on writing your next entry with an idle timer that notifies you when it may be time for a break.</p>
+                        <p>Stay focused on writing your next journal entry with an idle timer that notifies you when it may be time for a break.</p>
                     </li>
                     <li>
                         <FaHandsHelping className="featureIcon" />
                         <h3>Foster Community</h3>
-                        <p>We encourage all users to support each other by contributing writing prompts that everyone has access to.</p>
+                        <p>We encourage all users to support each other by contributing to writing prompts that everyone has access to.</p>
                     </li>
                     <li>
                         <FaWalking className="featureIcon" />
@@ -48,7 +48,7 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
                     <li>
                         <FaFileDownload className="featureIcon" />
                         <h3>Keep Your Work</h3>
-                        <p>When you're ready to move on and export your journal entry registered users can download it as a PDF file.</p>
+                        <p>When our users are ready to move on and export their journal entry they'll be able to download it as a PDF file.</p>
                     </li>
                     <li>
                         <FaSpotify className="featureIcon" />

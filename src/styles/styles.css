@@ -544,6 +544,9 @@ textarea {
   border-bottom: 1px solid #D11124;
   outline: none;
 }
+.morningDisplay .unresponsiveError {
+  color: #D11124;
+}
 .morningDisplay .errorPage .errorRedirect {
   position: relative;
 }
@@ -590,6 +593,22 @@ textarea {
 .eveningDisplay a {
   color: #FFFFFF;
 }
+.eveningDisplay input::-webkit-input-placeholder, .eveningDisplay textarea::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+.eveningDisplay input::-moz-placeholder, .eveningDisplay textarea::-moz-placeholder {
+  color: #FFFFFF;
+}
+.eveningDisplay input:-ms-input-placeholder, .eveningDisplay textarea:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+.eveningDisplay input::-ms-input-placeholder, .eveningDisplay textarea::-ms-input-placeholder {
+  color: #FFFFFF;
+}
+.eveningDisplay input::placeholder,
+.eveningDisplay textarea::placeholder {
+  color: #FFFFFF;
+}
 .eveningDisplay .brandLogo button {
   color: #FFFFFF;
 }
@@ -633,6 +652,9 @@ textarea {
 }
 .eveningDisplay .menuAuthentication .accessPreferences:hover, .eveningDisplay .menuAuthentication .accessPreferences:focus {
   color: #78CAD2;
+}
+.eveningDisplay .menuAuthentication .loadingName {
+  color: #E6E6E6;
 }
 .eveningDisplay .menuAuthentication .loginLink,
 .eveningDisplay .menuAuthentication .logoutRedirect,
@@ -849,6 +871,9 @@ textarea {
 .eveningDisplay .registerationDescription p {
   color: #E6E6E6;
 }
+.eveningDisplay .unresponsiveError {
+  color: #F46675;
+}
 .eveningDisplay .errorPage .errorRedirect {
   position: relative;
 }
@@ -926,7 +951,7 @@ header .headerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50%;
+  width: 72.5%;
 }
 .menuLinks nav {
   display: -webkit-box;
@@ -973,7 +998,7 @@ header .headerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50%;
+  width: 27.5%;
 }
 .menuAuthentication .userOptions {
   display: -webkit-box;
@@ -1038,25 +1063,6 @@ header .headerMenu {
   cursor: pointer;
   position: relative;
 }
-.menuAuthentication .accessPreferences::after {
-  display: block;
-  content: ".";
-  position: absolute;
-  left: 0rem;
-  top: 0.5rem;
-  width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.menuAuthentication .accessPreferences:hover::after, .menuAuthentication .accessPreferences:focus-within::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  top: 0.25rem;
-}
 .menuAuthentication .accessPreferences .preferencesIcon {
   font-size: 0.5rem;
   position: absolute;
@@ -1085,9 +1091,10 @@ header .headerMenu {
   position: fixed;
   background-color: white;
   top: 0;
-  right: -20rem;
+  right: -15rem;
   width: 25%;
-  max-width: 20rem;
+  min-width: 15rem;
+  max-width: 15rem;
   height: 100%;
   z-index: 100;
   border-left: 1px solid black;
@@ -1108,6 +1115,13 @@ header .headerMenu {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.preferencesList .listButton {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
 .preferencesList .preferenceOption {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1116,7 +1130,6 @@ header .headerMenu {
       -ms-flex-align: center;
           align-items: center;
   height: 3rem;
-  cursor: pointer;
 }
 .preferencesList .preferenceOption .preferencesToggle {
   font-size: 1rem;
@@ -1433,28 +1446,6 @@ header .headerMenu {
   left: 0.15rem;
   margin: 0 0.75rem;
 }
-.countdownTimer .timerDisplay .increaseButton,
-.countdownTimer .timerDisplay .incrementButton {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.countdownTimer .timerDisplay .increaseButton:hover, .countdownTimer .timerDisplay .increaseButton:focus,
-.countdownTimer .timerDisplay .incrementButton:hover,
-.countdownTimer .timerDisplay .incrementButton:focus {
-  -webkit-transform: translateY(-0.15rem);
-          transform: translateY(-0.15rem);
-}
-.countdownTimer .timerDisplay .decreaseButton,
-.countdownTimer .timerDisplay .decrementButton {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.countdownTimer .timerDisplay .decreaseButton:hover, .countdownTimer .timerDisplay .decreaseButton:focus,
-.countdownTimer .timerDisplay .decrementButton:hover,
-.countdownTimer .timerDisplay .decrementButton:focus {
-  -webkit-transform: translateY(0.15rem);
-          transform: translateY(0.15rem);
-}
 .countdownTimer .timerDisplay .increaseTime {
   top: 0.75rem;
 }
@@ -1653,7 +1644,9 @@ header .headerMenu {
   font-size: 0.75rem;
   text-align: center;
   width: 100%;
-  margin: 0 0 1rem 0;
+}
+.findMusic .musicDescription .unresponsiveError {
+  margin: 1rem 0;
 }
 .findMusic .apiLogin,
 .findMusic .revealPlaylists {
@@ -2060,5 +2053,63 @@ header .headerMenu {
 }
 
 /* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  .menuLinks {
+    width: 72.5%;
+  }
+  .menuLinks .mainNavigation li {
+    max-width: 100%;
+  }
+
+  .menuAuthentication {
+    width: 27.5%;
+  }
+}
 /* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  .productDescription .descriptionContent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0.5rem 0 0 0;
+  }
+  .productDescription .descriptionContent p {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .productDescription .descriptionContent p:nth-child(1) {
+    padding: 0 0 0.5rem 0;
+  }
+
+  .productFeatures .featuresList li {
+    width: calc((100% / 2) - 1rem);
+  }
+}
 /* Landscape phones and down */
+@media (max-width: 480px) {
+  .mainNavigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    border-left: 1px solid black;
+  }
+
+  .productFeatures .featuresList li:nth-child(1) {
+    margin: 1rem 0.5rem 0.5rem;
+  }
+  .productFeatures .featuresList li {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+}

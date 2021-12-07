@@ -51,34 +51,42 @@ const App = () => {
    // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
    useEffect(() => {
     // Store a reference to the realtime database.
-    const dbRef = ref(realtime);
 
-    onValue(dbRef, snapshot => {
+    const accessPrompts = async () => {
 
-        // Store a reference of the snapshot of the realtime database to access it's values.
-        const myData = snapshot.val();
-
-        // Create an empty array to store all of the prompts from the realtime database.
-        const databasePrompts = [];
-
-        // Iterate through the entirety of the myData object and push each value into an array.
-        for (let value in myData) {
-
-            // Declare an object that stores an individual prompt with it's respective id.
-            const promptObject = {
-                id: value,
-                prompt: myData[value]
+        // Store a reference to the realtime database.
+        const dbRef = await ref(realtime);
+    
+        onValue(dbRef, async snapshot => {
+    
+            // Store a reference of the snapshot of the realtime database to access it's values.
+            const myData = await snapshot.val();
+    
+            // Create an empty array to store all of the prompts from the realtime database.
+            const databasePrompts = [];
+    
+            // Iterate through the entirety of the myData object and push each value into an array.
+            for (let value in myData) {
+    
+                // Declare an object that stores an individual prompt with it's respective id.
+                const promptObject = {
+                    id: value,
+                    prompt: myData[value]
+                }
+    
+                // Push each prompt object to an array declared within the lexical scope.
+                databasePrompts.push(promptObject);
+    
             }
+    
+            // Set the state variable with an empty array to an array with all of the prompt objects.
+            setStoredPrompts(databasePrompts);
+    
+        });
 
-            // Push each prompt object to an array declared within the lexical scope.
-            databasePrompts.push(promptObject);
+    }
 
-        }
-
-        // Set the state variable with an empty array to an array with all of the prompt objects.
-        setStoredPrompts(databasePrompts);
-
-    });
+    accessPrompts();
     
   }, []);
 
@@ -87,9 +95,9 @@ const App = () => {
           
     // If the storedPrompts array length is greater than zero set the currentPrompt state variable to a prompt based on a randomly generated index. 
     if (storedPrompts.length > 0) {
-        const randomIndex = Math.floor(Math.random() * storedPrompts.length);
-        setCurrentPrompt(storedPrompts[randomIndex].prompt);
-        setPromptIsLoading(false);
+      const randomIndex = Math.floor(Math.random() * storedPrompts.length);
+      setCurrentPrompt(storedPrompts[randomIndex].prompt);
+      setPromptIsLoading(false);
     }
 
     // Include storedPrompts as a dependency, when this value changes it triggers a re-render that calls the function above. 
@@ -127,7 +135,7 @@ const App = () => {
 
     renderArticles();
 
-}, [authenticatedUser, savedArticles]);
+  }, [authenticatedUser, savedArticles]);
 
   // Handles the animating of the notification window as it fades in and out of view.
   const animateIndicator = () => {
@@ -232,7 +240,7 @@ const App = () => {
             }
             {
               authenticatedUser ?
-                <Route path="/suggested-music">
+                <Route path="/find-music">
                   <section className="musicSection">
                     <FindMusic 
                       accessToken={accessToken}
