@@ -10,6 +10,7 @@ const InactivityWarning = props => {
         displayWarning, 
         setDisplayWarning, 
         currentInterval, 
+        setFadeInterface
     } = props;
 
     // Store a reference to the idle timer component and set it's current property to null.
@@ -21,6 +22,7 @@ const InactivityWarning = props => {
             setDisplayWarning(true)
             clearInterval(currentInterval);
             setCountingStatus(false);
+            setFadeInterface(false);
         } 
     }
 

@@ -3,27 +3,27 @@ import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
 import { FaBars } from 'react-icons/fa';
 
-const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActive }) => {
+const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface, setSidebarActive }) => {
     return (
         <header>
             <div className="headerMenu">
                 <nav className="menuLinks" aria-label="Primary Navigation">
-                    <Link to="/" className="homeLink"><BrandLogo /></Link>
+                    <Link to="/" className={!fadeInterface ? "homeLink" : "homeLink reducedOpacity"}><BrandLogo /></Link>
                     <ul className={authenticatedUser ? "mainNavigation" : "visitorNavigation"}>
                         <li>
-                            <Link to="journal-page" className="individualLinks">Journal Page</Link>
+                            <Link to="journal-page" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Journal Page</Link>
                         </li>
                         {
                             authenticatedUser ?
                             <li>
-                                <Link to="find-music" className="individualLinks">Find Music</Link>
+                                <Link to="find-music" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Find Music</Link>
                             </li> :
                             null
                         }
                         {   
                             authenticatedUser ?
                             <li>
-                                <Link to="saved-entries" className="individualLinks">Saved Entries</Link>
+                                <Link to="saved-entries" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Saved Entries</Link>
                             </li> :
                             null
                         }
@@ -45,9 +45,18 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, setSidebarActi
                                 <UserAuthentication 
                                     authenticatedUser={authenticatedUser}
                                     setAuthenticatedUser={setAuthenticatedUser}
+                                    fadeInterface={fadeInterface}
                                     setSidebarActive={setSidebarActive}
                                 /> :
                                 null
+                    }
+                    {
+                        authenticatedUser ?
+                            <FaBars 
+                                className="responsiveMenu" 
+                            /> :
+                            null
+                        
                     }
                 </div>
             </div>

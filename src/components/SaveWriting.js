@@ -77,7 +77,7 @@ const SaveWriting = props => {
                 (authenticatedUser && count === 0 && countingStatus === false && displaySaving) || enableSaving ?
                     <div className={saveFadingOut ? "savingOptions fadeOut" : "savingOptions fadeIn"}>
                         <div className="closeWindow">
-                            <button className="exitContainer">
+                            <button className="exitButton">
                                 <FaWindowClose 
                                     className="closeIcon"
                                     onClick={handleClose}

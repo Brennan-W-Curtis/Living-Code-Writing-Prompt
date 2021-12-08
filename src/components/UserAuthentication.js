@@ -18,7 +18,8 @@ const UserAuthentication = props => {
         errorInvalidEmail, 
         setErrorInvalidEmail, 
         errorInvalidPassword,
-        setErrorInvalidPassword, 
+        setErrorInvalidPassword,
+        fadeInterface, 
         setDisplayActivity, 
         setSidebarActive 
     } = props;
@@ -143,7 +144,7 @@ const UserAuthentication = props => {
                         {
                             isLoading ?
                                 <p className="loadingName">Loading...</p> :
-                                <span className="userGreeting">
+                                <span className={!fadeInterface ? "userGreeting" : "userGreeting reducedOpacity"}>
                                     <p className="welcomeMessage">Welcome, </p>
                                     <button 
                                         className="accessPreferences"
@@ -158,7 +159,7 @@ const UserAuthentication = props => {
                         }
                         <Link 
                             to="/" 
-                            className="logoutRedirect"
+                            className={!fadeInterface ? "logoutRedirect" : "logoutRedirect reducedOpacity"}
                             onClick={logoutUser}
                         >Sign Out</Link>
                     </div>

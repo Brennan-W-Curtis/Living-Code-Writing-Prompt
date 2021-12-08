@@ -39,11 +39,21 @@
     .playlistCollection {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-evenly;
         width: 100%;
 
-        li {
+        .userPlaylist {
+            width: calc((100% / 4) - 1rem);
             max-width: 25%;
-            padding: .5rem;
+            min-width: 15rem;
+            margin: .5rem;
+            padding: .25rem;
+            border-radius: 5px;
+
+            span {
+                display: flex;
+                justify-content: space-between;
+            }
 
             .playlistName,
             .playlistTracks {

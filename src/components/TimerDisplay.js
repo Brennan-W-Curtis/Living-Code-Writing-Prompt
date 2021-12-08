@@ -1,6 +1,6 @@
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement }) => {
+const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement, fadeInterface }) => {
     // Conditionally render the minute part of the timer display only if it stores an  value greater than zero.
     const conditionalFormatting = timeUnit => {
         // Should the counting status state variable have a value of null then the minutes unit will display above the the increment and decrement buttons.
@@ -74,7 +74,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement 
                 </button>
             </div>
             <div className="currentTime">
-                <p>{convertTime(count)}</p>
+                <p className={fadeInterface ? "reducedOpacity" : null}>{convertTime(count)}</p>
             </div>
             {/* Decrease */}
             <div className="decrementTime">

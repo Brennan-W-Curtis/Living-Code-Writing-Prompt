@@ -31,6 +31,27 @@
         
     }
 
+    .randomPrompt {
+        display: flex;
+        justify-content: center;
+        padding: .5rem 0 0 0;
+        position: relative;
+        top: .15rem;
+
+        .randomButton {
+            cursor: pointer;
+            @include iconContainer();
+
+            &:hover,
+            &:focus {
+                opacity: 1;
+                transform: translateY(-.15rem);
+            }
+
+        }
+
+    }
+
     .contributeButton {
         font-size: .75rem;
         background: none;

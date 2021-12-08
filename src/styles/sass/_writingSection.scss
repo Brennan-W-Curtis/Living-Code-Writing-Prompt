@@ -74,14 +74,19 @@
         .closeWindow {
             display: flex;
             justify-content: flex-end;
+            position: relative;
+            left: .1rem;
             width: 100%;    
+        }
+
+        .exitButton {
+            @include iconContainer();
         }
 
         .closeIcon {
             font-size: .5rem;
             cursor: pointer;
             transition: all .5s;
-            @include iconContainer();
 
             &:hover,
             &:focus {
@@ -102,8 +107,12 @@
             background: none;
         }
 
-        button {
-            @include genericButton();
+        .savingButtons {
+
+            button {
+                @include genericButton();
+            }
+            
         }
 
     }

@@ -31,6 +31,7 @@ const App = () => {
   const [ contributeFadingOut, setContributeFadingOut ] = useState(false); // Determines whether the contribute prompt component either fades in or out.
   const [ authenticatedUser, setAuthenticatedUser ] = useState({}); // Stores an object with all of the relevant data of the user currently signed in.
   const [ enableSaving, setEnableSaving ] = useState(false); // Determines if the saving menu is either visible or hidden by a button in the sidebar menu. 
+  const [ fadeInterface, setFadeInterface ] = useState(false); // Determines whether the visible features will have their opacity lowered.
   const [ saveFadingOut, setSaveFadingOut ] = useState(false); // Determines whether the saving prompt component either fades in or out.
   const [ accessToken, setAccessToken ] = useState(""); // Stores the access token return after authenticating the user.
   const [ userVerified, setUserVerified ] = useState(false); // Reflects whether the user has signed into the spotify api.
@@ -152,6 +153,7 @@ const App = () => {
           <HeaderContent 
             authenticatedUser={authenticatedUser}
             setAuthenticatedUser={setAuthenticatedUser}
+            fadeInterface={fadeInterface}
             setSidebarActive={setSidebarActive}
           />
         </div>
@@ -211,12 +213,15 @@ const App = () => {
                 setDisplayActivity={setDisplayActivity}
                 enableSaving={enableSaving}
                 setEnableSaving={setEnableSaving}
+                fadeInterface={fadeInterface}
+                setFadeInterface={setFadeInterface}
                 saveFadingOut={saveFadingOut}
                 setSaveFadingOut={setSaveFadingOut}
                 promptDisplay={promptDisplay}
                 promptLock={promptLock}
                 promptFadingOut={promptFadingOut}
                 promptIsLoading={promptIsLoading}
+                setCurrentPrompt={setCurrentPrompt}
                 sidebarActive={sidebarActive}
                 storedPrompts={storedPrompts}
                 userInput={userInput}

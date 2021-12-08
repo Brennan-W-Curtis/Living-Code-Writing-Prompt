@@ -60,7 +60,9 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
             <div className="articleOptions">
                 {
                     savedArticles !== undefined ?
-                        <p className="articleCounter">You currently have <span>{savedArticles.length}</span> entries saved.</p> :
+                        <span className="articleCounter">
+                            <p>You currently have <span className="totalEntries">{savedArticles.length}</span> entries saved.</p>
+                        </span> :
                         null
                 }
                 {

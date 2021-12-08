@@ -100,8 +100,10 @@ const DisplayPlaylists = ({ accessToken, setUserVerified, setDisplayUnfulfilledR
                                             />
                                         </a>
                                     </div>
-                                    <p className="playlistName">Name: {playlist.playlistName}</p>
-                                    <p className="playlistTracks">Tracks: {playlist.trackNumbers}</p>
+                                    <span>
+                                        <p className="playlistName">Name: {playlist.playlistName}</p>
+                                        <p className="playlistTracks">Tracks: {playlist.trackNumbers}</p>
+                                    </span>
                                 </li>
                             )
                         }) :

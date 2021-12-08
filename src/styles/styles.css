@@ -296,6 +296,13 @@ textarea {
   opacity: 0;
 }
 
+.reducedOpacity {
+  opacity: 0.1;
+}
+.reducedOpacity:hover, .reducedOpacity:focus {
+  opacity: 1;
+}
+
 .fadeIn {
   -webkit-animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
           animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -454,6 +461,9 @@ textarea {
 .morningDisplay .accessPreferences:hover, .morningDisplay .accessPreferences:focus-within {
   color: #23395B;
 }
+.morningDisplay .preferenceOption:hover, .morningDisplay .preferenceOption:focus-within {
+  background-color: #E6E6E6;
+}
 .morningDisplay .contributePrompts .invalidPrompt {
   font-size: 0.75rem;
   color: #D11124;
@@ -544,7 +554,10 @@ textarea {
   border-bottom: 1px solid #D11124;
   outline: none;
 }
-.morningDisplay .unresponsiveError {
+.morningDisplay .findMusic .userPlaylist {
+  background-color: #E6E6E6;
+}
+.morningDisplay .findMusic .unresponsiveError {
   color: #D11124;
 }
 .morningDisplay .errorPage .errorRedirect {
@@ -720,6 +733,9 @@ textarea {
 .eveningDisplay .promptDisplay p {
   color: #FFFFFF;
 }
+.eveningDisplay .promptDisplay .randomPrompt .randomIcon {
+  color: #FFFFFF;
+}
 .eveningDisplay .contributePrompts .invalidPrompt {
   font-size: 0.75rem;
   color: #F46675;
@@ -763,6 +779,10 @@ textarea {
   outline: none;
   border-left: 1px solid #FFFFFF;
 }
+.eveningDisplay .savingOptions .exitButton:hover, .eveningDisplay .savingOptions .exitButton:focus {
+  background-color: #272727;
+  color: #E6E6E6;
+}
 .eveningDisplay .savingOptions .closeIcon {
   color: #FFFFFF;
 }
@@ -789,6 +809,15 @@ textarea {
   color: #FFFFFF;
 }
 .eveningDisplay .musicSection .musicDescription p {
+  color: #E6E6E6;
+}
+.eveningDisplay .musicSection .unresponsiveError {
+  color: #D11124;
+}
+.eveningDisplay .musicSection .userPlaylist {
+  background-color: #000000;
+}
+.eveningDisplay .musicSection .userPlaylist p {
   color: #E6E6E6;
 }
 .eveningDisplay .musicSection .apiLogin button {
@@ -944,20 +973,17 @@ header .headerMenu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 0 2.35rem 0;
+  padding: 0.5rem 0 1.9rem 0;
 }
 
 .menuLinks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 72.5%;
-}
-.menuLinks nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
 }
 .menuLinks .mainNavigation {
   display: -webkit-box;
@@ -966,7 +992,7 @@ header .headerMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 0 0 2.5rem;
+  margin: 0 0 0 2rem;
   width: 100%;
   -webkit-transition: none;
   transition: none;
@@ -998,7 +1024,16 @@ header .headerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 27.5%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30%;
+}
+.menuAuthentication .responsiveMenu {
+  display: none;
 }
 .menuAuthentication .userOptions {
   display: -webkit-box;
@@ -1091,10 +1126,10 @@ header .headerMenu {
   position: fixed;
   background-color: white;
   top: 0;
-  right: -15rem;
+  right: -18rem;
   width: 25%;
-  min-width: 15rem;
-  max-width: 15rem;
+  min-width: 18rem;
+  max-width: 18rem;
   height: 100%;
   z-index: 100;
   border-left: 1px solid black;
@@ -1280,6 +1315,31 @@ header .headerMenu {
 .communalPrompts .promptDisplay .currentPrompt {
   font-family: "nimbus-roman", serif;
   font-size: 1.75rem;
+}
+.communalPrompts .randomPrompt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem 0 0 0;
+  position: relative;
+  top: 0.15rem;
+}
+.communalPrompts .randomPrompt .randomButton {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.communalPrompts .randomPrompt .randomButton:hover, .communalPrompts .randomPrompt .randomButton:focus {
+  opacity: 1;
+  -webkit-transform: translateY(-0.15rem);
+          transform: translateY(-0.15rem);
 }
 .communalPrompts .contributeButton {
   font-size: 0.75rem;
@@ -1559,19 +1619,23 @@ header .headerMenu {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
+  left: 0.1rem;
   width: 100%;
 }
-.writingSection .savingOptions .closeIcon {
-  font-size: 0.5rem;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+.writingSection .savingOptions .exitButton {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background: none;
   border: none;
   padding: 0;
+}
+.writingSection .savingOptions .closeIcon {
+  font-size: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .writingSection .savingOptions .closeIcon:hover, .writingSection .savingOptions .closeIcon:focus {
   -webkit-transform: rotateZ(180deg);
@@ -1591,7 +1655,7 @@ header .headerMenu {
   width: 100%;
   background: none;
 }
-.writingSection .savingOptions button {
+.writingSection .savingOptions .savingButtons button {
   font-size: 0.75rem;
   background: none;
   border: none;
@@ -1600,7 +1664,7 @@ header .headerMenu {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.writingSection .savingOptions button:hover, .writingSection .savingOptions button:focus {
+.writingSection .savingOptions .savingButtons button:hover, .writingSection .savingOptions .savingButtons button:focus {
   background-color: black;
   color: white;
 }
@@ -1682,14 +1746,29 @@ header .headerMenu {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   width: 100%;
 }
-.findMusic .playlistCollection li {
+.findMusic .playlistCollection .userPlaylist {
+  width: calc((100% / 4) - 1rem);
   max-width: 25%;
-  padding: 0.5rem;
+  min-width: 15rem;
+  margin: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 5px;
 }
-.findMusic .playlistCollection li .playlistName,
-.findMusic .playlistCollection li .playlistTracks {
+.findMusic .playlistCollection .userPlaylist span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.findMusic .playlistCollection .userPlaylist .playlistName,
+.findMusic .playlistCollection .userPlaylist .playlistTracks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1697,7 +1776,7 @@ header .headerMenu {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-.findMusic .playlistCollection li p {
+.findMusic .playlistCollection .userPlaylist p {
   font-size: 0.75rem;
 }
 .findMusic .playlistCollection .imageContainer {
@@ -1715,6 +1794,7 @@ header .headerMenu {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 0 2rem 0;
 }
 .loadingSection .loadingDescription h2 {
   text-align: center;
@@ -1735,10 +1815,18 @@ header .headerMenu {
           justify-content: space-between;
 }
 .loadingSection .articleOptions .articleCounter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   font-size: 0.75rem;
+  max-width: 100%;
 }
-.loadingSection .articleOptions .articleCounter span {
+.loadingSection .articleOptions .articleCounter .totalEntries {
   font-weight: 600;
+  margin: 0 0.05rem;
 }
 .loadingSection .articleOptions .deleteArticles {
   font-size: 0.75rem;
@@ -1760,9 +1848,9 @@ header .headerMenu {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   padding: 0.5rem;
   width: 100%;
 }
@@ -1784,6 +1872,7 @@ header .headerMenu {
   padding: 0.5rem;
   width: calc((100% / 5) - 1rem);
   max-width: 10rem;
+  min-width: 10rem;
   height: 5rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -2055,18 +2144,68 @@ header .headerMenu {
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
   .menuLinks {
-    width: 72.5%;
+    width: 67.5%;
   }
   .menuLinks .mainNavigation li {
     max-width: 100%;
   }
 
   .menuAuthentication {
-    width: 27.5%;
+    width: 32.5%;
   }
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+  .menuLinks {
+    width: 32.5%;
+  }
+  .menuLinks .mainNavigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    left: -15rem;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    width: 25%;
+    min-width: 12.5rem;
+    max-width: 12.5rem;
+    position: fixed;
+    border-right: 1px solid black;
+    background-color: #FFFFFF;
+  }
+  .menuLinks .mainNavigation .individualLinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 3rem;
+  }
+  .menuLinks .mainNavigation li:nth-child(2),
+.menuLinks .mainNavigation li:nth-child(3) {
+    margin: 0;
+  }
+  .menuLinks .navigationActive {
+    left: 0rem;
+  }
+
+  .menuAuthentication {
+    width: 67.5%;
+  }
+  .menuAuthentication .responsiveMenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1rem;
+    margin: 0 0 0 1rem;
+  }
+
   .productDescription .descriptionContent {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2090,21 +2229,19 @@ header .headerMenu {
     width: calc((100% / 2) - 1rem);
   }
 }
+@media (max-width: 528px) {
+  .loadingSection .articleList {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0.5rem 0 0 0;
+  }
+  .loadingSection .articleList li {
+    width: calc((100% / 2) - 1rem);
+  }
+}
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .mainNavigation {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    border-left: 1px solid black;
-  }
-
   .productFeatures .featuresList li:nth-child(1) {
     margin: 1rem 0.5rem 0.5rem;
   }

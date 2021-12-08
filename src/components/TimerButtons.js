@@ -1,4 +1,4 @@
-const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, countingStatus }) => {
+const TimerButtons = ({ countingStatus, fadeInterface, handleReset, handleResume, handleStart, handleStop }) => {
     return (
         <div className="timerInterface">
             <div className="playbackButtons">
@@ -22,7 +22,7 @@ const TimerButtons = ({ handleReset, handleResume, handleStart, handleStop, coun
                 }
                 {
                     countingStatus === true ?
-                        <div className="countingTrue">
+                        <div className={!fadeInterface ? "countingTrue" : "countingTrue reducedOpacity"}>
                             <button
                                 className="stopButton"
                                 onClick={handleStop}

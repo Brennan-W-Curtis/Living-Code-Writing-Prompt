@@ -67,6 +67,16 @@ textarea {
     opacity: 0;
 }
 
+.reducedOpacity {
+    opacity: .1;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
+    }
+
+}
+
 // Animation Classes
 .fadeIn {
     animation: fadeIn 1s cubic-bezier(.25, .1, .25, 1);

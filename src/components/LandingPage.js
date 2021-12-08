@@ -19,7 +19,7 @@ const LandingPage = ({ animateIndicator, authenticatedUser, setUserActivity, set
             <div className="productDescription">
                 <h2>We Value Your Time</h2>
                 <div className="descriptionContent">
-                    <p>A modern journal that focuses on enhancing the user's experience with the flexibility to customize aspects of it's interface to align with their preferred and unique preferences.</p>
+                    <p>A modern journal that focuses on enhancing the user's experience with the flexibility to customize aspects of it's interface to align with their preferred preferences.</p>
                     <p>Plume is a simple text editor designed for writers to focus on their craft by facilitating a constructive environment free of distractions that also helps set healthy boundaries.</p>
                 </div>
             </div>

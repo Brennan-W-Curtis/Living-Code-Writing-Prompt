@@ -42,6 +42,15 @@
 
     }
 
+    .preferenceOption {
+
+        &:hover,
+        &:focus-within {
+            background-color: $eveningSecondary;
+        }
+
+    }
+
     .contributePrompts {
         
         .invalidPrompt {
@@ -166,8 +175,16 @@
 
     }
 
-    .unresponsiveError {
-        color: $primaryError;
+    .findMusic {
+
+        .userPlaylist {
+            background-color: $eveningSecondary;
+        }
+    
+        .unresponsiveError {
+            color: $primaryError;
+        }
+
     }
 
     .errorPage {
@@ -326,6 +343,14 @@
             color: $eveningPrimary;
         }
 
+        .randomPrompt {
+
+            .randomIcon {
+                color: $eveningPrimary;
+            }
+
+        }
+
     }
 
     .contributePrompts {
@@ -412,6 +437,16 @@
 
     .savingOptions {
 
+        .exitButton {
+
+            &:hover,
+            &:focus {
+                background-color: $eveningBackground;
+                color: $eveningSecondary;
+            }
+
+        }
+
         .closeIcon {
             color: $eveningPrimary;
         }
@@ -461,6 +496,19 @@
                 color: $eveningSecondary;
             }
 
+        }
+            
+        .unresponsiveError {
+            color: $primaryError;
+        }
+        
+        .userPlaylist {
+            background-color: $morningPrimary;
+
+            p {
+                color: $eveningSecondary;
+            }
+            
         }
 
         .apiLogin {

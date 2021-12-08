@@ -1,6 +1,12 @@
 .menuAuthentication {
     display: flex;
-    width: 27.5%;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+
+    .responsiveMenu {
+        display: none;
+    }
 
     .userOptions {
         display: flex;

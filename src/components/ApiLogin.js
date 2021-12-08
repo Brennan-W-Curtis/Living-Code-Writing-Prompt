@@ -44,7 +44,7 @@ const ApiLogin = ({ setAccessToken, setUserVerified }) => {
             setUserVerified(true);
 
             // Replace the current URL address without adding it to the history entries.
-            window.history.replaceState({}, document.title, "/suggested-music");
+            window.history.replaceState({}, document.title, "/find-music");
         }
 
     },[setAccessToken, setUserVerified])
