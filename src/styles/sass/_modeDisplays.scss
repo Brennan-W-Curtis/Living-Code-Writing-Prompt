@@ -15,12 +15,17 @@
 
     }
 
-    .menuLinks {
+    .primaryMenu {
+        background-color: $morningBackground;
 
         .individualLinks {
             @include linkHover($primaryColour, $morningPrimary);
         }
 
+    }
+
+    .navigationActive {
+        border-right: 1px solid $morningPrimary
     }
     
     .menuAuthentication {
@@ -253,15 +258,24 @@
     
         }
 
+        .menuIcon {
+            color: $eveningPrimary;
+        }
+
     }
         
-    .menuLinks {
+    .primaryMenu {
+        background-color: $eveningBackground;
 
         .individualLinks {
             color: $eveningSecondary;
             @include linkHover($secondaryColour, $eveningSecondary);
         }
 
+    }
+
+    .navigationActive {
+        border-right: 1px solid $eveningPrimary;
     }
 
     .menuAuthentication {

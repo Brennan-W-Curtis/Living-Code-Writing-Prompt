@@ -3,32 +3,64 @@ import BrandLogo from './BrandLogo';
 import UserAuthentication from './UserAuthentication';
 import { FaBars } from 'react-icons/fa';
 
-const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface, setSidebarActive }) => {
+const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface, navigationActive, setNavigationActive, setSidebarActive }) => {
     return (
         <header>
             <div className="headerMenu">
-                <nav className="menuLinks" aria-label="Primary Navigation">
-                    <Link to="/" className={!fadeInterface ? "homeLink" : "homeLink reducedOpacity"}><BrandLogo /></Link>
+                <nav className={!navigationActive ? "primaryMenu" : "primaryMenu navigationActive"} aria-label="Primary Navigation">
+                    <Link 
+                        to="/" 
+                        className={!fadeInterface ? "homeLink" : "homeLink reducedOpacity"}
+                        onClick={() => setNavigationActive(false)}
+                    >
+                        <BrandLogo />
+                    </Link>
                     <ul className={authenticatedUser ? "mainNavigation" : "visitorNavigation"}>
                         <li>
-                            <Link to="journal-page" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Journal Page</Link>
+                            <Link 
+                                to="journal-page" 
+                                className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}
+                                onClick={() => setNavigationActive(false)}
+                            >
+                                Journal Page
+                            </Link>
                         </li>
                         {
                             authenticatedUser ?
                             <li>
-                                <Link to="find-music" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Find Music</Link>
+                                <Link 
+                                    to="find-music" 
+                                    className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}
+                                    onClick={() => setNavigationActive(false)}
+                                >
+                                    Find Music
+                                </Link>
                             </li> :
                             null
                         }
                         {   
                             authenticatedUser ?
                             <li>
-                                <Link to="saved-entries" className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}>Saved Entries</Link>
+                                <Link 
+                                    to="saved-entries" 
+                                    className={!fadeInterface ? "individualLinks" : "individualLinks reducedOpacity"}
+                                    onClick={() => setNavigationActive(false)}
+                                >
+                                    Saved Entries
+                                </Link>
                             </li> :
                             null
                         }
                     </ul>
                 </nav>
+                <div className="menuContainer reducedOpacity">
+                    <button className="menuButton">
+                        <FaBars 
+                            className="menuIcon"
+                            onClick={() => setNavigationActive(true)} 
+                        /> 
+                    </button>
+                </div> 
                 <div className="menuAuthentication">
                     {
                         !authenticatedUser ?
@@ -49,14 +81,6 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface,
                                     setSidebarActive={setSidebarActive}
                                 /> :
                                 null
-                    }
-                    {
-                        authenticatedUser ?
-                            <FaBars 
-                                className="responsiveMenu" 
-                            /> :
-                            null
-                        
                     }
                 </div>
             </div>

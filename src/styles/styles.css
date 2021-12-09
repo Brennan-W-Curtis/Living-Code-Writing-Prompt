@@ -402,10 +402,13 @@ textarea {
 .morningDisplay .brandLogo .iconNegative {
   color: #FFFFFF;
 }
-.morningDisplay .menuLinks .individualLinks:hover, .morningDisplay .menuLinks .individualLinks:focus {
+.morningDisplay .primaryMenu {
+  background-color: #FFFFFF;
+}
+.morningDisplay .primaryMenu .individualLinks:hover, .morningDisplay .primaryMenu .individualLinks:focus {
   color: #23395B;
 }
-.morningDisplay .menuLinks .individualLinks::after {
+.morningDisplay .primaryMenu .individualLinks::after {
   display: block;
   content: "";
   position: absolute;
@@ -418,12 +421,15 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.morningDisplay .menuLinks .individualLinks:hover::after, .morningDisplay .menuLinks .individualLinks:focus-within::after {
+.morningDisplay .primaryMenu .individualLinks:hover::after, .morningDisplay .primaryMenu .individualLinks:focus-within::after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #23395B;
+}
+.morningDisplay .navigationActive {
+  border-right: 1px solid #000000;
 }
 .morningDisplay .menuAuthentication .loginLink:hover, .morningDisplay .menuAuthentication .loginLink:focus,
 .morningDisplay .menuAuthentication .logoutRedirect:hover,
@@ -631,13 +637,19 @@ textarea {
 .eveningDisplay .headerMenu .homeLink:hover, .eveningDisplay .headerMenu .homeLink:focus {
   color: #78CAD2;
 }
-.eveningDisplay .menuLinks .individualLinks {
+.eveningDisplay .headerMenu .menuIcon {
+  color: #FFFFFF;
+}
+.eveningDisplay .primaryMenu {
+  background-color: #272727;
+}
+.eveningDisplay .primaryMenu .individualLinks {
   color: #E6E6E6;
 }
-.eveningDisplay .menuLinks .individualLinks:hover, .eveningDisplay .menuLinks .individualLinks:focus {
+.eveningDisplay .primaryMenu .individualLinks:hover, .eveningDisplay .primaryMenu .individualLinks:focus {
   color: #78CAD2;
 }
-.eveningDisplay .menuLinks .individualLinks::after {
+.eveningDisplay .primaryMenu .individualLinks::after {
   display: block;
   content: "";
   position: absolute;
@@ -650,12 +662,15 @@ textarea {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.eveningDisplay .menuLinks .individualLinks:hover::after, .eveningDisplay .menuLinks .individualLinks:focus-within::after {
+.eveningDisplay .primaryMenu .individualLinks:hover::after, .eveningDisplay .primaryMenu .individualLinks:focus-within::after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid #78CAD2;
+}
+.eveningDisplay .navigationActive {
+  border-right: 1px solid #FFFFFF;
 }
 .eveningDisplay .menuAuthentication .userGreeting {
   color: #E6E6E6;
@@ -973,19 +988,38 @@ header .headerMenu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0.5rem 0 1.9rem 0;
+  padding: 1.9rem 0;
 }
 
-.menuLinks {
+.menuContainer {
+  position: absolute;
+  visibility: hidden;
+}
+.menuContainer .menuButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  top: 0.15rem;
+}
+.menuContainer .menuButton:hover, .menuContainer .menuButton:focus {
+  -webkit-transform: translateY(-0.15rem);
+          transform: translateY(-0.15rem);
+}
+
+.primaryMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 70%;
+  width: 67.5%;
 }
-.menuLinks .mainNavigation {
+.primaryMenu .mainNavigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -997,7 +1031,7 @@ header .headerMenu {
   -webkit-transition: none;
   transition: none;
 }
-.menuLinks .visitorNavigation {
+.primaryMenu .visitorNavigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1005,18 +1039,19 @@ header .headerMenu {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 0 0 2.5rem;
-  width: 100%;
+  width: 55%;
   -webkit-transition: none;
   transition: none;
 }
-.menuLinks .individualLinks {
+.primaryMenu .individualLinks {
   font-size: 0.8rem;
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  width: 100%;
 }
-.menuLinks li:nth-child(2),
-.menuLinks li:nth-child(3) {
+.primaryMenu li:nth-child(2),
+.primaryMenu li:nth-child(3) {
   margin: 0 0 0 1rem;
 }
 
@@ -1030,10 +1065,7 @@ header .headerMenu {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 30%;
-}
-.menuAuthentication .responsiveMenu {
-  display: none;
+  width: 32.5%;
 }
 .menuAuthentication .userOptions {
   display: -webkit-box;
@@ -1126,10 +1158,10 @@ header .headerMenu {
   position: fixed;
   background-color: white;
   top: 0;
-  right: -18rem;
+  right: -15rem;
   width: 25%;
-  min-width: 18rem;
-  max-width: 18rem;
+  min-width: 15rem;
+  max-width: 15rem;
   height: 100%;
   z-index: 100;
   border-left: 1px solid black;
@@ -1337,9 +1369,11 @@ header .headerMenu {
   padding: 0;
 }
 .communalPrompts .randomPrompt .randomButton:hover, .communalPrompts .randomPrompt .randomButton:focus {
-  opacity: 1;
   -webkit-transform: translateY(-0.15rem);
           transform: translateY(-0.15rem);
+}
+.communalPrompts .randomPrompt .randomIcon:hover, .communalPrompts .randomPrompt .randomIcon:focus {
+  opacity: 1;
 }
 .communalPrompts .contributeButton {
   font-size: 0.75rem;
@@ -2143,23 +2177,13 @@ header .headerMenu {
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
-  .menuLinks {
-    width: 67.5%;
-  }
-  .menuLinks .mainNavigation li {
+  .primaryMenu .mainNavigation li {
     max-width: 100%;
-  }
-
-  .menuAuthentication {
-    width: 32.5%;
   }
 }
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
-  .menuLinks {
-    width: 32.5%;
-  }
-  .menuLinks .mainNavigation {
+  .primaryMenu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -2167,18 +2191,47 @@ header .headerMenu {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    position: fixed;
     left: -15rem;
     top: 0;
     margin: 0;
     height: 100%;
-    width: 25%;
-    min-width: 12.5rem;
-    max-width: 12.5rem;
-    position: fixed;
-    border-right: 1px solid black;
-    background-color: #FFFFFF;
+    width: 47.5%;
+    min-width: 15rem;
+    max-width: 15rem;
+    z-index: 100;
   }
-  .menuLinks .mainNavigation .individualLinks {
+  .primaryMenu .homeLink {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 100%;
+  }
+  .primaryMenu .homeLink .brandLogo {
+    width: 100%;
+  }
+  .primaryMenu .homeLink h1 {
+    width: 100%;
+  }
+  .primaryMenu .mainNavigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .primaryMenu .mainNavigation li {
+    width: 100%;
+  }
+  .primaryMenu .mainNavigation .individualLinks {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2187,23 +2240,22 @@ header .headerMenu {
             align-items: center;
     height: 3rem;
   }
-  .menuLinks .mainNavigation li:nth-child(2),
-.menuLinks .mainNavigation li:nth-child(3) {
+  .primaryMenu .mainNavigation li:nth-child(2),
+.primaryMenu .mainNavigation li:nth-child(3) {
     margin: 0;
   }
-  .menuLinks .navigationActive {
-    left: 0rem;
+
+  .navigationActive {
+    left: 0;
   }
 
   .menuAuthentication {
-    width: 67.5%;
+    width: 52.5%;
   }
-  .menuAuthentication .responsiveMenu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 1rem;
-    margin: 0 0 0 1rem;
+
+  header .headerMenu .menuContainer {
+    position: relative;
+    visibility: visible;
   }
 
   .productDescription .descriptionContent {
@@ -2242,6 +2294,14 @@ header .headerMenu {
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  .primaryMenu {
+    width: 22.5%;
+  }
+
+  .menuAuthentication {
+    width: 77.5%;
+  }
+
   .productFeatures .featuresList li:nth-child(1) {
     margin: 1rem 0.5rem 0.5rem;
   }

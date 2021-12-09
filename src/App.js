@@ -41,6 +41,7 @@ const App = () => {
   const [ displayActivity, setDisplayActivity ] = useState(null); // Determines whether the notification window is displayed for the user with either a positive or negative indicator.
   const [ activityFadingOut, setActivityFadingOut ] = useState(false); // Determines whether the notification window is either fading in our fading out.
   const [ toggleMode, setToggleMode ] = useState(false); // Determines whether the page's theme is either light or dark.
+  const [ navigationActive, setNavigationActive ] = useState(false); // Determines whether the navigation menu is visible to to the user. 
   const [ sidebarActive, setSidebarActive ] = useState(false); // Determines whether the sidebar menu is visible to the user.
 
   // Store all error handling state values for user registration in the following variables.
@@ -154,6 +155,8 @@ const App = () => {
             authenticatedUser={authenticatedUser}
             setAuthenticatedUser={setAuthenticatedUser}
             fadeInterface={fadeInterface}
+            navigationActive={navigationActive}
+            setNavigationActive={setNavigationActive}
             setSidebarActive={setSidebarActive}
           />
         </div>

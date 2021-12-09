@@ -1,7 +1,7 @@
-.menuLinks {
+.primaryMenu {
     display: flex;
     align-items: center;
-    width: 70%; 
+    width: 67.5%; 
 
     .mainNavigation {
         display: flex;
@@ -15,7 +15,7 @@
         display: flex;
         align-items: center;
         margin: 0 0 0 2.5rem;
-        width: 100%;
+        width: 55%;
         transition: none;
     }
 
@@ -23,6 +23,7 @@
         font-size: .8rem;
         position: relative;
         transition: all .5s;
+        width: 100%;
     } 
 
     li:nth-child(2),
