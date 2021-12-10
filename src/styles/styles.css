@@ -268,6 +268,10 @@ html {
   transition: all 0.5s;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 main {
   min-height: 80vh;
 }
@@ -430,6 +434,9 @@ textarea {
 }
 .morningDisplay .navigationActive {
   border-right: 1px solid #000000;
+}
+.morningDisplay .menuButton:hover, .morningDisplay .menuButton:focus {
+  color: #23395B;
 }
 .morningDisplay .menuAuthentication .loginLink:hover, .morningDisplay .menuAuthentication .loginLink:focus,
 .morningDisplay .menuAuthentication .logoutRedirect:hover,
@@ -637,9 +644,6 @@ textarea {
 .eveningDisplay .headerMenu .homeLink:hover, .eveningDisplay .headerMenu .homeLink:focus {
   color: #78CAD2;
 }
-.eveningDisplay .headerMenu .menuIcon {
-  color: #FFFFFF;
-}
 .eveningDisplay .primaryMenu {
   background-color: #272727;
 }
@@ -671,6 +675,12 @@ textarea {
 }
 .eveningDisplay .navigationActive {
   border-right: 1px solid #FFFFFF;
+}
+.eveningDisplay .menuButton {
+  color: #FFFFFF;
+}
+.eveningDisplay .menuButton:hover, .eveningDisplay .menuButton:focus {
+  color: #78CAD2;
 }
 .eveningDisplay .menuAuthentication .userGreeting {
   color: #E6E6E6;
@@ -918,6 +928,9 @@ textarea {
 .eveningDisplay .unresponsiveError {
   color: #F46675;
 }
+.eveningDisplay .errorPage p {
+  color: #E6E6E6;
+}
 .eveningDisplay .errorPage .errorRedirect {
   position: relative;
 }
@@ -956,6 +969,10 @@ header .brandLogo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -988,26 +1005,15 @@ header .headerMenu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.9rem 0;
+  padding: 1rem 0 1.4rem 0;
 }
 
-.menuContainer {
+.menuButton {
+  display: none;
   position: absolute;
-  visibility: hidden;
-}
-.menuContainer .menuButton {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
-  top: 0.15rem;
-}
-.menuContainer .menuButton:hover, .menuContainer .menuButton:focus {
-  -webkit-transform: translateY(-0.15rem);
-          transform: translateY(-0.15rem);
 }
 
 .primaryMenu {
@@ -1158,10 +1164,10 @@ header .headerMenu {
   position: fixed;
   background-color: white;
   top: 0;
-  right: -15rem;
+  right: -17.5rem;
   width: 25%;
-  min-width: 15rem;
-  max-width: 15rem;
+  min-width: 17.5rem;
+  max-width: 17.5rem;
   height: 100%;
   z-index: 100;
   border-left: 1px solid black;
@@ -1249,6 +1255,9 @@ header .headerMenu {
   font-size: 0.75rem;
 }
 
+.productDescription {
+  padding: 1rem 0;
+}
 .productDescription .descriptionContent {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1258,6 +1267,8 @@ header .headerMenu {
   font-size: 0.75rem;
   width: 50%;
   margin: 0.5rem 0;
+}
+.productDescription .descriptionContent p:nth-child(1) {
   padding: 0 1rem 0 0;
 }
 
@@ -1302,7 +1313,6 @@ header .headerMenu {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  margin: 0 0 1rem 0;
 }
 .featuresSection .primaryInteraction {
   display: -webkit-box;
@@ -1348,7 +1358,7 @@ header .headerMenu {
   font-family: "nimbus-roman", serif;
   font-size: 1.75rem;
 }
-.communalPrompts .randomPrompt {
+.communalPrompts .promptDisplay .randomPrompt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1359,7 +1369,7 @@ header .headerMenu {
   position: relative;
   top: 0.15rem;
 }
-.communalPrompts .randomPrompt .randomButton {
+.communalPrompts .promptDisplay .randomPrompt .randomButton {
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1368,12 +1378,10 @@ header .headerMenu {
   border: none;
   padding: 0;
 }
-.communalPrompts .randomPrompt .randomButton:hover, .communalPrompts .randomPrompt .randomButton:focus {
+.communalPrompts .promptDisplay .randomPrompt .randomButton:hover, .communalPrompts .promptDisplay .randomPrompt .randomButton:focus {
+  opacity: 1;
   -webkit-transform: translateY(-0.15rem);
           transform: translateY(-0.15rem);
-}
-.communalPrompts .randomPrompt .randomIcon:hover, .communalPrompts .randomPrompt .randomIcon:focus {
-  opacity: 1;
 }
 .communalPrompts .contributeButton {
   font-size: 0.75rem;
@@ -1581,7 +1589,8 @@ header .headerMenu {
 }
 .writingSection .inactivityWarning {
   position: absolute;
-  width: 100%;
+  width: 75%;
+  margin: 0 auto;
   z-index: 100;
 }
 .writingSection .inactivityWarning .warningModal {
@@ -1595,8 +1604,9 @@ header .headerMenu {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
+  padding: 1rem;
   height: 10rem;
 }
 .writingSection .inactivityWarning .warningModal p {
@@ -1643,6 +1653,7 @@ header .headerMenu {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: relative;
   margin: 0 auto;
   width: 100%;
 }
@@ -1665,15 +1676,15 @@ header .headerMenu {
   border: none;
   padding: 0;
 }
+.writingSection .savingOptions .exitButton:hover, .writingSection .savingOptions .exitButton:focus {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
 .writingSection .savingOptions .closeIcon {
   font-size: 0.5rem;
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-.writingSection .savingOptions .closeIcon:hover, .writingSection .savingOptions .closeIcon:focus {
-  -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
 }
 .writingSection .savingOptions .savingButtons {
   display: -webkit-box;
@@ -1721,6 +1732,7 @@ header .headerMenu {
   height: calc(20% * .75);
 }
 .userNotifications p {
+  text-align: center;
   font-size: 0.75rem;
 }
 
@@ -1733,6 +1745,7 @@ header .headerMenu {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 0 2rem 0;
 }
 .findMusic .musicDescription h2 {
   text-align: center;
@@ -1929,10 +1942,11 @@ header .headerMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 0.75rem;
   width: 100%;
   height: 100%;
 }
-.loadingSection .articleList .deleteArticle {
+.loadingSection .articleList .deleteButton {
   font-size: 0.75rem;
   background: none;
   position: absolute;
@@ -1941,8 +1955,14 @@ header .headerMenu {
   cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
 }
-.loadingSection .articleList .deleteArticle:hover, .loadingSection .articleList .deleteArticle:focus {
+.loadingSection .articleList .deleteButton:hover, .loadingSection .articleList .deleteButton:focus {
   -webkit-transform: rotateZ(180deg);
           transform: rotateZ(180deg);
 }
@@ -2205,16 +2225,11 @@ header .headerMenu {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     width: 100%;
-  }
-  .primaryMenu .homeLink .brandLogo {
-    width: 100%;
-  }
-  .primaryMenu .homeLink h1 {
-    width: 100%;
+    margin: 0.5rem 0;
   }
   .primaryMenu .mainNavigation {
     -webkit-box-orient: vertical;
@@ -2228,9 +2243,6 @@ header .headerMenu {
     margin: 0;
     padding: 0;
   }
-  .primaryMenu .mainNavigation li {
-    width: 100%;
-  }
   .primaryMenu .mainNavigation .individualLinks {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2238,11 +2250,19 @@ header .headerMenu {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin: 0 0 0 1rem;
     height: 3rem;
+  }
+  .primaryMenu .mainNavigation li {
+    width: 100%;
   }
   .primaryMenu .mainNavigation li:nth-child(2),
 .primaryMenu .mainNavigation li:nth-child(3) {
     margin: 0;
+  }
+  .primaryMenu .mainNavigation .individualLinks::after {
+    left: -1rem;
+    top: 3rem;
   }
 
   .navigationActive {
@@ -2253,9 +2273,17 @@ header .headerMenu {
     width: 52.5%;
   }
 
-  header .headerMenu .menuContainer {
+  header .headerMenu {
+    height: 4.5rem;
+  }
+  header .headerMenu .menuButton {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     position: relative;
-    visibility: visible;
   }
 
   .productDescription .descriptionContent {
@@ -2280,8 +2308,31 @@ header .headerMenu {
   .productFeatures .featuresList li {
     width: calc((100% / 2) - 1rem);
   }
+
+  .writingSection {
+    min-height: 49.75vh;
+  }
+  .writingSection .saveWriting {
+    width: 60%;
+    max-width: 60%;
+    min-width: 60%;
+  }
+
+  .musicSection {
+    min-height: 80.5vh;
+  }
+
+  .loadingSection {
+    min-height: 80.5vh;
+  }
 }
 @media (max-width: 528px) {
+  .primaryMenu,
+.userPreferences {
+    min-width: 10rem;
+    max-width: 10rem;
+  }
+
   .loadingSection .articleList {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -2301,6 +2352,31 @@ header .headerMenu {
   .menuAuthentication {
     width: 77.5%;
   }
+  .menuAuthentication .userOptions a {
+    font-size: 0.7rem;
+  }
+  .menuAuthentication .currentUser .userGreeting .welcomeMessage,
+.menuAuthentication .currentUser p,
+.menuAuthentication .currentUser a {
+    font-size: 0.7rem;
+  }
+  .menuAuthentication .currentUser .preferencesIcon {
+    font-size: 0.4rem;
+    right: -0.15rem;
+  }
+
+  .authenticationForm,
+.registrationForm {
+    width: 85%;
+  }
+  .authenticationForm form,
+.registrationForm form {
+    width: 100%;
+  }
+  .authenticationForm form button,
+.registrationForm form button {
+    font-size: 0.7rem;
+  }
 
   .productFeatures .featuresList li:nth-child(1) {
     margin: 1rem 0.5rem 0.5rem;
@@ -2308,5 +2384,90 @@ header .headerMenu {
   .productFeatures .featuresList li {
     margin: 0.5rem;
     width: calc(100% - 1rem);
+  }
+
+  .communalPrompts .promptDisplay .quoteIcons {
+    font-size: 0.5rem;
+  }
+  .communalPrompts .promptDisplay .currentPrompt {
+    font-size: 1.25rem;
+  }
+  .communalPrompts .promptDisplay .randomIcon {
+    font-size: 0.75rem;
+  }
+
+  .contributePrompts form .submitPrompt {
+    width: 50%;
+    min-width: 5rem;
+    font-size: 0.7rem;
+  }
+  .contributePrompts form .submitButton {
+    font-size: 0.7rem;
+  }
+
+  .countdownTimer .timerInterface .playbackButtons {
+    width: 75%;
+    position: relative;
+    left: 0.75rem;
+  }
+  .countdownTimer .timerInterface .startButton,
+.countdownTimer .timerInterface .resetButton,
+.countdownTimer .timerInterface .resumeButton,
+.countdownTimer .timerInterface .stopButton {
+    font-size: 0.5rem;
+  }
+  .countdownTimer .timerDisplay .currentTime p {
+    font-size: 1.5rem;
+  }
+  .countdownTimer .timerDisplay .increaseTime .adjustmentButton,
+.countdownTimer .timerDisplay .incrementTime .adjustmentButton,
+.countdownTimer .timerDisplay .decreaseTime .adjustmentButton,
+.countdownTimer .timerDisplay .decrementTime .adjustmentButton {
+    font-size: 0.5rem;
+    left: 0.75rem;
+    margin: 0;
+  }
+
+  .writingSection {
+    min-height: 57vh;
+  }
+  .writingSection .savingOptions .articleTitle,
+.writingSection .savingOptions .savingButtons button {
+    font-size: 0.7rem;
+  }
+  .writingSection .saveWriting {
+    width: 75%;
+    max-width: 75%;
+    min-width: 75%;
+  }
+
+  .findMusic .apiLogin button {
+    font-size: 0.7rem;
+  }
+  .findMusic .playlistCollection .userPlaylist .playlistName,
+.findMusic .playlistCollection .userPlaylist .playlistTracks {
+    font-size: 0.7rem;
+  }
+
+  .loadingSection .articleCounter {
+    width: 30%;
+    min-width: 5rem;
+  }
+  .loadingSection .articleCounter p {
+    font-size: 0.7rem;
+  }
+  .loadingSection .articleOptions .deleteArticles {
+    font-size: 0.7rem;
+  }
+  .loadingSection .articleList {
+    padding: 1rem 0 0 0;
+    font-size: 0.75rem;
+  }
+
+  .userNotifications {
+    width: calc(50% * .75);
+  }
+  .userNotifications p {
+    font-size: 0.7rem;
   }
 }

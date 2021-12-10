@@ -147,6 +147,19 @@ const App = () => {
     setTimeout(() => setActivityFadingOut(false), 4500);
   }
 
+  // Toggles the visibility of a feature based on whether the current authenticated user has enabled it.
+  const togglePreference = (userPreference, preferenceFading, preferenceDisplay) => {
+    
+    if (userPreference) {
+        preferenceFading(true);
+        setTimeout(() => preferenceDisplay(false), 550);
+    } else {
+        preferenceFading(false);
+        preferenceDisplay(true);
+    }
+
+  }
+
   return (
     <Router>
       <header className={toggleMode ? "eveningDisplay" : "morningDisplay"}>
@@ -174,6 +187,7 @@ const App = () => {
             setSidebarActive={setSidebarActive}
             toggleMode={toggleMode}
             setToggleMode={setToggleMode}
+            togglePreference={togglePreference}
             userInput={userInput}
             setUserInput={setUserInput}
             setPromptLock={setPromptLock}
@@ -227,6 +241,7 @@ const App = () => {
                 setCurrentPrompt={setCurrentPrompt}
                 sidebarActive={sidebarActive}
                 storedPrompts={storedPrompts}
+                togglePreference={togglePreference}
                 userInput={userInput}
                 setUserInput={setUserInput}
                 userActivity={userActivity}

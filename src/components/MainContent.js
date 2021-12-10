@@ -36,6 +36,7 @@ const MainContent = props => {
         setCurrentPrompt,
         sidebarActive,
         storedPrompts,
+        togglePreference,
         userInput, 
         setUserInput, 
         setUserActivity 
@@ -158,6 +159,7 @@ const MainContent = props => {
                     setSaveFadingOut={setSaveFadingOut}
                     setUserActivity={setUserActivity}
                     setSavingArticle={setSavingArticle}
+                    togglePreference={togglePreference}
                     userInput={userInput}
                     setUserInput={setUserInput}
                 />

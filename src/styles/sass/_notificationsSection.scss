@@ -1,6 +1,5 @@
 .userNotifications {
     display: flex;
-    // background-color: white;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -9,9 +8,9 @@
     width: calc(25% * .75);
     max-width: 10rem;
     height: calc(20% * .75);
-    // border-left: 1px solid black;
 
     p {
+        text-align: center;
         font-size: .75rem;
     }
 

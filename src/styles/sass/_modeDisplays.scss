@@ -28,6 +28,15 @@
         border-right: 1px solid $morningPrimary
     }
     
+    .menuButton {
+
+        &:hover,
+        &:focus {
+            color: $primaryColour;
+        }
+    
+    }
+
     .menuAuthentication {
 
         .loginLink,
@@ -258,10 +267,6 @@
     
         }
 
-        .menuIcon {
-            color: $eveningPrimary;
-        }
-
     }
         
     .primaryMenu {
@@ -276,6 +281,16 @@
 
     .navigationActive {
         border-right: 1px solid $eveningPrimary;
+    }
+
+    .menuButton {
+        color: $eveningPrimary;
+        
+        &:hover,
+        &:focus {
+            color: $secondaryColour;
+        }
+    
     }
 
     .menuAuthentication {
@@ -633,6 +648,10 @@
     }
 
     .errorPage {
+
+        p {
+            color: $eveningSecondary;
+        }
 
         .errorRedirect {
             position: relative;

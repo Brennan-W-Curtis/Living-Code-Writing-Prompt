@@ -94,10 +94,13 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
                                         >
                                             {articleTitle}
                                         </Link>
-                                        <FaWindowClose 
-                                            className="deleteArticle"
-                                            onClick={() => handleDelete(index)}
-                                        />
+                                        <button className="deleteButton">
+                                            <FaWindowClose 
+                                                className="deleteArticle"
+                                                onClick={() => handleDelete(index)}
+                                                aria-label="Delete Article"
+                                            />
+                                        </button>
                                     </span>
                                 </li>
                             )

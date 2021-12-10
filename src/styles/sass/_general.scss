@@ -39,6 +39,10 @@ html {
     transition: all .5s;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 main {
     min-height: 80vh;
 }

@@ -16,6 +16,7 @@ const UserPreferences = props => {
         setSidebarActive,
         toggleMode,
         setToggleMode,
+        togglePreference,
         userInput,
         setUserInput,
         setPromptLock,
@@ -23,17 +24,6 @@ const UserPreferences = props => {
         setSaveFadingOut,
         setContributeFadingOut 
     } = props;
-
-    // Toggles the visibility of a feature based on whether the current authenticated user has enabled it.
-    const togglePreference = (userPreference, preferenceFading, preferenceDisplay) => {
-        if (userPreference) {
-            preferenceFading(true);
-            setTimeout(() => preferenceDisplay(false), 550);
-        } else {
-            preferenceFading(false);
-            preferenceDisplay(true);
-        }
-    }
 
     return (
         <div className={sidebarActive ? "userPreferences preferencesActive" : "userPreferences"}>

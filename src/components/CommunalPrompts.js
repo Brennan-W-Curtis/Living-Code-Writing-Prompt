@@ -59,10 +59,12 @@ const CommunalPrompts = props => {
                         
                 }
                 <span className="randomPrompt">
-                    <button className="randomButton">
+                    <button 
+                        className="randomButton"
+                        onClick={randomPrompt}
+                    >
                         <FaRandom 
                             className="randomIcon reducedOpacity" 
-                            onClick={randomPrompt}
                             aria-label="Generate Random Prompt" 
                         />
                     </button>

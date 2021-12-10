@@ -19,6 +19,7 @@ const SaveWriting = props => {
         saveFadingOut, 
         setSaveFadingOut, 
         setSavingArticle,
+        togglePreference,
         userInput, 
         setUserInput 
     } = props;
@@ -66,8 +67,8 @@ const SaveWriting = props => {
     const handleClose = () => {
         // Uses a boolean state value to determine whether it displays
         setSaveFadingOut(true);
-        setTimeout(() => setDisplaySaving(false), 1000);
-        setTimeout(() => setSaveFadingOut(false), 1000);
+        setTimeout(() => setDisplaySaving(false), 550);
+        setTimeout(() => setSaveFadingOut(false), 550);
     }
 
     return (
@@ -80,7 +81,11 @@ const SaveWriting = props => {
                             <button className="exitButton">
                                 <FaWindowClose 
                                     className="closeIcon"
-                                    onClick={handleClose}
+                                    onClick={() => {
+                                        handleClose();
+                                        togglePreference(enableSaving, setSavingArticle, setEnableSaving);
+                                    }}
+                                    aria-label="Close Saving Window"
                                 />
                             </button>
                         </div>

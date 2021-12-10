@@ -23,15 +23,17 @@
 
     .inactivityWarning {
         position: absolute;
-        width: 100%;
+        width: 75%;
+        margin: 0 auto;
         z-index: 100;
         
         .warningModal {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width: 50%;
+            width: 100%;
             margin: 0 auto;
+            padding: 1rem;
             height: 10rem;
 
             p {
@@ -68,6 +70,7 @@
     .savingOptions {
         display: flex;
         flex-wrap: wrap;
+        position: relative;
         margin: 0 auto;
         width: 100%;
 
@@ -81,18 +84,17 @@
 
         .exitButton {
             @include iconContainer();
+            &:hover,
+            &:focus {
+                transform: rotateZ(180deg);
+            }
+
         }
 
         .closeIcon {
             font-size: .5rem;
             cursor: pointer;
             transition: all .5s;
-
-            &:hover,
-            &:focus {
-                transform: rotateZ(180deg);
-            }
-
         }
 
         .savingButtons {

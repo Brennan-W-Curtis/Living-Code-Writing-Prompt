@@ -31,7 +31,7 @@
         
     }
 
-    .randomPrompt {
+    .promptDisplay .randomPrompt {
         display: flex;
         justify-content: center;
         padding: .5rem 0 0 0;
@@ -44,16 +44,8 @@
 
             &:hover,
             &:focus {
-                transform: translateY(-.15rem);
-            }
-
-        }
-
-        .randomIcon {
-
-            &:hover,
-            &:focus {
                 opacity: 1;
+                transform: translateY(-.15rem);
             }
 
         }

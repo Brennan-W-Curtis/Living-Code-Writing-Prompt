@@ -53,14 +53,15 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface,
                         }
                     </ul>
                 </nav>
-                <div className="menuContainer reducedOpacity">
-                    <button className="menuButton">
-                        <FaBars 
-                            className="menuIcon"
-                            onClick={() => setNavigationActive(true)} 
-                        /> 
-                    </button>
-                </div> 
+                <button 
+                    className={!fadeInterface ? "menuButton" : "menuButton reducedOpacity"}
+                    onClick={() => setNavigationActive(true)} 
+                >
+                    <FaBars 
+                        className="menuIcon"
+                        aria-label="Navigation Menu"
+                    /> 
+                </button>
                 <div className="menuAuthentication">
                     {
                         !authenticatedUser ?

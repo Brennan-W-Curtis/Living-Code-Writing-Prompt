@@ -33,17 +33,9 @@
 
         .homeLink {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             width: 100%;
-
-            .brandLogo {
-                width: 100%;
-            }
-
-            h1 {
-                width: 100%;
-            }
-
+            margin: 0.5rem 0;
         }
 
         .mainNavigation {
@@ -53,19 +45,30 @@
             margin: 0;
             padding: 0;
 
-            li {
-                width: 100%;
-            }
-
             .individualLinks {
                 display: flex;
                 align-items: center;
+                margin: 0 0 0 1rem;
                 height: 3rem;
             }
 
+            li {
+                width: 100%;
+            }
+            
             li:nth-child(2),
             li:nth-child(3) {
                 margin: 0;
+            }
+
+        }
+
+
+        .mainNavigation .individualLinks {
+            
+            &::after {
+                left: -1rem;
+                top: 3rem;
             }
 
         }
@@ -83,11 +86,12 @@
     header {
 
         .headerMenu {
+            height: 4.5rem;
     
-            .menuContainer {
+            .menuButton {
+                display: flex;
+                align-items: center;
                 position: relative;
-                visibility: visible;
-    
             }
     
         }
@@ -127,9 +131,34 @@
         
     }
 
+    .writingSection {
+        min-height: 49.75vh;
+
+        .saveWriting {
+            width: 60%;
+            max-width: 60%;
+            min-width: 60%;
+        }
+
+    }
+
+    .musicSection {
+        min-height: 80.5vh;
+    }
+
+    .loadingSection {
+        min-height: 80.5vh;
+    }
+
 }
 
 @media (max-width: 528px) {
+    
+    .primaryMenu,
+    .userPreferences {
+        min-width: 10rem;
+        max-width: 10rem;
+    }
 
     .loadingSection {
 
@@ -156,6 +185,45 @@
 
     .menuAuthentication {
         width: 77.5%;
+
+        .userOptions {
+
+            a {
+                font-size: .7rem;
+            }
+
+        }
+
+        .currentUser { 
+
+            .userGreeting .welcomeMessage,
+            p,
+            a {
+                font-size: .7rem;
+            }
+
+            .preferencesIcon {
+                font-size: .4rem;
+                right: -.15rem;
+            }
+
+        }
+
+    }
+
+    .authenticationForm,
+    .registrationForm {
+        width: 85%;
+
+        form {
+            width: 100%;
+
+            button {
+                font-size: .7rem;
+            }
+
+        }
+
     }
 
     .productFeatures {
@@ -173,6 +241,155 @@
 
         }
         
+    }
+
+    .communalPrompts {
+
+        .promptDisplay {
+
+            .quoteIcons {
+                font-size: .5rem;
+            }
+
+            .currentPrompt {
+                font-size: 1.25rem;
+            }
+    
+            .randomIcon {
+                font-size: .75rem;
+            }
+
+        }
+
+    }
+
+    .contributePrompts {
+
+        form {
+
+            .submitPrompt {
+                width: 50%;
+                min-width: 5rem;
+                font-size: .7rem;
+            }
+
+            .submitButton {
+                font-size: .7rem;
+            }
+
+        }
+
+    }
+
+    .countdownTimer {
+
+        .timerInterface {
+
+            .playbackButtons {
+                width: 75%;
+                position: relative;
+                left: .75rem;
+            }
+            
+            .startButton,
+            .resetButton,
+            .resumeButton,
+            .stopButton {
+                font-size: .5rem;
+            }
+
+        }
+
+        .timerDisplay {
+    
+            .currentTime p {
+                font-size: 1.5rem;
+            }
+
+            .increaseTime .adjustmentButton,
+            .incrementTime .adjustmentButton,
+            .decreaseTime .adjustmentButton,
+            .decrementTime .adjustmentButton {
+                font-size: .5rem;
+                left: .75rem;
+                margin: 0;
+            }
+
+        }
+
+    }
+
+    .writingSection {
+        min-height: 57vh;
+
+        .savingOptions {
+
+            .articleTitle,
+            .savingButtons button {
+                font-size: .7rem;
+            }
+
+        }
+
+        .saveWriting {
+            width: 75%;
+            max-width: 75%;
+            min-width: 75%;
+        }
+
+    }
+
+    .findMusic {
+
+        .apiLogin {
+
+            button {
+                font-size: .7rem;
+            }
+
+        }
+        
+        .playlistCollection {
+    
+            .userPlaylist .playlistName,
+            .userPlaylist .playlistTracks {
+                font-size: .7rem;
+            }
+    
+        }
+
+    }
+
+    .loadingSection {
+        
+        .articleCounter {
+            width: 30%;
+            min-width: 5rem;
+
+            p {
+                font-size: .7rem;
+            }
+
+        }
+
+        .articleOptions .deleteArticles {
+            font-size: .7rem;
+        }
+
+        .articleList {
+            padding: 1rem 0 0 0;
+            font-size: .75rem;
+        }
+
+    }
+
+    .userNotifications {
+        width: calc(50% * .75);
+
+        p {
+            font-size: .7rem;
+        }
+
     }
 
 }
