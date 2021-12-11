@@ -1,10 +1,27 @@
-# Getting Started with Create React App
+# Plume
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Plume is a simple text editor designed to facilitate writers focusing on their craft within a constructive environment free of distractions that also helps set healthy boundaries when staying accountable to target goals.
 
-## Available Scripts
+## Underlying Motivation
 
-In the project directory, you can run:
+This project is an exercise in furthering my understanding of a variety the web technologies including React, JavaScript (ES6+), API Integrations, and Firebase.
+
+Plume was first conceived as a creative writing application meant to assist the user with prompts and recognizing when they should consider taking a break based on their inactivity. 
+
+In the past I've had difficulty with setting proper boundaries for myself and the work I embark on with me often find myself getting lost within it.
+
+So I felt this would be a good framework to deepen my understanding of technologies I'm already familiar with.    
+
+## Key Features
+
+- Users have the option to register create an account that provides access to more features.
+- An idle timer meant to notify users with a warning if a 15 seconds of consistent inactivty has past.
+- A countdown timer where users can set a time for themselves if they prefer writing within a schedule.
+- If they find starting difficult we provide writing prompts to help them draw inspiration from.  
+- Authenticated users can also contribute writing prompts to our realtime database to assist others.
+- They also have ability to save countless entries with our cloud database and resume when they desire.
+- If they're content with their writing authenticated users also have the choice of downloading their work.
+- We also provide spotify integration where they can select playlists from their premium accounts to play.
 
 ### `npm start`
 

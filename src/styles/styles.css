@@ -2231,7 +2231,8 @@ header .headerMenu {
     width: 100%;
     margin: 0.5rem 0;
   }
-  .primaryMenu .mainNavigation {
+  .primaryMenu .mainNavigation,
+.primaryMenu .visitorNavigation {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -2243,7 +2244,8 @@ header .headerMenu {
     margin: 0;
     padding: 0;
   }
-  .primaryMenu .mainNavigation .individualLinks {
+  .primaryMenu .mainNavigation .individualLinks,
+.primaryMenu .visitorNavigation .individualLinks {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2253,14 +2255,18 @@ header .headerMenu {
     margin: 0 0 0 1rem;
     height: 3rem;
   }
-  .primaryMenu .mainNavigation li {
+  .primaryMenu .mainNavigation li,
+.primaryMenu .visitorNavigation li {
     width: 100%;
   }
   .primaryMenu .mainNavigation li:nth-child(2),
-.primaryMenu .mainNavigation li:nth-child(3) {
+.primaryMenu .mainNavigation li:nth-child(3),
+.primaryMenu .visitorNavigation li:nth-child(2),
+.primaryMenu .visitorNavigation li:nth-child(3) {
     margin: 0;
   }
-  .primaryMenu .mainNavigation .individualLinks::after {
+  .primaryMenu .mainNavigation .individualLinks::after,
+.primaryMenu .visitorNavigation .individualLinks::after {
     left: -1rem;
     top: 3rem;
   }

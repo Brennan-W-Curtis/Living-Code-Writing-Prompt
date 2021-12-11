@@ -38,7 +38,8 @@
             margin: 0.5rem 0;
         }
 
-        .mainNavigation {
+        .mainNavigation,
+        .visitorNavigation {
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
@@ -64,7 +65,8 @@
         }
 
 
-        .mainNavigation .individualLinks {
+        .mainNavigation .individualLinks,
+        .visitorNavigation .individualLinks {
             
             &::after {
                 left: -1rem;

@@ -53,7 +53,6 @@ const App = () => {
    // On initial render the storedPrompts state variable is updated with the values in the realtime database and a random prompt is selected to render onto the page.
    useEffect(() => {
     // Store a reference to the realtime database.
-
     const accessPrompts = async () => {
 
         // Store a reference to the realtime database.

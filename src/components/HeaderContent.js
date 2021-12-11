@@ -68,11 +68,16 @@ const HeaderContent = ({ authenticatedUser, setAuthenticatedUser, fadeInterface,
                             <div className="userOptions">
                                 <Link 
                                     to="authenticate-user"
-                                    className="loginLink"
+                                    className={!fadeInterface ? "loginLink" : "loginLink reducedOpacity"}
                                 >
                                     Sign in   
                                 </Link>
-                                <Link to="register-account" className="registerLink">Register</Link>                            
+                                <Link 
+                                    to="register-account" 
+                                    className={!fadeInterface ? "registerLink" : "registerLink reducedOpacity"}
+                                >
+                                    Register
+                                </Link>                            
                             </div> :
                             authenticatedUser ?
                                 <UserAuthentication 
