@@ -10,7 +10,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement,
             return timeUnit >= 10 ? timeUnit + ":" : "0" + timeUnit + ":";
         }
 
-    }
+    };
 
     // Converts the value stored in the counter variable to minutes and seconds. 
     const convertTime = totalCount => {
@@ -28,7 +28,7 @@ const TimerDisplay = ({ count, countingStatus, handleDecrement, handleIncrement,
 
         // Return the amount input by the user as a format that can be read by minutes and seconds.
         return `${hours}${minutes}${seconds}`
-    }
+    };
 
     return (
         <div className="timerDisplay">

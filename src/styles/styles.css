@@ -573,6 +573,9 @@ textarea {
 .morningDisplay .findMusic .unresponsiveError {
   color: #D11124;
 }
+.morningDisplay .articleList .deleteButton:hover, .morningDisplay .articleList .deleteButton:focus {
+  color: #FFFFFF;
+}
 .morningDisplay .errorPage .errorRedirect {
   position: relative;
 }
@@ -1401,9 +1404,9 @@ header .headerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -2217,8 +2220,8 @@ header .headerMenu {
     margin: 0;
     height: 100%;
     width: 47.5%;
-    min-width: 15rem;
-    max-width: 15rem;
+    min-width: 12rem;
+    max-width: 12rem;
     z-index: 100;
   }
   .primaryMenu .homeLink {
@@ -2269,6 +2272,11 @@ header .headerMenu {
 .primaryMenu .visitorNavigation .individualLinks::after {
     left: -1rem;
     top: 3rem;
+  }
+
+  .userPreferences {
+    min-width: 12rem;
+    max-width: 12rem;
   }
 
   .navigationActive {

@@ -201,6 +201,19 @@
 
     }
 
+    .articleList {
+
+        .deleteButton {
+            
+            &:hover,
+            &:focus {
+                color: $morningBackground;
+            }
+
+        }
+
+    }
+
     .errorPage {
 
         .errorRedirect {

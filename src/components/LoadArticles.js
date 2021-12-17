@@ -6,9 +6,7 @@ import { FaWindowClose } from 'react-icons/fa';
 const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
 
     // Handles loading the selected article to the writing space on the homepage.
-    const handleLoading = bodyText => {
-        setUserInput(bodyText);
-    };
+    const handleLoading = bodyText => setUserInput(bodyText);
 
     // Handles deleting individual articles that have been previously saved by the current user.
     const handleDelete = async articleId => {
@@ -33,7 +31,7 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
         // Update the user document with the recently changed field to remove the article from the database. 
         await updateDoc(docRef, docEntry);
 
-    }
+    };
 
     // Handles deleting all of the user's saved articles.
     const deleteArticles = async () => {
@@ -71,7 +69,7 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
                             className="deleteArticles"
                             onClick={deleteArticles}
                         >
-                            Delete Articles
+                            Delete Entries
                         </button> :
                         null
                 }
@@ -94,11 +92,14 @@ const LoadArticles = ({ authenticatedUser, savedArticles, setUserInput }) => {
                                         >
                                             {articleTitle}
                                         </Link>
-                                        <button className="deleteButton">
+                                        <button 
+                                            className="deleteButton"
+                                            onClick={() => handleDelete(index)}
+                                        >
                                             <FaWindowClose 
-                                                className="deleteArticle"
-                                                onClick={() => handleDelete(index)}
                                                 aria-label="Delete Article"
+                                                className="deleteArticle"
+                                                title="Delete Entry"
                                             />
                                         </button>
                                     </span>

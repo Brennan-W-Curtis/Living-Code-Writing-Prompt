@@ -24,7 +24,7 @@ const CountdownTimer = props => {
         clearInterval(timeInterval.current);
         setCountingStatus(false);
         setFadeInterface(false);
-    }
+    };
 
     // Handles reseting the countdown timer to zero and stopping the countdown.
     const handleReset = () => {
@@ -32,7 +32,7 @@ const CountdownTimer = props => {
         setCountingStatus(null);
         clearInterval(currentInterval);
         setFadeInterface(false);
-    }
+    };
 
     // Handles resuming the countdown timer after first stopping.
     const handleResume = () => handleStart();
@@ -46,20 +46,20 @@ const CountdownTimer = props => {
             setDisplaySaving(true);
         }
 
-    }, [count, countingStatus, setCountingStatus, setDisplaySaving, timeInterval])
+    }, [count, countingStatus, setCountingStatus, setDisplaySaving, timeInterval]);
 
     useEffect(() => {
 
         // Clears the current interval upon the page loading.
         clearInterval(timeInterval.current);
 
-    }, [timeInterval])
+    }, [timeInterval]);
     
     // Handles incrementing the value that represents the total amount of time in state.
     const handleIncrement = amount => {
         const totalSeconds = count;
         setCount(totalSeconds + amount);
-    }
+    };
 
     // Handles decrementing the value that represents the total amount of time in state.
     const handleDecrement = amount => {
@@ -72,7 +72,7 @@ const CountdownTimer = props => {
             setCount(totalSeconds - amount);
         }
 
-    }
+    };
 
     return (
         <div className={displayCountdown ? "countdownTimer" : "countdownTimer hiddenComponent"}>

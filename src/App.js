@@ -144,7 +144,7 @@ const App = () => {
     setTimeout(() => setUserActivity(""), 4500);
     setTimeout(() => setDisplayActivity(null), 4500);
     setTimeout(() => setActivityFadingOut(false), 4500);
-  }
+  };
 
   // Toggles the visibility of a feature based on whether the current authenticated user has enabled it.
   const togglePreference = (userPreference, preferenceFading, preferenceDisplay) => {
@@ -157,7 +157,7 @@ const App = () => {
         preferenceDisplay(true);
     }
 
-  }
+  };
 
   return (
     <Router>

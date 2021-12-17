@@ -27,8 +27,8 @@
         margin: 0;  
         height: 100%;
         width: 47.5%;
-        min-width: 15rem;
-        max-width: 15rem;
+        min-width: 12rem;
+        max-width: 12rem;
         z-index: 100;
 
         .homeLink {
@@ -75,6 +75,11 @@
 
         }
 
+    }
+
+     .userPreferences {
+        min-width: 12rem;
+        max-width: 12rem;
     }
 
     .navigationActive {
